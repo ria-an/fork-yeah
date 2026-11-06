@@ -1483,6 +1483,7 @@ html.ip-host #splash{display:none}
 .spl-s.s5{right:24%;bottom:9%;font-size:36px;--r:-10deg;--fx:30px;--fy:90px;animation-delay:588ms}
 @keyframes splS{from{transform:translate(var(--fx),var(--fy)) scale(.4) rotate(calc(var(--r) * -3));opacity:0}to{transform:rotate(var(--r));opacity:1}}
 @media (prefers-reduced-motion:reduce){#splash *{animation:none!important}#splash.out{animation:splFade 200ms ease forwards}@keyframes splFade{to{opacity:0}}}
+@media (max-width:860px){body.pre-start #mbar .ml-2{font-size:21px!important;line-height:1.25;letter-spacing:-.02em;margin-top:2px}}
 </style>
 <body>
 <div id="splash" aria-hidden="true"><div class="spl-c"><div class="spl-ic"><svg class="appic" viewBox="0 0 120 120"><rect width="120" height="120" rx="27" fill="#FF5A1F"/><rect x="22" y="56" width="76" height="42" rx="10" fill="#fff"/><rect class="sp-lid" x="18" y="48" width="84" height="12" rx="6" fill="#FFD9C7"/><g class="sp-eyes"><circle cx="44" cy="40" r="15" fill="#fff"/><circle cx="76" cy="44" r="9" fill="#fff"/><g class="sp-pup"><circle cx="50" cy="45" r="6" fill="#161614"/><circle cx="73" cy="42" r="4" fill="#161614"/></g></g><path d="M46 74 q14 10 28 0" fill="none" stroke="#161614" stroke-width="5" stroke-linecap="round"/><path class="sp-tongue" d="M60 79 v6 q0 6 -5 6 q-5 0 -5 -6 v-4" fill="#FF8FB1"/></svg></div><div class="spl-w"><span>Fork</span> <span>Yeah</span></div><div class="spl-t">вилкой и по плану</div></div><span class="spl-s s0">🥦</span><span class="spl-s s1">🍗</span><span class="spl-s s2">🧀</span><span class="spl-s s3">🥕</span><span class="spl-s s4">🍝</span><span class="spl-s s5">🍳</span></div><script>(function(){try{var s=document.getElementById('splash');if(window.__IPHOST||navigator.webdriver||sessionStorage.getItem('fy-splash')){s.remove();return}sessionStorage.setItem('fy-splash','1');var k=function(){if(!s.isConnected||s.classList.contains('out'))return;s.classList.add('out');setTimeout(function(){s.remove()},580)};s.addEventListener('click',k);setTimeout(k,matchMedia('(prefers-reduced-motion:reduce)').matches?600:2500)}catch(e){}})()</script>
@@ -3037,7 +3038,7 @@ function render(){
   const keepY=LASTV===S.view?scrollY:null;LASTV=S.view;
   renderNav();
   document.body.classList.toggle('on-recipes',S.view==='recipes');
-  document.body.classList.toggle('on-today',S.view==='today');
+  document.body.classList.toggle('on-today',S.view==='today');document.body.classList.toggle('pre-start',S.view==='today'&&!!start()&&dayIdx(TODAY)<0);
   {const cb=$('cookbar');if(cb&&S.view!=='cook')cb.hidden=true}
   [...VIEWS.map(v=>v[0]),'kb','settings'].forEach(v=>$('v-'+v).hidden=v!==S.view);
   const pv=$('v-'+S.view),pr=pv&&pv.querySelector('.cpills,.utabs');const prevSL=pr&&pr.dataset.v===S.view?pr.scrollLeft:null;
