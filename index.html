@@ -2188,6 +2188,7 @@ const dayIdx=dt=>{const st=start();return st?Math.round((dt-st)/864e5):null};
 const dateOf=(w,d)=>{const st=start();return st?addDays(st,w*7+d):null};
 const DAYS_KEY=()=>'mp-days-'+(S.start||'none');
 function defDays(){const st=start();if(!st)return null;return {shop:addDays(st,-2).getDay(),cook:[addDays(st,-1).getDay(),addDays(st,COOKDAY[1]-1).getDay()]}}
+function relDays(iso){const st=fromISO(iso);return {shop:addDays(st,-2).getDay(),cook:[addDays(st,-1).getDay(),addDays(st,COOKDAY[1]-1).getDay()]}}
 function plDays(){return LS.get(DAYS_KEY(),null)||defDays()}
 function cookOff(w,c){const st=start();const P=plDays();if(!st||!P)return c===0?-1:COOKDAY[1]-1;const ws=dateOf(w,0);
   if(c===0){return -1-((addDays(ws,-1).getDay()-P.cook[0]+7)%7)}
@@ -2320,7 +2321,7 @@ function vToday(){
   const nav=`<button class="btn daynav mob set-open" aria-label="Настройки">${ic('gear')}</button>`;
   if(idx<0){
     setHead('Сегодня','Скоро старт',nav);$('hsub').hidden=false;$('hsub').textContent=`${-idx===1?'Завтра':'Через '+(-idx)+' '+plural(-idx,'день','дня','дней')} — ${fdate(st)}`;
-    const od=addDays(st,-2),cd=addDays(st,-1);
+    const od=orderDate(0),cd=cookDate(0,0);
     const rel=dt=>{const n=Math.round((dt-TODAY)/864e5);return n===0?'сегодня':n===1?'завтра':n<0?'пропущено':`через ${n} ${plural(n,'день','дня','дней')}`};
     el.innerHTML=`<div class="stack" id="tstack"><div class="tray"><div class="trayhead"><h2>Перед стартом<span class="cnt">3</span></h2></div><div class="inner">${row('shop','Заказать продукты',`${fdate(od)} · ${rel(od)}`,'data-go="shop" data-cw="0"')}${(()=>{const dv=dateOf(0,delivOff(0));return row('box','Разложить покупки',`${fdate(dv)} · ${rel(dv)} · что в морозилку, что в холодильник`,'data-go="shop" data-cw="0" data-after="1"')})()}${row('cook','Первая большая готовка',`${fdate(cd)} · ${rel(cd)} · ≈${tlTotal(0,0)} мин`,'data-go="cook" data-cw="0" data-cs="0"')}</div></div>
       <div class="tray"><div class="trayhead"><h2>Что едим в первый день</h2></div><div class="cols">${WEEKS[0].days[0].meals.map((m,mi)=>mealCard(0,0,m,mi)).join('')}</div></div></div>`;
@@ -2466,6 +2467,7 @@ function openNextSheet(){const n=nextPlan();const end=planEndD();const minD=end&
    <div class="actions nx-acts">${n?'<button class="btn ghost" id="ndel">Отменить</button>':''}<button class="btn dark" id="nsave">${n?'Сохранить':'Запланировать'}</button></div>`);
   $('nnew').onclick=()=>{closeSheet();S.setTab='gen';go('settings')};
   if($('ndel'))$('ndel').onclick=()=>{try{localStorage.removeItem(NEXT_KEY)}catch(_){}closeSheet();render()};
+  autoDays($('nstart'),['nshop','nc0','nc1']);
   $('nsave').onclick=()=>{const st=$('nstart').value||toISO(minD);const m=$('nmenu').value;const days={shop:+$('nshop').value,cook:[+$('nc0').value,+$('nc1').value]};
     LS.set(NEXT_KEY,{menu:m,start:st,days});LS.set('mp-days-'+st,days);clearPrep(m);closeSheet();if(commitNext()){render();return}if(S.view==='week'&&S.week===4&&planWin()){S.week=3;enterPeek('week');S.wday=0;S.wdayW=0;render();return}render()};
 }
@@ -2755,6 +2757,7 @@ function endPlan(){const re=/(^|:)mp-(ate|shop|tl|tls|tln|days)-/;const ks=[];fo
   ks.forEach(k=>{try{localStorage.removeItem(k)}catch(_){}});Object.keys(TIMERS).forEach(k=>delete TIMERS[k]);LS.set('mp-timers',TIMERS);timerSig='';
   S.start=null;try{localStorage.removeItem('mp-start')}catch(_){}S.offset=0;S.week=0;kbMsg=null;render()}
 const DOWS=['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
+const autoDays=(inp,ids)=>{if(!inp)return;let t=false;ids.forEach(i=>{const s=$(i);if(s)s.addEventListener('change',()=>{t=true})});inp.addEventListener('change',()=>{if(t||!inp.value)return;const r=relDays(inp.value);[r.shop,r.cook[0],r.cook[1]].forEach((v,k)=>{const s=$(ids[k]);if(s)s.value=String(v)})})};
 const dowSel=(id,v)=>`<select id="${id}">${[1,2,3,4,5,6,0].map(d=>`<option value="${d}" ${d===v?'selected':''}>${DOWS[d]}</option>`).join('')}</select>`;
 function vSettings(){
   const el=$('v-settings');const st=start();const am=activeMenu();const P=plDays()||{shop:6,cook:[0,3]};
@@ -2796,6 +2799,7 @@ function vSettings(){
     endPlan()};
   if($('knsave'))$('knsave').onclick=()=>{LS.set('mp-name',$('kname').value.trim());$('knok').textContent='Сохранено'};
   el.querySelectorAll('[data-st]').forEach(b=>b.onclick=()=>{S.setTab=b.dataset.st;kbMsg=null;render()});
+  autoDays($('kstart'),['kshop','kc0','kc1']);
   if($('ksave'))$('ksave').onclick=()=>{const id=planLocked()?S.menu:$('kmenu').value,d=planLocked()?S.start:$('kstart').value;if(d){S.start=d;LS.set('mp-start',d)}LS.set(DAYS_KEY(),{shop:+$('kshop').value,cook:[+$('kc0').value,+$('kc1').value]});if(id!==S.menu)switchMenu(id);else{S.offset=0;syncWeek()}kbMsg=null;render();const k=$('kok');if(k)k.textContent='Сохранено'};
   el.querySelectorAll('[data-use]').forEach(b=>b.onclick=()=>{if(planLocked())return;switchMenu(b.dataset.use);kbMsg=null;render()});
   el.querySelectorAll('[data-exp]').forEach(b=>b.onclick=async()=>{const m=MENUS.find(x=>x.id===b.dataset.exp);const ok=await downloadJSON(m,`${m.id}.json`);if(!ok){const l=b.querySelector('span');l.textContent='Не вышло, скопируй';setTimeout(()=>{if(l.isConnected)l.textContent='Скачать'},2500)}});
@@ -2935,7 +2939,7 @@ let ONB=null;
 const ONB_DOW=[1,2,3,4,5,6,0];
 const nameQuip=n=>{n=n.trim();if(!n)return 'Можно без паспорта — просто имя';if(n.length<=2)return `${n}? Коротко и по делу. Уважаю`;if(/^(аня|анна|анечка|анюта|анька)$/i.test(n))return `${n}! Красивое имя для человека с планом`;if(n.length>14)return 'Длинно, но запомню. Холодильник тоже';return `${n}, приятно познакомиться. Холодильник уже в курсе`};
 function openOnb(){const P=plDays()||{shop:6,cook:[0,3]};
-  ONB={step:0,name:uname(),menu:S.menu,shop:P.shop,c0:P.cook[0],c1:P.cook[1],start:toISO(nextMonday()),hadName:!!uname()};
+  ONB={step:0,name:uname(),menu:S.menu,shop:P.shop,c0:P.cook[0],c1:P.cook[1],start:toISO(nextMonday()),hadName:!!uname()};{const r=relDays(ONB.start);ONB.shop=r.shop;ONB.c0=r.cook[0];ONB.c1=r.cook[1]};
   let el=$('onb');if(!el){el=document.createElement('div');el.id='onb';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');el.setAttribute('aria-label','Настройка плана');document.body.appendChild(el)}
   document.body.classList.add('onb-on');renderOnb()}
 function closeOnb(){const el=$('onb');if(el)el.remove();document.body.classList.remove('onb-on');ONB=null}
@@ -2974,9 +2978,10 @@ function renderOnb(){const el=$('onb');if(!el||!ONB)return;const steps=onbSteps(
   $('obGo').onclick=()=>{if(cur==='name'){const v=$('obName').value.trim();if(!v){$('obName').focus();$('obQuip').textContent='Ну хоть как-нибудь. Можно даже смайлик';const n=el.querySelector('.ob-in');n.classList.remove('shake');void n.offsetWidth;n.classList.add('shake');return}ONB.name=v;LS.set('mp-name',v)}next()};
   const ni=$('obName');if(ni){ni.oninput=()=>{ONB.name=ni.value;$('obQuip').textContent=nameQuip(ni.value)};ni.onkeydown=e=>{if(e.key==='Enter')$('obGo').click()};setTimeout(()=>ni.focus(),250)}
   el.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{ONB.menu=b.dataset.m;renderOnb()});
-  el.querySelectorAll('.ob-pills').forEach(r=>r.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{ONB[r.dataset.row]=+b.dataset.d;renderOnb()}));
-  el.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>{ONB.start=b.dataset.s;renderOnb()});
-  const dd=$('obDate');if(dd){dd.onchange=()=>{if(dd.value){ONB.start=dd.value;renderOnb()}};dd.onclick=()=>{try{dd.showPicker&&dd.showPicker()}catch(_){}}}
+  el.querySelectorAll('.ob-pills').forEach(r=>r.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{ONB[r.dataset.row]=+b.dataset.d;ONB.dTouched=true;renderOnb()}));
+  const setStart=v=>{ONB.start=v;if(!ONB.dTouched){const r=relDays(v);ONB.shop=r.shop;ONB.c0=r.cook[0];ONB.c1=r.cook[1]}renderOnb()};
+  el.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>setStart(b.dataset.s));
+  const dd=$('obDate');if(dd){dd.onchange=()=>{if(dd.value)setStart(dd.value)};dd.onclick=()=>{try{dd.showPicker&&dd.showPicker()}catch(_){}}}
 }
 function finishOnb(){const o=ONB;if(o.menu!==S.menu)switchMenu(o.menu);S.start=o.start;LS.set('mp-start',S.start);LS.set(DAYS_KEY(),{shop:o.shop,cook:[o.c0,o.c1]});S.offset=0;syncWeek();
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches){const box=document.createElement('div');box.className='ob-confetti';box.setAttribute('aria-hidden','true');document.body.appendChild(box);const es=['🍗','🥦','🥚','🍝','🫐','🥕','🧀','🍌','🎉','✨','🍅','🥞'];
@@ -3020,7 +3025,7 @@ function mbar(){const el=$('mbar');if(!el)return;
   el.querySelectorAll('.pk-back').forEach(b=>b.onclick=()=>exitPeek());
   mbFit();mbScroll();
 }
-function mbFit(){const tx=document.querySelector('#mbar .ml-tx');if(!tx)return;tx.querySelectorAll('.ml-1,.ml-2').forEach(l=>{if(!l.dataset.full)l.dataset.full=l.textContent;l.textContent=l.dataset.full;if(l.dataset.alt&&l.scrollWidth>l.clientWidth+1)l.textContent=l.dataset.alt;if(l.scrollWidth>l.clientWidth+1&&l.textContent.includes(' · '))l.textContent=l.textContent.split(' · ')[0]})}
+function mbFit(){const tx=document.querySelector('#mbar .ml-tx');if(!tx)return;tx.querySelectorAll('.ml-1,.ml-2').forEach(l=>{if(!l.dataset.full)l.dataset.full=l.textContent;l.textContent=l.dataset.full;if(l.dataset.alt&&l.scrollWidth>l.clientWidth+1)l.textContent=l.dataset.alt;if(l.scrollWidth>l.clientWidth+1&&/ · | — /.test(l.textContent))l.textContent=l.textContent.split(/ · | — /)[0]})}
 addEventListener('resize',()=>{if(document.body.classList.contains('has-mbar'))mbFit()});
 let MBIO=null;
 function mbScroll(){const ml=document.querySelector('#mbar .ml');if(!ml){document.body.classList.remove('mb-stuck');return}
