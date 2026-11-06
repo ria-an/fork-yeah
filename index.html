@@ -1509,6 +1509,34 @@ html.ip-host #splash{display:none}
 .mz-b{position:relative;margin:0;flex:1;min-width:0;background:#F3F0EA;color:var(--ink,#161614);font-size:15px;line-height:20px;font-weight:500;padding:0 14px;height:60px;box-sizing:border-box;border-radius:18px 18px 18px 6px;display:flex;align-items:center}.mz-b>span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 @media (prefers-reduced-motion:reduce){.mz,.mz *{animation:none!important}}
 }
+@media (max-width:860px){dialog .grab{position:absolute;left:50%;right:auto;margin:0!important;transform:translateX(-50%)}}
+/* онбординг v2 */
+#onb{overflow-y:auto;-webkit-overflow-scrolling:touch;padding-bottom:0!important;scroll-padding-bottom:120px}
+#onb .ob-foot{position:sticky;bottom:0;padding:14px 0 calc(20px + env(safe-area-inset-bottom) + var(--kb,0px));background:linear-gradient(to bottom,transparent,var(--obg) 14px);z-index:6;transition:background-color .4s}
+.ob-body{align-self:start!important;padding-top:8px}
+.ob-fly{position:relative!important;inset:auto!important;height:clamp(96px,17vh,170px);order:-1;margin:0 -6px -10px;pointer-events:none;z-index:1}
+.ob-fly .emo{right:auto!important;bottom:auto!important;font-size:46px}
+.ob-fly .f0{left:2%!important;top:38%!important}.ob-fly .f1{left:16%!important;top:2%!important;font-size:40px}.ob-fly .f2{left:30%!important;top:44%!important}.ob-fly .f3{left:45%!important;top:6%!important;font-size:42px}
+.ob-fly .f4{left:58%!important;top:46%!important;font-size:38px}.ob-fly .f5{left:71%!important;top:4%!important;font-size:50px}.ob-fly .f6{left:85%!important;top:42%!important;font-size:40px}.ob-fly .f7{display:none}
+.ob-fly.sm{height:clamp(80px,13vh,120px)}.ob-fly.sm .f0{left:auto!important;right:6%!important;top:12%!important;font-size:60px}.ob-fly.sm .f3{left:4%!important;top:30%!important;font-size:44px}
+.ob-tl-h small{display:block;font-weight:500;font-size:13px;opacity:.7;margin-top:2px}
+.ob-tl li{display:block!important;padding:0!important}
+.ob-tl-b{all:unset;box-sizing:border-box;width:100%;display:grid;grid-template-columns:28px 1fr auto;column-gap:10px;align-items:center;padding:9px 0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ob-tl-b .emo{grid-column:1;grid-row:1/span 2;font-size:22px;text-align:center}.ob-tl-b .ob-tl-t,.ob-tl-b .ob-tl-d{grid-column:2}.ob-tl-b .ob-tl-c{grid-column:3;grid-row:1/span 2;width:16px;height:16px;opacity:.55;transition:transform .2s cubic-bezier(.23,1,.32,1)}
+.ob-tl li.open .ob-tl-c{transform:rotate(90deg)}
+.ob-tl li .ob-pills{margin:0 0 10px}
+.ob-first{display:grid;gap:2px;padding:16px 18px;border-radius:20px;background:color-mix(in srgb,#fff 35%,transparent);position:relative;z-index:2}
+.ob-first-l{font-size:13px;font-weight:600;opacity:.7}.ob-first b{font-size:22px;font-weight:700;letter-spacing:-.02em}.ob-first span:last-child{font-size:15px;opacity:.8}
+.ob-cal{all:unset;box-sizing:border-box;display:flex;align-items:center;justify-content:center;gap:8px;min-height:52px;border-radius:16px;background:#fff;color:#161614;font-weight:600;font-size:16px;cursor:pointer;position:relative;z-index:2;-webkit-tap-highlight-color:transparent;transition:transform .16s cubic-bezier(.23,1,.32,1)}
+.ob-cal:active{transform:scale(.97)}.ob-cal svg{width:18px;height:18px}
+.ob-cal-h{font-size:14px!important;opacity:.8;margin-top:-10px!important}
+/* стикеры не перекрывают текст */
+.dayclosed .dc-w,.dayclosed .dc-sub{position:relative;z-index:1;max-width:calc(100% - 112px)}
+.dayclosed .dc0{right:62px!important;top:12px!important;bottom:auto!important;font-size:38px!important}
+.dayclosed .dc1{right:12px!important;top:22px!important;bottom:auto!important;font-size:34px!important}
+.dayclosed .dc2{right:64px!important;bottom:14px!important;top:auto!important;font-size:36px!important}
+.dayclosed .dc3{right:10px!important;bottom:10px!important;top:auto!important;font-size:42px!important}
+.nx-stk.s3{left:auto!important;right:74px!important;top:14px!important;bottom:auto!important}
 </style>
 <body>
 <div id="splash" aria-hidden="true"><div class="spl-c"><div class="spl-ic"><svg class="appic" viewBox="0 0 120 120"><rect width="120" height="120" rx="27" fill="#FF5A1F"/><rect x="22" y="56" width="76" height="42" rx="10" fill="#fff"/><rect class="sp-lid" x="18" y="48" width="84" height="12" rx="6" fill="#FFD9C7"/><g class="sp-eyes"><circle cx="44" cy="40" r="15" fill="#fff"/><circle cx="76" cy="44" r="9" fill="#fff"/><g class="sp-pup"><circle cx="50" cy="45" r="6" fill="#161614"/><circle cx="73" cy="42" r="4" fill="#161614"/></g></g><path d="M46 74 q14 10 28 0" fill="none" stroke="#161614" stroke-width="5" stroke-linecap="round"/><path class="sp-tongue" d="M60 79 v6 q0 6 -5 6 q-5 0 -5 -6 v-4" fill="#FF8FB1"/></svg></div><div class="spl-w"><span>Fork</span> <span>Yeah</span></div><div class="spl-t">вилкой и по плану</div></div><span class="spl-s s0">🥦</span><span class="spl-s s1">🍗</span><span class="spl-s s2">🧀</span><span class="spl-s s3">🥕</span><span class="spl-s s4">🍝</span><span class="spl-s s5">🍳</span></div><script>(function(){try{var s=document.getElementById('splash');if(window.__IPHOST||navigator.webdriver||sessionStorage.getItem('fy-splash')){s.remove();return}sessionStorage.setItem('fy-splash','1');var k=function(){if(!s.isConnected||s.classList.contains('out'))return;s.classList.add('out');setTimeout(function(){s.remove()},580)};s.addEventListener('click',k);setTimeout(k,matchMedia('(prefers-reduced-motion:reduce)').matches?600:2500)}catch(e){}})()</script>
@@ -3008,9 +3036,10 @@ const nameQuip=n=>{n=n.trim();if(!n)return 'Можно без паспорта �
 function openOnb(){const P=plDays()||{shop:6,cook:[0,3]};
   ONB={step:0,name:uname(),menu:S.menu,shop:P.shop,c0:P.cook[0],c1:P.cook[1],start:toISO(nextMonday()),hadName:!!uname()};{const r=relDays(ONB.start);ONB.shop=r.shop;ONB.c0=r.cook[0];ONB.c1=r.cook[1]};
   let el=$('onb');if(!el){el=document.createElement('div');el.id='onb';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');el.setAttribute('aria-label','Настройка плана');document.body.appendChild(el)}
-  document.body.classList.add('onb-on');renderOnb()}
+  document.body.classList.add('onb-on');renderOnb();onbKb()}
+function onbKb(){const vv=window.visualViewport;if(!vv||onbKb.on)return;onbKb.on=true;const f=()=>{const el=$('onb');if(!el)return;const kb=Math.max(0,innerHeight-vv.height-vv.offsetTop);el.style.setProperty('--kb',kb+'px')};vv.addEventListener('resize',f);vv.addEventListener('scroll',f)}
 function closeOnb(){const el=$('onb');if(el)el.remove();document.body.classList.remove('onb-on');ONB=null}
-function onbSteps(){const st=['hi'];if(!ONB.hadName)st.push('name');if(MENUS.length>1)st.push('menu');st.push('days','start');return st}
+function onbSteps(){const st=['hi'];if(!ONB.hadName)st.push('name');if(MENUS.length>1)st.push('menu');st.push('start','done');return st}
 function renderOnb(){const el=$('onb');if(!el||!ONB)return;const steps=onbSteps();const k=Math.min(ONB.step,steps.length-1);const cur=steps[k];
   const nm=(ONB.name||'').trim();const NM=nm.toUpperCase();
   const dots=`<div class="ob-dots">${steps.map((s,i)=>`<i class="${i===k?'on':i<k?'done':''}"></i>`).join('')}</div>`;
@@ -3029,34 +3058,49 @@ function renderOnb(){const el=$('onb');if(!el||!ONB)return;const steps=onbSteps(
     <div class="ob-row"><div class="ob-rl">${emo('🛒')}<span>Закупка<small>привезут — и сразу в дело</small></span></div>${pill('shop',ONB.shop)}</div>
     <div class="ob-row"><div class="ob-rl">${emo('🍳')}<span>Большая готовка<small>час-полтора, зато на неделю</small></span></div>${pill('c0',ONB.c0)}</div>
     <div class="ob-row"><div class="ob-rl">${emo('🥄')}<span>Короткая готовка<small>минут 30, подкрепление в середине недели</small></span></div>${pill('c1',ONB.c1)}</div>`}
+  else if(cur==='done'){theme='t-green';cta='К плану';const {od}=onbSched(ONB);const n=Math.round((od-TODAY)/864e5);
+    body=`<div class="ob-fly sm">${emo('🎉','f0')}${emo('✨','f3')}</div><div class="ob-h">${nm?esc(NM)+',<br>':''}ВСЁ<br>ГОТОВО</div>
+    <div class="ob-first"><span class="ob-first-l">Первое дело</span><b>Заказать продукты</b><span>${fdate(od)}${n>=0?' · '+(n===0?'сегодня':n===1?'завтра':`через ${n} ${plural(n,'день','дня','дней')}`):''}</span></div>
+    <button class="ob-cal" id="obCal">${ic('week')}<span>Добавить в календарь</span></button>
+    <p class="ob-p ob-cal-h" id="obCalH">Все закупки и готовки на 4 недели — с напоминанием накануне вечером.</p>`}
   else if(cur==='start'){theme='t-pink';cta='Поехали';const opts=[[toISO(TODAY),'Сегодня'],[toISO(addDays(TODAY,1)),'Завтра'],[toISO(nextMonday()),'Понедельник']].filter((x,i,a)=>a.findIndex(y=>y[0]===x[0])===i);
     const sd=fromISO(ONB.start);body=`<div class="ob-h">СТАРТУЕМ<br>КОГДА?</div>
     <div class="ob-starts">${opts.map(([v,l])=>`<button data-s="${v}" aria-pressed="${v===ONB.start}"><b>${l}</b><span>${fdate(fromISO(v))}</span></button>`).join('')}<label class="ob-date" aria-pressed="${!opts.some(o=>o[0]===ONB.start)}"><b>Другая дата</b><span>${opts.some(o=>o[0]===ONB.start)?'выбрать в календаре':fdate(fromISO(ONB.start))}</span><input type="date" id="obDate" value="${ONB.start}" aria-label="Другая дата"></label></div>
-    ${(()=>{const bo=-1-((addDays(sd,-1).getDay()-ONB.c0+7)%7),bd=addDays(sd,bo);const od=addDays(bd,-1-((addDays(bd,-1).getDay()-ONB.shop+7)%7)),dv=addDays(od,1);const sc=addDays(sd,(ONB.c1-sd.getDay()+7)%7);
+    ${(()=>{const {bd,od,dv,sc}=onbSched(ONB);
       const rel=d=>{const n=Math.round((d-TODAY)/864e5);return n<0?'<em>уже прошло</em>':n===0?'сегодня':n===1?'завтра':n===2?'послезавтра':`через ${n} ${plural(n,'день','дня','дней')}`};
-      const rows=[['🛒','Заказываешь продукты',od],[ '📦',toISO(dv)===toISO(bd)?'Привезут, разложишь — и сразу большая готовка':'Привезут — разложишь по местам',dv]];if(toISO(dv)!==toISO(bd))rows.push(['🍳','Большая готовка',bd]);rows.push(['🍽️','Первый день по плану',sd],['🥄','Короткая готовка',sc]);
-      const late=od<TODAY;
-      return `<div class="ob-tlw"><div class="ob-tl-h">Как всё пойдёт</div><ol class="ob-tl">${rows.map(([e,t,d])=>`<li>${emo(e)}<span class="ob-tl-t">${t}</span><span class="ob-tl-d">${fdate(d)} · ${rel(d)}</span></li>`).join('')}</ol></div>`})()}`}
+      const same=toISO(dv)===toISO(bd);const rows=[['🛒','Заказываешь продукты',od,'shop'],['📦',same?'Привезут, разложишь — и сразу большая готовка':'Привезут — разложишь по местам',dv,same?'c0':null]];if(!same)rows.push(['🍳','Большая готовка',bd,'c0']);rows.push(['🍽️','Первый день по плану',sd,null],['🥄','Короткая готовка',sc,'c1']);
+      return `<div class="ob-tlw"><div class="ob-tl-h">Как всё пойдёт<small>тапни, чтобы поменять день</small></div><ol class="ob-tl">${rows.map(([e,t,d,key])=>`<li class="${key?'ed':''}${key&&ONB.ed===key?' open':''}">${key?`<button class="ob-tl-b" data-ed="${key}" aria-expanded="${ONB.ed===key}">`:'<div class="ob-tl-b">'}${emo(e)}<span class="ob-tl-t">${t}</span><span class="ob-tl-d">${fdate(d)} · ${rel(d)}</span>${key?ic('chev','ob-tl-c'):''}${key?'</button>':'</div>'}${key&&ONB.ed===key?pill(key,ONB[key]):''}</li>`).join('')}</ol></div>`})()}`}
   el.className=theme;
   const same=ONB._rk===k&&el.querySelector('.ob-body');ONB._rk=k;
   if(same){const sy=el.scrollTop;el.querySelector('.ob-body').innerHTML=body;const g=$('obGo');if(g)g.innerHTML=cta;const tp=el.querySelector('.ob-top');if(tp)tp.innerHTML=`${back}${dots}<span class="ob-sp"></span>`;el.scrollTop=sy}
   else el.innerHTML=`<div class="ob-top">${back}${dots}<span class="ob-sp"></span></div><div class="ob-body">${body}</div><div class="ob-foot"><button class="ob-go" id="obGo">${cta}</button></div>`;
-  const next=()=>{if(k<steps.length-1){ONB.step=k+1;renderOnb()}else finishOnb()};
+  const next=()=>{if(k<steps.length-1){ONB.step=k+1;renderOnb();if(steps[k+1]==='done')onbBurst()}else finishOnb()};
   if($('obSkip'))$('obSkip').onclick=()=>{S.onbLater=true;closeOnb();render()};
   else if($('obBack'))$('obBack').onclick=()=>{ONB.step=k-1;renderOnb()};
   $('obGo').onclick=()=>{if(cur==='name'){const v=$('obName').value.trim();if(!v){$('obName').focus();$('obQuip').textContent='Ну хоть как-нибудь. Можно даже смайлик';const n=el.querySelector('.ob-in');n.classList.remove('shake');void n.offsetWidth;n.classList.add('shake');return}ONB.name=v;LS.set('mp-name',v)}next()};
   const ni=$('obName');if(ni){ni.oninput=()=>{ONB.name=ni.value;$('obQuip').textContent=nameQuip(ni.value)};ni.onkeydown=e=>{if(e.key==='Enter')$('obGo').click()};setTimeout(()=>ni.focus(),250)}
   el.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{ONB.menu=b.dataset.m;renderOnb()});
-  el.querySelectorAll('.ob-pills').forEach(r=>r.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{ONB[r.dataset.row]=+b.dataset.d;ONB.dTouched=true;renderOnb()}));
+  el.querySelectorAll('.ob-pills').forEach(r=>r.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{ONB[r.dataset.row]=+b.dataset.d;ONB.dTouched=true;ONB.ed=null;renderOnb()}));
+  el.querySelectorAll('[data-ed]').forEach(b=>b.onclick=()=>{ONB.ed=ONB.ed===b.dataset.ed?null:b.dataset.ed;renderOnb();const pp=document.querySelector('.ob-tl li.open .ob-pills');if(pp)requestAnimationFrame(()=>pp.scrollIntoView({block:'nearest',behavior:RM.matches?'auto':'smooth'}))});
+  if($('obCal'))$('obCal').onclick=async()=>{const ok=await saveIcs(ONB);const h=$('obCalH');if(h&&ok)h.textContent='Готово! Открой файл — айфон предложит добавить события в Календарь.'};
   const setStart=v=>{ONB.start=v;if(!ONB.dTouched){const r=relDays(v);ONB.shop=r.shop;ONB.c0=r.cook[0];ONB.c1=r.cook[1]}renderOnb()};
   el.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>setStart(b.dataset.s));
   const dd=$('obDate');if(dd){dd.onchange=()=>{if(dd.value)setStart(dd.value)};dd.onclick=()=>{try{dd.showPicker&&dd.showPicker()}catch(_){}}}
 }
-function finishOnb(){const o=ONB;if(o.menu!==S.menu)switchMenu(o.menu);S.start=o.start;LS.set('mp-start',S.start);LS.set(DAYS_KEY(),{shop:o.shop,cook:[o.c0,o.c1]});S.offset=0;syncWeek();
+function onbSched(o){const sd=fromISO(o.start);const bd=addDays(sd,-1-((addDays(sd,-1).getDay()-o.c0+7)%7));const od=addDays(bd,-1-((addDays(bd,-1).getDay()-o.shop+7)%7));return {sd,bd,od,dv:addDays(od,1),sc:addDays(sd,(o.c1-sd.getDay()+7)%7)}}
+function icsFor(o){const {sd,bd,od,dv,sc}=onbSched(o);const f=d=>`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;const L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Fork Yeah//RU','CALSCALE:GREGORIAN'];let n=0;
+  const ev=(d,t,desc)=>{L.push('BEGIN:VEVENT',`UID:fy-${f(d)}-${n++}@forkyeah`,`DTSTAMP:${f(TODAY)}T090000Z`,`DTSTART;VALUE=DATE:${f(d)}`,`DTEND;VALUE=DATE:${f(addDays(d,1))}`,`SUMMARY:${t}`,`DESCRIPTION:${desc}`,'BEGIN:VALARM','TRIGGER:-PT15H','ACTION:DISPLAY',`DESCRIPTION:${t}`,'END:VALARM','END:VEVENT')};
+  for(let w=0;w<4;w++){const k=w*7;ev(addDays(od,k),'🛒 Заказать продукты',`Неделя ${w+1} — список в Fork Yeah`);if(toISO(dv)!==toISO(bd))ev(addDays(dv,k),'📦 Разложить покупки','Что в морозилку, что в холодильник — в Fork Yeah');ev(addDays(bd,k),'🍳 Большая готовка',`Готовка ${w*2+1}`);ev(addDays(sc,k),'🥄 Короткая готовка',`Готовка ${w*2+2}`)}
+  L.push('END:VCALENDAR');return L.join('\r\n')}
+async function saveIcs(o){const data=icsFor(o);const name='fork-yeah.ics';try{const file=new File([data],name,{type:'text/calendar'});if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:'Fork Yeah'});return true}}catch(e){if(e&&e.name==='AbortError')return false}
+  try{const b=new Blob([data],{type:'text/calendar'});const url=URL.createObjectURL(b);const a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(url);a.remove()},1500);return true}catch(_){return false}}
+function onbBurst(){
   if(!matchMedia('(prefers-reduced-motion: reduce)').matches){const box=document.createElement('div');box.className='ob-confetti';box.setAttribute('aria-hidden','true');document.body.appendChild(box);const es=['🍗','🥦','🥚','🍝','🫐','🥕','🧀','🍌','🎉','✨','🍅','🥞'];
     for(let i=0;i<28;i++){const s=document.createElement('span');s.className='emo';s.textContent=es[i%es.length];box.appendChild(s);const a=Math.random()*Math.PI*2,r=160+Math.random()*240;
       s.animate([{transform:'translate(-50%,-50%) scale(.3)',opacity:1},{transform:`translate(calc(-50% + ${Math.cos(a)*r}px),calc(-50% + ${Math.sin(a)*r-80}px)) scale(${0.9+Math.random()*0.8}) rotate(${(Math.random()-.5)*540}deg)`,opacity:1,offset:.6},{transform:`translate(calc(-50% + ${Math.cos(a)*r*1.1}px),calc(-50% + ${Math.sin(a)*r+200}px)) rotate(${(Math.random()-.5)*720}deg)`,opacity:0}],{duration:1400+Math.random()*500,easing:'cubic-bezier(.2,.7,.3,1)',fill:'forwards'})}
     setTimeout(()=>box.remove(),2200)}
+}
+function finishOnb(){const o=ONB;if(o.menu!==S.menu)switchMenu(o.menu);S.start=o.start;LS.set('mp-start',S.start);LS.set(DAYS_KEY(),{shop:o.shop,cook:[o.c0,o.c1]});S.offset=0;syncWeek();
   closeOnb();go('today')}
 
 function go(v){if(S.week>3&&v!=='week')S.week=3;if(PEEK&&v==='settings')exitPeek();if(v==='week'){S.weekScrolled=false;S.weekScrolledD=false}S.view=v;if(location.hash.slice(1)!==v)history.replaceState(null,'','#'+v);window.scrollTo(0,0);render();if(scrollY)window.scrollTo(0,0);mbScroll()}
