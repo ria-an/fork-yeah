@@ -1359,6 +1359,53 @@ details.acc-anim[open]>:not(summary){animation:accIn 180ms var(--ease-out,ease-o
 .field input[type="date"]::-webkit-date-and-time-value{line-height:36px;min-height:36px}
 .field input[type="date"]::-webkit-datetime-edit{line-height:36px}
 @media (max-width:860px){.mb-l .pk-back{background:#161614!important;color:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}.fakebar{top:auto!important;bottom:calc(96px + env(safe-area-inset-bottom))}body.has-fake .topzone{padding-top:calc(14px + env(safe-area-inset-top))!important}}
+.mcard.mini .open.mini-r{flex-direction:row;height:auto;padding:12px 14px}.mcard.mini .mini-e{flex:none;width:36px;height:36px;display:grid;place-items:center;border-radius:10px;background:var(--tray)}.mcard.mini .mini-e .emo{width:24px;height:24px}
+.mcard.mini .mini-r{display:flex;align-items:center;gap:12px;padding:10px 12px 10px 10px}
+.mcard.mini .mini-t{flex:1;min-width:0;display:grid;gap:6px}.mcard.mini .mini-h{display:flex;align-items:center;gap:8px}
+.mcard.mini .slotl{font-size:12px;color:var(--muted)}
+.mcard.mini .mini-d{font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mcard.mini .eatbtn{margin-left:0;flex:none}
+button.past[data-wd]:not([aria-selected="true"]){opacity:.42}
+.fh-h{margin:6px 0 -2px;font-weight:600;color:var(--ink-2)}
+.kf{display:grid;gap:10px;padding:12px;border-radius:14px;background:var(--tray)}
+.kf-t{margin:0;display:grid;gap:3px;font-size:13px;line-height:1.4}.kf-t span{color:var(--muted)}
+button.skip[data-wd]:not([aria-selected="true"]){opacity:.42}button.skip[data-wd] i{visibility:hidden}
+.wd-skip{display:flex;gap:12px;align-items:center;padding:16px;background:var(--panel);border-radius:14px}.wd-skip .emo{font-size:32px}.wd-skip p{margin:0;display:grid;gap:3px}.wd-skip span{color:var(--muted);font-size:14px}
+.sched .inner{padding:4px 0}
+.srow{position:relative;display:flex;align-items:center;gap:12px;min-height:52px;padding:6px 14px 6px 12px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.srow+.srow{border-top:1px solid var(--line)}
+.srow:active:not(.dis){background:var(--tray)}
+.srow .ic{flex:none;width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--tray);color:var(--ink-2)}
+.srow .ic .i{width:17px;height:17px}
+.srow .sl{flex:1;min-width:0;font-size:15px}
+.srow .sv{font-size:15px;color:var(--muted);text-align:right;white-space:nowrap}
+.srow>.i.faint{flex:none;width:15px;height:15px;margin-left:-6px}
+.srow .sx{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:16px;border:0;-webkit-appearance:none;appearance:none}
+.srow.dis{cursor:default}.srow.dis .sx{pointer-events:none}.srow.dis .sv{color:var(--faint,#b2aea6)}
+.sched .s-sub{padding:16px 14px 6px;font-size:12px;font-weight:600;letter-spacing:.02em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--line)}
+.sched .s-hint{margin:0;padding:0 14px 10px;font-size:13px;line-height:1.4;color:var(--muted)}
+.sched .s-sub+.s-hint{margin-top:-2px}
+.cy-d.skip{background:transparent;box-shadow:inset 0 0 0 1px var(--line)}.cy-d.skip .cy-n{color:var(--faint,#b2aea6)}
+.sched .trayhead .okc{margin-left:auto}
+.ob-hero{display:flex;align-items:flex-end;gap:12px;position:relative;z-index:2}
+.ob-mz{flex:none;width:96px;height:96px;border-radius:28px;box-shadow:0 0 0 4px #fff,0 10px 24px rgba(0,0,0,.18);transform:rotate(-6deg);animation:obMz 2.4s ease-in-out infinite}
+.ob-mz svg{width:100%;height:100%;display:block;border-radius:28px}
+@keyframes obMz{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(4deg) translateY(-4px)}}
+.ob-say{margin:0 0 14px;padding:12px 14px;border-radius:18px 18px 18px 4px;background:#fff;color:#161614;font-size:15px;line-height:1.35;box-shadow:0 6px 18px rgba(0,0,0,.12);animation:obSay 420ms 200ms cubic-bezier(.23,1,.32,1) both}
+@keyframes obSay{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:none}}
+.ob-perks{list-style:none;margin:0;padding:0;display:grid;gap:10px;position:relative;z-index:2}
+.ob-perks li{display:flex;align-items:center;gap:12px;font-size:17px;font-weight:500}
+.ob-perks .emo{font-size:26px;flex:none}
+.ob-rh{gap:8px!important}.ob-rh b{font-size:15px!important;font-weight:700;letter-spacing:0}.ob-rh span{display:flex;align-items:center;gap:8px;font-size:15px!important;opacity:1!important}.ob-rh .emo{font-size:20px}
+.ob-link{all:unset;cursor:pointer;justify-self:start;margin-top:4px;font-size:14px;font-weight:600;text-decoration:underline;text-underline-offset:3px}
+.ob-mini{list-style:none;margin:0;padding:6px 16px;border-radius:20px;background:color-mix(in srgb,#fff 30%,transparent);display:grid;position:relative;z-index:2}
+.ob-mini li{display:flex;align-items:center;gap:10px;padding:10px 0;font-size:15px}
+.ob-mini li+li{border-top:1px solid color-mix(in srgb,var(--ofg) 12%,transparent)}
+.ob-mini .emo{font-size:22px;flex:none}
+.ob-mini span{flex:1}
+.ob-mini b{display:grid;text-align:right;font-weight:600;font-size:15px}.ob-mini small{font-weight:400;font-size:12px;opacity:.7}
+.ob-note{font-size:14px!important}
+@media (prefers-reduced-motion: reduce){.ob-mz,.ob-say{animation:none}}
 </style>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20120%20120%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2227%22%20fill%3D%22%23FF5A1F%22/%3E%3Crect%20x%3D%2222%22%20y%3D%2256%22%20width%3D%2276%22%20height%3D%2242%22%20rx%3D%2210%22%20fill%3D%22%23fff%22/%3E%3Crect%20x%3D%2218%22%20y%3D%2248%22%20width%3D%2284%22%20height%3D%2212%22%20rx%3D%226%22%20fill%3D%22%23FFD9C7%22/%3E%3Ccircle%20cx%3D%2244%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%2276%22%20cy%3D%2244%22%20r%3D%229%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2245%22%20r%3D%226%22%20fill%3D%22%23161614%22/%3E%3Ccircle%20cx%3D%2273%22%20cy%3D%2242%22%20r%3D%224%22%20fill%3D%22%23161614%22/%3E%3Cpath%20d%3D%22M46%2074%20q14%2010%2028%200%22%20fill%3D%22none%22%20stroke%3D%22%23161614%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M60%2079%20v6%20q0%206%20-5%206%20q-5%200%20-5%20-6%20v-4%22%20fill%3D%22%23FF8FB1%22/%3E%3C/svg%3E"></head>
 <script>
@@ -1434,7 +1481,7 @@ button.sp-done{transition:transform .16s cubic-bezier(.23,1,.32,1)}.sp-done:acti
 .hm{color:var(--muted,#8a867f);white-space:nowrap;font-weight:400}
 .st-list{list-style:none;margin:0;padding:0}.st-list li{display:flex;align-items:center;gap:10px;padding:8px 10px 8px 14px;min-height:44px}.st-list li+li{border-top:1px solid var(--line)}
 .st-list .semo{font-size:22px;width:28px;text-align:center;flex:none}.st-list .st-n{flex:1;min-width:0;font-size:15px}
-.seg{display:inline-flex;background:var(--shell,#F1EFEA);border-radius:10px;padding:2px;flex:none}
+.seg{display:inline-flex;background:var(--tray);border-radius:10px;padding:2px;flex:none}
 .seg button{all:unset;cursor:pointer;font-size:13px;font-weight:500;padding:7px 11px;border-radius:8px;color:#55524c;-webkit-tap-highlight-color:transparent;transition:background .15s,color .15s}
 .seg button.on{background:#fff;color:#161614;box-shadow:0 1px 2px rgba(0,0,0,.12)}.seg button.on.buy{background:#161614;color:#fff}
 .sth.tray .inner{padding:0}
@@ -1506,7 +1553,7 @@ html.ip-host #splash{display:none}
 @keyframes mzPop{0%{transform:rotate(-7deg) scale(.6)}100%{transform:rotate(-7deg) scale(1)}}
 .mz-wig{animation:mzWig 520ms cubic-bezier(.3,1.4,.5,1)}
 @keyframes mzWig{0%{transform:rotate(-7deg)}25%{transform:rotate(9deg) scale(1.08)}55%{transform:rotate(-14deg)}80%{transform:rotate(-4deg)}100%{transform:rotate(-7deg)}}
-.mz-b{position:relative;margin:0;flex:1;min-width:0;background:#F3F0EA;color:var(--ink,#161614);font-size:15px;line-height:20px;font-weight:500;padding:0 14px;height:60px;box-sizing:border-box;border-radius:18px 18px 18px 6px;display:flex;align-items:center}.mz-b>span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.mz-b{position:relative;margin:0;flex:1;min-width:0;background:var(--tray);color:var(--ink,#161614);font-size:15px;line-height:20px;font-weight:500;padding:0 14px;height:60px;box-sizing:border-box;border-radius:18px 18px 18px 6px;display:flex;align-items:center}.mz-b>span{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 @media (prefers-reduced-motion:reduce){.mz,.mz *{animation:none!important}}
 }
 @media (max-width:860px){dialog .grab{position:absolute;left:50%;right:auto;margin:0!important;transform:translateX(-50%)}}
@@ -1540,6 +1587,29 @@ html.ip-host #splash{display:none}
 .tag.fr{color:#B4400E;border-color:#F4C9B3;background:#FFF3EC}
 .how-l{display:grid;gap:8px}.how-l p{margin:0}
 dialog .rowi{align-items:flex-start}dialog .rowi>.ic{margin-top:2px}
+/* спокойный режим */
+body.nonum .mcard .k,body.nonum .khead .k,body.nonum .mbju,body.nonum .desk-kpis,body.nonum .mstats .kc{display:none!important}
+.sw-row{cursor:pointer;gap:14px}.sw-row .grow{display:grid;gap:2px}.sw-row b{font-weight:600;font-size:15px}.sw-row small{font-size:13px;color:var(--muted,#8a867f);line-height:1.3}
+.sw{appearance:none;-webkit-appearance:none;flex:none;width:51px;height:31px;border-radius:999px;background:#E3E0DA;position:relative;cursor:pointer;transition:background .2s ease;margin:0}
+.sw::after{content:'';position:absolute;top:2px;left:2px;width:27px;height:27px;border-radius:50%;background:#fff;box-shadow:0 2px 4px rgba(0,0,0,.18);transition:transform .22s cubic-bezier(.23,1,.32,1)}
+.sw:checked{background:#34C759}.sw:checked::after{transform:translateX(20px)}
+/* SOS */
+.sos-entry{all:unset;box-sizing:border-box;display:flex;align-items:center;gap:12px;width:100%;padding:14px 16px;border-radius:20px;background:var(--tray);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:transform .16s cubic-bezier(.23,1,.32,1)}
+.sos-entry:active{transform:scale(.98)}.sos-entry .emo{font-size:26px}.sos-entry>span:not(.emo){display:grid;gap:2px;flex:1}.sos-entry b{font-weight:600;font-size:15px}.sos-entry small{font-size:13px;color:var(--muted,#8a867f)}.sos-entry svg{opacity:.5}
+.sos-lead{margin:0 0 14px;color:var(--ink-2);font-size:15px}
+.sos-ing{display:grid;gap:14px;margin-bottom:16px}.sos-g .sub{margin-bottom:8px}
+.sos-chips{display:flex;flex-wrap:wrap;gap:8px}
+.sos-c{all:unset;display:inline-flex;align-items:center;gap:5px;min-height:36px;padding:0 11px;border-radius:999px;border:1px solid var(--line-2);background:#fff;font-size:14px;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .15s,border-color .15s,color .15s}
+.sos-c .emo{font-size:16px;filter:none}.sos-c[aria-pressed=true]{background:#161614;border-color:#161614;color:#fff}
+.sos-res .rowi .grow{display:grid;gap:3px}.sos-res b{font-weight:600}.sos-t{font-size:14px;color:var(--ink-2);line-height:1.4}
+.sos-hint,.sos-near{font-size:14px;color:var(--muted,#8a867f);margin:4px 2px 0}
+/* SOS v2 */
+#sosBody .sos-mz{margin:2px 0 16px}
+.sos-ing{display:grid;gap:12px;margin-bottom:16px}
+.sos-g{display:grid;gap:6px}.sos-l{font-size:13px;font-weight:600;color:var(--muted,#8a867f)}
+.sos-chips{gap:6px!important}
+.sos-c{min-height:34px!important;padding:0 10px 0 8px!important;gap:4px!important;font-size:14px!important}
+.sos-res .trayhead h2{font-size:17px}
 </style>
 <body>
 <div id="splash" aria-hidden="true"><div class="spl-c"><div class="spl-ic"><svg class="appic" viewBox="0 0 120 120"><rect width="120" height="120" rx="27" fill="#FF5A1F"/><rect x="22" y="56" width="76" height="42" rx="10" fill="#fff"/><rect class="sp-lid" x="18" y="48" width="84" height="12" rx="6" fill="#FFD9C7"/><g class="sp-eyes"><circle cx="44" cy="40" r="15" fill="#fff"/><circle cx="76" cy="44" r="9" fill="#fff"/><g class="sp-pup"><circle cx="50" cy="45" r="6" fill="#161614"/><circle cx="73" cy="42" r="4" fill="#161614"/></g></g><path d="M46 74 q14 10 28 0" fill="none" stroke="#161614" stroke-width="5" stroke-linecap="round"/><path class="sp-tongue" d="M60 79 v6 q0 6 -5 6 q-5 0 -5 -6 v-4" fill="#FF8FB1"/></svg></div><div class="spl-w"><span>Fork</span> <span>Yeah</span></div><div class="spl-t">вилкой и по плану</div></div><span class="spl-s s0">🥦</span><span class="spl-s s1">🍗</span><span class="spl-s s2">🧀</span><span class="spl-s s3">🥕</span><span class="spl-s s4">🍝</span><span class="spl-s s5">🍳</span></div><script>(function(){try{var s=document.getElementById('splash');if(window.__IPHOST||navigator.webdriver||sessionStorage.getItem('fy-splash')){s.remove();return}sessionStorage.setItem('fy-splash','1');var k=function(){if(!s.isConnected||s.classList.contains('out'))return;s.classList.add('out');setTimeout(function(){s.remove()},580)};s.addEventListener('click',k);setTimeout(k,matchMedia('(prefers-reduced-motion:reduce)').matches?600:2500)}catch(e){}})()</script>
@@ -2171,7 +2241,7 @@ function hmOf(g,unit,ctx){ctx=ctx.toLowerCase();const e=HM_T.find(x=>x[0].test(c
   if(o.hand)return '~'+Math.max(1,Math.round(g/o.hand))+' горсть';
   return ''}
 function homeMeasures(root){if(!root)return;const T=/\d\s?(г|мл)(?![а-яёa-z])/i;const nodes=[];
-  const tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentElement;if(!p||p.closest('script,style,textarea,input,select,.shoptbl,.hm,.no-hm,svg,.mono'))return 2;return T.test(n.data)?1:3}});
+  const tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>{const p=n.parentElement;if(!p||p.closest('script,style,textarea,input,select,.shoptbl,.hm,.hm-w,.no-hm,svg,.mono'))return 2;return T.test(n.data)?1:3}});
   while(tw.nextNode())nodes.push(tw.currentNode);
   nodes.forEach(n=>{const s=n.data;const RE=/(\d+(?:[.,]\d+)?)\s?(г|мл)(?![а-яёa-z])/gi;let m,last=0;const fr=document.createDocumentFragment();let hit=0;
     while(m=RE.exec(s)){const g=parseFloat(m[1].replace(',','.'));const end=m.index+m[0].length;
@@ -2179,7 +2249,7 @@ function homeMeasures(root){if(!root)return;const T=/\d\s?(г|мл)(?![а-яёa-
       const before=s.slice(0,m.index).split(/[.,;:()\d—–«»]/).pop().trim().split(/\s+/).slice(-3).join(' ');
       const h=hmOf(g,m[2].toLowerCase(),after)||hmOf(g,m[2].toLowerCase(),before);
       if(!h)continue;hit=1;fr.append(s.slice(last,end));const sp=document.createElement('span');sp.className='hm';sp.textContent=` (${h})`;fr.append(sp);last=end}
-    if(!hit)return;fr.append(s.slice(last));n.replaceWith(fr)})}
+    if(!hit)return;fr.append(s.slice(last));const w=document.createElement('span');w.className='hm-w';w.append(fr);n.replaceWith(w)})}
 
 /* ---------- Базовое: специи и расходники ---------- */
 const STAPLES=[['Соль',/сол[ьи]|посол/,'🧂'],['Перец чёрный',/перец|перч/,'🌶️'],['Масло растительное',/масл/,'🫒'],['Мёд',/мёд|мёдом|меда/,'🍯'],
@@ -2195,31 +2265,32 @@ function staplesOf(){const id=S.menu+'|'+(RECIPES2||[]).length;if(STC&&STC.id===
 /* ---------- Маскот и живая фраза ---------- */
 function mzSVG(m){const eyes={
   sleepy:'<path d="M32 34 q12 7 24 0" stroke="#161614" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M68 37 q8 5 16 0" stroke="#161614" stroke-width="4.5" fill="none" stroke-linecap="round"/>',
+  wink:'<path d="M32 40 q12 -12 24 0" stroke="#161614" stroke-width="5" fill="none" stroke-linecap="round"/><circle cx="76" cy="44" r="9" fill="#fff"/><circle cx="75" cy="43" r="4.5" fill="#161614"/>',
   party:'<path d="M32 38 q12 -12 24 0" stroke="#161614" stroke-width="5" fill="none" stroke-linecap="round"/><path d="M68 40 q8 -9 16 0" stroke="#161614" stroke-width="4.5" fill="none" stroke-linecap="round"/>'}[m]||
   `<g class="mz-eye"><circle cx="44" cy="40" r="15" fill="#fff"/><circle cx="76" cy="44" r="9" fill="#fff"/><circle cx="${m==='hungry'?52:50}" cy="${m==='hungry'?40:45}" r="6" fill="#161614"/><circle cx="${m==='hungry'?76:73}" cy="${m==='hungry'?40:42}" r="4" fill="#161614"/></g>`;
-  const mouth={hungry:'<ellipse cx="60" cy="78" rx="11" ry="9" fill="#161614"/><path d="M53 82 q7 9 14 0 z" fill="#FF8FB1"/>',
+  const mouth={wink:'<path d="M44 72 q16 18 32 0 z" fill="#161614"/><path d="M54 80 q6 7 12 0 z" fill="#FF8FB1"/>',hungry:'<ellipse cx="60" cy="78" rx="11" ry="9" fill="#161614"/><path d="M53 82 q7 9 14 0 z" fill="#FF8FB1"/>',
     party:'<path d="M42 72 q18 22 36 0 z" fill="#161614"/><path d="M50 80 q10 8 20 0 z" fill="#FF8FB1"/><circle cx="30" cy="66" r="5" fill="#FF9DB8" opacity=".7"/><circle cx="90" cy="66" r="5" fill="#FF9DB8" opacity=".7"/>',
-    sleepy:'<path d="M52 78 q8 -4 16 0" stroke="#161614" stroke-width="5" fill="none" stroke-linecap="round"/><text x="88" y="30" font-size="16" font-weight="800" fill="#fff" font-family="system-ui">z</text>',
+    sleepy:'<path d="M50 76 q10 8 20 0" stroke="#161614" stroke-width="5" fill="none" stroke-linecap="round"/><text x="88" y="30" font-size="16" font-weight="800" fill="#fff" font-family="system-ui">z</text>',
     happy:'<path d="M46 74 q14 12 28 0" fill="none" stroke="#161614" stroke-width="5" stroke-linecap="round"/>'}[m]||
     '<path d="M46 74 q14 10 28 0" fill="none" stroke="#161614" stroke-width="5" stroke-linecap="round"/><path d="M60 79 v6 q0 6 -5 6 q-5 0 -5 -6 v-4" fill="#FF8FB1"/>';
   return `<svg viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="30" fill="#FF5A1F"/><rect x="22" y="56" width="76" height="42" rx="10" fill="#fff"/><rect x="18" y="48" width="84" height="12" rx="6" fill="#FFD9C7"/>${eyes}${mouth}</svg>`}
 const MZ_PH={
-  sleepy:['Доброе утро. Кофе — да, завтрак — тоже','Просыпаемся. На завтрак — {d}','Глаза ещё закрыты, а {d} уже ждёт'],
-  hungry:['Дальше {s}: {d}','{S} на подходе — {d}','Слышу урчание. {S}: {d}','{d} уже ждёт тебя'],
-  happy:['Отлично идём! Дальше {s} — {d}','Уже {n} из 4. Следующий — {s}','Минус {n}, так держать. {S}: {d}'],
-  late:['Ужин ещё не отмечен — съела?','Поздновато. Отметь, что съела','Не забудь отметить {s}'],
-  party:['День закрыт. Ты огонь','4 из 4. Горжусь','Всё съедено. Можно отдыхать','Идеальный день, без шуток']};
+  sleepy:['Встаём. Ну или хотя бы открываем один глаз','Утро — это просто ночь, которая не сдалась','Доброе утро, королева пледа 👑','Ты встала? Это уже контент','Утро понедельника в душе, суббота в сердце','Загрузка личности: 3%… норм, хватит'],
+  hungry:['Если что, я уже рассказал всем, какая ты классная','Не баг, а фича. Это про тебя','Ты не устала, ты просто в режиме энергосбережения','Ты — причина, по которой у меня есть смысл жизни. Я ланчбокс','Твой вайб сегодня: «я сама разберусь» 💅','Ты как пятница, только каждый день','Минутка поддержки: ты топ, остальное мелочи','Ты как кот: всё делаешь в своём темпе, и это легально'],
+  happy:['Ну всё, пошла жара 🔥','Ты сейчас как босс финального уровня','Я бы поставил лайк, но у меня нет рук','Это было красиво. Я аж прослезился','Кто молодец? Подсказка: ты','Слэй-режим активирован 💅','Мама, я в телике! А, нет, это ты'],
+  late:['Вечер. Можно официально ничего не делать','Ты сегодня справилась. Это факт, не мнение','Плед, сериал, ты — святая троица','Закрываем вкладки в голове. Все 47','Всё недоделанное — проблема завтрашней тебя','Спокойной ночи, легенда 🌙'],
+  party:['День закрыт. Ты огонь 🔥','Это слэй. Без вопросов','Я горжусь. Официально, с печатью','Аплодисменты из коробки 👏👏','Легенда в деле. Можно отдыхать','Ты — топ-1 в моём рейтинге. Конкуренции ноль']};
 let MZ_LAST=null;
-function mzState(){const i=dayIdx(TODAY);if(i===null||i<0||i>27)return null;const w=Math.floor(i/7),d=i%7;const day=WEEKS[w]&&WEEKS[w].days[d];if(!day)return null;
+function mzState(){const i=dayIdx(TODAY);if(i===null||i<eatIdx()||i>27)return null;const w=Math.floor(i/7),d=i%7;const day=WEEKS[w]&&WEEKS[w].days[d];if(!day)return null;
   const ate=[0,1,2,3].map(k=>!!LS.get(ateKey(w,d,k),false));const n=ate.filter(Boolean).length;const nx=ate.indexOf(false);const h=new Date().getHours();
-  let mood,pool;if(n===4){mood='party';pool='party'}else if(h>=21){mood='hungry';pool='late'}else if(n===0&&h<11){mood='sleepy';pool='sleepy'}else if(n>0&&MZ_LAST&&MZ_LAST.n<n){mood='happy';pool='happy'}else{mood=n?'happy':'hungry';pool=n?'happy':'hungry'}
+  let mood,pool;if(n===4){mood='party';pool='party'}else if(h>=21){mood='happy';pool='late'}else if(n===0&&h<11){mood='sleepy';pool='sleepy'}else if(n>0&&MZ_LAST&&MZ_LAST.n<n){mood='happy';pool='happy'}else{mood=n?'happy':'wink';pool=n?'happy':'hungry'}
   const m=nx>=0?day.meals[nx]:null;const dish=m?m.n.split(',')[0].trim():'';const s=nx>=0?SLOTS[nx].toLowerCase():'';
   return {mood,pool,n,fill:t=>t.replace('{d}',dish?dish[0].toLowerCase()+dish.slice(1):'').replace('{S}',s?s[0].toUpperCase()+s.slice(1):'').replace('{s}',s).replace('{n}',n).replace(/^./,c=>c.toUpperCase())}}
 function mzRow(){const st=mzState();if(!st)return '';const P=MZ_PH[st.pool];const key=st.pool+st.n;let idx=(MZ_LAST&&MZ_LAST.key===key)?MZ_LAST.idx:Math.floor(Math.random()*P.length);
   const changed=MZ_LAST&&MZ_LAST.key!==key;MZ_LAST={key,idx,n:st.n};
   return `<div class="mz-row"><button class="mz mz-${st.mood}${changed?' mz-pop':''}" id="mzBtn" aria-label="Маскот">${mzSVG(st.mood)}</button><p class="mz-b" aria-live="polite"><span id="mzTxt">${esc(st.fill(P[idx]))}</span></p></div>`}
 function bindMz(){const b=$('mzBtn');if(!b)return;b.onclick=()=>{const st=mzState();if(!st)return;const P=MZ_PH[st.pool];MZ_LAST.idx=(MZ_LAST.idx+1)%P.length;const t=$('mzTxt');if(t){t.textContent=st.fill(P[MZ_LAST.idx]);if(!RM.matches&&t.animate)t.animate([{opacity:0,transform:'translateY(4px)'},{opacity:1,transform:'none'}],{duration:220,easing:'cubic-bezier(.23,1,.32,1)'})}
-  b.classList.remove('mz-wig');void b.offsetWidth;b.classList.add('mz-wig');try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}}}
+  const F=['happy','wink','curious','party'];b.innerHTML=mzSVG(F[(F.indexOf(b.dataset.f||st.mood)+1)%F.length]);b.dataset.f=F[(F.indexOf(b.dataset.f||st.mood)+1)%F.length];b.classList.remove('mz-wig');void b.offsetWidth;b.classList.add('mz-wig');try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}}}
 
 /* ---------- Что доготовить на месте (не из контейнера) ---------- */
 const FRESH_M1={
@@ -2230,6 +2301,75 @@ const FRESH_M1={
 function freshOf(id){const m=activeMenu&&activeMenu();const d=m&&m.dishes&&m.dishes[id];if(d&&d.fresh)return d.fresh;return (m&&m.id!=='m1')?null:FRESH_M1[id]||null}
 const freshTag=id=>{const f=freshOf(id);return f&&f.min>=4?`<span class="tag">${ic('quick')}${f.min} мин</span>`:''};
 const howRow=id=>{const f=freshOf(id);return `<div class="rowi"><span class="ic">${ic(f&&f.stove?'cook':'quick')}</span><span class="grow"><div class="sub">Как подать${f?` · ${f.min} мин`:''}</div>${f?`<div class="how-l">${f.steps.map(s=>`<p>${esc(s)}</p>`).join('')}</div>`:`<span>${esc(HOW[id]||'')}</span>`}</span></div>`};
+
+/* ---------- SOS: еда закончилась ---------- */
+const SOS_ING=[['Белок',[['eg','🥚','Яйца'],['cg','🫙','Творог'],['tu','🐟','Тунец'],['bn','🫘','Фасоль, нут'],['ch','🧀','Сыр'],['yo','🥛','Йогурт'],['kf','🥛','Кефир, молоко'],['sc','🥄','Сметана']]],
+ ['Основа',[['br','🍞','Хлеб'],['lv','🌯','Лаваш'],['oa','🥣','Овсянка'],['gr','🍚','Крупа'],['pa','🍝','Макароны'],['po','🥔','Картофель']]],
+ ['Овощи и фрукты',[['vf','🥒','Свежие овощи'],['vz','🥦','Овощная смесь'],['fr','🍌','Фрукты'],['be','🫐','Ягоды'],['nu','🥜','Орехи']]]];
+const SOS_RC=[
+ // яйца
+ [['eg','br'],['vf'],'Скрэмбл с тостом',7,'2 яйца на сковороду, мешай 2–3 мин. Хлеб подсуши рядом. Нарежь овощи.'],
+ [['eg','vz'],['ch'],'Омлет с овощами',8,'Овощи 3 мин на сковороде под крышкой, залей 2 взбитыми яйцами, ещё 3–4 мин.'],
+ [['eg','ch'],['br','vf'],'Омлет с сыром',6,'2 яйца взбей, вылей на сковороду, сверху сыр, под крышкой 3–4 мин.'],
+ [['eg','lv'],['ch','vf'],'Лаваш с яйцом',6,'Лаваш на сковороду, сверху вбей 2 яйца, сыр, сложи пополам, по 2 мин с каждой стороны.'],
+ [['eg','po'],['vf'],'Картошка с яйцом',10,'Картофель проткни вилкой — 6–7 мин в микроволновке. Яйцо пожарь.'],
+ [['eg','gr'],['vz','vf'],'Крупа с яйцом',15,'Крупу в кипяток на 15 мин. Яйцо пожарь рядом.'],
+ [['eg','pa'],['ch'],'Макароны с яйцом',12,'Макароны 10 мин. Слей, вмешай взбитое яйцо и сыр прямо в горячие.'],
+ [['eg','bn'],['br','vf'],'Фасоль с яйцом',7,'Фасоль из банки прогрей на сковороде 3 мин, вбей яйца, под крышкой 3 мин.'],
+ [['eg','oa'],['fr','be'],'Овсяноблин',7,'2 ложки хлопьев + яйцо + ложка молока, на сковороду, по 2 мин с каждой стороны.'],
+ [['eg'],['br','vf'],'Яйца вкрутую',10,'Яйца в холодную воду, после закипания 9 мин. С хлебом и овощами.',['Яйца вкрутую','Яйца в холодную воду, после закипания 9 мин. Щепотка соли.']],
+ // тунец
+ [['tu','pa'],['vz','vf'],'Паста с тунцом',12,'Макароны в кипяток на 10 мин. Слей, добавь тунец и ложку масла.'],
+ [['tu','br'],['vf'],'Сэндвич с тунцом',3,'Тунец разомни вилкой, на хлеб, сверху овощи.'],
+ [['tu','lv'],['vf','ch'],'Ролл с тунцом',4,'Тунец, овощи, сыр — на лаваш, сверни рулетом.'],
+ [['tu','gr'],['vf','vz'],'Крупа с тунцом',15,'Крупу в кипяток на 15 мин. Сверху тунец и овощи.'],
+ [['tu','po'],['vf'],'Картошка с тунцом',10,'Картофель 6–7 мин в микроволновке, разомни, смешай с тунцом.'],
+ [['tu','eg'],['vf'],'Салат с тунцом и яйцом',10,'Яйцо вкрутую 9 мин, порежь, смешай с тунцом и овощами.'],
+ [['tu','bn'],['vf'],'Салат тунец-фасоль',3,'Тунец и фасоль из банок, овощи — в миску, ложка масла.'],
+ // творог
+ [['cg','br'],['vf'],'Тост с творогом',3,'Творог на хлеб, щепотка соли, сверху огурец или помидор.'],
+ [['cg'],['fr','be','nu'],'Творог с фруктами',2,'Творог в миску, сверху фрукты, ягоды или орехи.',['Творог','Творог в миску, щепотка соли или ложка варенья — как хочется.']],
+ [['cg','ch'],['br','lv','vf'],'Творожная намазка с сыром',4,'Творог смешай с тёртым сыром и щепоткой соли. Ешь ложкой или на хлеб.'],
+ [['cg','yo'],['fr','be','nu'],'Творог с йогуртом',2,'Творог залей йогуртом, перемешай — получится нежнее.'],
+ [['cg','lv'],['vf'],'Лаваш с творогом',4,'Творог с солью и зеленью на лаваш, овощи, сверни.'],
+ [['cg','eg','oa'],['be','fr'],'Сырники на скорую',12,'Творог, яйцо, 2 ложки хлопьев — слепи 4 лепёшки, по 3 мин с каждой стороны.'],
+ [['cg','po'],['vf'],'Картошка с творогом',10,'Картофель в микроволновке 6–7 мин, сверху творог с солью.'],
+ [['cg','sc'],['vf','br'],'Творог со сметаной',2,'Творог, ложка сметаны, соль или сладкое — как хочется.'],
+ // фасоль
+ [['bn','br'],['vf'],'Фасоль на тосте',4,'Фасоль из банки прогрей 2 мин, на поджаренный хлеб.'],
+ [['bn','gr'],['vz'],'Крупа с фасолью',15,'Крупу в кипяток на 15 мин, добавь прогретую фасоль и овощи.'],
+ [['bn','lv'],['ch','vf'],'Ролл с фасолью',5,'Фасоль разомни вилкой, на лаваш с сыром и овощами, прогрей на сковороде.'],
+ [['bn','pa'],['vz'],'Макароны с фасолью',12,'Макароны 10 мин, слей, добавь фасоль и овощи, прогрей.'],
+ [['bn','vf'],['eg'],'Салат с фасолью',3,'Фасоль из банки, овощи, ложка масла и соль.'],
+ // сыр
+ [['ch','br'],['fr','vf'],'Бутерброд с сыром',2,'Хлеб, сыр, к нему фрукт или овощи.'],
+ [['ch'],['fr','nu','vf'],'Сырная тарелка',2,'Сыр кусочками, к нему фрукт, орехи или овощи.',['Сыр кусочками','Нарежь сыр, налей чай — это уже перекус.']],
+ [['ch','lv'],['eg','vf'],'Кесадилья',5,'Сыр на лаваш, сложи, на сухую сковороду по 2 мин с каждой стороны.'],
+ [['pa','ch'],['vz'],'Макароны с сыром',12,'Макароны 10 мин, слей, добавь сыр и овощи.'],
+ [['po','ch'],['vf','sc'],'Картошка с сыром',10,'Картофель в микроволновке 6–7 мин, разрежь, сыр внутрь, ещё 1 мин.'],
+ // молочка + основа
+ [['yo','oa'],['fr','be','nu'],'Йогурт с хлопьями',2,'Йогурт, ложка-две хлопьев, фрукты сверху.'],
+ [['yo'],['fr','be','nu'],'Йогурт с фруктами',2,'Йогурт в миску, сверху фрукты, ягоды или орехи.',['Йогурт','Просто йогурт — уже нормальный перекус.']],
+ [['kf'],['fr','be','oa'],'Кефир с добавками',2,'Кефир в стакан, добавь ягоды, банан или ложку хлопьев.',['Стакан кефира','Стакан кефира или молока — тоже приём пищи.']],
+ [['oa','kf'],['fr','be','nu'],'Каша за 4 минуты',4,'Хлопья с молоком — 3–4 мин в микроволновке, фрукты сверху.'],
+ [['oa','kf'],['be','fr'],'Ленивая овсянка',2,'Хлопья залей кефиром или молоком на ночь — утром готово.'],
+ [['kf','fr'],['oa','be'],'Смузи',2,'Кефир, банан и ложка хлопьев — в блендер.'],
+ [['kf','br'],['ch'],'Кефир и бутерброд',2,'Стакан кефира и хлеб с сыром.'],
+ [['gr','kf'],[],'Гречка с молоком',15,'Гречку в кипяток на 15 мин, залей тёплым молоком.'],
+ [['gr','vz'],['eg','ch'],'Крупа с овощами',15,'Крупу в кипяток на 15 мин, овощи 4 мин в микроволновке, смешай.'],
+ [['pa','vz'],['ch','eg'],'Макароны с овощами',12,'Макароны 10 мин, овощи 4 мин под крышкой, смешай.'],
+ [['po','sc'],['vf'],'Картошка со сметаной',10,'Картофель 6–7 мин в микроволновке, сверху сметана и соль.'],
+ [['po','vz'],['eg','ch'],'Картошка с овощами',12,'Картофель кубиками и овощи — 8–10 мин под крышкой в микроволновке.'],
+ [['vz','sc'],['br'],'Овощи со сметаной',6,'Овощная смесь 4–5 мин под крышкой, сверху сметана.'],
+ [['fr','nu'],['yo','cg'],'Перекус: фрукт и орехи',1,'Фрукт и горсть орехов.']];
+function sosRender(){const have=new Set(LS.get('mp-sos',[]));
+  const ok=SOS_RC.filter(r=>r[0].every(x=>have.has(x))).map(r=>({r,sc:r[1].filter(x=>have.has(x)).length})).sort((a,b)=>(b.sc+b.r[0].length)-(a.sc+a.r[0].length)||a.r[3]-b.r[3]);
+  const say=!have.size?'Отметь, что есть дома, — соберу простую еду':ok.length?'Вот что можно собрать. Простая еда — тоже еда':'Добавь ещё что-нибудь — хотя бы хлеб или крупу';
+  return `<div class="mz-row sos-mz"><span class="mz mz-${ok.length?'happy':'curious'}">${mzSVG(ok.length?'happy':'curious')}</span><p class="mz-b"><span>${say}</span></p></div>
+  <div class="sos-ing">${SOS_ING.map(([g,it])=>`<div class="sos-g"><span class="sos-l">${g}</span><div class="sos-chips">${it.map(([id,e,n])=>`<button class="sos-c" data-sos="${id}" aria-pressed="${have.has(id)}">${emo(e)}<span>${n}</span></button>`).join('')}</div></div>`).join('')}</div>
+  ${ok.length?`<div class="tray sos-res"><div class="trayhead"><h2>Можно приготовить<span class="cnt">${ok.length}</span></h2></div><div class="inner">${ok.map(({r,sc})=>{const p=!sc&&r[5]?r[5]:[r[2],r[4]];return `<div class="rowi"><span class="grow"><b>${p[0]}</b><span class="sos-t">${p[1]}</span></span><span class="tag">${ic('quick')}${r[3]} мин</span></div>`}).join('')}</div></div>`:''}`}
+function openSOS(){openSheet(`<div class="shead"><h2>Еда закончилась</h2><button class="x" aria-label="Закрыть">✕</button></div><div id="sosBody">${sosRender()}</div>`);
+  const bind=()=>{document.querySelectorAll('[data-sos]').forEach(b=>b.onclick=()=>{const s=new Set(LS.get('mp-sos',[]));s.has(b.dataset.sos)?s.delete(b.dataset.sos):s.add(b.dataset.sos);LS.set('mp-sos',[...s]);const y=document.querySelector('dialog .sbody,dialog')?.scrollTop;$('sosBody').innerHTML=sosRender();bind();try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}})};bind()}
 
 
 const IC={
@@ -2295,14 +2435,22 @@ const DAYS_KEY=()=>'mp-days-'+(S.start||'none');
 function defDays(){const st=start();if(!st)return null;return {shop:addDays(st,-2).getDay(),cook:[addDays(st,-1).getDay(),addDays(st,COOKDAY[1]-1).getDay()]}}
 function relDays(iso){const st=fromISO(iso);return {shop:addDays(st,-2).getDay(),cook:[addDays(st,-1).getDay(),addDays(st,COOKDAY[1]-1).getDay()]}}
 function plDays(){return LS.get(DAYS_KEY(),null)||defDays()}
+const FIRST_KEY=()=>'mp-first-'+(S.start||'none');
+const FIRST=()=>S.start?LS.get(FIRST_KEY(),null):null;
+const eatIdx=()=>{const F=FIRST();return F?dayIdx(fromISO(F.eat)):0};
+const firstEat=()=>{const F=FIRST();return F?fromISO(F.eat):start()};
+/* ритм → неделя начинается на следующий день после большой готовки; первый день может быть внутри недели */
+function planFrom(firstISO,P){const f=fromISO(firstISO);const ws=(P.cook[0]+1)%7;const skip=(f.getDay()-ws+7)%7;const vs=addDays(f,-skip);
+  return {start:toISO(vs),skip,eat:firstISO,cook:toISO(addDays(f,-1)),shop:toISO(addDays(f,-2))}}
 function cookOff(w,c){const st=start();const P=plDays();if(!st||!P)return c===0?-1:COOKDAY[1]-1;const ws=dateOf(w,0);
+  if(w===0){const F=FIRST();if(F){if(c===0)return dayIdx(fromISO(F.cook));const o=(P.cook[1]-ws.getDay()+7)%7;return Math.max(o,dayIdx(fromISO(F.cook)))}}
   if(c===0){return -1-((addDays(ws,-1).getDay()-P.cook[0]+7)%7)}
   return (P.cook[1]-ws.getDay()+7)%7}
-function shopOff(w){const st=start();const P=plDays();const b=cookOff(w,0);if(!st||!P)return -2;const bd=dateOf(w,b);return b-1-((addDays(bd,-1).getDay()-P.shop+7)%7)}
+function shopOff(w){const st=start();const P=plDays();const b=cookOff(w,0);if(!st||!P)return -2;if(w===0){const F=FIRST();if(F)return dayIdx(fromISO(F.shop))}const bd=dateOf(w,b);return b-1-((addDays(bd,-1).getDay()-P.shop+7)%7)}
 const orderDate=w=>dateOf(w,shopOff(w));
 const cookDate=(w,c)=>dateOf(w,cookOff(w,c));
 const cookWhen=(w,c)=>{const dt=cookDate(w,c);return dt?fdate(dt):(c===0?'накануне недели':'вечер 3-го дня')};
-const canEat=(w,d)=>{const t=dayIdx(TODAY);return t!==null&&w*7+d<=t};
+const canEat=(w,d)=>{const t=dayIdx(TODAY);return t!==null&&w*7+d<=t&&w*7+d>=eatIdx()};
 const ateKey=(w,d,mi)=>mkey(`mp-ate-${w}-${d}-${mi}`);
 function syncWeek(){const i=dayIdx(TODAY);S.week=(i!==null&&i>=0&&i<28)?Math.floor(i/7):0}
 syncWeek();
@@ -2334,6 +2482,10 @@ function applyMenu(m){
   SHOP=m.shop.map(gs=>gs.map(g=>[g[0],g[1].map(it=>[it[0],it[1]||''])]));
   PANTRY=(m.pantry||[]).map(it=>[it[0],it[1]||'']);RECIPES2=m.recipes||[];
 }
+const NONUM=()=>!!LS.get('mp-nonum',false);
+const rmeta=t=>{t=String(t||'');if(!NONUM())return t;return t.split(' · ').filter(p=>!/ккал/.test(p)).join(' · ')};
+const LITE=()=>false;try{localStorage.removeItem('mp-lite')}catch(_){}
+const cookOf=(w,c)=>TL[w]&&TL[w][c];
 const activeMenu=()=>MENUS.find(m=>m.id===S.menu)||MENUS[0];
 const mkey=k=>S.menu==='m1'?k:S.menu+':'+k;
 
@@ -2413,9 +2565,10 @@ let JUST=null;
 function poster(id,cls,pk){const es=photoOf(id)?[]:dishEmos(id).slice(0,2);return `<div class="poster ${cls}">${media(id,cls,pk)}${es.length?`<span class="pstk n${es.length}">${es.map((e,i)=>emo(e,'s'+i)).join('')}</span>`:''}</div>`}
 const SEEN_P=new Set();const popOnce=k=>{if(SEEN_P.has(k))return '';SEEN_P.add(k);return ' pop'};
 function dayClosed(day,ate){const es=[];day.meals.forEach(m=>{const x=dishEmos(m.id).find(e=>!es.includes(e));if(x)es.push(x)});
-  return `<div class="dayclosed${popOnce('day-'+toISO(TODAY))}" role="status"><div class="dc-w">ДЕНЬ<br>ЗАКРЫТ</div><div class="dc-sub mono">${fmt(ate)} ккал · 4 из 4</div>${es.map((e,i)=>emo(e,'dc'+i)).join('')}</div>`}
-function mealCard(w,d,m,mi,next){
+  return `<div class="dayclosed${popOnce('day-'+toISO(TODAY))}" role="status"><div class="dc-w">ДЕНЬ<br>ЗАКРЫТ</div><div class="dc-sub mono">${NONUM()?'4 из 4 приёмов':`${fmt(ate)} ккал · 4 из 4`}</div>${es.map((e,i)=>emo(e,'dc'+i)).join('')}</div>`}
+function mealCard(w,d,m,mi,next,full){
   const done=LS.get(ateKey(w,d,mi),false);
+  if(done&&!next&&!full&&canEat(w,d))return `<div class="mcard done mini${JUST===ateKey(w,d,mi)?' just':''}"><div class="open mini-r" data-meal="${w}|${d}|${mi}" role="button" tabindex="0"><span class="mini-t"><span class="mini-h">${media(m.id,'sm',pkOf(w,d,mi))}<span class="slotl">${SLOTS[mi]}</span></span><span class="mini-d">${esc(m.n)}</span></span><button class="eatbtn" data-eat="${w}|${d}|${mi}" aria-pressed="true" aria-label="${SLOTS[mi]}: съедено, отменить"><span class="dot"></span>Съедено</button></div></div>`;
   return `<div class="mcard${done?' done':''}${next?' next':''}${JUST===ateKey(w,d,mi)?' just':''}">${done?'<span class="stamp" aria-hidden="true">'+emo('✅')+'</span>':''}<div class="open" data-meal="${w}|${d}|${mi}" role="button" tabindex="0">${poster(m.id,'',pkOf(w,d,mi))}<div class="mbody"><div class="mhead">${media(m.id,'sm',pkOf(w,d,mi))}${done?'<span class="stamp-in" aria-hidden="true">'+emo('✅')+'</span>':''}<span class="slotl">${SLOTS[mi]}</span><span class="k">${m.k} ккал</span></div><div class="dish">${esc(m.n)}</div><div class="how">${esc(HOW[m.id]||'')}</div><div class="mfoot">${tag(m.s)}${freshTag(m.id)}${canEat(w,d)?`<button class="eatbtn" data-eat="${w}|${d}|${mi}" aria-pressed="${done}"><span class="dot"></span>${done?'Съедено':'Съела'}</button>`:''}</div></div></div></div>`;
 }
 function vToday(){
@@ -2427,12 +2580,12 @@ function vToday(){
   }
   S.offset=0;const idx=dayIdx(TODAY)+S.offset;const date=addDays(st,idx);
   const nav=`<button class="btn daynav mob set-open" aria-label="Настройки">${ic('gear')}</button>`;
-  if(idx<0){
-    setHead('Сегодня','Скоро старт',nav);$('hsub').hidden=false;$('hsub').textContent=`${-idx===1?'Завтра':'Через '+(-idx)+' '+plural(-idx,'день','дня','дней')} — ${fdate(st)}`;
+  const E0=eatIdx();if(idx<E0){const left=E0-idx;
+    setHead('Сегодня','Скоро старт',nav);$('hsub').hidden=false;$('hsub').textContent=`${left===1?'Завтра':'Через '+left+' '+plural(left,'день','дня','дней')} — ${fdate(firstEat())}`;
     const od=orderDate(0),cd=cookDate(0,0);
-    const rel=dt=>{const n=Math.round((dt-TODAY)/864e5);return n===0?'сегодня':n===1?'завтра':n<0?'пропущено':`через ${n} ${plural(n,'день','дня','дней')}`};
+    const rel=dt=>{const n=Math.round((dt-TODAY)/864e5);return n===0?'сегодня':n===1?'завтра':n===-1?'вчера':n<0?'уже прошло':`через ${n} ${plural(n,'день','дня','дней')}`};
     el.innerHTML=`<div class="stack" id="tstack"><div class="tray"><div class="trayhead"><h2>Перед стартом<span class="cnt">3</span></h2></div><div class="inner">${row('shop','Заказать продукты',`${fdate(od)} · ${rel(od)}`,'data-go="shop" data-cw="0"')}${(()=>{const dv=dateOf(0,delivOff(0));return row('box','Разложить покупки',`${fdate(dv)} · ${rel(dv)} · что в морозилку, что в холодильник`,'data-go="shop" data-cw="0" data-after="1"')})()}${row('cook','Первая большая готовка',`${fdate(cd)} · ${rel(cd)} · ≈${tlTotal(0,0)} мин`,'data-go="cook" data-cw="0" data-cs="0"')}</div></div>
-      <div class="tray"><div class="trayhead"><h2>Что едим в первый день</h2></div><div class="cols">${WEEKS[0].days[0].meals.map((m,mi)=>mealCard(0,0,m,mi)).join('')}</div></div></div>`;
+      <div class="tray"><div class="trayhead"><h2>Что едим в первый день</h2></div><div class="cols">${WEEKS[0].days[E0].meals.map((m,mi)=>mealCard(0,E0,m,mi)).join('')}</div></div></div>`;
     bindToday(el);return;
   }
   if(idx>=28){
@@ -2467,7 +2620,7 @@ function vToday(){
   else if(eatenN===4){const nd=idx+1<28?WEEKS[Math.floor((idx+1)/7)].days[(idx+1)%7]:null;sub=`${hello}${uname()?', '+esc(uname()):''}! Все четыре приёма в зачёте, день закрыт.${nd?` А завтра с утра — ${nd.meals[0].n.toLowerCase()}.`:''}`}
   else if(nextI>=0){sub=`${hello}${uname()?', '+esc(uname()):''}! Следующим номером — ${SL[nextI]}: ${day.meals[nextI].n.toLowerCase()}.`}
   else sub=`${hello}${uname()?', '+esc(uname()):''}! Неделя ${w+1} из 4, день ${d+1}.`;
-  const kcomp=`<div class="khero mob"><div class="kh-top"><div class="kh-k"><span class="kh-lab">Калории</span><div><b>${fmt(ate)}</b><span class="kh-of">из ${fmt(day.t[0])}</span></div></div><span class="kh-n">${eatenN} из 4</span></div><div class="kh-seg">${day.meals.map((m,mi)=>`<i class="${LS.get(ateKey(w,d,mi),false)?'on':''}${mi===nextI?' nx':''}" style="flex:${m.k}"></i>`).join('')}</div><div class="kh-mac"><div><span>Белки</span><b>${day.t[1]}<small>г</small></b></div><div><span>Жиры</span><b>${day.t[2]}<small>г</small></b></div><div><span>Углеводы</span><b>${day.t[3]}<small>г</small></b></div></div></div>`;
+  const kcomp=NONUM()?`<div class="khero mob"><div class="kh-top"><div class="kh-k"><span class="kh-lab">Приёмы пищи</span><div><b>${eatenN}</b><span class="kh-of">из 4</span></div></div></div><div class="kh-seg">${day.meals.map((m,mi)=>`<i class="${LS.get(ateKey(w,d,mi),false)?'on':''}${mi===nextI?' nx':''}" style="flex:1"></i>`).join('')}</div></div>`:`<div class="khero mob"><div class="kh-top"><div class="kh-k"><span class="kh-lab">Калории</span><div><b>${fmt(ate)}</b><span class="kh-of">из ${fmt(day.t[0])}</span></div></div><span class="kh-n">${eatenN} из 4</span></div><div class="kh-seg">${day.meals.map((m,mi)=>`<i class="${LS.get(ateKey(w,d,mi),false)?'on':''}${mi===nextI?' nx':''}" style="flex:${m.k}"></i>`).join('')}</div><div class="kh-mac"><div><span>Белки</span><b>${day.t[1]}<small>г</small></b></div><div><span>Жиры</span><b>${day.t[2]}<small>г</small></b></div><div><span>Углеводы</span><b>${day.t[3]}<small>г</small></b></div></div></div>`;
   el.innerHTML=`<div class="stack" id="tstack">${nextCard(idx)}${kcomp}
    <div class="kpis desk-kpis">
     <div class="kpi"><div class="in"><span class="lab">Калории</span><span class="val">${fmt(ate)}<small>из ${fmt(day.t[0])}</small></span>${bar(ate/day.t[0]*100)}</div><div class="foot"><span>${eatenN} из 4 приёмов</span></div></div>
@@ -2480,6 +2633,7 @@ function vToday(){
    <div class="tray"><div class="trayhead"><h2>Приёмы пищи<span class="cnt">4</span></h2><span class="small ${eatenN===4?'okc':'muted'}">${eatenN===4?'Всё съедено':`Съедено ${eatenN} из 4`}</span></div><div class="cols">${day.meals.map((m,mi)=>mealCard(w,d,m,mi,isMob()&&mi===nextI)).join('')}</div></div>
   </div>`;
 
+  {const tk=$('tstack');if(tk&&isMob())tk.insertAdjacentHTML('beforeend',`<button class="sos-entry" id="sosOpen">${emo('🧡')}<span><b>Еда закончилась?</b><small>Ничего страшного — соберём что-нибудь простое</small></span>${ic('chev')}</button>`);if($('sosOpen'))$('sosOpen').onclick=openSOS}
   bindToday(el);bindNext(el);
 }
 let SLIDE=null;const FOLDOPEN={};
@@ -2536,7 +2690,7 @@ function storeOf(w,name){const n=name.toLowerCase();
   if(/хлеб/.test(n))return {p:'fz',note:'Нарежь и заморозь ломтиками, достаёшь по одному — неделю в пакете хлеб не проживёт'};
   if(RAW.test(n)&&!/консерв|соку/.test(n)){const a=needOf(w,0,name),b=needOf(w,1,name);
     const a2=a&&rawWait(w,0)>1;/* сырое мясо в холодильнике — максимум 1–2 дня */
-    if(b&&!a)return {p:'fz',cook2:b};if(a&&b)return {p:a2?'fz':'fr',cook2:b,split:!a2,cook1:a2?a:null};
+    const b2=b&&rawWait(w,1)>1;if(b&&!a)return b2?{p:'fz',cook2:b}:{p:'fr'};if(a&&b)return b2?{p:a2?'fz':'fr',cook2:b,split:!a2,cook1:a2?a:null}:(a2?{p:'fz',cook1:a}:{p:'fr'});
     if(a2)return {p:'fz',cook1:a};return {p:'fr'}}
   if(/укроп|зелен|петруш|кинз/.test(n))return {p:'fr'};
   if(SHELF.test(n))return {p:'sh'};
@@ -2593,6 +2747,8 @@ function bindNext(el){if($('nxPlan'))$('nxPlan').onclick=openNextSheet;if($('nxL
 /* ---------- Неделя ---------- */
 function events(w,d){
   const e=[];
+  if(shopOff(w)===d)e.push([`Заказ на неделю ${w+1}`,'shop',`data-go="shop" data-cw="${w}"`]);
+  if(cookOff(w,0)===d)e.push([`Готовка 1 · ≈${tlTotal(w,0)} мин`,'cook',`data-go="cook" data-cw="${w}" data-cs="0"`]);
   if(cookOff(w,1)===d)e.push([`Вечером готовка 2 · ≈${tlTotal(w,1)} мин`,'cook',`data-go="cook" data-cw="${w}" data-cs="1"`]);
   {const th=thawList(w);if(th.length&&d===cookOff(w,1)-1)e.push([`Вечером достать на готовку 2: ${th.join(', ')}`,'freezer',''])}
   if(PULL[w][d])e.push([`Вечером достать: ${PULL[w][d]}`,'freezer','']);
@@ -2622,12 +2778,12 @@ function vWeek(){
   if(S.wday==null||S.wdayW!==w){S.wday=(ti!==null&&ti>=w*7&&ti<w*7+7)?ti-w*7:0;S.wdayW=w}
   const wd=S.wday,day=WEEKS[w].days[wd],ddt=dateOf(w,wd);
   const strip=`<div class="wstrip" role="tablist" aria-label="Дни недели ${w+1}">${WEEKS[w].days.map((x,k)=>{const dt=dateOf(w,k);const ev=events(w,k).length;const eat=x.meals.filter((m,mi)=>LS.get(ateKey(w,k,mi),false)).length;
-    return `<button role="tab" data-wd="${k}" aria-selected="${k===wd}" class="${ti===w*7+k?'tday':''}"><span>${dt?DOW[dt.getDay()]:'д'+(k+1)}</span><b>${dt?dt.getDate():k+1}</b><i class="${eat===4?'full':eat?'part':ev?'ev':''}"></i></button>`}).join('')}</div>`;
+    return `<button role="tab" data-wd="${k}" aria-selected="${k===wd}" class="${ti===w*7+k?'tday':ti!=null&&w*7+k<ti?'past':''}${!PEEK&&w===0&&k<eatIdx()?' skip':''}"><span>${dt?DOW[dt.getDay()]:'д'+(k+1)}</span><b>${dt?dt.getDate():k+1}</b><i class="${eat===4?'full':eat?'part':ev?'ev':''}"></i></button>`}).join('')}</div>`;
   const evs=events(w,wd);
   const eaten=day.meals.filter((m,mi)=>LS.get(ateKey(w,wd,mi),false)).length;
   const list=`<div class="wmob">${strip}<div class="wday" id="wday">
     ${evs.length?`<div class="tray"><div class="inner">${evs.map(x=>x[2]?row(x[1],x[0],'',x[2]):`<div class="rowi"><span class="ic">${ic(x[1])}</span><span class="grow"><span>${x[0]}</span></span></div>`).join('')}</div></div>`:''}
-    <div class="tray wd-tray"><div class="wd-cards">${day.meals.map((m,mi)=>mealCard(w,wd,m,mi,false)).join('')}</div></div>
+    ${!PEEK&&w===0&&wd<eatIdx()?`<div class="tray wd-tray"><div class="wd-skip">${emo('🍱')}<p><b>Этот день не по плану</b><span>Доедаешь то, что есть дома. План начнётся ${fdate(firstEat()).replace(/^[а-я]+, /,'')}.</span></p></div></div>`:`<div class="tray wd-tray"><div class="wd-cards">${day.meals.map((m,mi)=>mealCard(w,wd,m,mi,false,true)).join('')}</div></div>`}
   </div></div>`;
   el.innerHTML=`<div class="stack">${weekTabs()}<div class="kanban" id="kanban">${kan}</div>${list}</div>`;
   bindWeeks(el);bindCommon(el);bindCommon(document.getElementById('headacts'));
@@ -2641,12 +2797,12 @@ function vWeek(){
 }
 
 /* ---------- Готовка ---------- */
-function tlTotal(w,c){return Math.max(...TL[w][c].steps.map(s=>s[0]+s[3]))+2}
-function tlActive(w,c){return TL[w][c].steps.filter(x=>!x[3]).length*5}
+function tlTotal(w,c){return Math.max(...cookOf(w,c).steps.map(s=>s[0]+s[3]))+2}
+function tlActive(w,c){return cookOf(w,c).steps.filter(x=>!x[3]).length*5}
 const TIMERS=LS.get('mp-timers',{});
 function vCook(){
-  const el=$('v-cook');const w=S.week,c=S.cookSel,s=TL[w][c];
-  const key=mkey(`mp-tl-${w}-${c}`);const done=LS.get(key,{});
+  const el=$('v-cook');const w=S.week,c=S.cookSel,s=cookOf(w,c);const LS_='';
+  const key=mkey(`mp-tl-${w}-${c}${LS_}`);const done=LS.get(key,{});
   const skey=mkey(`mp-tls-${w}-${c}`);const nkey=mkey(`mp-tln-${w}-${c}`);const have=LS.get(nkey,{});
   const order=s.steps.map((x,i)=>({x,i})).sort((a,b)=>a.x[0]-b.x[0]||a.i-b.i);
   const cnt=Object.values(done).filter(Boolean).length;const ci=w*2+c;
@@ -2678,7 +2834,7 @@ function vCook(){
       <div class="cp-hero"><div class="cp-time"><b>${tlTotal(w,c)}</b><span>минут<br>на всё</span></div><div class="cp-side"><span>${ic('stove')}<b>${tlActive(w,c)} мин</b> у плиты</span><span>${ic('board')}<b>${s.steps.length}</b> ${plural(s.steps.length,'шаг','шага','шагов')}</span></div></div>
       <div class="cp-tara">${[[tot[0],'🥡','конт.'],[tot[1],'🛍️','пак.'],[tot[2],'🫙','бан.']].filter(x=>x[0]).map(x=>`<span class="cp-t">${emo(x[1])}<b>×${x[0]}</b><small>${x[2]}</small></span>`).join('')}</div>
       <button class="btn dark cstart" id="cStart">${ic('chev')}<span>Начать готовку</span></button></div>`)+B(2,fold('Что готовим',s.out.length,`<ul class="inner cd-list">${s.out.map(o=>`<li><span class="cd-ic ${o[1]}">${ic(o[1]==='fr'?'fridge':'freezer')}</span><span class="cd-t"><b>${esc(o[0])}</b><small>${esc(o[2])}</small></span></li>`).join('')}</ul>`,false))+B(2,needFold(false));
-    R=B(4,`<div class="tray"><div class="trayhead"><h2>Шаги<span class="cnt">${s.steps.length}</span></h2></div>${allSteps}</div>`);
+    R=B(4,fold('Шаги',s.steps.length,allSteps,false));
   }else if(phase==='during'){
     const [t,kind,text,wait,rec,det]=cur.x;const pos=curK+1;const tid=`${w}-${c}-${cur.i}`;
     const sk=`${w}-${c}-${cur.i}`;const fresh=S.lastStep&&S.lastStep!==sk;S.lastStep=sk;
@@ -2749,18 +2905,18 @@ function vShop(){
   setHead('Покупки',`Покупки на неделю ${w+1}`,`<button class="btn desk" id="copyList">${ic('copy')}<span>Скопировать</span></button>`);
   $('hsub').hidden=false;$('hsub').classList.add('mob');$('hsub').textContent=od?`Заказ: ${fdate(od)}`:'Заказ за 2 дня до недели';
   el.innerHTML=`<div class="stack">${weekTabs()}
-   ${nd===n&&n?`<button class="sp-done mob${popOnce('shop-'+w)}" id="spDone" role="status"><span class="sp-ck">${ic('check')}</span><span class="sp-t"><b>Корзина собрана</b><small>${n} продуктов · теперь разложи</small></span>${emo('🛒','sp-e')}</button>`:`<div class="sprog mob"><div class="kc-top"><span><b class="mono">${nd}</b> из ${n} в корзине</span><span class="muted">ещё ${n-nd}</span></div>${bar(nd/n*100,'ink')}</div>`}
+   ${nd===n&&n?`<button class="sp-done mob${popOnce('shop-'+w)}" id="spDone" role="status"><span class="sp-ck">${ic('check')}</span><span class="sp-t"><b>Корзина собрана</b><small>${n} продуктов · теперь разложи</small></span>${emo('🛒','sp-e')}</button>`:`<div class="sprog mob"><div class="kc-top"><span><b class="mono">${nd}</b> из ${n} в корзине</span></div>${bar(nd/n*100,'ink')}</div>`}
    <div class="kpis desk-kpis" style="grid-template-columns:repeat(2,minmax(0,1fr))">
      <div class="kpi"><div class="in"><span class="lab">В корзине</span><span class="val">${nd}<small>из ${n}</small></span>${bar(nd/n*100,'ink')}</div><div class="foot"><span>${n-nd?`ещё ${n-nd}`:'корзина собрана, можно оформлять'}</span></div></div>
      <div class="kpi"><div class="in"><span class="lab">Заказ</span><span class="val">${od?short(od):'—'}</span></div><div class="foot"><span>${od?DOWF[od.getDay()].toLowerCase():'за 2 дня до недели'}</span></div></div>
    </div>
-   ${stl.length?(()=>{const dec=stl.filter(x=>stS[x[0]]).length;const op=LS.get(mkey('mp-st-open'),null)??dec<stl.length;return `<details class="tray sth" id="stHome" ${op?'open':''}><summary class="trayhead"><h2>Проверь дома<span class="cnt">${dec} из ${stl.length}</span></h2>${ic('chev','chev')}</summary><div class="inner"><ul class="st-list">${stl.map(([nm,,e])=>`<li><span class="semo">${emo(e)}</span><span class="st-n">${esc(nm)}</span><span class="seg" role="group" aria-label="${esc(nm)}" data-s="${stS[nm]||''}"><i class="seg-th" aria-hidden="true"></i><button data-st="${esc(nm)}" data-sv="have" class="${stS[nm]==='have'?'on':''}" aria-pressed="${stS[nm]==='have'}">Есть</button><button data-st="${esc(nm)}" data-sv="buy" class="${stS[nm]==='buy'?'on buy':''}" aria-pressed="${stS[nm]==='buy'}">Купить</button></span></li>`).join('')}</ul></div></details>`})():''}
+   ${stl.length?(()=>{const dec=stl.filter(x=>stS[x[0]]).length;const op=LS.get(mkey('mp-st-open'),null)??false;return `<details class="tray sth" id="stHome" ${op?'open':''}><summary class="trayhead"><h2>Проверь дома<span class="cnt">${dec} из ${stl.length}</span></h2>${ic('chev','chev')}</summary><div class="inner"><ul class="st-list">${stl.map(([nm,,e])=>`<li><span class="semo">${emo(e)}</span><span class="st-n">${esc(nm)}</span><span class="seg" role="group" aria-label="${esc(nm)}" data-s="${stS[nm]||''}"><i class="seg-th" aria-hidden="true"></i><button data-st="${esc(nm)}" data-sv="have" class="${stS[nm]==='have'?'on':''}" aria-pressed="${stS[nm]==='have'}">Есть</button><button data-st="${esc(nm)}" data-sv="buy" class="${stS[nm]==='buy'?'on buy':''}" aria-pressed="${stS[nm]==='buy'}">Купить</button></span></li>`).join('')}</ul></div></details>`})():''}
    ${groups.map((g,gi)=>`<div class="tray"><div class="trayhead"><h2>${g[0]}<span class="cnt">${g[1].length}</span></h2></div><div class="inner"><table class="tbl shoptbl"><tbody>${g[1].map((it,ii)=>[it,ii]).sort((a,b)=>(done[KK(g,gi,a[0],a[1])]?1:0)-(done[KK(g,gi,b[0],b[1])]?1:0)||a[1]-b[1]).map(([it,ii])=>{const k=KK(g,gi,it,ii);return `<tr class="${done[k]?'got':''}" data-row="${k}" data-ii="${ii}"><td><label class="chk"><input type="checkbox" data-k="${k}" ${done[k]?'checked':''}><span class="box"></span><span class="semo">${emo(emosOf(it[0],1)[0]||'🛒')}</span><span class="name">${esc(it[0])}<span class="q">${esc(it[1]||'')}</span></span></label></td></tr>`}).join('')}</tbody></table></div></div>`).join('')}
    ${after}
    <div><button class="btn ghost" id="resetShop">Очистить отметки</button></div></div>`;
   bindWeeks(el);
   {const a=$('afterShop');if(a)a.addEventListener('toggle',()=>LS.set(mkey('mp-after-'+w),a.open))}
-  {const a=$('stHome');if(a)a.addEventListener('toggle',()=>LS.set(mkey('mp-st-open'),a.open))}
+  {const a=$('stHome');if(a)a.querySelector('summary').addEventListener('click',()=>setTimeout(()=>LS.set(mkey('mp-st-open'),a.open),0))}
   el.querySelectorAll('[data-st]').forEach(b=>b.onclick=()=>{const m=LS.get(mkey('mp-staples'),{});const nm=b.dataset.st;const was=m[nm];const nv=was===b.dataset.sv?undefined:b.dataset.sv;if(nv)m[nm]=nv;else delete m[nm];LS.set(mkey('mp-staples'),m);if(nv!=='buy'){const d=LS.get(key,{});delete d['b:'+nm];LS.set(key,d)}try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}
     b.parentElement.dataset.s=nv||'';b.parentElement.querySelectorAll('button').forEach(x=>{const on=x.dataset.sv===nv;x.classList.toggle('on',on);x.classList.toggle('buy',on&&nv==='buy');x.setAttribute('aria-pressed',on)});
     const c=document.querySelector('#stHome summary .cnt');if(c){const t=`${stl.filter(x=>m[x[0]]).length} из ${stl.length}`;if(c.textContent!==t){c.textContent=t;bump(c)}}
@@ -2810,10 +2966,10 @@ function goBack(){if(!BACK)return;const b=BACK;BACK=null;
   if(b.meal)requestAnimationFrame(()=>openMeal(...b.meal));}
 addEventListener('popstate',()=>{const v=location.hash.slice(1)||'today';if(BACK&&S.view!==BACK.view&&v===BACK.view){goBack()}else if(VIEWS.some(x=>x[0]===v)&&v!==S.view){S.view=v;render()}});
 function recItem(r,extra='',pre='r-'){return `<details class="rd" id="${pre}${r[0]}" ${recOpen===r[0]&&pre==='r-'?'open':''}>
-<summary>${ic('chev','chev')}<span class="rname"><span>${esc(r[1])}</span>${extra}</span><span class="small muted rmeta">${esc(r[2]||'')}</span></summary><div class="rec">
-<div class="rmeta-m small muted">${esc(r[2]||'')}</div>${r[3]?`<p class="vibe">${esc(r[3])}</p>`:''}
+<summary>${ic('chev','chev')}<span class="rname"><span>${esc(r[1])}</span>${extra}</span><span class="small muted rmeta">${esc(rmeta(r[2]))}</span></summary><div class="rec">
+<div class="rmeta-m small muted">${esc(rmeta(r[2]))}</div>${r[3]?`<p class="vibe">${esc(r[3])}</p>`:''}
 ${(r[4]||[]).length?`<div class="rsec"><div class="rh">Понадобится</div><div class="ings">${r[4].map(x=>{const e=emosOf(x,1)[0];return `<span class="tag ing">${e?emo(e,'xs'):''}${esc(x)}</span>`}).join('')}</div></div>`:''}
-<div class="rsec"><div class="rh">${(r[4]||[]).length?'Готовим':'Шпаргалка'}</div><ol class="steps">${(r[5]||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ol></div>
+<div class="rsec"><div class="rh">${(r[4]||[]).length?'Готовим':'Шпаргалка'}</div><ol class="steps">${(r[5]||[]).map(x=>`<li><span>${esc(x)}</span></li>`).join('')}</ol></div>
 ${r[6]?`<div class="tip"><b>Фишка</b><span>${esc(r[6])}</span></div>`:''}
 </div></details>`}
 const recMatch=(r,q)=>!q||[r[1],r[3],(r[4]||[]).join(' '),(r[5]||[]).join(' ')].join(' ').toLowerCase().includes(q);
@@ -2834,7 +2990,7 @@ function recTile(r){const dish=Object.keys(REC_OF).find(k=>REC_OF[k]===r[0]);let
   const e=emosOf(r[1]+' '+(r[4]||[]).join(' '),2);const tm=(String(r[2]||'').match(/\d+\s*мин(?:\s*\+\s*\d+\s*мин)?/)||[''])[0];
   return `<button class="rtile" data-rt="${esc(r[1])}"><span class="rt-p" style="--bg:${bg};--fg:${fg}"><span class="rt-w" style="--n:${Math.max(6,word.length)}">${esc(word)}</span><span class="rt-s">${e.map((x,i)=>emo(x,'t'+i)).join('')}</span></span><span class="rt-n">${esc(r[1])}</span>${tm?`<span class="rt-m">${ic('timer')}${esc(tm)}</span>`:''}</button>`}
 function recSheet(name){const r=allRecipes().find(x=>x[1]===name);if(!r)return;const t=document.createElement('div');t.innerHTML=recItem(r,'','sh-');const body=t.querySelector('.rec');
-  openSheet(`<div class="shead"><div><div class="small muted">${esc(r[2]||'')}</div><h2>${esc(r[1])}</h2></div><button class="x" aria-label="Закрыть">✕</button></div>${body?body.outerHTML:''}`)}
+  openSheet(`<div class="shead"><div><div class="small muted">${esc(rmeta(r[2]))}</div><h2>${esc(r[1])}</h2></div><button class="x" aria-label="Закрыть">✕</button></div>${body?body.outerHTML:''}`)}
 function vKB(){
   const el=$('v-kb');if(kbFilter===null||!MENUS.some(m=>m.id===kbFilter)&&kbFilter!=='all')kbFilter=S.menu;
   const allRec=[];MENUS.forEach(m=>(m.recipes||[]).forEach(g=>(g[1]||[]).forEach(r=>{const ex=allRec.find(x=>x.r[1]===r[1]);if(ex){if(!ex.menus.includes(m.name))ex.menus.push(m.name)}else allRec.push({r,menus:[m.name],g:g[0]})})));
@@ -2849,25 +3005,45 @@ function vKB(){
   const kq=$('kq');kq.oninput=()=>{kbQuery=kq.value;$('kbrec').innerHTML=list();bindT()};bindT();
   el.querySelectorAll('[data-kf]').forEach(b=>b.onclick=()=>{kbFilter=b.dataset.kf;vKB()});
 }
-const planLocked=()=>{const t=start()?dayIdx(TODAY):null;return t!==null&&t>=0&&t<28};
-function cycCard(){const st=start();if(!st)return '';const t=dayIdx(TODAY);
+const planLocked=()=>{const t=start()?dayIdx(TODAY):null;return t!==null&&t>=eatIdx()&&t<28};
+function cycCard(){const st=start();if(!st)return '';const t=dayIdx(TODAY);const E=eatIdx();
   const marks={};const add=(dt,k)=>{const i=dayIdx(dt);if(i>=0&&i<28)(marks[i]=marks[i]||[]).push(k)};
   for(let w=0;w<4;w++){add(orderDate(w),'shop');add(cookDate(w,0),'big');add(cookDate(w,1),'small')}
   const pre=[[orderDate(0),'shop','Заказ'],[cookDate(0,0),'big','Готовка']].filter(x=>dayIdx(x[0])<0);
-  const cell=i=>{const dt=addDays(st,i);const m=marks[i]||[];return `<div class="cy-d${i<t?' past':''}${i===t?' now':''}" title="${fdate(dt)}"><span class="cy-n">${dt.getDate()}</span><span class="cy-m">${m.map(k=>`<i class="cy-${k}"></i>`).join('')}</span></div>`};
+  const cell=i=>{const dt=addDays(st,i);const m=marks[i]||[];return `<div class="cy-d${i<t?' past':''}${i===t?' now':''}${i<E?' skip':''}" title="${fdate(dt)}"><span class="cy-n">${dt.getDate()}</span><span class="cy-m">${m.map(k=>`<i class="cy-${k}"></i>`).join('')}</span></div>`};
   const P=plDays();
   return `<div class="cycard">
-    <div class="cy-top"><div><div class="cy-lab">Цикл</div><div class="cy-range">${short(st)} — ${short(addDays(st,27))}</div></div>${t>=0&&t<28?`<div class="cy-prog"><b>${t+1}</b><span>из 28 дней</span></div>`:t<0?`<div class="cy-prog"><b>${-t}</b><span>${plural(-t,'день','дня','дней')} до старта</span></div>`:''}</div>
+    <div class="cy-top"><div><div class="cy-lab">Цикл</div><div class="cy-range">${short(firstEat())} — ${short(addDays(st,27))}</div></div>${t>=E&&t<28?`<div class="cy-prog"><b>${t-E+1}</b><span>из ${28-E} дней</span></div>`:t<E?`<div class="cy-prog"><b>${E-t}</b><span>${plural(E-t,'день','дня','дней')} до старта</span></div>`:''}</div>
     <div class="cy-grid"><div class="cy-w"><span></span>${[0,1,2,3,4,5,6].map(k=>`<span class="cy-h">${DOW[addDays(st,k).getDay()]}</span>`).join('')}</div>
     ${[0,1,2,3].map(w=>`<div class="cy-w"><span class="cy-wl">Н${w+1}</span>${[0,1,2,3,4,5,6].map(k=>cell(w*7+k)).join('')}</div>`).join('')}</div>
     <div class="cy-leg"><span><i class="cy-shop"></i>Закупка · ${DOW[P.shop]}</span><span><i class="cy-big"></i>Большая готовка · ${DOW[P.cook[0]]}</span><span><i class="cy-small"></i>Короткая готовка · ${DOW[P.cook[1]]}</span></div>
   </div>`}
-function endPlan(){const re=/(^|:)mp-(ate|shop|tl|tls|tln|days)-/;const ks=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(re.test(k))ks.push(k)}
+function endPlan(){const re=/(^|:)mp-(ate|shop|tl|tls|tln|days|first)-/;const ks=[];for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(re.test(k))ks.push(k)}
   ks.forEach(k=>{try{localStorage.removeItem(k)}catch(_){}});Object.keys(TIMERS).forEach(k=>delete TIMERS[k]);LS.set('mp-timers',TIMERS);timerSig='';
   S.start=null;try{localStorage.removeItem('mp-start')}catch(_){}S.offset=0;S.week=0;kbMsg=null;render()}
 const DOWS=['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
 const autoDays=(inp,ids)=>{if(!inp)return;let t=false;ids.forEach(i=>{const s=$(i);if(s)s.addEventListener('change',()=>{t=true})});inp.addEventListener('change',()=>{if(t||!inp.value)return;const r=relDays(inp.value);[r.shop,r.cook[0],r.cook[1]].forEach((v,k)=>{const s=$(ids[k]);if(s)s.value=String(v)})})};
 const dowSel=(id,v)=>`<select id="${id}">${[1,2,3,4,5,6,0].map(d=>`<option value="${d}" ${d===v?'selected':''}>${DOWS[d]}</option>`).join('')}</select>`;
+const DOWN=['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
+const fdS=iso=>{const d=fromISO(iso);return `${DOW[d.getDay()]}, ${d.getDate()} ${MON[d.getMonth()]}`};
+function srow(icon,label,val,ctl,dis){return `<label class="srow${dis?' dis':''}"><span class="ic">${ic(icon)}</span><span class="sl">${label}</span><span class="sv">${val}</span>${dis?'':ic('chev','faint')}${ctl}</label>`}
+function schedRows(){const st=start();const P=plDays()||{shop:6,cook:[0,3]};const L=planLocked();const am=activeMenu();
+  const eat=st?toISO(firstEat()):toISO(nextMonday());const pf=planFrom(eat,P);const F=FIRST();
+  const sel=(id,v)=>`<select class="sx" id="${id}">${[1,2,3,4,5,6,0].map(d=>`<option value="${d}" ${d===v?'selected':''}>${DOWN[d]}</option>`).join('')}</select>`;
+  let h=srow('recipes','Меню',esc(am.name),`<select class="sx" id="kmenu" ${L?'disabled':''}>${MENUS.map(m=>`<option value="${m.id}" ${m.id===S.menu?'selected':''}>${esc(m.name)}</option>`).join('')}</select>`,L)
+   +srow('week','Начинаем',fdS(eat),`<input class="sx" type="date" id="kstart" value="${eat}" ${L?'disabled':''}>`,L);
+  if(L)h+=`<p class="s-hint">План идёт до ${short(addDays(st,27))} — меню и старт поменяешь после.</p>`;
+  h+=`<div class="s-sub">Каждую неделю</div>`+srow('shop','Закупка',DOWN[P.shop],sel('kshop',P.shop))+srow('cook','Большая готовка',DOWN[P.cook[0]],sel('kc0',P.cook[0]))+srow('stove','Короткая готовка',DOWN[P.cook[1]],sel('kc1',P.cook[1]));
+  if(!L&&pf.skip){const sh=F&&F.eat===eat?F.shop:pf.shop,ck=F&&F.eat===eat?F.cook:pf.cook;const n=7-pf.skip;const skipD=[...Array(pf.skip)].map((_,i)=>DOW[addDays(fromISO(pf.start),i).getDay()]).join(', ');
+    h+=`<div class="s-sub">Первая неделя · ${n} ${plural(n,'день','дня','дней')}</div><p class="s-hint">Старт не совпал с ритмом, поэтому первая неделя короче. ${skipD[0].toUpperCase()+skipD.slice(1)} — без плана, доедаешь своё.</p>`
+     +srow('shop','Первая закупка',fdS(sh),`<input class="sx" type="date" id="kfshop" value="${sh}" max="${ck}">`)
+     +srow('cook','Первая готовка',fdS(ck),`<input class="sx" type="date" id="kfcook" value="${ck}" max="${toISO(addDays(fromISO(eat),-1))}">`)}
+  return h}
+function saveSched(){const L=planLocked();const P={shop:+$('kshop').value,cook:[+$('kc0').value,+$('kc1').value]};const id=L?S.menu:$('kmenu').value;
+  if(!L&&$('kstart').value){const v=$('kstart').value;const pf=planFrom(v,P);const fs=$('kfshop'),fc=$('kfcook');const F=FIRST();const same=F&&F.eat===v;
+    let ck=same&&fc?fc.value:pf.cook,sh=same&&fs?fs.value:pf.shop;try{localStorage.removeItem(FIRST_KEY())}catch(_){}S.start=pf.start;LS.set('mp-start',pf.start);
+    if(pf.skip){if(!ck||ck>=v)ck=pf.cook;if(!sh||sh>ck)sh=ck;LS.set(FIRST_KEY(),{eat:v,cook:ck,shop:sh})}}
+  LS.set(DAYS_KEY(),P);if(id!==S.menu)switchMenu(id);else{S.offset=0;syncWeek()}kbMsg=null;render();const k=$('kok');if(k){k.textContent='Сохранено';clearTimeout(saveSched.t);saveSched.t=setTimeout(()=>{if(k.isConnected)k.textContent=''},1600)}}
 function vSettings(){
   const el=$('v-settings');const st=start();const am=activeMenu();const P=plDays()||{shop:6,cook:[0,3]};
   setHead('','Настройки');if(isMob()){$('tback').hidden=false;$('tback').onclick=()=>go('today');$('tback').setAttribute('aria-label','Назад')}
@@ -2875,24 +3051,18 @@ function vSettings(){
   const cyc=st?`${short(st)} – ${short(addDays(st,27))}`:'—';
   const menus=MENUS.map(m=>{const s=menuStats(m);const act=m.id===S.menu;return `<div class="mcardkb${act?' act':''}">
     <div class="mtitle"><span class="on">${esc(m.name)}</span></div>
-    <div class="mstats"><div><b>${s.dishes}</b><span>${plural(s.dishes,'блюдо','блюда','блюд')}</span></div><div><b>${s.recipes}</b><span>${plural(s.recipes,'рецепт','рецепта','рецептов')}</span></div><div><b>${fmt(s.min)}–${fmt(s.max)}</b><span>ккал в день</span></div></div>
+    <div class="mstats"><div><b>${s.dishes}</b><span>${plural(s.dishes,'блюдо','блюда','блюд')}</span></div><div><b>${s.recipes}</b><span>${plural(s.recipes,'рецепт','рецепта','рецептов')}</span></div><div class="kc"><b>${fmt(s.min)}–${fmt(s.max)}</b><span>ккал в день</span></div></div>
     <div class="macts">${act||planLocked()?'':`<button class="btn sm dark" data-use="${m.id}">Выбрать</button>`}<button class="btn sm" data-exp="${m.id}">${ic('download')}<span>Скачать</span></button>${m.id!=='m1'?`<button class="btn sm ghost" data-del="${m.id}">${ic('trash')}<span>Удалить</span></button>`:''}</div>
   </div>`}).join('');
   const tab=S.setTab||'plan';
   const tabs=`<div class="utabs" role="group" aria-label="Настройки"><button data-st="plan" aria-pressed="${tab==='plan'}">Текущий план</button><button data-st="gen" aria-pressed="${tab==='gen'}">Общие</button></div>`;
   el.innerHTML=`<div class="stack setv">${tabs}
    ${tab==='plan'?`   ${cycCard()}
-   <div class="tray"><div class="trayhead"><h2>Цикл и расписание</h2></div><div class="inner kbconf">
-     <div class="field"><label for="kmenu">Меню</label><select id="kmenu" ${planLocked()?'disabled':''}>${MENUS.map(m=>`<option value="${m.id}" ${m.id===S.menu?'selected':''}>${esc(m.name)}</option>`).join('')}</select></div>
-     <div class="field"><label for="kstart">Первый день плана</label><input type="date" id="kstart" ${planLocked()?'disabled':''} value="${st?toISO(st):toISO(nextMonday())}"></div>
-     ${planLocked()?`<p class="fhint lockhint">План уже идёт, поэтому меню и первый день не меняются до ${short(addDays(start(),27))}.</p>`:''}
-     <div class="field"><label for="kshop">День закупки</label>${dowSel('kshop',P.shop)}</div>
-     <div class="field"><label for="kc0">Большая готовка</label>${dowSel('kc0',P.cook[0])}</div>
-     <div class="field"><label for="kc1">Короткая готовка</label>${dowSel('kc1',P.cook[1])}</div>
-     <div class="kbsave"><button class="btn dark" id="ksave">Сохранить</button><span class="small okc" id="kok" aria-live="polite"></span></div>
-   </div></div>
+   <div class="tray sched"><div class="trayhead"><h2>Расписание</h2><span class="small okc" id="kok" aria-live="polite"></span></div>
+    <div class="inner">${schedRows()}</div></div>
    ${start()?`<div class="tray endplan"><div class="trayhead"><h2>Закончить план</h2></div><div class="inner ep-in"><p>Прогресс текущего плана сбросится.</p><button class="btn epbtn" id="endPlan">${planLocked()?'Закончить план раньше':'Сбросить план'}</button></div></div>`:''}
 `:`
+   <div class="tray"><div class="trayhead"><h2>Спокойный режим</h2></div><div class="inner"><label class="rowi sw-row"><span class="grow"><b>Без цифр</b><small>Прячет калории и БЖУ. Прогресс — в приёмах пищи.</small></span><input type="checkbox" class="sw" id="knonum" ${NONUM()?'checked':''}></label></div></div>
    <div class="tray"><div class="trayhead"><h2>Как к тебе обращаться</h2></div><div class="inner kbconf setname"><div class="field"><label for="kname">Имя</label><input id="kname" maxlength="24" value="${esc(uname())}" placeholder="Например, Аня"></div><div class="kbsave"><button class="btn dark" id="knsave">Сохранить</button><span class="small okc" id="knok" aria-live="polite"></span></div></div></div>
    <div class="tray"><div class="trayhead"><h2>Перенос на другое устройство</h2></div><div class="inner kbimp"><p class="small" style="margin:0">Всё хранится только в этом браузере: план, отметки, покупки, таймеры, загруженные меню. Сохрани файл здесь и загрузи его в приложении на другом устройстве.</p><div class="improw"><button class="btn dark" id="kbak">${ic('download')}<span>Сохранить прогресс</span></button><label class="btn">${ic('upload')}<span>Загрузить прогресс</span><input type="file" accept=".json,application/json" id="kres" hidden></label><span class="small okc" id="kbok" aria-live="polite"></span></div></div></div>
    <div class="tray"><div class="trayhead"><h2>Меню<span class="cnt">${MENUS.length}</span></h2></div><div class="mgrid">${menus}</div></div>
@@ -2908,8 +3078,8 @@ function vSettings(){
     endPlan()};
   if($('knsave'))$('knsave').onclick=()=>{LS.set('mp-name',$('kname').value.trim());$('knok').textContent='Сохранено'};
   el.querySelectorAll('[data-st]').forEach(b=>b.onclick=()=>{S.setTab=b.dataset.st;kbMsg=null;render()});
-  autoDays($('kstart'),['kshop','kc0','kc1']);
-  if($('ksave'))$('ksave').onclick=()=>{const id=planLocked()?S.menu:$('kmenu').value,d=planLocked()?S.start:$('kstart').value;if(d){S.start=d;LS.set('mp-start',d)}LS.set(DAYS_KEY(),{shop:+$('kshop').value,cook:[+$('kc0').value,+$('kc1').value]});if(id!==S.menu)switchMenu(id);else{S.offset=0;syncWeek()}kbMsg=null;render();const k=$('kok');if(k)k.textContent='Сохранено'};
+  el.querySelectorAll('.sched .sx').forEach(x=>{x.addEventListener('change',saveSched);if(x.type==='date')x.closest('.srow').addEventListener('click',ev=>{if(x.disabled)return;try{x.showPicker&&x.showPicker()}catch(_){}})});
+  if($('knonum'))$('knonum').onchange=e=>{LS.set('mp-nonum',e.target.checked);document.body.classList.toggle('nonum',e.target.checked)};
   el.querySelectorAll('[data-use]').forEach(b=>b.onclick=()=>{if(planLocked())return;switchMenu(b.dataset.use);kbMsg=null;render()});
   el.querySelectorAll('[data-exp]').forEach(b=>b.onclick=async()=>{const m=MENUS.find(x=>x.id===b.dataset.exp);const ok=await downloadJSON(m,`${m.id}.json`);if(!ok){const l=b.querySelector('span');l.textContent='Не вышло, скопируй';setTimeout(()=>{if(l.isConnected)l.textContent='Скачать'},2500)}});
   el.querySelectorAll('[data-cpy]').forEach(b=>b.onclick=async()=>{const m=MENUS.find(x=>x.id===b.dataset.cpy);const l=b.querySelector('span');try{await navigator.clipboard.writeText(JSON.stringify(m));l.textContent='Скопировано'}catch(_){l.textContent='Не скопировалось'}setTimeout(()=>{if(l.isConnected)l.textContent='Копировать'},2000)});
@@ -3027,6 +3197,7 @@ document.querySelectorAll('.kb-open').forEach(b=>b.onclick=()=>{BACK=null;go('kb
 document.querySelectorAll('.set-open').forEach(b=>b.onclick=()=>{BACK=null;go('settings')});
 
 /* ---------- Навигация ---------- */
+function nearCook(){if(PEEK||!start())return;for(let i=0;i<8;i++){const dt=cookDate(Math.floor(i/2),i%2);if(dt&&dt>=TODAY){S.week=Math.floor(i/2);S.cookSel=i%2;return}}S.week=3;S.cookSel=1}
 function renderNav(){
   const st=start();
   $('nav').innerHTML=VIEWS.map(([v,t])=>`<button class="navitem" data-v="${v}" aria-current="${v===S.view?'page':'false'}">${ic(v)}${t}</button>`).join('');
@@ -3039,50 +3210,60 @@ function renderNav(){
   $('sidefoot').innerHTML=`<button class="navitem set-open" aria-current="${S.view==='settings'?'page':'false'}">${ic('gear')}Настройки</button>`;
   document.querySelectorAll('#sidefoot .set-open').forEach(b=>b.onclick=()=>{BACK=null;go('settings')});
   document.querySelectorAll('.kb-open').forEach(b=>b.setAttribute('aria-current',S.view==='kb'?'page':'false'));
-  document.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{BACK=null;if(b.dataset.v==='today')S.offset=0;go(b.dataset.v==='recipes'&&isMob()&&b.closest('#tabbar')?'kb':b.dataset.v)});
+  document.querySelectorAll('[data-v]').forEach(b=>b.onclick=()=>{BACK=null;if(b.dataset.v==='today')S.offset=0;if(b.dataset.v==='cook'&&S.view!=='cook')nearCook();go(b.dataset.v==='recipes'&&isMob()&&b.closest('#tabbar')?'kb':b.dataset.v)});
   document.querySelectorAll('.wsname').forEach(n=>n.textContent=(MENUS.find(m=>m.id===S.menu)||MENUS[0]).name);
 }
 /* ---------- Онбординг ---------- */
 let ONB=null;
 const ONB_DOW=[1,2,3,4,5,6,0];
 const nameQuip=n=>{n=n.trim();if(!n)return 'Можно без паспорта — просто имя';if(n.length<=2)return `${n}? Коротко и по делу. Уважаю`;if(/^(аня|анна|анечка|анюта|анька)$/i.test(n))return `${n}! Красивое имя для человека с планом`;if(n.length>14)return 'Длинно, но запомню. Холодильник тоже';return `${n}, приятно познакомиться. Холодильник уже в курсе`};
-function openOnb(){const P=plDays()||{shop:6,cook:[0,3]};
-  ONB={step:0,name:uname(),menu:S.menu,shop:P.shop,c0:P.cook[0],c1:P.cook[1],start:toISO(nextMonday()),hadName:!!uname()};{const r=relDays(ONB.start);ONB.shop=r.shop;ONB.c0=r.cook[0];ONB.c1=r.cook[1]};
+function openOnb(){const P=LS.get(DAYS_KEY(),null)||{shop:6,cook:[0,3]};
+  ONB={step:0,name:uname(),menu:S.menu,shop:P.shop,c0:P.cook[0],c1:P.cook[1],hadName:!!uname()};ONB.start=onbNatural(ONB);
   let el=$('onb');if(!el){el=document.createElement('div');el.id='onb';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');el.setAttribute('aria-label','Настройка плана');document.body.appendChild(el)}
   document.body.classList.add('onb-on');renderOnb();onbKb()}
 function onbKb(){const vv=window.visualViewport;if(!vv||onbKb.on)return;onbKb.on=true;const f=()=>{const el=$('onb');if(!el)return;const kb=Math.max(0,innerHeight-vv.height-vv.offsetTop);el.style.setProperty('--kb',kb+'px')};vv.addEventListener('resize',f);vv.addEventListener('scroll',f)}
 function closeOnb(){const el=$('onb');if(el)el.remove();document.body.classList.remove('onb-on');ONB=null}
-function onbSteps(){const st=['hi'];if(!ONB.hadName)st.push('name');if(MENUS.length>1)st.push('menu');st.push('start','done');return st}
+function onbSteps(){const st=['hi'];if(!ONB.hadName)st.push('name');if(MENUS.length>1)st.push('menu');st.push('days','start','done');return st}
+/* ближайший старт по ритму: день после большой готовки, закупка не раньше сегодня */
+function onbNatural(o){const ws=(o.c0+1)%7;for(let k=1;k<21;k++){const d=addDays(TODAY,k);if(d.getDay()!==ws)continue;const s=onbPlan(o,toISO(d));if(s.shop>=TODAY)return toISO(d)}return toISO(addDays(TODAY,2))}
+function onbPlan(o,eatISO){const eat=fromISO(eatISO||o.start);const pf=planFrom(toISO(eat),{shop:o.shop,cook:[o.c0,o.c1]});let shop,cook;
+  if(pf.skip){cook=addDays(eat,-1);shop=addDays(eat,-2);if(shop<TODAY)shop=new Date(TODAY);if(cook<shop)cook=new Date(shop)}
+  else{cook=addDays(eat,-1);shop=addDays(cook,-1-((addDays(cook,-1).getDay()-o.shop+7)%7))}
+  const vs=fromISO(pf.start);let sc=addDays(vs,(o.c1-vs.getDay()+7)%7);if(sc<cook)sc=new Date(cook);
+  return {eat,shop,cook,sc,skip:pf.skip,start:pf.start}}
 function renderOnb(){const el=$('onb');if(!el||!ONB)return;const steps=onbSteps();const k=Math.min(ONB.step,steps.length-1);const cur=steps[k];
   const nm=(ONB.name||'').trim();const NM=nm.toUpperCase();
   const dots=`<div class="ob-dots">${steps.map((s,i)=>`<i class="${i===k?'on':i<k?'done':''}"></i>`).join('')}</div>`;
   const back=k>0?`<button class="ob-back" id="obBack" aria-label="Назад">${ic('left')}</button>`:`<button class="ob-back ob-skip" id="obSkip">Позже</button>`;
   const pill=(row,v)=>`<div class="ob-pills" data-row="${row}">${ONB_DOW.map(d=>`<button data-d="${d}" aria-pressed="${d===v}">${DOW[d]}</button>`).join('')}</div>`;
   let body='',theme='',cta='Дальше';
-  if(cur==='hi'){theme='t-orange';cta='Погнали';body=`<div class="ob-brand"><span class="ob-ic"><svg class="appic" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="27" fill="#FF5A1F"/><rect x="22" y="56" width="76" height="42" rx="10" fill="#fff"/><rect x="18" y="48" width="84" height="12" rx="6" fill="#FFD9C7"/><circle cx="44" cy="40" r="15" fill="#fff"/><circle cx="76" cy="44" r="9" fill="#fff"/><circle cx="50" cy="45" r="6" fill="#161614"/><circle cx="73" cy="42" r="4" fill="#161614"/><path d="M46 74 q14 10 28 0" fill="none" stroke="#161614" stroke-width="5" stroke-linecap="round"/><path d="M60 79 v6 q0 6 -5 6 q-5 0 -5 -6 v-4" fill="#FF8FB1"/></svg></span><span><b>Fork Yeah</b>представляет<small>вилкой и по плану · Est. 2026</small></span></div><div class="ob-h">${nm?`${esc(NM)},<br>ПОЕХАЛИ<br>ЗАНОВО`:'ЕДА<br>ПО ПЛАНУ'}</div>
-    <p class="ob-p">${nm?'Старый план закрыт. Соберём новый за минуту, без бюрократии.':'Четыре недели и ноль мучительных «а что поесть». Настроим всё за минуту, честно.'}</p>
-    <div class="ob-fly">${['🍗','🥦','🥚','🍝','🫐','🥕','🧀','🍌'].map((e,i)=>emo(e,'f'+i)).join('')}</div>`}
+  if(cur==='hi'){theme='t-orange';cta=nm?'Собрать новый план':'Давай знакомиться';body=`<div class="ob-hero"><span class="ob-mz">${mzSVG('happy')}</span><p class="ob-say">${nm?`${esc(nm)}, с возвращением! Соберём новый план?`:'Привет! Я — твой ланчбокс. Буду подсказывать, что поесть, и не буду занудой'}</p></div>
+    <div class="ob-h">${nm?'НОВЫЙ<br>КРУГ':'ЕДА<br>БЕЗ<br>ДРАМЫ'}</div>
+    <ul class="ob-perks"><li>${emo('🛒')}<span>Список покупок соберётся сам</span></li><li>${emo('🍳')}<span>Две готовки в неделю — и всё</span></li><li>${emo('🧘')}<span>Можно без цифр и подсчётов</span></li></ul>
+    <div class="ob-fly">${['🍗','🥦','🥚','🍝','🫐','🥕'].map((e,i)=>emo(e,'f'+i)).join('')}</div>`}
   else if(cur==='name'){theme='t-blue';cta='Это я';body=`<div class="ob-h">КАК ТЕБЯ<br>ЗВАТЬ?</div>
     <input class="ob-in" id="obName" maxlength="24" autocomplete="given-name" autocapitalize="words" enterkeyhint="next" placeholder="Имя" value="${esc(ONB.name||'')}">
     <p class="ob-p ob-q" id="obQuip">${esc(nameQuip(ONB.name||''))}</p><div class="ob-fly sm">${emo('👋','f0')}${emo('🍽️','f3')}</div>`}
   else if(cur==='menu'){theme='t-green';cta='Беру это';body=`<div class="ob-h">${nm?esc(NM)+',<br>':''}ЧТО<br>ЕДИМ?</div>
-    <div class="ob-menus">${MENUS.map(m=>{const s=menuStats(m);return `<button class="ob-menu" data-m="${m.id}" aria-pressed="${m.id===ONB.menu}"><b>${esc(m.name)}</b><span>${s.dishes} блюд · ${fmt(s.min)}–${fmt(s.max)} ккал в день</span></button>`}).join('')}</div>`}
-  else if(cur==='days'){theme='t-yellow';cta='Норм расклад';body=`<div class="ob-h">КОГДА<br>ДЕЛА?</div>
-    <div class="ob-row"><div class="ob-rl">${emo('🛒')}<span>Закупка<small>привезут — и сразу в дело</small></span></div>${pill('shop',ONB.shop)}</div>
-    <div class="ob-row"><div class="ob-rl">${emo('🍳')}<span>Большая готовка<small>час-полтора, зато на неделю</small></span></div>${pill('c0',ONB.c0)}</div>
-    <div class="ob-row"><div class="ob-rl">${emo('🥄')}<span>Короткая готовка<small>минут 30, подкрепление в середине недели</small></span></div>${pill('c1',ONB.c1)}</div>`}
-  else if(cur==='done'){theme='t-green';cta='К плану';const {od}=onbSched(ONB);const n=Math.round((od-TODAY)/864e5);
+    <div class="ob-menus">${MENUS.map(m=>{const s=menuStats(m);return `<button class="ob-menu" data-m="${m.id}" aria-pressed="${m.id===ONB.menu}"><b>${esc(m.name)}</b><span>${s.dishes} блюд${NONUM()?'':` · ${fmt(s.min)}–${fmt(s.max)} ккал в день`}</span></button>`}).join('')}</div>`}
+  else if(cur==='days'){theme='t-yellow';cta='Мне подходит';body=`<div class="ob-h">КОГДА<br>ГОТОВИМ?</div>
+    <p class="ob-p">Раз в неделю большая готовка — час-полтора, зато потом почти ничего. В какой день обычно есть время?</p>
+    ${pill('c0',ONB.c0)}
+    ${ONB.more?'':`<div class="ob-first ob-rh"><span>${emo('🛒')}Закупка — <b>${DOWF[ONB.shop].toLowerCase()}</b></span><span>${emo('🥄')}Короткая готовка — <b>${DOWF[ONB.c1].toLowerCase()}</b></span><button class="ob-link" id="obMore">Поменять</button></div>`}
+    ${ONB.more?`<div class="ob-row"><div class="ob-rl">${emo('🛒')}<span>Закупка</span></div>${pill('shop',ONB.shop)}</div><div class="ob-row"><div class="ob-rl">${emo('🥄')}<span>Короткая готовка</span></div>${pill('c1',ONB.c1)}</div>`:''}`}
+  else if(cur==='done'){theme='t-green';cta='К плану';const od=onbPlan(ONB).shop;const n=Math.round((od-TODAY)/864e5);
     body=`<div class="ob-fly sm">${emo('🎉','f0')}${emo('✨','f3')}</div><div class="ob-h">${nm?esc(NM)+',<br>':''}ВСЁ<br>ГОТОВО</div>
     <div class="ob-first"><span class="ob-first-l">Первое дело</span><b>Заказать продукты</b><span>${fdate(od)}${n>=0?' · '+(n===0?'сегодня':n===1?'завтра':`через ${n} ${plural(n,'день','дня','дней')}`):''}</span></div>
     <button class="ob-cal" id="obCal">${ic('week')}<span>Добавить в календарь</span></button>
     <p class="ob-p ob-cal-h" id="obCalH">Все закупки и готовки на 4 недели — с напоминанием накануне вечером.</p>`}
-  else if(cur==='start'){theme='t-pink';cta='Поехали';const opts=[[toISO(TODAY),'Сегодня'],[toISO(addDays(TODAY,1)),'Завтра'],[toISO(nextMonday()),'Понедельник']].filter((x,i,a)=>a.findIndex(y=>y[0]===x[0])===i);
-    const sd=fromISO(ONB.start);body=`<div class="ob-h">СТАРТУЕМ<br>КОГДА?</div>
-    <div class="ob-starts">${opts.map(([v,l])=>`<button data-s="${v}" aria-pressed="${v===ONB.start}"><b>${l}</b><span>${fdate(fromISO(v))}</span></button>`).join('')}<label class="ob-date" aria-pressed="${!opts.some(o=>o[0]===ONB.start)}"><b>Другая дата</b><span>${opts.some(o=>o[0]===ONB.start)?'выбрать в календаре':fdate(fromISO(ONB.start))}</span><input type="date" id="obDate" value="${ONB.start}" aria-label="Другая дата"></label></div>
-    ${(()=>{const {bd,od,dv,sc}=onbSched(ONB);
-      const rel=d=>{const n=Math.round((d-TODAY)/864e5);return n<0?'<em>уже прошло</em>':n===0?'сегодня':n===1?'завтра':n===2?'послезавтра':`через ${n} ${plural(n,'день','дня','дней')}`};
-      const same=toISO(dv)===toISO(bd);const rows=[['🛒','Заказываешь продукты',od,'shop'],['📦',same?'Привезут, разложишь — и сразу большая готовка':'Привезут — разложишь по местам',dv,same?'c0':null]];if(!same)rows.push(['🍳','Большая готовка',bd,'c0']);rows.push(['🍽️','Первый день по плану',sd,null],['🥄','Короткая готовка',sc,'c1']);
-      return `<div class="ob-tlw"><div class="ob-tl-h">Как всё пойдёт<small>тапни, чтобы поменять день</small></div><ol class="ob-tl">${rows.map(([e,t,d,key])=>`<li class="${key?'ed':''}${key&&ONB.ed===key?' open':''}">${key?`<button class="ob-tl-b" data-ed="${key}" aria-expanded="${ONB.ed===key}">`:'<div class="ob-tl-b">'}${emo(e)}<span class="ob-tl-t">${t}</span><span class="ob-tl-d">${fdate(d)} · ${rel(d)}</span>${key?ic('chev','ob-tl-c'):''}${key?'</button>':'</div>'}${key&&ONB.ed===key?pill(key,ONB[key]):''}</li>`).join('')}</ol></div>`})()}`}
+  else if(cur==='start'){theme='t-pink';cta='Поехали';const nat=onbNatural(ONB),asap=toISO(addDays(TODAY,2));
+    const opts=[[nat,'По ритму']];if(asap<nat)opts.push([asap,'Поскорее']);
+    const pl=onbPlan(ONB);const rel=d=>{const n=Math.round((d-TODAY)/864e5);return n===0?'сегодня':n===1?'завтра':n===2?'послезавтра':`через ${n} ${plural(n,'день','дня','дней')}`};
+    const n=7-pl.skip;
+    body=`<div class="ob-h">СТАРТ<br>КОГДА?</div>
+    <div class="ob-starts">${opts.map(([v,l])=>`<button data-s="${v}" aria-pressed="${v===ONB.start}"><b>${l}</b><span>${fdate(fromISO(v))}</span></button>`).join('')}<label class="ob-date" aria-pressed="${!opts.some(o=>o[0]===ONB.start)}"><b>Своя дата</b><span>${opts.some(o=>o[0]===ONB.start)?'выбрать':fdate(fromISO(ONB.start))}</span><input type="date" id="obDate" value="${ONB.start}" min="${toISO(addDays(TODAY,1))}" aria-label="Своя дата"></label></div>
+    <ol class="ob-mini">${[['🛒','Закупка',pl.shop],['🍳','Большая готовка',pl.cook],['🍽️','Первый день по плану',pl.eat]].map(([e,t,d])=>`<li>${emo(e)}<span>${t}</span><b>${fdate(d)}<small>${rel(d)}</small></b></li>`).join('')}</ol>
+    ${pl.skip?`<p class="ob-p ob-note">Первая неделя будет короче — ${n} ${plural(n,'день','дня','дней')}. Дальше всё по твоему ритму.</p>`:''}`}
   el.className=theme;
   const same=ONB._rk===k&&el.querySelector('.ob-body');ONB._rk=k;
   if(same){const sy=el.scrollTop;el.querySelector('.ob-body').innerHTML=body;const g=$('obGo');if(g)g.innerHTML=cta;const tp=el.querySelector('.ob-top');if(tp)tp.innerHTML=`${back}${dots}<span class="ob-sp"></span>`;el.scrollTop=sy}
@@ -3093,17 +3274,19 @@ function renderOnb(){const el=$('onb');if(!el||!ONB)return;const steps=onbSteps(
   $('obGo').onclick=()=>{if(cur==='name'){const v=$('obName').value.trim();if(!v){$('obName').focus();$('obQuip').textContent='Ну хоть как-нибудь. Можно даже смайлик';const n=el.querySelector('.ob-in');n.classList.remove('shake');void n.offsetWidth;n.classList.add('shake');return}ONB.name=v;LS.set('mp-name',v)}next()};
   const ni=$('obName');if(ni){ni.oninput=()=>{ONB.name=ni.value;$('obQuip').textContent=nameQuip(ni.value)};ni.onkeydown=e=>{if(e.key==='Enter')$('obGo').click()};setTimeout(()=>ni.focus(),250)}
   el.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{ONB.menu=b.dataset.m;renderOnb()});
-  el.querySelectorAll('.ob-pills').forEach(r=>r.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{ONB[r.dataset.row]=+b.dataset.d;ONB.dTouched=true;ONB.ed=null;renderOnb()}));
+  el.querySelectorAll('.ob-pills').forEach(r=>r.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{const row=r.dataset.row,v=+b.dataset.d;ONB[row]=v;if(row==='c0'&&!ONB.more){ONB.shop=(v+6)%7;ONB.c1=(v+3)%7}ONB.start=onbNatural(ONB);try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}renderOnb()}));
+  if($('obMore'))$('obMore').onclick=()=>{ONB.more=true;renderOnb()};
   el.querySelectorAll('[data-ed]').forEach(b=>b.onclick=()=>{ONB.ed=ONB.ed===b.dataset.ed?null:b.dataset.ed;renderOnb();const pp=document.querySelector('.ob-tl li.open .ob-pills');if(pp)requestAnimationFrame(()=>pp.scrollIntoView({block:'nearest',behavior:RM.matches?'auto':'smooth'}))});
   if($('obCal'))$('obCal').onclick=async()=>{const ok=await saveIcs(ONB);const h=$('obCalH');if(h&&ok)h.textContent='Готово! Открой файл — айфон предложит добавить события в Календарь.'};
-  const setStart=v=>{ONB.start=v;if(!ONB.dTouched){const r=relDays(v);ONB.shop=r.shop;ONB.c0=r.cook[0];ONB.c1=r.cook[1]}renderOnb()};
+  const setStart=v=>{if(v<=toISO(TODAY))v=toISO(addDays(TODAY,1));ONB.start=v;renderOnb()};
   el.querySelectorAll('[data-s]').forEach(b=>b.onclick=()=>setStart(b.dataset.s));
   const dd=$('obDate');if(dd){dd.onchange=()=>{if(dd.value)setStart(dd.value)};dd.onclick=()=>{try{dd.showPicker&&dd.showPicker()}catch(_){}}}
 }
 function onbSched(o){const sd=fromISO(o.start);const bd=addDays(sd,-1-((addDays(sd,-1).getDay()-o.c0+7)%7));const od=addDays(bd,-1-((addDays(bd,-1).getDay()-o.shop+7)%7));return {sd,bd,od,dv:addDays(od,1),sc:addDays(sd,(o.c1-sd.getDay()+7)%7)}}
-function icsFor(o){const {sd,bd,od,dv,sc}=onbSched(o);const f=d=>`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;const L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Fork Yeah//RU','CALSCALE:GREGORIAN'];let n=0;
+function icsFor(o){const pl=onbPlan(o);const vs=fromISO(pl.start);const f=d=>`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;const L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Fork Yeah//RU','CALSCALE:GREGORIAN'];let n=0;
   const ev=(d,t,desc)=>{L.push('BEGIN:VEVENT',`UID:fy-${f(d)}-${n++}@forkyeah`,`DTSTAMP:${f(TODAY)}T090000Z`,`DTSTART;VALUE=DATE:${f(d)}`,`DTEND;VALUE=DATE:${f(addDays(d,1))}`,`SUMMARY:${t}`,`DESCRIPTION:${desc}`,'BEGIN:VALARM','TRIGGER:-PT15H','ACTION:DISPLAY',`DESCRIPTION:${t}`,'END:VALARM','END:VEVENT')};
-  for(let w=0;w<4;w++){const k=w*7;ev(addDays(od,k),'🛒 Заказать продукты',`Неделя ${w+1} — список в Fork Yeah`);if(toISO(dv)!==toISO(bd))ev(addDays(dv,k),'📦 Разложить покупки','Что в морозилку, что в холодильник — в Fork Yeah');ev(addDays(bd,k),'🍳 Большая готовка',`Готовка ${w*2+1}`);ev(addDays(sc,k),'🥄 Короткая готовка',`Готовка ${w*2+2}`)}
+  const bd0=addDays(vs,-1),od0=addDays(bd0,-1-((addDays(bd0,-1).getDay()-o.shop+7)%7)),sc0=addDays(vs,(o.c1-vs.getDay()+7)%7);
+  for(let w=0;w<4;w++){const k=w*7;const od=w?addDays(od0,k):pl.shop,bd=w?addDays(bd0,k):pl.cook,sc=w?addDays(sc0,k):pl.sc;ev(od,'🛒 Заказать продукты',`Неделя ${w+1} — список в Fork Yeah`);ev(bd,'🍳 Большая готовка',`Готовка ${w*2+1}`);ev(sc,'🥄 Короткая готовка',`Готовка ${w*2+2}`)}
   L.push('END:VCALENDAR');return L.join('\r\n')}
 async function saveIcs(o){const data=icsFor(o);const name='fork-yeah.ics';try{const file=new File([data],name,{type:'text/calendar'});if(navigator.canShare&&navigator.canShare({files:[file]})){await navigator.share({files:[file],title:'Fork Yeah'});return true}}catch(e){if(e&&e.name==='AbortError')return false}
   try{const b=new Blob([data],{type:'text/calendar'});const url=URL.createObjectURL(b);const a=document.createElement('a');a.href=url;a.download=name;document.body.append(a);a.click();setTimeout(()=>{URL.revokeObjectURL(url);a.remove()},1500);return true}catch(_){return false}}
@@ -3113,7 +3296,7 @@ function onbBurst(){
       s.animate([{transform:'translate(-50%,-50%) scale(.3)',opacity:1},{transform:`translate(calc(-50% + ${Math.cos(a)*r}px),calc(-50% + ${Math.sin(a)*r-80}px)) scale(${0.9+Math.random()*0.8}) rotate(${(Math.random()-.5)*540}deg)`,opacity:1,offset:.6},{transform:`translate(calc(-50% + ${Math.cos(a)*r*1.1}px),calc(-50% + ${Math.sin(a)*r+200}px)) rotate(${(Math.random()-.5)*720}deg)`,opacity:0}],{duration:1400+Math.random()*500,easing:'cubic-bezier(.2,.7,.3,1)',fill:'forwards'})}
     setTimeout(()=>box.remove(),2200)}
 }
-function finishOnb(){const o=ONB;if(o.menu!==S.menu)switchMenu(o.menu);S.start=o.start;LS.set('mp-start',S.start);LS.set(DAYS_KEY(),{shop:o.shop,cook:[o.c0,o.c1]});S.offset=0;syncWeek();
+function finishOnb(){const o=ONB;if(o.menu!==S.menu)switchMenu(o.menu);const pl=onbPlan(o);try{localStorage.removeItem(FIRST_KEY())}catch(_){}S.start=pl.start;LS.set('mp-start',S.start);LS.set(DAYS_KEY(),{shop:o.shop,cook:[o.c0,o.c1]});if(pl.skip)LS.set(FIRST_KEY(),{eat:o.start,cook:toISO(pl.cook),shop:toISO(pl.shop)});S.offset=0;syncWeek();
   closeOnb();go('today')}
 
 function go(v){if(S.week>3&&v!=='week')S.week=3;if(PEEK&&v==='settings')exitPeek();if(v==='week'){S.weekScrolled=false;S.weekScrolledD=false}S.view=v;if(location.hash.slice(1)!==v)history.replaceState(null,'','#'+v);window.scrollTo(0,0);render();if(scrollY)window.scrollTo(0,0);mbScroll()}
@@ -3124,12 +3307,12 @@ function mbar(){const el=$('mbar');if(!el)return;
   const wd=w=>{const a=dateOf(w,0),b=dateOf(w,6);return a?`${a.getDate()}–${b.getDate()} ${MON[b.getMonth()]}`:''};
   const fd=d=>d?fdate(d).toLowerCase():'';
   const h0=new Date().getHours(),hello=h0<5?'Доброй ночи':h0<12?'Доброе утро':h0<18?'Добрый день':'Добрый вечер';
-  if(v==='today'&&start()){const i=dayIdx(TODAY);if(i!==null&&i>=0&&i<28){const d=addDays(TODAY,S.offset);const ds=`${DOWF[d.getDay()]}, ${d.getDate()} ${MONF[d.getMonth()]}`;
+  if(v==='today'&&start()){const i=dayIdx(TODAY);if(i!==null&&i>=eatIdx()&&i<28){const d=addDays(TODAY,S.offset);const ds=`${DOWF[d.getDay()]}, ${d.getDate()} ${MONF[d.getMonth()]}`;
     t1=`${hello}${uname()?', '+uname():''}`;t2=ds;a1=uname()?`Привет, ${uname()}`:'';a2=`${DOW[d.getDay()][0].toUpperCase()+DOW[d.getDay()].slice(1)}, ${d.getDate()} ${MONF[d.getMonth()]}`;if(!PEEK){mzHTML=mzRow();if(mzHTML){eb=ds;a2='';t2=''}}}}
   if(v==='week'&&S.week===4){t1='Неделя 1';t2='следующий план';nav={prev:()=>stepWeek(-1),next:()=>{},cp:true,cn:false}}
   else if(v==='week'){t1=`Неделя ${S.week+1}`;t2=wd(S.week);nav={prev:()=>stepWeek(-1),next:()=>stepWeek(1),cp:canWeek(-1),cn:canWeek(1)}}
   if(v==='cook'){const cd=cookDate(S.week,S.cookSel);t1=`Готовка ${S.week*2+S.cookSel+1}`;t2=`${S.cookSel?'Короткая':'Большая'}${cd?', '+fd(cd):''}`;a2=`${S.cookSel?'Короткая':'Большая'}${cd?` · ${cd.getDate()} ${MON[cd.getMonth()]}`:''}`;const P=PAGERS.cook;nav={prev:()=>slidePage(P.t,-1,()=>P.go(-1)),next:()=>slidePage(P.t,1,()=>P.go(1)),cp:P.can(-1),cn:P.can(1)}}
-  if(v==='shop'){const od=orderDate(S.week);t1='Покупки';t2=`Неделя ${S.week+1}${od?`, заказ ${od.getDate()} ${MON[od.getMonth()]}`:''}`;a2=`Неделя ${S.week+1}${od?` · ${od.getDate()} ${MON[od.getMonth()]}`:''}`;nav={prev:()=>{S.week--;render()},next:()=>{S.week++;render()},cp:S.week>0,cn:S.week<3}}
+  if(v==='shop'){const od=orderDate(S.week);t1='Покупки';t2=`На ${wd(S.week)}${od?` · заказ ${od.getDate()} ${MON[od.getMonth()]}`:''}`;nav={prev:()=>{S.week--;render()},next:()=>{S.week++;render()},cp:S.week>0,cn:S.week<3}}
   if(v==='kb'||v==='recipes'){t1='Рецепты';t2=''}
   if(a1){t1=a1;a1=''}if(a2){t2=a2;a2=''}
   const pushed=v==='recipes'&&BACK;const xback=!pushed&&BACK&&BACK.view!==v&&!PEEK&&v!=='settings';
@@ -3155,15 +3338,16 @@ function mbFit(){const tx=document.querySelector('#mbar .ml-tx');if(!tx)return;t
 addEventListener('resize',()=>{if(document.body.classList.contains('has-mbar'))mbFit()});
 let MBIO=null;
 function mbScroll(){const ml=document.querySelector('#mbar .ml');if(!ml){document.body.classList.remove('mb-stuck');return}
-  if(!MBIO)MBIO=new IntersectionObserver(([e])=>document.body.classList.toggle('mb-stuck',!e.isIntersecting&&e.boundingClientRect.top<56),{rootMargin:'-56px 0px 0px 0px'});
-  const r=ml.getBoundingClientRect();document.body.classList.toggle('mb-stuck',r.bottom<=56&&r.top<56);MBIO.disconnect();MBIO.observe(ml)}
+  if(!MBIO)MBIO=new IntersectionObserver(([e])=>document.body.classList.toggle('mb-stuck',!e.isIntersecting&&e.boundingClientRect.top<56&&scrollY>4),{rootMargin:'-56px 0px 0px 0px'});
+  const r=ml.getBoundingClientRect();document.body.classList.toggle('mb-stuck',r.bottom<=56&&r.top<56&&scrollY>4);MBIO.disconnect();MBIO.observe(ml)}
+let MBRAF=0;addEventListener('scroll',()=>{if(MBRAF)return;MBRAF=requestAnimationFrame(()=>{MBRAF=0;const ml=document.querySelector('#mbar .ml');if(!ml)return;const r=ml.getBoundingClientRect();const st=r.bottom<=56&&scrollY>4;if(document.body.classList.contains('mb-stuck')!==st)document.body.classList.toggle('mb-stuck',st)})},{passive:true});
 let LASTV=null;
 document.addEventListener('toggle',e=>{const d=e.target;if(d&&d.tagName==='DETAILS'&&d.open){d.classList.add('acc-anim');setTimeout(()=>d.classList.remove('acc-anim'),260)}},true);
 function render(){
   const keepY=LASTV===S.view?scrollY:null;LASTV=S.view;
   renderNav();
   document.body.classList.toggle('on-recipes',S.view==='recipes');
-  document.body.classList.toggle('on-today',S.view==='today');document.body.classList.toggle('pre-start',S.view==='today'&&!!start()&&dayIdx(TODAY)<0);
+  document.body.classList.toggle('on-today',S.view==='today');document.body.classList.toggle('nonum',NONUM());document.body.classList.toggle('pre-start',S.view==='today'&&!!start()&&dayIdx(TODAY)<eatIdx());
   {const cb=$('cookbar');if(cb&&S.view!=='cook')cb.hidden=true}
   [...VIEWS.map(v=>v[0]),'kb','settings'].forEach(v=>$('v-'+v).hidden=v!==S.view);
   const pv=$('v-'+S.view),pr=pv&&pv.querySelector('.cpills,.utabs');const prevSL=pr&&pr.dataset.v===S.view?pr.scrollLeft:null;
