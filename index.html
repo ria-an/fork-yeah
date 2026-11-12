@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
 <meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
 <title>Fork Yeah</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,7 +13,7 @@
 :root{
   /* Тёплый светлый «рабочий стол»: серая подложка → рамка приложения → серые лотки → белые карточки. Монохром, тонкие линии, цифры моноширинным. Одна светлая тема. */
   --page:#e9e7e2; --shell:#f6f5f2; --tray:#f1f0ec; --panel:#ffffff;
-  --line:#e3e1dc; --line-2:#d6d4ce; --ink:#1b1b19; --ink-2:#3d3c39; --muted:#77766f; --faint:#a3a29b;
+  --line:#e3e1dc; --line-2:#d6d4ce; --ink:#1b1b19; --ink-2:#3d3c39; --muted:#696560; --faint:#6F6B67;
   --green:#3c9a68; --amber:#c9822b; --blue:#4a72c9; --teal:#2f8f86;
   --font:"Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --mono:"Geist Mono", ui-monospace, "SF Mono", Menlo, monospace;
@@ -603,12 +604,12 @@ dialog[data-state="closing"] .sheet{transition-duration:140ms}
 @media (max-width:560px){.kpis > .kpi:nth-child(3):last-child{grid-column:span 2}.kpis{grid-template-columns:1fr 1fr!important}.kpi .in{padding:10px 12px}.kpi .val{font-size:20px}.tbl .qty{display:none}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @media (prefers-reduced-transparency:reduce){.msect{background:var(--shell)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
-@media (prefers-contrast:more){:root{--line:#bdbab3;--line-2:#9c9990;--muted:#55544f;--faint:#77766f}.btn,.eatbtn,.tag{border-color:var(--line-2)}}
+@media (prefers-contrast:more){:root{--line:#bdbab3;--line-2:#9c9990;--muted:#4F4C48;--faint:#55524E}.btn,.eatbtn,.tag{border-color:var(--line-2)}}
 @media (prefers-reduced-motion:reduce){.sheet,dialog[data-state] .sheet{transition:opacity 180ms ease!important}}
 
 
 /* ===== Theme v5: тёплый мягкий (референс Oculis) ===== */
-:root{--page:#d6d2ce;--shell:#f2f0ee;--tray:#f3f2f0;--panel:#fff;--line:#ebe8e4;--line-2:#ddd9d4;--ink:#1d1b19;--ink-2:#3a3734;--muted:#7a7570;--faint:#aba59f;--accent:#a9562a;
+:root{--page:#d6d2ce;--shell:#f2f0ee;--tray:#f3f2f0;--panel:#fff;--line:#ebe8e4;--line-2:#ddd9d4;--ink:#1d1b19;--ink-2:#3a3734;--muted:#696560;--faint:#6F6B67;--accent:#a9562a;
   --sh-1:0 1px 2px rgba(45,35,25,.05),0 3px 10px rgba(45,35,25,.04);--sh-2:0 1px 2px rgba(45,35,25,.05),0 8px 22px rgba(45,35,25,.08);
   --font:"Inter",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif}
 body{font-size:14.5px;letter-spacing:-.006em}
@@ -688,9 +689,9 @@ h2 .cnt{background:#e8e5e1;border:0;border-radius:999px;padding:1px 7px;font-wei
 @media (min-width:861px){
   .topzone{position:sticky;top:0;z-index:25;background:var(--panel);margin:-22px -28px 0;padding:22px 28px 14px;border-radius:24px 24px 0 0}
   .topzone.stuck{box-shadow:0 1px 0 var(--line),0 8px 16px -12px rgba(45,35,25,.18);border-radius:0;padding-top:14px;padding-bottom:12px}
-  .topzone.stuck h1{transform:scale(.75)}
+  .topzone.stuck .htext h1{transform:scale(.75)}
   .topzone.stuck .hsub{display:none}
-  .topzone h1{transform-origin:left center;transition:transform 200ms var(--ease-out,ease)}
+  .topzone .htext h1{transform-origin:left center;transition:transform 200ms var(--ease-out,ease)}
 }
 
 /* ===== Week kanban — more air (web) ===== */
@@ -983,7 +984,7 @@ input:disabled{opacity:.6;cursor:not-allowed}
   body .main{padding-top:0!important}
   .topzone{position:sticky;top:0;z-index:25;margin:0 -16px;padding:calc(14px + env(safe-area-inset-top)) 16px 12px;background:var(--panel)}
   .topzone.stuck{box-shadow:0 1px 0 var(--line),0 8px 16px -14px rgba(45,35,25,.25);padding-top:calc(8px + env(safe-area-inset-top));padding-bottom:8px}
-  .topzone.stuck h1{font-size:20px!important}
+  .topzone.stuck .htext h1{font-size:20px!important}
   .topzone.stuck .hsub{display:none}
   .topzone.stuck .head{align-items:center}
   .topzone.stuck .daynav{height:36px;width:36px}
@@ -1106,7 +1107,7 @@ body.onb-on{overflow:hidden}
 @media (max-width:860px){
   body.on-today .topzone .head{display:grid!important;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:10px;row-gap:2px}
   body.on-today .topzone .htext{display:contents}
-  body.on-today .topzone h1{grid-column:1;grid-row:1}
+  body.on-today .topzone .htext h1{grid-column:1;grid-row:1}
   body.on-today .topzone .headacts{grid-column:2;grid-row:1}
   body.on-today .topzone .hsub{grid-column:1/-1;grid-row:2;margin:0}
 }
@@ -1126,7 +1127,7 @@ body.onb-on{overflow:hidden}
 }
 @media (min-width:861px){.htoday{display:none}}
 html.sheet-open{overflow:hidden}
-@media (max-width:860px){body.on-today .topzone h1{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}}
+@media (max-width:860px){body.on-today .topzone .htext h1{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}}
 
 /* ===== Motion pass ===== */
 @keyframes stepIn{from{opacity:0;transform:translateY(6px)}}
@@ -1147,16 +1148,15 @@ html.sheet-open{overflow:hidden}
 .utabs button:active,.cpills button:active,.mchips button:active,.htoday:active,.ob-back:active,.cg-x:active{transform:scale(.96)}
 @keyframes posterIn{from{opacity:0;transform:scale(.96)}}
 @keyframes stkIn{0%{scale:1.8;opacity:0}60%{scale:.92;opacity:1}100%{scale:1;opacity:1}}
-.cd-wait{background:linear-gradient(158deg,#FF9152 0%,#FF5A1F 48%,#E03F13 100%);color:#FFE9DD}
-.cd-soon{display:grid;place-items:center;align-content:center;text-align:center;padding:30px 72px;min-height:200px}
-.cd-soon .dc-w{position:relative;z-index:1;max-width:100%!important;font-size:clamp(34px,9.5vw,48px);line-height:.92;margin-top:-4px}
-.cd-big{position:relative;z-index:1;display:grid;justify-items:center;gap:2px;max-width:100%;margin-top:-6px}
-.cd-big b{font-family:'Unbounded',var(--font);font-weight:800;font-size:clamp(66px,20vw,92px);line-height:.8;letter-spacing:-.055em;font-synthesis:none}
-.cd-big span{font-family:'Unbounded',var(--font);font-weight:800;font-size:16px;line-height:1.15;letter-spacing:-.01em}
-.cd-soon .dc0{left:16px!important;right:auto!important;top:16px!important;bottom:auto!important;font-size:38px!important}
-.cd-soon .dc1{right:14px!important;left:auto!important;top:18px!important;bottom:auto!important;font-size:36px!important}
-.cd-soon .dc2{left:20px!important;right:auto!important;bottom:14px!important;top:auto!important;font-size:34px!important}
-.cd-soon .dc3{right:16px!important;left:auto!important;bottom:12px!important;top:auto!important;font-size:40px!important}
+.menustrip{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x;padding:0;scrollbar-width:none}
+.menustrip::-webkit-scrollbar{display:none}
+.ms-c{all:unset;box-sizing:border-box;flex:0 0 152px;scroll-snap-align:start;display:grid;gap:10px;align-content:start;cursor:pointer;background:var(--panel);border-radius:14px;box-shadow:var(--sh-1);padding:12px 14px 14px;-webkit-tap-highlight-color:transparent;transition:transform 140ms var(--ease-out)}
+.ms-c:active{transform:scale(.97)}
+.ms-c .media{width:100%;height:auto;aspect-ratio:4/3;border-radius:11px;min-height:0;margin:0}
+.ms-c .media .gl{display:none}
+.ms-c .media .w{font-size:min(32px,calc(72cqw / var(--n) * 1.05))}
+.ms-n{font-size:13px;line-height:1.3;color:var(--ink);min-height:calc(13px * 1.3 * 2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media (prefers-reduced-motion:reduce){.cd-soon.pop{animation:none}.ms-c{transition:none}}
 .cd-soon .dc-sub{opacity:.9}
 .cd-soon:not(.cd-wait){cursor:pointer}
 .dayclosed.pop{animation:posterIn 300ms var(--ease-out) both}
@@ -1206,7 +1206,6 @@ html.sheet-open{overflow:hidden}
 .as-det .as-out{margin-top:6px}
 .as-cook{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:12px;padding:12px;font:inherit;color:inherit;cursor:pointer;min-height:44px}
 .as-cook .grow{display:grid;gap:2px;flex:1}.as-cook b{font-weight:600}
-.as-cook:hover{border-color:var(--ink-2)}
 .after .inner{gap:12px!important}.as-step{margin-bottom:6px}
 .trayhead .as-date{margin-left:auto}.after .as-step{margin:0}
 /* разложи покупки v3 */
@@ -1279,7 +1278,7 @@ details.after[open]::details-content{height:auto}
   body.mb-pushed .ml{display:none}
   .ml-1,.ml-2{margin:0;font-size:30px;line-height:1.12;letter-spacing:-.03em;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .ml-1{color:var(--ink)}
-  .ml-2{color:#9a958d;font-weight:600}
+  .ml-2{color:var(--faint);font-weight:600}
   body.mb-pushed .topzone{padding-top:calc(60px + env(safe-area-inset-top))!important}
 }
 @media (max-width:860px){
@@ -1398,11 +1397,11 @@ details.acc-anim[open]>:not(summary){animation:accIn 180ms var(--ease-out,ease-o
 .mcard.mini .slotl{font-size:12px;color:var(--muted)}
 .mcard.mini .mini-d{font-size:14px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mcard.mini .eatbtn{margin-left:0;flex:none}
-button.past[data-wd]:not([aria-selected="true"]){opacity:.42}
+button.past[data-wd]:not([aria-selected="true"]){opacity:.62}
 .fh-h{margin:6px 0 -2px;font-weight:600;color:var(--ink-2)}
 .kf{display:grid;gap:10px;padding:12px;border-radius:14px;background:var(--tray)}
 .kf-t{margin:0;display:grid;gap:3px;font-size:13px;line-height:1.4}.kf-t span{color:var(--muted)}
-button.skip[data-wd]:not([aria-selected="true"]){opacity:.42}button.skip[data-wd] i{visibility:hidden}
+button.skip[data-wd]:not([aria-selected="true"]){opacity:.62}button.skip[data-wd] i{visibility:hidden}
 .wd-skip{display:flex;gap:12px;align-items:center;padding:16px;background:var(--panel);border-radius:14px}.wd-skip .emo{font-size:32px}.wd-skip p{margin:0;display:grid;gap:3px}.wd-skip span{color:var(--muted);font-size:14px}
 .sched .inner{padding:4px 0}
 .srow{position:relative;display:flex;align-items:center;gap:12px;min-height:52px;padding:6px 14px 6px 12px;cursor:pointer;-webkit-tap-highlight-color:transparent}
@@ -1780,6 +1779,31 @@ body.nonum .mcard .k,body.nonum .khead .k,body.nonum .mbju,body.nonum .desk-kpis
 .sos-chips{gap:6px!important}
 .sos-c{min-height:34px!important;padding:0 10px 0 8px!important;gap:4px!important;font-size:14px!important}
 .sos-res .trayhead h2{font-size:17px}
+
+/* ===== «Ещё N шагов» ===== */
+.ahmore{all:unset;box-sizing:border-box;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;width:100%;min-height:44px;padding:0 10px;margin-top:6px;border-top:1px solid var(--line);font-size:14px;font-weight:500;color:var(--muted);-webkit-tap-highlight-color:transparent;transition:color 150ms ease,transform 160ms var(--ease-out)}
+.ahmore .ahc{transition:transform 200ms var(--ease-out);color:var(--faint);transform:rotate(90deg)}
+.ahmore.up .ahc{transform:rotate(-90deg)}
+.ahmore:active{transform:scale(.98)}
+.tray:has(.ahmore) .inner+.ahmore{margin-top:0}
+@media (hover:hover) and (pointer:fine){.ahmore:hover{color:var(--ink)}}
+
+/* ===== Touch targets: 44px minimum ===== */
+@media (pointer:coarse){
+  .btn:not(.daynav):not(.tback):not(.todaybtn){height:44px!important}
+  .cb-acts .btn,.mactions .btn{height:44px!important}
+  .pseg button{height:40px}
+  .seg button{min-height:40px}
+  .trayhead{min-height:44px}
+  .btn.daynav,.btn.tback,.btn.todaybtn,.eatbtn,.sos-c{position:relative}
+  .btn.daynav::after,.btn.tback::after,.btn.todaybtn::after,.eatbtn::after,.sos-c::after{content:"";position:absolute;inset:-5px -4px}
+  .utabs button{position:relative}
+  .utabs button::after{content:"";position:absolute;inset:-7px 0}
+}
+/* ===== Длинные слова не ломают вёрстку ===== */
+h1,h2,h3,.ml-1,.ml-2,.dish,.cn-h{overflow-wrap:anywhere}
+.trayhead h2{min-width:0}
+@media (hover:hover) and (pointer:fine){.as-cook:hover{border-color:var(--ink-2)}}
 </style>
 <body>
 <div id="splash" aria-hidden="true"><div class="spl-c"><div class="spl-ic"><svg class="appic" viewBox="0 0 120 120"><rect width="120" height="120" rx="27" fill="#FF5A1F"/><rect x="22" y="56" width="76" height="42" rx="10" fill="#fff"/><rect class="sp-lid" x="18" y="48" width="84" height="12" rx="6" fill="#FFD9C7"/><g class="sp-eyes"><circle cx="44" cy="40" r="15" fill="#fff"/><circle cx="76" cy="44" r="9" fill="#fff"/><g class="sp-pup"><circle cx="50" cy="45" r="6" fill="#161614"/><circle cx="73" cy="42" r="4" fill="#161614"/></g></g><path d="M46 74 q14 10 28 0" fill="none" stroke="#161614" stroke-width="5" stroke-linecap="round"/><path class="sp-tongue" d="M60 79 v6 q0 6 -5 6 q-5 0 -5 -6 v-4" fill="#FF8FB1"/></svg></div><div class="spl-w"><span>Fork</span> <span>Yeah</span></div><div class="spl-t">вилкой и по плану</div></div><span class="spl-s s0">🥦</span><span class="spl-s s1">🍗</span><span class="spl-s s2">🧀</span><span class="spl-s s3">🥕</span><span class="spl-s s4">🍝</span><span class="spl-s s5">🍳</span></div><script>(function(){try{var s=document.getElementById('splash');if(window.__IPHOST||navigator.webdriver||sessionStorage.getItem('fy-splash')){s.remove();return}sessionStorage.setItem('fy-splash','1');var k=function(){if(!s.isConnected||s.classList.contains('out'))return;s.classList.add('out');setTimeout(function(){s.remove()},580)};s.addEventListener('click',k);setTimeout(k,matchMedia('(prefers-reduced-motion:reduce)').matches?600:2500)}catch(e){}})()</script>
@@ -2397,7 +2421,7 @@ var SHORT={B_oat_apple:'ОВ|СЯНКА',B_oat_banana:'ОВ|СЯНКА',B_scramb
  H_chick_buck:'КУРИ|ЦА',H_cutlets_mash:'КОТ|ЛЕТЫ',H_plov:'ПЛОВ',H_tuna_quinoa:'ТУ|НЕЦ',L_soup_pumpkin:'ТЫК|ВА',L_soup_lentil:'ЧЕЧЕ|ВИЦА',H_hedgehogs_mash:'ЁЖИ|КИ',H_hedgehogs_buck:'ЁЖИ|КИ',
  H_teriyaki:'ТЕРИ|ЯКИ',H_chick_pasta:'ПАС|ТА',H_chick_pasta_cream:'ПАС|ТА',H_tuna_pasta:'ПАС|ТА',H_fishcakes_buck:'ГОРБУ|ША',H_fishcakes_potato:'ГОРБУ|ША',H_golubtsy:'ЗАПЕ|КАНКА',H_mac_bake:'ЗАПЕ|КАНКА',
  H_chick_couscous:'КУС|КУС',H_buck_merchant:'ГРЕЧ|КА',H_lentil_egg:'ЧЕЧЕ|ВИЦА',H_cutlets_buck:'КОТ|ЛЕТЫ',H_chick_potato:'КУРИ|ЦА',H_omelet:'ОМ|ЛЕТ',H_beans_eggs:'ФА|СОЛЬ',H_thigh_quinoa:'КИ|НОА',H_thigh_bulgur:'БУЛ|ГУР'};
-const PAL={red:['#FF5A36','#FFE7DF'],ink:['#161614','#FFD23F'],blue:['#3157F5','#E3E9FF'],green:['#13A15A','#E1F7E9'],yellow:['#FFC93C','#1B1407'],pink:['#FF6FB0','#2A0B19'],orange:['#FF8A1F','#2A1300']};
+const PAL={red:['#FF5A36','#FFF7F4'],ink:['#161614','#FFD23F'],blue:['#3157F5','#E3E9FF'],green:['#13A15A','#EEFCF4'],yellow:['#FFC93C','#1B1407'],pink:['#FF6FB0','#2A0B19'],orange:['#FF8A1F','#2A1300']};
 const PAL_OF={grain:'blue',cutlets:'red',oven:'orange',pasta:'yellow',bake:'ink',bake2:'pink',soup:'orange',salad:'green',eggs:'yellow',toast:'ink',oat:'green',yogurt:'ink',syrniki:'red',cottage:'pink',cookies:'blue',smoothie:'ink',apple:'red'};
 function glyph(k,fg){return `<svg class="gl" viewBox="14 12 92 58" aria-hidden="true" fill="none" stroke="${fg}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${ART[k](fg).replace(/fill="#fff"/g,'fill="none"').replace(/stroke="#fff"/g,'stroke="none"').replace(/fill="#(?!fff)[0-9a-fA-F]{3,6}"/g,`fill="${fg}" fill-opacity=".22"`)}</svg>`}
 const photoKey=id=>'mp-ph-'+id;
@@ -2848,22 +2872,23 @@ function vToday(){
   S.offset=0;const idx=dayIdx(TODAY)+S.offset;const date=addDays(st,idx);
   const nav=`<button class="btn daynav mob set-open" aria-label="Настройки">${ic('gear')}</button>`;
   const E0=eatIdx();if(idx<E0){const left=E0-idx;
-    setHead('Сегодня','Скоро старт',nav);$('hsub').hidden=false;$('hsub').textContent=`${left===1?'Завтра':'Через '+left+' '+plural(left,'день','дня','дней')} — ${fdate(firstEat())}`;
+    {const h0=new Date().getHours();const hi=h0<5?'Доброй ночи':h0<12?'Доброе утро':h0<18?'Добрый день':'Добрый вечер';
+     setHead('Сегодня',`${hi}${uname()?', '+uname():''}`,nav);$('hsub').hidden=false;$('hsub').textContent=`${DOWF[TODAY.getDay()]}, ${TODAY.getDate()} ${MONF[TODAY.getMonth()]}`}
     const fc=cookEmpty(0,0)?1:0;const od=orderDate(0),cd=cookDate(0,fc);
     const rel=dt=>{const n=Math.round((dt-TODAY)/864e5);return n===0?'сегодня':n===1?'завтра':n===-1?'вчера':n<0?'уже прошло':`через ${n} ${plural(n,'день','дня','дней')}`};
     const tl0=LS.get(mkey(`mp-tl-0-${fc}`),{});const stDone=Object.values(tl0).filter(Boolean).length;
     const stAll=(TL[0]&&TL[0][fc]?TL[0][fc].steps.length:0);const cookOk=!!stAll&&stDone>=stAll;
     const dv0=dateOf(0,delivOff(0));
-    const d0=WEEKS[0]&&WEEKS[0].days[E0];const ses=[];if(d0)d0.meals.forEach(m=>{const x=dishEmos(m.id).find(e=>!ses.includes(e));if(x)ses.push(x)});
-    while(ses.length<4)ses.push(['🥦','🍗','🥕','🍝'][ses.length]);
-    const big=left<2?`<div class="dc-w">${left?'ЗАВТРА<br>СТАРТ':'СЕГОДНЯ<br>СТАРТ'}</div>`
-      :`<div class="cd-big"><b>${left}</b><span>${plural(left,'ДЕНЬ','ДНЯ','ДНЕЙ')}<br>ДО СТАРТА</span></div>`;
-    const soon=`<div class="dayclosed cd-soon${left?' cd-wait':''}${popOnce('soon-'+toISO(TODAY))}" id="soonPoster" role="status">${big}${ses.slice(0,4).map((e,i)=>emo(e,'dc'+i)).join('')}</div>`;
-    el.innerHTML=`<div class="stack" id="tstack">${soon}${cookOk
+    const d0=WEEKS[0]&&WEEKS[0].days[E0];
+    el.innerHTML=`<div class="stack" id="tstack">${cookOk
       ? `<button class="sp-done ready${popOnce('ready-'+S.menu)}" data-go="week" role="status"><span class="sp-ck">${ic('check')}</span><span class="sp-t"><b>Всё готово к старту</b><small>Еда в контейнерах. Первый приём — ${fdate(firstEat())}</small></span>${emo('🎉','sp-e')}</button>`
-      : `<div class="tray"><div class="trayhead"><h2>Перед стартом<span class="cnt">3</span></h2></div><div class="inner">${row('shop','Заказать продукты',`${fdate(od)} · ${rel(od)}`,'data-go="shop" data-cw="0"')}${row('box','Разложить покупки',`${fdate(dv0)} · ${rel(dv0)} · что в морозилку, что в холодильник`,'data-go="shop" data-cw="0" data-after="1"')}${row('cook','Первая большая готовка',`${fdate(cd)} · ${rel(cd)} · ≈${tlTotal(0,fc)} мин`,`data-go="cook" data-cw="0" data-cs="${fc}"`)}</div></div>`}
+      : `<div class="tray"><div class="trayhead"><h2>Перед стартом<span class="cnt">3</span></h2></div><div class="inner">${(()=>{const L=[[od,'shop','Заказать продукты','data-go="shop" data-cw="0"',''],[dv0,'box','Разложить покупки','data-go="shop" data-cw="0" data-after="1"','что в морозилку, что в холодильник'],[cd,'cook','Первая большая готовка',`data-go="cook" data-cw="0" data-cs="${fc}"`,`≈${tlTotal(0,fc)} мин`]];
+      const nx=L.findIndex(x=>Math.round((x[0]-TODAY)/864e5)>=0);
+      return L.map(([dt,icn,ttl,at,tail],i)=>row(icn,ttl,[fdate(dt),i===nx?rel(dt):'',tail].filter(Boolean).join(' · '),at)).join('')})()}</div></div>`}
+${(()=>{const dd=WEEKS[0]&&WEEKS[0].days[E0];if(!dd||!dd.meals.length)return '';
+      return `<div class="tray"><div class="trayhead"><h2>Что тебя ждёт</h2></div>
+        <div class="menustrip" role="list">${dd.meals.map((m,mi)=>`<button class="ms-c" role="listitem" data-meal="0|${E0}|${mi}">${media(m.id,'',pkOf(0,E0,mi))}<span class="ms-n">${esc(m.n.split(',')[0])}</span></button>`).join('')}</div></div>`})()}
 </div>`;
-    {const sp=$('soonPoster');if(sp&&left<=1)sp.onclick=()=>{try{navigator.vibrate&&navigator.vibrate(8)}catch(_){}confetti()}}
     {const tk=$('tstack');if(tk&&isMob()){tk.insertAdjacentHTML('beforeend',`<button class="sos-entry" id="sosOpen">${emo('🧡')}<span><b>Еда закончилась?</b><small>Ничего страшного — соберём что-нибудь простое</small></span>${ic('chev')}</button>`);if($('sosOpen'))$('sosOpen').onclick=openSOS}}
     bindToday(el);return;
   }
@@ -2916,7 +2941,7 @@ function vToday(){
   bindToday(el);bindNext(el);
 }
 const MASCOT='<svg class="appic" viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="27" fill="#FF5A1F"/><rect x="22" y="56" width="76" height="42" rx="10" fill="#fff"/><rect x="18" y="48" width="84" height="12" rx="6" fill="#FFD9C7"/><circle cx="44" cy="40" r="15" fill="#fff"/><circle cx="76" cy="44" r="9" fill="#fff"/><circle cx="50" cy="45" r="6" fill="#161614"/><circle cx="73" cy="42" r="4" fill="#161614"/><path d="M46 74 q14 10 28 0" fill="none" stroke="#161614" stroke-width="5" stroke-linecap="round"/><path d="M60 79 v6 q0 6 -5 6 q-5 0 -5 -6 v-4" fill="#FF8FB1"/></svg>';
-let SLIDE=null;const FOLDOPEN={};let PREPTAB='prod';
+let SLIDE=null;const FOLDOPEN={};let PREPTAB='prod';let AHEADALL=false;
 function prepTick(inp){const row=inp.closest('.prow-r');if(!row)return;const box=row.parentElement;
   row.classList.toggle('got',inp.checked);
   const rows=[...box.children];const F=new Map(rows.map(r=>[r,r.getBoundingClientRect().top]));
@@ -3185,14 +3210,15 @@ function vCook(){if(cookEmpty(S.week,S.cookSel)){const n=S.cookSel===0?1:0;if(!c
     }
     if(allDone)L=B(1,`<div class="cdone dayclosed${popOnce('cookx-'+w+'-'+c)}"><div class="dc-w">ГОТОВКА<br>ЗАКРЫТА</div><div class="dc-sub mono">${s.steps.length} из ${s.steps.length} шагов</div>${['🍗','🥦','🥕','🍝'].map((e,i)=>emo(e,'dc'+i)).join('')}</div>`);
     L+=B(2,`<div id="timers"></div>`);
-    R=B(3,ahead.length?`<div class="tray"><div class="trayhead"><h2>Следующие шаги<span class="cnt">${ahead.length}</span></h2></div>${stepRows(ahead,true)}</div>`:'')+B(5,fold('Разложи',`${s.out.reduce((a,o)=>a+(o[4]?o[4].length:1),0)} ${plural(s.out.reduce((a,o)=>a+(o[4]?o[4].length:1),0),'порция','порции','порций')}`,outBody,allDone,'outTray'))+B(6,past.length?fold('Сделано',past.length,stepRows(past,true),false):'')+B(8,reset);
+    const AN=3,more=Math.max(0,ahead.length-AN),shown=AHEADALL?ahead:ahead.slice(0,AN);
+    R=B(3,ahead.length?`<div class="tray"><div class="trayhead"><h2>Следующие шаги<span class="cnt">${ahead.length}</span></h2></div>${stepRows(shown,true)}${more?`<button class="ahmore${AHEADALL?' up':''}" id="ahMore">${AHEADALL?'Свернуть':`Ещё ${more} ${plural(more,'шаг','шага','шагов')}`}${ic('chev','ahc')}</button>`:''}</div>`:'')+B(5,fold('Разложи',`${s.out.reduce((a,o)=>a+(o[4]?o[4].length:1),0)} ${plural(s.out.reduce((a,o)=>a+(o[4]?o[4].length:1),0),'порция','порции','порций')}`,outBody,allDone,'outTray'))+B(6,past.length?fold('Сделано',past.length,stepRows(past,true),false):'')+B(8,reset);
   }
   const cpills=`<div class="utabs mob cpills" role="group" aria-label="Готовки">${[0,1,2,3,4,5,6,7].map(i=>{const dt=cookDate(Math.floor(i/2),i%2);return `<button data-ci="${i}" aria-pressed="${i===ci}">${dt?`${DOW[dt.getDay()]} ${dt.getDate()}`:`Н${Math.floor(i/2)+1}${i%2?' · 2':''}`}<small>${i%2?'короткая':'большая'}</small></button>`}).join('')}</div>`;
   const locked=phase!=='before';CLOCKED=locked;
   const prepBar=phase==='prep'?`<div class="pfix"><div class="pf-in"><div class="pf-b"><button class="btn" id="cSkip">Пропустить</button><button class="btn dark" id="cGo">${ic('check')}<span>Готово</span></button></div></div></div>`:'';
   document.body.classList.toggle('cook-prep',phase==='prep');document.body.classList.toggle('cook-run',phase==='during');requestAnimationFrame(syncTabH);
   el.innerHTML=`${locked?'':cpills}<div class="cookv"><div class="ccol">${L}</div><div class="ccol">${R}</div></div>${prepBar}`;
-  el.querySelectorAll('[data-ci]').forEach(b=>b.onclick=()=>{const i=+b.dataset.ci;S.week=Math.floor(i/2);S.cookSel=i%2;S.cover=i;S.csteps=-1;render()});
+  el.querySelectorAll('[data-ci]').forEach(b=>b.onclick=()=>{const i=+b.dataset.ci;S.week=Math.floor(i/2);S.cookSel=i%2;S.cover=i;S.csteps=-1;AHEADALL=false;render()});
   bindWeeks(el);
   const setStep=(i,on,wait,tid,label)=>{if(on){done[i]=true;if(wait&&!TIMERS[tid]){TIMERS[tid]={end:Date.now()+wait*60000,label};LS.set('mp-timers',TIMERS)}}else delete done[i];LS.set(key,done);
     if(order.every(o=>done[o.i])){let ch=false;Object.keys(TIMERS).forEach(k=>{if(k.startsWith(`${w}-${c}-`)){delete TIMERS[k];ch=true}});if(ch){LS.set('mp-timers',TIMERS);timerSig=''}
@@ -3208,6 +3234,7 @@ function vCook(){if(cookEmpty(S.week,S.cookSel)){const n=S.cookSel===0?1:0;if(!c
     el.querySelectorAll('[data-pane]').forEach(p=>{const on=p.dataset.pane===t;p.classList.toggle('on',on);
       if(on&&!RM.matches&&p.animate)p.animate([{opacity:0,transform:'translateY(6px)'},{opacity:1,transform:'none'}],{duration:220,easing:'cubic-bezier(.23,1,.32,1)'})});
     try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}});
+  if($('ahMore'))$('ahMore').onclick=()=>{const y=scrollY;AHEADALL=!AHEADALL;render();window.scrollTo({top:y,behavior:'instant'});try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}};
   el.querySelectorAll('details.fold[data-f]').forEach(d=>d.addEventListener('toggle',()=>{FOLDOPEN[d.dataset.f]=d.open}));
   el.querySelectorAll('[data-need]').forEach(i=>i.onchange=()=>{have[i.dataset.need]=i.checked;LS.set(nkey,have);
     if(i.closest('.prow-r')){prepTick(i);return}
@@ -3215,7 +3242,7 @@ function vCook(){if(cookEmpty(S.week,S.cookSel)){const n=S.cookSel===0?1:0;if(!c
   el.querySelectorAll('[data-rec]').forEach(b=>b.onclick=()=>openRecipe(b.dataset.rec));
   if($('resetCook'))$('resetCook').onclick=e=>{const b=e.currentTarget;if(!b.dataset.sure){b.dataset.sure=1;b.textContent='Точно? Прогресс и таймеры сотрутся';setTimeout(()=>{if(b.isConnected){delete b.dataset.sure;b.textContent='Начать заново'}},4000);return}
     LS.set(key,{});LS.set(skey,false);S.cover=-1;S.csteps=-1;Object.keys(TIMERS).forEach(k=>{if(k.startsWith(`${w}-${c}-`))delete TIMERS[k]});LS.set('mp-timers',TIMERS);timerSig='';render()};
-  {const pc=$('prevC'),nc=$('nextC');const goC=i=>{S.week=Math.floor(i/2);S.cookSel=i%2;S.cover=i;S.csteps=-1;render();window.scrollTo(0,0)};if(pc)pc.onclick=()=>{if(ci>0)goC(ci-1)};if(nc)nc.onclick=()=>{if(ci<7)goC(ci+1)}}
+  {const pc=$('prevC'),nc=$('nextC');const goC=i=>{S.week=Math.floor(i/2);S.cookSel=i%2;S.cover=i;S.csteps=-1;AHEADALL=false;render();window.scrollTo(0,0)};if(pc)pc.onclick=()=>{if(ci>0)goC(ci-1)};if(nc)nc.onclick=()=>{if(ci<7)goC(ci+1)}}
   el.querySelectorAll('[data-goout]').forEach(b=>b.onclick=()=>{const o=$('outTray');const d=o&&o.querySelector('details');if(d&&!d.open){d.open=true;FOLDOPEN['Разложи']=true}if(o)o.scrollIntoView({block:'start',behavior:RM.matches?'auto':'smooth'})});
   cookBar();timerSig='';
   tick();
@@ -3344,7 +3371,7 @@ function goBack(){if(!BACK)return;const b=BACK;BACK=null;
   Object.assign(S,{view:b.view,week:b.week,cookSel:b.cookSel,offset:b.offset});if(b.wday!=null)S.wday=b.wday;
   try{history.replaceState(null,'','#'+b.view)}catch(_){}render();window.scrollTo({top:b.y||0,behavior:'instant'});mbScroll();
   if(b.meal)requestAnimationFrame(()=>openMeal(...b.meal));}
-addEventListener('popstate',()=>{const v=location.hash.slice(1)||'today';if(BACK&&S.view!==BACK.view&&v===BACK.view){goBack()}else if(VIEWS.some(x=>x[0]===v)&&v!==S.view){S.view=v;render()}});
+addEventListener('popstate',()=>{const v=location.hash.slice(1)||'today';if(BACK&&S.view!==BACK.view&&v===BACK.view){goBack()}else if((VIEWS.some(x=>x[0]===v)||v==='settings'||v==='kb')&&v!==S.view){S.view=v;render()}});
 function recItem(r,extra='',pre='r-'){return `<details class="rd" id="${pre}${r[0]}" ${recOpen===r[0]&&pre==='r-'?'open':''}>
 <summary>${ic('chev','chev')}<span class="rname"><span>${esc(r[1])}</span>${extra}</span><span class="small muted rmeta">${esc(rmeta(r[2]))}</span></summary><div class="rec">
 <div class="rmeta-m small muted">${esc(rmeta(r[2]))}</div>${r[3]?`<p class="vibe">${esc(r[3])}</p>`:''}
@@ -3689,7 +3716,7 @@ function onbBurst(){
 function finishOnb(){const o=ONB;if(o.menu!==S.menu)switchMenu(o.menu);const pl=onbPlan(o);try{localStorage.removeItem(FIRST_KEY())}catch(_){}S.start=pl.start;LS.set('mp-start',S.start);LS.set(DAYS_KEY(),{shop:o.shop,cook:[o.c0,o.c1]});if(pl.skip||pl.own)LS.set(FIRST_KEY(),{eat:o.start,cook:toISO(pl.cook),shop:toISO(pl.shop)});rebuildBuiltin.s=null;rebuildBuiltin();S.offset=0;syncWeek();
   closeOnb();go('today')}
 
-function go(v){if(S.week>3&&v!=='week')S.week=3;if(v==='cook'){S.cover=-1;S.csteps=-1}if(PEEK&&v==='settings')exitPeek();if(v==='week'){S.weekScrolled=false;S.weekScrolledD=false}S.view=v;if(location.hash.slice(1)!==v)history.replaceState(null,'','#'+v);window.scrollTo(0,0);render();if(scrollY)window.scrollTo(0,0);mbScroll()}
+function go(v){if(S.week>3&&v!=='week')S.week=3;if(v==='cook'){S.cover=-1;S.csteps=-1;AHEADALL=false}if(PEEK&&v==='settings')exitPeek();if(v==='week'){S.weekScrolled=false;S.weekScrolledD=false}S.view=v;if(location.hash.slice(1)!==v)history.replaceState(null,'','#'+v);window.scrollTo(0,0);render();if(scrollY)window.scrollTo(0,0);mbScroll()}
 /* ---------- Мобильная шапка: плавающие стеклянные кнопки + двухстрочный заголовок ---------- */
 function mbar(){const el=$('mbar');if(!el)return;
   if(!isMob()){el.hidden=true;document.body.classList.remove('has-mbar');return}
@@ -3721,7 +3748,7 @@ function mbar(){const el=$('mbar');if(!el)return;
   const right=`${COOKBACK&&v==='cook'?'':extra}${nav&&!(COOKBACK&&v==='cook')?navG(inTitle?' gl-so':''):''}${v==='settings'?`<button class="gl gl-1 gl-so mb-close" aria-label="Закрыть настройки">${ic('x')}</button>`:v!=='today'||PEEK?'':`<button class="gl gl-1 set-open${inTitle?' gl-so':''}" aria-label="Настройки">${ic('gear')}</button>`}`;
   el.innerHTML=`<div class="mb-bar"><div class="mb-l">${back}</div><div class="mb-t">${esc(t1)}</div><div class="mb-r">${right}</div></div>
    ${PEEK?`<div class="pk-row"><button class="pk-back" aria-label="Вернуться к текущему плану">${ic('left')}<span>Текущий план</span></button></div>`:''}
-   <div class="ml${inTitle?' ml-g':''}${xback||ckback?' ml-xb':''}">${xback?`<button class="gl gl-1 mb-xback" aria-label="Назад: ${esc(BACK.label||'')}">${ic('left')}</button>`:ckback?`<button class="gl gl-1 mb-xback cook-back" aria-label="К обзору готовки">${ic('left')}</button>`:''}<div class="ml-tx">${eb?`<p class="ml-eb">${esc(eb)}</p>`:''}<h2 class="ml-1"${a1?` data-alt="${esc(a1)}"`:''}>${esc(t1)}</h2>${t2?`<p class="ml-2"${a2?` data-alt="${esc(a2)}"`:''}>${esc(t2)}</p>`:''}</div>${inTitle?(nav&&!(COOKBACK&&v==='cook')?navG(''):v==='today'&&!PEEK?`<button class="gl gl-1 set-open" aria-label="Настройки">${ic('gear')}</button>`:v==='settings'?`<button class="gl gl-1 mb-close" aria-label="Закрыть настройки">${ic('x')}</button>`:''):''}</div>${mzHTML}`;
+   <div class="ml${inTitle?' ml-g':''}${xback||ckback?' ml-xb':''}">${xback?`<button class="gl gl-1 mb-xback" aria-label="Назад: ${esc(BACK.label||'')}">${ic('left')}</button>`:ckback?`<button class="gl gl-1 mb-xback cook-back" aria-label="К обзору готовки">${ic('left')}</button>`:''}<div class="ml-tx">${eb?`<p class="ml-eb">${esc(eb)}</p>`:''}<h1 class="ml-1"${a1?` data-alt="${esc(a1)}"`:''}>${esc(t1)}</h1>${t2?`<p class="ml-2"${a2?` data-alt="${esc(a2)}"`:''}>${esc(t2)}</p>`:''}</div>${inTitle?(nav&&!(COOKBACK&&v==='cook')?navG(''):v==='today'&&!PEEK?`<button class="gl gl-1 set-open" aria-label="Настройки">${ic('gear')}</button>`:v==='settings'?`<button class="gl gl-1 mb-close" aria-label="Закрыть настройки">${ic('x')}</button>`:''):''}</div>${mzHTML}`;
   document.body.classList.toggle('mb-nobar',inTitle);
   el.hidden=false;document.body.classList.add('has-mbar');document.body.dataset.view=v;document.body.classList.toggle('mb-pushed',!!pushed);
   if(nav){el.querySelectorAll('.mb-prev').forEach(b=>b.onclick=()=>nav.cp&&nav.prev());el.querySelectorAll('.mb-next').forEach(b=>b.onclick=()=>nav.cn&&nav.next())}
