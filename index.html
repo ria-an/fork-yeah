@@ -379,8 +379,8 @@ a.btn{text-decoration:none;color:var(--ink)}a.btn.dark{color:#fff}
 .tabbar{display:none}
 @media (max-width:860px){
   .msect{display:none!important}
-  .main{padding-bottom:calc(96px + env(safe-area-inset-bottom))!important}
-  .tabbar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;z-index:30;left:50%;width:min(calc(100% - 40px),340px);transform:translateX(-50%);bottom:calc(8px + env(safe-area-inset-bottom));height:54px;padding:4px;border-radius:var(--r-2xl);box-sizing:border-box;
+  .main{padding-bottom:calc(var(--tabh,54px) + var(--bgap) + 28px)!important}
+  .tabbar{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));position:fixed;z-index:30;left:50%;width:min(calc(100% - 40px),340px);transform:translateX(-50%);bottom:var(--bgap);height:54px;padding:4px;border-radius:var(--r-2xl);box-sizing:border-box;
     background:rgba(250,249,246,.58);-webkit-backdrop-filter:blur(22px) saturate(190%) brightness(1.04);backdrop-filter:blur(22px) saturate(190%) brightness(1.04);
     border:1px solid rgba(255,255,255,.65);
     box-shadow:0 10px 30px -6px rgba(27,27,25,.22),0 1px 2px rgba(27,27,25,.08),inset 0 1px 0 rgba(255,255,255,.9),inset 0 -1px 1px rgba(27,27,25,.05)}
@@ -526,7 +526,7 @@ a.btn{text-decoration:none;color:var(--ink)}a.btn.dark{color:#fff}
   .media.ty.hero .w{font-size:min(44px,calc(70cqw / var(--n) * 1.05))!important;padding:14px 20px!important}
   .media.ty.hero .gl{width:18%!important}
   /* cook bar */
-  .cookbar:not([hidden]){display:grid;gap:10px;position:fixed;z-index:29;left:10px;right:10px;bottom:calc(70px + env(safe-area-inset-bottom));padding:12px 12px 12px 14px;border-radius:var(--r-xl);
+  .cookbar:not([hidden]){display:grid;gap:10px;position:fixed;z-index:29;left:10px;right:10px;bottom:calc(var(--tabh,54px) + var(--bgap) + 10px);padding:12px 12px 12px 14px;border-radius:var(--r-xl);
     background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(27,27,25,.1);box-shadow:0 12px 30px -10px rgba(27,27,25,.35)}
   .cb-head{all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;-webkit-tap-highlight-color:transparent}
   .cb-lab{flex:1;min-width:0;font-family:var(--mono);font-size:var(--fs-1);letter-spacing:.02em;color:var(--muted);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -581,6 +581,11 @@ a.btn{text-decoration:none;color:var(--ink)}a.btn.dark{color:#fff}
   --fs-5:17px;    /* заголовки секций */
   --fs-6:20px;    /* крупные заголовки */
   --r-xs:4px; --r-sm:8px; --r-md:12px; --r-lg:16px; --r-xl:20px; --r-2xl:24px; --r-pill:999px;
+  /* --bgap — зазор плавающих элементов от низа экрана: таббар нормально заходит
+     на зону домашней полоски, поэтому вычитаем из inset. --bpad — для панелей,
+     прижатых к низу, и контента под ними */
+  --bgap:max(10px,calc(env(safe-area-inset-bottom) - 18px));
+  --bpad:max(16px,calc(env(safe-area-inset-bottom) - 6px));
 }
 .btn,.eatbtn,.x,.navitem,.kevent,.ws,button.rowi,.status{transition:transform var(--t-fast) var(--ease-out),background-color var(--t-fast) ease,border-color var(--t-fast) ease,color var(--t-fast) ease}
 .btn:active,.eatbtn:active,.x:active,.kevent:active,.ws:active,.status:active{transform:scale(.97)}
@@ -913,6 +918,9 @@ input:disabled{opacity:.6;cursor:not-allowed}
   /* period pills */
   #v-week .utabs,#v-shop .utabs,#v-cook .cpills{display:flex!important;gap:6px;overflow-x:auto;scrollbar-width:none;background:none!important;padding:2px 0 4px!important;margin:0 -16px;padding-inline:16px!important;width:auto!important;border-radius:0!important}
   #v-week .utabs::-webkit-scrollbar,#v-shop .utabs::-webkit-scrollbar,#v-cook .cpills::-webkit-scrollbar{display:none}
+  /* горизонтальные ленты не должны отдавать перепрокрутку странице:
+     на айфоне это даёт рывок всего экрана */
+  #v-week .utabs,#v-shop .utabs,#v-cook .cpills,.mchips{overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch}
   #v-week .utabs button,#v-shop .utabs button,#v-cook .cpills button{all:unset;flex:none;box-sizing:border-box;height:40px;padding:0 16px;border-radius:var(--r-pill);background:var(--tray);font-size:var(--fs-3);font-weight:500;color:var(--ink-2);display:inline-flex;align-items:center;gap:6px;cursor:pointer;white-space:nowrap}
   #v-week .utabs button::before,#v-shop .utabs button::before{display:none!important}
   #v-week .utabs button small,#v-shop .utabs button small{display:none}
@@ -962,7 +970,7 @@ input:disabled{opacity:.6;cursor:not-allowed}
   .semo{width:44px;height:44px;text-decoration:none}
   .sp-hint{font-size:var(--fs-2);color:var(--muted)}
   /* toast */
-  .toast{position:fixed;left:16px;right:16px;bottom:calc(96px + env(safe-area-inset-bottom));z-index:60;background:var(--ink);color:#fff;border-radius:var(--r-lg);padding:14px 16px;font-size:var(--fs-3);display:flex;gap:10px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25);animation:tin 260ms var(--ease-spring) both}
+  .toast{position:fixed;left:16px;right:16px;bottom:calc(var(--tabh,54px) + var(--bgap,16px) + 14px);z-index:60;background:var(--ink);color:#fff;border-radius:var(--r-lg);padding:14px 16px;font-size:var(--fs-3);display:flex;gap:10px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25);animation:tin 260ms var(--ease-spring) both}
   .toast.out{opacity:0;transform:translateY(10px);transition:opacity var(--t-slow),transform var(--t-slow)}
   @keyframes tin{from{opacity:0;transform:translateY(16px)}}
 }
@@ -1396,7 +1404,7 @@ details.acc-anim[open]>:not(summary){animation:accIn 180ms var(--ease-out,ease-o
 .nx-new{justify-self:start}
 .nx-acts{justify-content:flex-end;border-top:1px solid var(--line);padding-top:14px}
 @media (max-width:560px){.nx-days{grid-template-columns:1fr}.nx-b{width:100%}.nx-b .btn{flex:1;justify-content:center}}
-.peekbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(96px + env(safe-area-inset-bottom));z-index:60;display:flex;align-items:center;gap:12px;background:#161614;color:#fff;border-radius:var(--r-pill);padding:6px 6px 6px 16px;font-size:var(--fs-3);font-weight:500;box-shadow:0 10px 30px -10px rgba(0,0,0,.4);white-space:nowrap}
+.peekbar{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--tabh,54px) + var(--bgap,16px) + 14px);z-index:60;display:flex;align-items:center;gap:12px;background:#161614;color:#fff;border-radius:var(--r-pill);padding:6px 6px 6px 16px;font-size:var(--fs-3);font-weight:500;box-shadow:0 10px 30px -10px rgba(0,0,0,.4);white-space:nowrap}
 .peekbar button{border:0;background:#FF5A1F;color:#fff;font:inherit;font-weight:600;border-radius:var(--r-pill);padding:8px 14px;cursor:pointer}
 @media (min-width:861px){.peekbar{bottom:24px}}
 .shoptbl .chk{width:100%}.shoptbl .name{flex:1;min-width:0;flex-wrap:nowrap!important;justify-content:space-between}.shoptbl .q{margin-left:auto;padding-left:12px;white-space:nowrap;text-align:right}
@@ -1423,7 +1431,7 @@ details.acc-anim[open]>:not(summary){animation:accIn 180ms var(--ease-out,ease-o
 .field input[type="date"]{height:38px!important;padding-top:0!important;padding-bottom:0!important;line-height:36px!important}
 .field input[type="date"]::-webkit-date-and-time-value{line-height:36px;min-height:36px}
 .field input[type="date"]::-webkit-datetime-edit{line-height:36px}
-@media (max-width:860px){.mb-l .pk-back{background:#161614!important;color:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}.fakebar{top:auto!important;bottom:calc(96px + env(safe-area-inset-bottom))}body.has-fake .topzone{padding-top:calc(14px + env(safe-area-inset-top))!important}}
+@media (max-width:860px){.mb-l .pk-back{background:#161614!important;color:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}.fakebar{top:auto!important;bottom:calc(var(--tabh,54px) + var(--bgap) + 14px)}body.has-fake .topzone{padding-top:calc(14px + env(safe-area-inset-top))!important}}
 .mcard.mini .open.mini-r{flex-direction:row;height:auto;padding:12px 14px}.mcard.mini .mini-e{flex:none;width:36px;height:36px;display:grid;place-items:center;border-radius:var(--r-md);background:var(--tray)}.mcard.mini .mini-e .emo{width:24px;height:24px}
 .mcard.mini .mini-r{display:flex;align-items:center;gap:12px;padding:10px 12px 10px 10px}
 .mcard.mini .mini-t{flex:1;min-width:0;display:grid;gap:6px}.mcard.mini .mini-h{display:flex;align-items:center;gap:8px}
@@ -1507,7 +1515,7 @@ b.nm{font-family:var(--mono);font-size:.88em;font-weight:500;color:var(--muted);
 .outrow .outtop{display:flex;align-items:flex-start;gap:10px}
 .outrow.pk{opacity:.5}
 .outrow.pk .on{text-decoration:line-through}
-.tpill{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--tabh,74px) + env(safe-area-inset-bottom) + 10px);z-index:40;display:flex;align-items:center;gap:8px;max-width:min(92vw,420px);padding:10px 14px;border:0;border-radius:var(--r-pill);background:var(--ink);color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.25);font:inherit;font-size:var(--fs-3);cursor:pointer;animation:tpIn .3s var(--ease-out) both}
+.tpill{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--tabh,54px) + var(--bgap,16px) + 10px);z-index:40;display:flex;align-items:center;gap:8px;max-width:min(92vw,420px);padding:10px 14px;border:0;border-radius:var(--r-pill);background:var(--ink);color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.25);font:inherit;font-size:var(--fs-3);cursor:pointer;animation:tpIn .3s var(--ease-out) both}
 .tpill .i{width:16px;height:16px;flex:none}
 .tpill .tp-l{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left}
 .tpill .tp-t{font-weight:700;flex:none}
@@ -1535,13 +1543,13 @@ b.nm{font-family:var(--mono);font-size:.88em;font-weight:500;color:var(--muted);
 .prepspace{display:none}
 body.cook-prep .main{padding-bottom:0!important}
 body.cook-prep #v-cook{padding-bottom:calc(var(--pfixh,80px) + 14px)}
-.pfix{position:fixed;left:0;right:0;bottom:calc(var(--tabh,86px) + env(safe-area-inset-bottom) + 6px);z-index:30;padding:10px 16px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
+.pfix{position:fixed;left:0;right:0;bottom:calc(var(--tabh,54px) + var(--bgap,16px) + 6px);z-index:30;padding:10px 16px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
 .pf-in{max-width:640px;margin:0 auto;display:grid;gap:8px}
 .pf-c,.pfix .pb-c{font-size:var(--fs-3);color:var(--muted);text-align:center}
 .pf-b{display:grid;grid-template-columns:1fr 1.6fr;gap:8px}
 .pf-b .btn{width:100%;justify-content:center;box-sizing:border-box}
 body.cook-prep .tabbar,body.cook-run .tabbar{display:none!important}
-body.cook-run .main{padding-bottom:calc(20px + env(safe-area-inset-bottom))!important}
+body.cook-run .main{padding-bottom:calc(20px + var(--bpad,20px))!important}
 .op-box{display:inline-flex;align-items:center;gap:2px}
 .op-box b{font-family:var(--mono);font-size:var(--fs-1);font-weight:600;color:var(--muted)}
 .op-ic{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:30px;padding-top:1px}
@@ -1566,7 +1574,7 @@ body.cook-run .main{padding-bottom:calc(20px + env(safe-area-inset-bottom))!impo
 .cds{display:grid;gap:2px;justify-items:center;background:var(--panel);border-radius:var(--r-md);padding:12px 8px;box-shadow:var(--sh-1)}
 .cds b{font-family:var(--mono);font-size:var(--fs-6);line-height:1;font-weight:600}
 .cds span{font-size:var(--fs-1);color:var(--muted);text-align:center}
-body.cook-prep .pfix{bottom:0;padding:12px 16px calc(18px + env(safe-area-inset-bottom));background:var(--panel);border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(60,45,30,.08);backdrop-filter:none;-webkit-backdrop-filter:none}
+body.cook-prep .pfix{bottom:0;padding:12px 16px var(--bpad,20px);background:var(--panel);border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(60,45,30,.08);backdrop-filter:none;-webkit-backdrop-filter:none}
 .psect{display:grid;gap:12px}
 .psect+.psect,.cb+.cb .psect{margin-top:4px}
 .psect-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:2px 4px}
@@ -1591,8 +1599,8 @@ body.cook-prep .pfix{bottom:0;padding:12px 16px calc(18px + env(safe-area-inset-
 .prow-r.got .semo .emo{filter:grayscale(1) drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff);opacity:.5}
 .ppane{display:none;flex-direction:column;gap:12px}
 .ppane.on{display:flex}
-.pseg{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0;background:#ebe9e5;border-radius:var(--r-md);padding:2px}
-.pseg::before{content:"";position:absolute;top:2px;bottom:2px;left:2px;width:calc(50% - 2px);border-radius:var(--r-sm);background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.08),0 3px 8px rgba(0,0,0,.06);transition:transform var(--t-slow) var(--ease-out)}
+.pseg{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:0;background:#e9e6e1;border-radius:var(--r-md);padding:3px}
+.pseg::before{content:"";position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:calc(var(--r-md) - 3px);background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.08),0 3px 8px rgba(0,0,0,.06);transition:transform var(--t-slow) var(--ease-out)}
 .pseg[data-t=gear]::before{transform:translateX(100%)}
 .pseg button{all:unset;position:relative;z-index:1;cursor:pointer;height:34px;display:inline-flex;align-items:center;justify-content:center;border-radius:var(--r-sm);font-size:var(--fs-3);font-weight:500;color:var(--muted);-webkit-tap-highlight-color:transparent;transition:color var(--t-base) ease,transform var(--t-press) var(--ease-out)}
 .pseg button[aria-pressed=true]{color:var(--ink);font-weight:600}
@@ -1698,16 +1706,19 @@ button.sp-done{transition:transform .16s var(--ease-out)}.sp-done:active{transfo
 .hm{color:var(--muted,#8a867f);white-space:nowrap;font-weight:400;font-family:var(--mono);font-size:.88em}
 .st-list{list-style:none;margin:0;padding:0}.st-list li{display:flex;align-items:center;gap:10px;padding:8px 10px 8px 14px;min-height:44px}.st-list li+li{border-top:1px solid var(--line)}
 .st-list .semo{font-size:var(--fs-3);width:28px;text-align:center;flex:none}.st-list .st-n{flex:1;min-width:0;font-size:var(--fs-3)}
-.seg{display:inline-flex;background:var(--tray);border-radius:var(--r-md);padding:2px;flex:none}
+.seg{display:inline-flex;background:var(--tray);border-radius:var(--r-md);padding:3px;flex:none}
 .seg button{all:unset;cursor:pointer;font-size:var(--fs-3);font-weight:500;padding:7px 11px;border-radius:var(--r-sm);color:#55524c;-webkit-tap-highlight-color:transparent;transition:background .15s,color .15s}
 .seg button.on{background:#fff;color:#161614;box-shadow:0 1px 2px rgba(0,0,0,.12)}.seg button.on.buy{background:#161614;color:#fff}
 .sth.tray .inner{padding:0}
-.seg{position:relative;display:inline-grid!important;grid-template-columns:1fr 1fr}.seg button{position:relative;z-index:1;text-align:center;min-width:0;padding:7px 8px!important}
+.seg{position:relative;display:inline-grid!important;grid-template-columns:1fr 1fr}
+.seg button{position:relative;z-index:1;display:flex;align-items:center;justify-content:center;min-width:0;min-height:38px;padding:0 10px!important}
 .seg button.on,.seg button.on.buy{background:transparent!important;box-shadow:none!important}
-.seg .seg-th{position:absolute;top:2px;bottom:2px;left:2px;width:calc(50% - 2px);border-radius:var(--r-sm);background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.12);opacity:0;transform:scale(.85);transition:transform var(--t-base) var(--ease-out),opacity var(--t-fast) ease,background-color var(--t-base) ease}
+.seg .seg-th{position:absolute;top:3px;bottom:3px;left:3px;width:calc(50% - 3px);border-radius:calc(var(--r-md) - 3px);background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.12);opacity:0;transform:scale(.85);transition:transform var(--t-base) var(--ease-out),opacity var(--t-fast) ease,background-color var(--t-base) ease}
 .seg[data-s=have] .seg-th{opacity:1;transform:none}.seg[data-s=buy] .seg-th{opacity:1;transform:translateX(100%);background:#161614}
 .seg button{transition:color var(--t-base) ease}.seg[data-s=buy] button[data-sv=buy]{color:#fff}.seg[data-s=have] button[data-sv=have]{color:#161614}
 .seg button:active{transform:scale(.96)}
+/* тач-цель 44px без изменения вида: расширяем только по вертикали, чтобы кнопки не перекрывали друг друга */
+@media (pointer:coarse){.seg button::before{content:"";position:absolute;inset:-4px 0;z-index:-1}}
 @media (prefers-reduced-motion:reduce){.seg .seg-th{transition:none}}
 .nx-acts #ndel{background:#fff!important;color:#161614!important;border:1px solid #d6d3cd!important;box-shadow:none}
 .field .nx-new{justify-self:start;align-self:start;margin-top:4px;padding:6px 0!important;min-height:0;height:auto;background:none!important;color:#55524c;font-weight:500;gap:6px}.field .nx-new svg{width:16px;height:16px}
@@ -1896,12 +1907,12 @@ h1,h2,h3,.ml-1,.ml-2,.dish,.cn-h{overflow-wrap:anywhere}
 #onb{--orange:#FF8A1F;--yellow:#FFC93C;--pfg:#2A1300;background:#fff!important;color:var(--ink)!important;
   display:block!important;padding:0!important;transition:none}
 #onb .o-scr{overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
-  padding-bottom:calc(30px + env(safe-area-inset-bottom) + var(--kb,0px))}
+  padding-bottom:calc(var(--bpad,24px) + var(--kb,0px))}
 #onb .o-top,#onb .o-copy,#onb .o-foot,#onb .o-hero{max-width:640px;width:100%;margin-left:auto;margin-right:auto}
-#onb .o-hero{margin-top:26px}
+#onb .o-hero{margin-top:20px}
 #onb .o-scr{position:absolute;inset:0;background:#fff;color:var(--ink);overflow:hidden;
   display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;
-  padding:calc(62px + env(safe-area-inset-top)) 22px calc(30px + env(safe-area-inset-bottom))}
+  padding:calc(22px + env(safe-area-inset-top)) 22px var(--bpad,24px)}
 #onb .o-top{display:grid;grid-template-columns:40px 1fr 40px;align-items:center;height:38px}
 #onb .o-dots{display:flex;gap:5px;justify-content:center}
 #onb .o-back{all:unset;cursor:pointer;width:38px;height:38px;display:grid;place-items:center;border-radius:50%;
@@ -2124,8 +2135,8 @@ h1,h2,h3,.ml-1,.ml-2,.dish,.cn-h{overflow-wrap:anywhere}
 #onb .o-scr.o-tight .o-ctl{padding-top:14px}
 #onb .o-scr.o-tight .o-foot{margin-top:22px}
 @media (max-height:780px){
-  #onb .o-scr{padding-top:calc(40px + env(safe-area-inset-top))}
-  #onb .o-hero{min-height:186px;margin-top:18px}
+  #onb .o-scr{padding-top:calc(14px + env(safe-area-inset-top))}
+  #onb .o-hero{min-height:186px;margin-top:14px}
   #onb .o-copy,#onb .o-copy.o-l{padding-top:64px}
   #onb .o-foot{margin-top:20px}
 }
@@ -2147,6 +2158,9 @@ h1,h2,h3,.ml-1,.ml-2,.dish,.cn-h{overflow-wrap:anywhere}
 #onb .o-menus button[aria-pressed="true"] span{color:rgba(255,255,255,.7)}
 #onb .o-inp.shake{animation:shake 360ms ease}
 #onb .o-pword.o-s2{line-height:.95}
+#onb .o-stack,#onb .o-stack>*,#onb .o-mini{min-width:0}
+#onb .o-mini>span:last-child{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#onb .o-d-card .o-pw{overflow-wrap:normal;word-break:normal}
 </style>
 <body>
 <div id="splash" aria-hidden="true"><div class="spl-c"><div class="spl-ic"><svg class="appic" viewBox="0 0 120 120"><rect width="120" height="120" rx="27" fill="#FF5A1F"/><rect x="22" y="56" width="76" height="42" rx="10" fill="#fff"/><rect class="sp-lid" x="18" y="48" width="84" height="12" rx="6" fill="#FFD9C7"/><g class="sp-eyes"><circle cx="44" cy="40" r="15" fill="#fff"/><circle cx="76" cy="44" r="9" fill="#fff"/><g class="sp-pup"><circle cx="50" cy="45" r="6" fill="#161614"/><circle cx="73" cy="42" r="4" fill="#161614"/></g></g><path d="M46 74 q14 10 28 0" fill="none" stroke="#161614" stroke-width="5" stroke-linecap="round"/><path class="sp-tongue" d="M60 79 v6 q0 6 -5 6 q-5 0 -5 -6 v-4" fill="#FF8FB1"/></svg></div><div class="spl-w"><span>Fork</span> <span>Yeah</span></div><div class="spl-t">вилкой и по плану</div></div><span class="spl-s s0">🥦</span><span class="spl-s s1">🍗</span><span class="spl-s s2">🧀</span><span class="spl-s s3">🥕</span><span class="spl-s s4">🍝</span><span class="spl-s s5">🍳</span></div><script>(function(){try{var s=document.getElementById('splash');if(window.__IPHOST||navigator.webdriver||sessionStorage.getItem('fy-splash')){s.remove();return}sessionStorage.setItem('fy-splash','1');var k=function(){if(!s.isConnected||s.classList.contains('out'))return;s.classList.add('out');setTimeout(function(){s.remove()},580)};s.addEventListener('click',k);setTimeout(k,matchMedia('(prefers-reduced-motion:reduce)').matches?600:2500)}catch(e){}})()</script>
@@ -2986,8 +3000,9 @@ function sosRender(){const have=new Set(LS.get('mp-sos',[]));
   return `<div class="mz-row sos-mz"><span class="mz mz-${ok.length?'happy':'curious'}">${mzSVG(ok.length?'happy':'curious')}</span><p class="mz-b"><span>${say}</span></p></div>
   <div class="sos-ing">${SOS_ING.map(([g,it])=>`<div class="sos-g"><span class="sos-l">${g}</span><div class="sos-chips">${it.map(([id,e,n])=>`<button class="sos-c" data-sos="${id}" aria-pressed="${have.has(id)}">${emo(e)}<span>${n}</span></button>`).join('')}</div></div>`).join('')}</div>
   ${ok.length?`<div class="tray sos-res"><div class="trayhead"><h2>Можно приготовить<span class="cnt">${ok.length}</span></h2></div><div class="inner">${ok.map(({r,sc})=>{const p=!sc&&r[5]?r[5]:[r[2],r[4]];return `<div class="rowi"><span class="grow"><b>${p[0]}</b><span class="sos-t">${p[1]}</span></span><span class="tag">${ic('quick')}${r[3]} мин</span></div>`}).join('')}</div></div>`:''}`}
+let sosBind=null;
 function openSOS(){openSheet(`<div class="shead"><h2>Еда закончилась</h2><button class="x" aria-label="Закрыть">✕</button></div><div id="sosBody">${sosRender()}</div>`);
-  const bind=()=>{document.querySelectorAll('[data-sos]').forEach(b=>b.onclick=()=>{const s=new Set(LS.get('mp-sos',[]));s.has(b.dataset.sos)?s.delete(b.dataset.sos):s.add(b.dataset.sos);LS.set('mp-sos',[...s]);const y=document.querySelector('dialog .sbody,dialog')?.scrollTop;$('sosBody').innerHTML=sosRender();bind();try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}})};bind()}
+  const bind=()=>{document.querySelectorAll('[data-sos]').forEach(b=>b.onclick=()=>{const s=new Set(LS.get('mp-sos',[]));s.has(b.dataset.sos)?s.delete(b.dataset.sos):s.add(b.dataset.sos);LS.set('mp-sos',[...s]);const y=document.querySelector('dialog .sbody,dialog')?.scrollTop;$('sosBody').innerHTML=sosRender();bind();try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}})};sosBind=bind;bind()}
 
 
 const IC={
@@ -3115,20 +3130,20 @@ const mkey=k=>S.menu==='m1'?k:S.menu+':'+k;
 
 /* валидация импорта: возвращает список понятных ошибок */
 function v2errs(m){const E=[];const I=m.ingredients,D=m.dishes;
-  if(!I||typeof I!=='object')return ['Нет блока ingredients — списка продуктов.'];
-  if(!D||typeof D!=='object')return ['Нет блока dishes — карточек блюд.'];
+  if(!I||typeof I!=='object')return ['В меню нет блока ingredients со списком продуктов.'];
+  if(!D||typeof D!=='object')return ['В меню нет блока dishes с карточками блюд.'];
   Object.entries(D).forEach(([id,d])=>{(d.ing||[]).forEach(e=>{if(!I[e[0]])E.push(`Блюдо ${id}: продукта «${e[0]}» нет в ingredients.`)});if(!(d.ing||[]).length)E.push(`Блюдо ${id}: пустой список продуктов ing.`)});
-  if(!Array.isArray(m.weeks)||m.weeks.length!==4)E.push('weeks — ровно 4 недели.');
+  if(!Array.isArray(m.weeks)||m.weeks.length!==4)E.push('В weeks должно быть ровно 4 недели.');
   else m.weeks.forEach((wk,w)=>{if(!Array.isArray(wk)||wk.length!==7)E.push(`Неделя ${w+1}: нужно 7 дней.`);else wk.forEach((ms,d)=>{if(!Array.isArray(ms)||ms.length!==4)E.push(`Неделя ${w+1}, день ${d+1}: нужно 4 приёма.`);else ms.forEach(id=>{if(!D[id])E.push(`Неделя ${w+1}, день ${d+1}: блюда ${id} нет в dishes.`)})})});
   Object.keys(I).forEach(k=>{const x=I[k];if(!x.n)E.push(`Продукт ${k}: нет названия n.`);if(!Array.isArray(x.kb)||x.kb.length!==4)E.push(`Продукт ${k}: kb — четыре числа: ккал, Б, Ж, У.`)});
   return E}
 function validateMenu(m){
-  if(m&&m.version===2){const e=v2errs(m);if(e.length)return e;try{m=compileV2(m,0)}catch(err){return ['Не удалось собрать меню: '+err.message]}}
+  if(m&&m.version===2){const e=v2errs(m);if(e.length)return e;try{m=compileV2(m,0)}catch(err){return ['Меню не собралось: '+err.message]}}
   const E=[];const isArr=Array.isArray,isNum=x=>typeof x==='number'&&isFinite(x),isStr=x=>typeof x==='string'&&x.trim()!=='';
-  if(!m||typeof m!=='object')return ['Файл не похож на меню: внутри должен быть JSON-объект.'];
+  if(!m||typeof m!=='object')return ['Это не похоже на меню: внутри должен быть JSON-объект.'];
   if(m.format!==MENU_FORMAT)E.push(`Поле format должно быть "${MENU_FORMAT}".`);
   if(m.version!==MENU_VERSION)E.push(`Поле version должно быть ${MENU_VERSION}.`);
-  if(!isStr(m.id)||!/^[a-z0-9-]{2,24}$/.test(m.id))E.push('id — латиница, цифры и дефис, 2–24 символа. Например "m2-winter".');
+  if(!isStr(m.id)||!/^[a-z0-9-]{2,24}$/.test(m.id))E.push('В id можно латиницу, цифры и дефис, от 2 до 24 символов. Например, "m2-winter".');
   else if(m.id==='m1')E.push('id "m1" занят встроенным меню, выбери другой.');
   if(!isStr(m.name))E.push('Нужно название меню в поле name.');
   if(!isArr(m.weeks)||m.weeks.length!==4)E.push('weeks — ровно 4 недели.');
@@ -3139,17 +3154,17 @@ function validateMenu(m){
       if(!isArr(d.t)||d.t.length!==4||!d.t.every(isNum))E.push(`${p}: t — итог дня [ккал, белки, жиры, углеводы].`);
       else{const sum=d.meals.reduce((a,x)=>a+(x.k||0),0);if(Math.abs(sum-d.t[0])>10)E.push(`${p}: сумма ккал приёмов (${sum}) не сходится с t[0] (${d.t[0]}).`)}
     })});
-  if(!m.dishes||typeof m.dishes!=='object')E.push('dishes — словарь блюд: { "id блюда": { how, recipe, short, art } }.');
+  if(!m.dishes||typeof m.dishes!=='object')E.push('Нужен блок dishes со словарём блюд: { "id блюда": { how, recipe, short, art } }.');
   else if(isArr(m.weeks))m.weeks.forEach(w=>(w.days||[]).forEach(d=>(d.meals||[]).forEach(x=>{if(x&&x.id&&!m.dishes[x.id])E.push(`Блюдо ${x.id} есть в неделях, но нет в dishes.`)})));
-  if(!isArr(m.cooks)||m.cooks.length!==4||!m.cooks.every(c=>isArr(c)&&c.length===2))E.push('cooks — 4 недели по 2 готовки.');
+  if(!isArr(m.cooks)||m.cooks.length!==4||!m.cooks.every(c=>isArr(c)&&c.length===2))E.push('В cooks нужно 4 недели по две готовки.');
   else m.cooks.forEach((wk,wi)=>wk.forEach((s,ci)=>{const p=`Готовка ${ci+1}, неделя ${wi+1}`;
     if(!s||!isArr(s.steps)||!s.steps.length){E.push(`${p}: нет шагов.`);return}
     s.steps.forEach((st,i)=>{if(!isArr(st)||!isNum(st[0])||!KIND[st[1]]||!isStr(st[2]))E.push(`${p}, шаг ${i+1}: формат [минута, "Духовка"|"Плита"|"Стол", "текст", минут ожидания, id рецепта или null].`)});
-    if(!isArr(s.out))E.push(`${p}: out — что получится.`);
+    if(!isArr(s.out))E.push(`${p}: нужен out — что получится на выходе.`);
     else if(s.pack&&(!isArr(s.pack)||s.pack.length!==s.out.length))E.push(`${p}: в pack должно быть столько же строк, сколько в out.`)}));
-  if(!isArr(m.shop)||m.shop.length!==4)E.push('shop — списки покупок на 4 недели.');
+  if(!isArr(m.shop)||m.shop.length!==4)E.push('Нужен блок shop со списками покупок на 4 недели.');
   if(isArr(m.pantry))m.pantry.forEach(it=>{if(isArr(it)&&/молок|кефир|творог|сметан|йогурт|сыр(?!н)|яйц|куриц|грудк|бедр|фарш|мяс|рыб|филе|огур|томат(?!ы в)|помидор|банан|зелен|укроп|хлеб/i.test(String(it[0]))&&!/заморож|консерв|в собственном соку/i.test(String(it[0])))E.push(`pantry: «${it[0]}» портится быстрее месяца — перенеси в shop той недели, когда он нужен.`)});
-  if(m.recipes&&!isArr(m.recipes))E.push('recipes — массив групп [название группы, [рецепты]].');
+  if(m.recipes&&!isArr(m.recipes))E.push('recipes должен быть массивом групп: [название группы, [рецепты]].');
   else (m.recipes||[]).forEach((g,gi)=>(g[1]||[]).forEach((r,ri)=>{if(!isArr(r)||!isStr(r[0])||!isStr(r[1])||!isArr(r[5]))E.push(`Рецепт ${gi+1}.${ri+1}: формат [id, название, мета, вайб, [ингредиенты], [шаги], фишка].`)}));
   const recIds=new Set((m.recipes||[]).flatMap(g=>(g[1]||[]).map(r=>r[0])));
   Object.entries(m.dishes||{}).forEach(([id,x])=>{if(x&&x.recipe&&!recIds.has(x.recipe))E.push(`У блюда ${id} рецепт "${x.recipe}", но такого рецепта нет в recipes.`)});
@@ -3173,7 +3188,7 @@ function weekTabs(){return `<div class="utabs" role="group" aria-label="Неде
 function bindWeeks(el){el.querySelectorAll('[data-w]').forEach(b=>b.onclick=()=>{S.week=+b.dataset.w;render()})}
 function shopGroups(w){const groups=clone(SHOP[w]);const hasP=w===0;if(hasP)groups.push(['Запас на месяц, берём один раз',PANTRY]);
   const stl=hasP?staplesOf():[];const stS=LS.get(mkey('mp-staples'),{});const stBuy=stl.filter(x=>stS[x[0]]==='buy');
-  if(stBuy.length)groups.push(['Докупить из базового',stBuy.map(x=>[x[0],'']),'b:']);return groups}
+  if(stBuy.length)groups.push(['Закончилось дома',stBuy.map(x=>[x[0],'']),'b:']);return groups}
 const shopKK=(g,gi,it,ii)=>g[2]?g[2]+it[0]:gi+'-'+ii;
 function row(icon,title,sub,attrs){return `<button class="rowi" ${attrs}><span class="ic">${ic(icon)}</span><span class="grow"><span>${title}</span>${sub?`<div class="sub">${sub}</div>`:''}</span>${ic('chev','chev')}</button>`}
 /* конфетти: весь день съеден */
@@ -3212,7 +3227,7 @@ function vToday(){
   const el=$('v-today');const st=start();
   if(!st){
     setHead('Сегодня','План не настроен');
-    el.innerHTML=`<button class="onb-cta" id="qonb"><span class="oc-w">НАСТРОИТЬ<br>ПЛАН</span><span class="oc-s">${emo('🍳','a')}${emo('🥦','b')}${emo('🗓️','c')}</span><span class="oc-t">Минута — и четыре недели без вопроса «что поесть»</span></button>`;
+    el.innerHTML=`<button class="onb-cta" id="qonb"><span class="oc-w">НАСТРОИТЬ<br>ПЛАН</span><span class="oc-s">${emo('🍳','a')}${emo('🥦','b')}${emo('🗓️','c')}</span><span class="oc-t">Минута на настройку, и четыре недели без вопроса «что поесть»</span></button>`;
     $('qonb').onclick=()=>openOnb();return;
   }
   S.offset=0;const idx=dayIdx(TODAY)+S.offset;const date=addDays(st,idx);
@@ -3235,7 +3250,7 @@ ${(()=>{const dd=WEEKS[0]&&WEEKS[0].days[E0];if(!dd||!dd.meals.length)return '';
       return `<div class="tray"><div class="trayhead"><h2>Что тебя ждёт</h2></div>
         <div class="menustrip" role="list">${dd.meals.map((m,mi)=>`<button class="ms-c" role="listitem" data-meal="0|${E0}|${mi}">${poster(m.id,'',pkOf(0,E0,mi))}<span class="ms-n">${esc(m.n.split(',')[0])}</span></button>`).join('')}</div></div>`})()}
 </div>`;
-    {const tk=$('tstack');if(tk&&isMob()){tk.insertAdjacentHTML('beforeend',`<button class="sos-entry" id="sosOpen">${emo('🧡')}<span><b>Еда закончилась?</b><small>Ничего страшного — соберём что-нибудь простое</small></span>${ic('chev')}</button>`);if($('sosOpen'))$('sosOpen').onclick=openSOS}}
+    {const tk=$('tstack');if(tk&&isMob()){tk.insertAdjacentHTML('beforeend',`<button class="sos-entry" id="sosOpen">${emo('🧡')}<span><b>Еда закончилась?</b><small>Ничего страшного, соберём что-нибудь простое</small></span>${ic('chev')}</button>`);if($('sosOpen'))$('sosOpen').onclick=openSOS}}
     bindToday(el);return;
   }
   if(idx>=28){
@@ -3253,10 +3268,10 @@ ${(()=>{const dd=WEEKS[0]&&WEEKS[0].days[E0];if(!dd||!dd.meals.length)return '';
   for(let c=0;c<2;c++){const cd=cookDate(w,c);if(toISO(cd)===toISO(date))tasks.push(row('cook',`Готовка ${c+1}`,`≈${tlTotal(w,c)} мин, пошагово с таймерами`,`data-go="cook" data-cw="${w}" data-cs="${c}"`))}
   if(w<3){const cd=cookDate(w+1,0);if(toISO(cd)===toISO(date))tasks.push(row('cook',`Готовка на неделю ${w+2}`,`≈${tlTotal(w+1,0)} мин, пошагово с таймерами`,`data-go="cook" data-cw="${w+1}" data-cs="0"`));
     const od=orderDate(w+1);if(toISO(od)===toISO(date))tasks.push(row('shop',`Заказать продукты на неделю ${w+2}`,'Список уже собран, привезут завтра',`data-go="shop" data-cw="${w+1}"`))}
-  {const ds=delivOff(w);if(start()&&d===ds)tasks.push(row('shop','Привезут продукты — разложи по местам','Что в морозилку, что в холодильник, а что в шкаф',`data-go="shop" data-cw="${w}"`))}
+  {const ds=delivOff(w);if(start()&&d===ds)tasks.push(row('shop','Привезут продукты, разложи по местам','Что в морозилку, что в холодильник, а что в шкаф',`data-go="shop" data-cw="${w}"`))}
   if(w<3&&start()&&d===7+delivOff(w+1))tasks.push(row('shop',`Привезут продукты на неделю ${w+2} — разложи по местам`,'Что в морозилку, что в холодильник, а что в шкаф',`data-go="shop" data-cw="${w+1}"`));
   {const th=thawList(w,0);if(th.length&&d===cookOff(w,0)-1)tasks.push(`<div class="rowi"><span class="ic">${ic('freezer')}</span><span class="grow"><span>Вечером достать сырое на готовку ${w*2+1}</span><div class="sub">${esc(th.join(', '))} — из морозилки в холодильник</div></span></div>`)}
-  {const th=thawList(w);if(th.length&&d===cookOff(w,1)-1)tasks.push(`<div class="rowi"><span class="ic">${ic('freezer')}</span><span class="grow"><span>Вечером достать сырое на готовку 2</span><div class="sub">${esc(th.join(', '))} — из морозилки в холодильник, к завтрашнему вечеру разморозится</div></span></div>`)}
+  {const th=thawList(w);if(th.length&&d===cookOff(w,1)-1)tasks.push(`<div class="rowi"><span class="ic">${ic('freezer')}</span><span class="grow"><span>Вечером достать сырое на готовку ${w*2+2}</span><div class="sub">${esc(th.join(', '))} — из морозилки в холодильник, к завтрашнему вечеру разморозится</div></span></div>`)}
   nextTasks(date).forEach(([t,i])=>tasks.push(row(i,t,'Для плана, который начнётся следом',`data-peek="${i==='cook'?'cook':'shop'}"${i==='box'?' data-after="1"':''}`)));
   if(PULL[w][d])tasks.push(`<div class="rowi"><span class="ic">${ic('freezer')}</span><span class="grow"><span>Вечером переложить из морозилки в холодильник</span><div class="sub">${PULL[w][d]}</div></span></div>`);
   const ate=day.meals.reduce((a,m,mi)=>a+(LS.get(ateKey(w,d,mi),false)?m.k:0),0);
@@ -3317,11 +3332,17 @@ function slideDay(dir,drag){const P=PAGERS.today;slidePage(P.t,dir,()=>P.go(dir)
 Object.keys(PAGERS).filter(view=>view!=='today').forEach(view=>{const v=document.getElementById('v-'+view);const P=PAGERS[view];let sw=null;
  v.addEventListener('touchstart',e=>{if(e.touches.length>1||!isMob()||(BACK&&e.touches[0].clientX<24)||e.target.closest('.dstrip,.wstrip,.toast,.utabs,.cpills,.mchips,input,textarea,select')){sw=null;return}const t=e.touches[0];sw={x:t.clientX,y:t.clientY,dir:0,dx:0,lx:t.clientX,lt:performance.now(),v:0}},{passive:true});
  v.addEventListener('touchmove',e=>{if(!sw)return;const t=e.touches[0];const dx=t.clientX-sw.x,dy=t.clientY-sw.y;
-   if(!sw.dir){if(Math.abs(dx)<8&&Math.abs(dy)<8)return;sw.dir=Math.abs(dx)>Math.abs(dy)*1.3?'h':'v';if(sw.dir==='h'){sw.x=t.clientX-Math.sign(dx)*2}}
+   if(!sw.dir){if(Math.abs(dx)<8&&Math.abs(dy)<8)return;sw.dir=Math.abs(dx)>Math.abs(dy)*1.3?'h':'v';
+     if(sw.dir==='h'){sw.x=t.clientX-Math.sign(dx)*2;const st0=P.t();if(st0){st0.style.transition='none';st0.style.willChange='transform,opacity'}}}
    if(sw.dir!=='h')return;const now=performance.now();sw.v=(t.clientX-sw.lx)/Math.max(1,now-sw.lt);sw.lx=t.clientX;sw.lt=now;sw.dx=dx;
-   const ok=P.can(dx<0?1:-1);const shown=ok?dx:Math.sign(dx)*Math.pow(Math.abs(dx),0.7);
-   const st=P.t();if(st){st.style.transition='none';st.style.transform=`translateX(${shown}px)`;st.style.opacity=ok?String(1-Math.min(.35,Math.abs(dx)/700)):''}},{passive:true});
- const end=()=>{if(!sw)return;const s=sw;sw=null;if(s.dir!=='h')return;const st=P.t();const vel=Math.abs(s.v);const d=s.dx<0?1:-1;
+   const ok=P.can(dx<0?1:-1);
+   sw.shown=ok?dx:Math.sign(dx)*Math.pow(Math.abs(dx),0.7);sw.op=ok?String(1-Math.min(.35,Math.abs(dx)/700)):'';
+   /* тач может приходить чаще кадра — пишем стиль один раз за кадр, иначе на айфоне дребезжит */
+   if(!sw.raf){const o=sw;o.raf=requestAnimationFrame(()=>{o.raf=0;if(o.done)return;const st=P.t();
+     if(st){st.style.transform=`translateX(${o.shown}px)`;st.style.opacity=o.op}})}},{passive:true});
+ const end=()=>{if(!sw)return;const s=sw;sw=null;s.done=1;if(s.raf)cancelAnimationFrame(s.raf);
+   const st0=P.t();if(st0)st0.style.willChange='';
+   if(s.dir!=='h')return;const st=P.t();const vel=Math.abs(s.v);const d=s.dx<0?1:-1;
    const flick=vel>0.45&&Math.sign(s.v)===Math.sign(s.dx)&&Math.abs(s.dx)>20;
    if(P.can(d)&&(Math.abs(s.dx)>window.innerWidth*0.28||flick))slidePage(P.t,d,()=>P.go(d),{dx:s.dx,vel});
    else if(st){st.style.transition='transform 360ms cubic-bezier(.32,.72,0,1),opacity 200ms ease';st.style.transform='';st.style.opacity=''}};
@@ -3345,7 +3366,7 @@ const delivOff=w=>Math.min(shopOff(w)+1,cookOff(w,0));
 const rawWait=(w,c)=>cookOff(w,c)-delivOff(w); /* дней от доставки до готовки */
 function storeOf(w,name){const n=name.toLowerCase();
   if(/заморож/.test(n))return {p:'fz'};
-  if(/хлеб/.test(n))return {p:'fz',note:'Нарежь и заморозь ломтиками, достаёшь по одному — неделю в пакете хлеб не проживёт'};
+  if(/хлеб/.test(n))return {p:'fz',note:'Нарежь и заморозь ломтиками, будешь доставать по одному. В пакете хлеб неделю не проживёт'};
   if(RAW.test(n)&&!/консерв|соку/.test(n)){const a=needOf(w,0,name),b=needOf(w,1,name);
     const a2=a&&rawWait(w,0)>1;/* сырое мясо в холодильнике — максимум 1–2 дня */
     const b2=b&&rawWait(w,1)>1;if(b&&!a)return b2?{p:'fz',cook2:b}:{p:'fr'};if(a&&b)return b2?{p:a2?'fz':'fr',cook2:b,split:!a2,cook1:a2?a:null}:(a2?{p:'fz',cook1:a}:{p:'fr'});
@@ -3421,7 +3442,7 @@ function vWeek(){
     setHead('Неделя','Следующий план','');
     const ttl=n?'Уже забронировано!':win?'Контейнер голодает':'Тут пусто, как в холодильнике в понедельник';
     const VD=['воскресенье','понедельник','вторник','среду','четверг','пятницу','субботу'],dm=d=>`${d.getDate()} ${MONF[d.getMonth()]}`;const sd=n&&fromISO(n.start);
-    const txt=n?`Стартуем в ${VD[sd.getDay()]}, ${dm(sd)}. ${win?'Меню уже открыто — можно подсмотреть, что будем есть.':`Подсмотреть, что будем есть, можно с ${dm(open)}. А пока — интрига.`}`:win?'Что едим через неделю? Решай, пока я не съел сам себя.':`Новый план можно будет собрать с ${dm(open)}. А пока доедаем, что есть.`;
+    const txt=n?`Стартуем в ${VD[sd.getDay()]}, ${dm(sd)}. ${win?'Меню уже открыто, можно подсмотреть, что будем есть.':`Подсмотреть, что будем есть, можно с ${dm(open)}. А пока — интрига.`}`:win?'Что едим через неделю? Решай, пока я не съел сам себя.':`Новый план можно будет собрать с ${dm(open)}. А пока доедаем, что есть.`;
     el.innerHTML=`<div class="stack"><div class="wmob"><div class="nx-ph"><span class="nx-stk s1">${emo('🥦')}</span><span class="nx-stk s2">${emo('🍗')}</span><span class="nx-stk s3">${emo('🧀')}</span><span class="nx-mascot">${MASCOT}</span><b>${ttl}</b><span class="nx-tx2">${txt}</span>${win||n?`<button class="btn" id="nxPlan">${n?'Изменить':'Запланировать'}</button>`:''}</div></div></div>`;
     bindNext(el);
     {const sp=el.querySelector('.wmob');let sx=null,sy=0;sp.addEventListener('touchstart',e=>{sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});sp.addEventListener('touchend',e=>{if(sx===null)return;const t=e.changedTouches[0],dx=t.clientX-sx,dy=t.clientY-sy;sx=null;if(dx>40&&Math.abs(dx)>Math.abs(dy))stepWeek(-1)})}
@@ -3493,7 +3514,7 @@ function vCook(){if(cookEmpty(S.week,S.cookSel)){const n=S.cookSel===0?1:0;if(!c
   const needList=`<div class="inner"><table class="tbl shoptbl"><tbody>${s.need.map((n,i)=>`<tr class="${have[i]?'got':''}"><td><label class="chk"><input type="checkbox" data-need="${i}" ${have[i]?'checked':''}><span class="box"></span><span class="semo">${emo(emosOf(n,1)[0]||'🧂')}</span><span class="name">${esc(n)}</span></label></td></tr>`).join('')}</tbody></table></div>`;
   const finPoster=()=>`<div class="nx-ph nx-fin${popOnce('cook-'+w+'-'+c)}"><span class="nx-stk s1">${emo('🥦')}</span><span class="nx-stk s2">${emo('🍗')}</span><span class="nx-stk s3">${emo('🥕')}</span><span class="nx-mascot">${MASCOT}</span><b>Готовка закрыта</b><span class="nx-tx2">${s.steps.length} ${plural(s.steps.length,'шаг','шага','шагов')} за ${tlTotal(w,c)} ${plural(tlTotal(w,c),'минуту','минуты','минут')}. Еда разложена и ждёт.</span></div>`;
   const stepRows=(list,compact)=>`<div class="inner">${list.map((o,oi)=>{const [t,kind,text,wait]=o.x;const dn=done[o.i];const isCur=cur&&cur.i===o.i;
-    return `<div class="step${dn?' done':''}${isCur?' cur':''}${compact?' cmp':''}"><div class="sl"><button class="stchk" data-toggle="${o.i}" aria-pressed="${!!dn}" aria-label="${dn?'Вернуть шаг':'Отметить шаг выполненным'}"></button></div><div class="body">${compact&&o.x[5]&&!dn?`<details class="sx"><summary><span class="txt">${esc(clean(text))}</span><span class="smeta">${ic(KIND[kind]||'board')}<span>${kind}${wait?` · ${wait} мин`:''}</span></span>${ic('chev','sxc')}</summary><div class="sdet">${esc(o.x[5])}</div></details>`:`<div class="txt">${esc(clean(text))}</div>${o.x[5]?`<div class="sdet">${esc(o.x[5])}</div>`:''}<div class="smeta">${ic(KIND[kind]||'board')}<span>${kind}${wait?` · ${wait} мин`:''}</span></div>`}</div></div>`}).join('')}</div>`;
+    return `<div class="step${dn?' done':''}${isCur?' cur':''}${compact?' cmp':''}"><div class="sl"><button class="stchk" data-toggle="${o.i}" aria-pressed="${!!dn}" aria-label="${dn?'Вернуть шаг':'Отметить шаг сделанным'}"></button></div><div class="body">${compact&&o.x[5]&&!dn?`<details class="sx"><summary><span class="txt">${esc(clean(text))}</span><span class="smeta">${ic(KIND[kind]||'board')}<span>${kind}${wait?` · ${wait} мин`:''}</span></span>${ic('chev','sxc')}</summary><div class="sdet">${esc(o.x[5])}</div></details>`:`<div class="txt">${esc(clean(text))}</div>${o.x[5]?`<div class="sdet">${esc(o.x[5])}</div>`:''}<div class="smeta">${ic(KIND[kind]||'board')}<span>${kind}${wait?` · ${wait} мин`:''}</span></div>`}</div></div>`}).join('')}</div>`;
   const allSteps=stepRows(order);
   const wide=matchMedia('(min-width:861px)').matches;
   const B=(o,html)=>html?`<div class="cb" style="order:${o}">${html}</div>`:'';
@@ -3659,7 +3680,7 @@ function vShop(){
     <div class="as-places">${['fz','fr','sh'].filter(p=>sorted[p].length).map(p=>`<div class="inner as-pl"><div class="as-plh">${ic(PL[p][1])}<span>${PL[p][0]}</span><span class="cnt">${sorted[p].length}</span></div><ul class="as-chips">${sorted[p].map(([it,s])=>{const t=note(s);return `<li class="${t?'wide':''}">${esc(it[0])}${t?`<div class="small muted">${t}</div>`:''}</li>`}).join('')}</ul></div>`).join('')}</div>
   </details>`;
   setHead('Покупки',`Покупки на неделю ${w+1}`,`<button class="btn desk" id="copyList">${ic('copy')}<span>Скопировать</span></button>`);
-  $('hsub').hidden=false;$('hsub').classList.add('mob');$('hsub').textContent=od?`Заказ: ${fdate(od)}`:'Заказ за 2 дня до недели';
+  $('hsub').hidden=false;$('hsub').classList.add('mob');$('hsub').textContent=od?`Заказ: ${fdate(od)}`:'Заказ за два дня до начала недели';
   const SEG=`<div class="pseg shseg" data-t="${SHOPTAB}" role="group" aria-label="Покупки"><button data-shop="buy" aria-pressed="${SHOPTAB==='buy'}">В магазине</button><button data-shop="home" aria-pressed="${SHOPTAB==='home'}">Дома</button></div>`;
   el.innerHTML=`<div class="stack">${weekTabs()}${SEG}<div class="shpane${SHOPTAB==='buy'?' on':''}" data-spane="buy">
    ${nd===n&&n?`<button class="sp-done mob${popOnce('shop-'+w)}" id="spDone" role="status"><span class="sp-ck">${ic('check')}</span><span class="sp-t"><b>Корзина собрана</b><small>${n} продуктов, теперь разложи</small></span>${emo('🛒','sp-e')}</button>`:`<div class="sprog mob"><div class="kc-top"><span><b class="mono">${nd}</b> из ${n} в корзине</span></div>${bar(nd/n*100,'ink')}</div>`}
@@ -3698,7 +3719,7 @@ function vShop(){
     const sp=el.querySelector('.sprog');const bn=sp.querySelector('b.mono');if(bn&&+bn.textContent!==nd2){bn.textContent=nd2;bump(bn)}const mu=sp.querySelector('.kc-top .muted');if(mu)mu.textContent=`ещё ${n-nd2}`;const bi=sp.querySelector('.bar i');if(bi)bi.style.width=(nd2/n*100)+'%';
     try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}});
   $('resetShop').onclick=()=>{LS.set(key,{});render()};
-  const cpy=async ev=>{const btn=ev.currentTarget;const lines=[];const dn=LS.get(key,{});groups.forEach((g,gi)=>g[1].forEach((it,ii)=>{if(!dn[KK(g,gi,it,ii)])lines.push(`${it[0]}${it[1]?' — '+it[1]:''}`)}));const lab=btn.querySelector('span');try{await navigator.clipboard.writeText(lines.join('\n'));lab.textContent=`Скопировано: ${lines.length}`}catch(e){lab.textContent='Не скопировалось'}setTimeout(()=>{if(lab.isConnected)lab.textContent='Скопировать'},2200)};;if($('copyList'))$('copyList').onclick=cpy;
+  const cpy=async ev=>{const btn=ev.currentTarget;const lines=[];const dn=LS.get(key,{});groups.forEach((g,gi)=>g[1].forEach((it,ii)=>{if(!dn[KK(g,gi,it,ii)])lines.push(`${it[0]}${it[1]?' — '+it[1]:''}`)}));const lab=btn.querySelector('span');try{await navigator.clipboard.writeText(lines.join('\n'));lab.textContent=`Скопировано: ${lines.length}`}catch(e){lab.textContent='Не скопировалось, попробуй ещё раз'}setTimeout(()=>{if(lab.isConnected)lab.textContent='Скопировать'},2200)};;if($('copyList'))$('copyList').onclick=cpy;
 }
 
 /* ---------- Рецепты ---------- */
@@ -3719,8 +3740,12 @@ function openRecipe(rec,meal){
  document.addEventListener('touchmove',e=>{if(!es)return;const t=e.touches[0];const dx=t.clientX-es.x,dy=t.clientY-es.y;
    if(!es.on){if(Math.abs(dx)<8&&Math.abs(dy)<8)return;if(Math.abs(dy)>Math.abs(dx)||dx<0){es=null;return}es.on=true}
    const now=performance.now();es.v=(t.clientX-es.lx)/Math.max(1,now-es.lt);es.lx=t.clientX;es.lt=now;es.dx=Math.max(0,dx);
-   const m=M();if(m){m.style.transition='none';m.style.transform=`translateX(${es.dx}px)`;m.style.opacity=String(1-Math.min(.3,es.dx/innerWidth*.4))}},{passive:true});
- const end=()=>{if(!es)return;const s=es;es=null;if(!s.on)return;const m=M();if(!m)return;const W=innerWidth;
+   if(!es.prep){es.prep=1;const m0=M();if(m0){m0.style.transition='none';m0.style.willChange='transform,opacity'}}
+   /* один стилевой проход за кадр — см. пейджер выше */
+   if(!es.raf){const o=es;o.raf=requestAnimationFrame(()=>{o.raf=0;if(o.done)return;const m=M();
+     if(m){m.style.transform=`translateX(${o.dx}px)`;m.style.opacity=String(1-Math.min(.3,o.dx/innerWidth*.4))}})}},{passive:true});
+ const end=()=>{if(!es)return;const s=es;es=null;s.done=1;if(s.raf)cancelAnimationFrame(s.raf);
+   if(!s.on){const m0=M();if(m0)m0.style.willChange='';return}const m=M();if(!m)return;m.style.willChange='';const W=innerWidth;
    if(s.dx>W*.33||(s.v>.4&&s.dx>30)){if(RM.matches){m.style.transform='';m.style.opacity='';goBack();return}
      m.style.transition='transform 180ms cubic-bezier(.23,1,.32,1),opacity 180ms ease';m.style.transform=`translateX(${W}px)`;m.style.opacity='0';try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}
      setTimeout(()=>{m.style.transition='none';m.style.transform='translateX(-24px)';goBack();requestAnimationFrame(()=>requestAnimationFrame(()=>{m.style.transition='transform 300ms cubic-bezier(.32,.72,0,1),opacity 200ms ease';m.style.transform='';m.style.opacity=''}))},170)}
@@ -3780,7 +3805,7 @@ function cycCard(){const st=start();if(!st)return '';const t=dayIdx(TODAY);const
   const cell=i=>{const dt=addDays(st,i);const m=marks[i]||[];return `<div class="cy-d${i<t?' past':''}${i===t?' now':''}${i<E?' skip':''}" title="${fdate(dt)}"><span class="cy-n">${dt.getDate()}</span><span class="cy-m">${m.map(k=>`<i class="cy-${k}"></i>`).join('')}</span></div>`};
   const P=plDays();
   return `<div class="cycard">
-    <div class="cy-top"><div><div class="cy-lab">Цикл</div><div class="cy-range">${short(firstEat())} — ${short(addDays(st,27))}</div></div>${t>=E&&t<28?`<div class="cy-prog"><b>${t-E+1}</b><span>из ${28-E} дней</span></div>`:t<E?`<div class="cy-prog"><b>${E-t}</b><span>${plural(E-t,'день','дня','дней')} до старта</span></div>`:''}</div>
+    <div class="cy-top"><div><div class="cy-lab">Весь план</div><div class="cy-range">${short(firstEat())} — ${short(addDays(st,27))}</div></div>${t>=E&&t<28?`<div class="cy-prog"><b>${t-E+1}</b><span>из ${28-E} дней</span></div>`:t<E?`<div class="cy-prog"><b>${E-t}</b><span>${plural(E-t,'день','дня','дней')} до старта</span></div>`:''}</div>
     <div class="cy-grid"><div class="cy-w"><span></span>${[0,1,2,3,4,5,6].map(k=>`<span class="cy-h">${DOW[addDays(st,k).getDay()]}</span>`).join('')}</div>
     ${[0,1,2,3].map(w=>`<div class="cy-w"><span class="cy-wl">Н${w+1}</span>${[0,1,2,3,4,5,6].map(k=>cell(w*7+k)).join('')}</div>`).join('')}</div>
     <div class="cy-leg"><span><i class="cy-shop"></i>Закупка · ${DOW[P.shop]}</span><span><i class="cy-big"></i>Большая готовка · ${DOW[P.cook[0]]}</span><span><i class="cy-small"></i>Короткая готовка · ${DOW[P.cook[1]]}</span></div>
@@ -3829,9 +3854,9 @@ function vSettings(){
     <div class="inner">${schedRows()}</div></div>
    ${start()?`<div class="tray endplan"><div class="trayhead"><h2>Закончить план</h2></div><div class="inner ep-in"><p>Прогресс текущего плана сбросится.</p><button class="btn epbtn" id="endPlan">${planLocked()?'Закончить план раньше':'Сбросить план'}</button></div></div>`:''}
 `:`
-   <div class="tray"><div class="trayhead"><h2>Спокойный режим</h2></div><div class="inner"><label class="rowi sw-row"><span class="grow"><b>Без цифр</b><small>Прячет калории и БЖУ. Прогресс — в приёмах пищи.</small></span><input type="checkbox" class="sw" id="knonum" ${NONUM()?'checked':''}></label></div></div>
+   <div class="tray"><div class="trayhead"><h2>Спокойный режим</h2></div><div class="inner"><label class="rowi sw-row"><span class="grow"><b>Без цифр</b><small>Прячет калории и БЖУ. Прогресс считаем по приёмам пищи.</small></span><input type="checkbox" class="sw" id="knonum" ${NONUM()?'checked':''}></label></div></div>
    <div class="tray"><div class="trayhead"><h2>Как к тебе обращаться</h2></div><div class="inner kbconf setname"><div class="field"><label for="kname">Имя</label><input id="kname" maxlength="24" value="${esc(uname())}" placeholder="Например, Аня"></div><div class="kbsave"><button class="btn dark" id="knsave">Сохранить</button><span class="small okc" id="knok" aria-live="polite"></span></div></div></div>
-   <div class="tray"><div class="trayhead"><h2>Перенос на другое устройство</h2></div><div class="inner kbimp"><p class="small" style="margin:0">Всё хранится только в этом браузере: план, отметки, покупки, таймеры, загруженные меню. Сохрани файл здесь и загрузи его в приложении на другом устройстве.</p><div class="improw"><button class="btn dark" id="kbak">${ic('download')}<span>Сохранить прогресс</span></button><label class="btn">${ic('upload')}<span>Загрузить прогресс</span><input type="file" accept=".json,application/json" id="kres" hidden></label><span class="small okc" id="kbok" aria-live="polite"></span></div></div></div>
+   <div class="tray"><div class="trayhead"><h2>Перенести на другое устройство</h2></div><div class="inner kbimp"><p class="small" style="margin:0">Всё хранится только в этом браузере: план, отметки, покупки, таймеры, загруженные меню. Сохрани файл здесь и загрузи его в приложении на другом устройстве.</p><div class="improw"><button class="btn dark" id="kbak">${ic('download')}<span>Сохранить прогресс</span></button><label class="btn">${ic('upload')}<span>Загрузить прогресс</span><input type="file" accept=".json,application/json" id="kres" hidden></label><span class="small okc" id="kbok" aria-live="polite"></span></div></div></div>
    <div class="tray"><div class="trayhead"><h2>Меню<span class="cnt">${MENUS.length}</span></h2></div><div class="mgrid">${menus}</div></div>
    <div class="tray"><div class="trayhead"><h2>Добавить меню</h2></div><div class="inner kbimp">
      <div class="improw"><label class="btn dark">${ic('upload')}<span>Загрузить файл</span><input type="file" accept=".json,application/json" id="kfile" hidden></label><button class="btn" id="kpaste" aria-expanded="${kbPaste}">${kbPaste?'Скрыть поле':'Вставить текстом'}</button><span class="imp-div" aria-hidden="true"></span><button class="btn ghost" id="ktpl">${ic('download')}<span>Шаблон</span></button></div>
@@ -3848,14 +3873,14 @@ function vSettings(){
   el.querySelectorAll('.sched .sx').forEach(x=>{x.addEventListener('change',saveSched);if(x.type==='date')x.closest('.srow').addEventListener('click',ev=>{if(x.disabled)return;try{x.showPicker&&x.showPicker()}catch(_){}})});
   if($('knonum'))$('knonum').onchange=e=>{LS.set('mp-nonum',e.target.checked);document.body.classList.toggle('nonum',e.target.checked)};
   el.querySelectorAll('[data-use]').forEach(b=>b.onclick=()=>{if(planLocked())return;switchMenu(b.dataset.use);kbMsg=null;render()});
-  el.querySelectorAll('[data-exp]').forEach(b=>b.onclick=async()=>{const m0=MENUS.find(x=>x.id===b.dataset.exp);const m=m0.src||m0;const ok=await downloadJSON(m,`${m.id}.json`);if(!ok){const l=b.querySelector('span');l.textContent='Не вышло, скопируй';setTimeout(()=>{if(l.isConnected)l.textContent='Скачать'},2500)}});
+  el.querySelectorAll('[data-exp]').forEach(b=>b.onclick=async()=>{const m0=MENUS.find(x=>x.id===b.dataset.exp);const m=m0.src||m0;const ok=await downloadJSON(m,`${m.id}.json`);if(!ok){const l=b.querySelector('span');l.textContent='Не получилось, скопируй вручную';setTimeout(()=>{if(l.isConnected)l.textContent='Скачать'},2500)}});
   el.querySelectorAll('[data-cpy]').forEach(b=>b.onclick=async()=>{const m0=MENUS.find(x=>x.id===b.dataset.cpy);const m=m0.src||m0;const l=b.querySelector('span');try{await navigator.clipboard.writeText(JSON.stringify(m));l.textContent='Скопировано'}catch(_){l.textContent='Не скопировалось'}setTimeout(()=>{if(l.isConnected)l.textContent='Копировать'},2000)});
   el.querySelectorAll('[data-del]').forEach(b=>b.onclick=()=>{const m=MENUS.find(x=>x.id===b.dataset.del);if(b.dataset.sure){MENUS=MENUS.filter(x=>x.id!==m.id);saveImported();if(S.menu===m.id)switchMenu('m1');kbMsg={ok:true,text:`«${m.name}» удалено.`};render()}else{b.dataset.sure=1;b.classList.remove('ghost');b.classList.add('danger');b.querySelector('span').textContent='Точно удалить?';setTimeout(()=>{if(b.isConnected){delete b.dataset.sure;b.classList.remove('danger');b.classList.add('ghost');b.querySelector('span').textContent='Удалить'}},4000)}});
   if($('kbak'))$('kbak').onclick=async()=>{const data={};for(let i=0;i<localStorage.length;i++){const k=localStorage.key(i);if(k&&k.includes('mp-'))data[k]=localStorage.getItem(k)}
-    const ok=await downloadText(JSON.stringify({format:'mealplan-backup',version:1,saved:new Date().toISOString(),data}),`pozhuem-backup-${new Date().toISOString().slice(0,10)}.json`,'application/json');$('kbok').textContent=ok?'Файл сохранён':'Не вышло сохранить'};
+    const ok=await downloadText(JSON.stringify({format:'mealplan-backup',version:1,saved:new Date().toISOString(),data}),`pozhuem-backup-${new Date().toISOString().slice(0,10)}.json`,'application/json');$('kbok').textContent=ok?'Файл сохранён':'Файл не сохранился'};
   if($('kres'))$('kres').onchange=async e=>{const f=e.target.files[0];if(!f)return;try{const j=JSON.parse(await f.text());if(j.format!=='mealplan-backup'||!j.data||typeof j.data!=='object')throw 0;
-    Object.keys(localStorage).filter(k=>k.includes('mp-')).forEach(k=>localStorage.removeItem(k));Object.entries(j.data).forEach(([k,v])=>{if(typeof v==='string')localStorage.setItem(k,v)});location.reload()}catch(_){$('kbok').textContent='Это не файл прогресса'}};
-  if($('kcopy'))$('kcopy').onclick=async()=>{let ok=false;try{await navigator.clipboard.writeText(RULES_MD);ok=true}catch(_){try{const t=document.createElement('textarea');t.value=RULES_MD;t.style.position='fixed';t.style.opacity='0';document.body.append(t);t.select();ok=document.execCommand('copy');t.remove()}catch(_){}}$('kcok').textContent=ok?'Скопировано':'Не вышло — скачай файл'};
+    Object.keys(localStorage).filter(k=>k.includes('mp-')).forEach(k=>localStorage.removeItem(k));Object.entries(j.data).forEach(([k,v])=>{if(typeof v==='string')localStorage.setItem(k,v)});location.reload()}catch(_){$('kbok').textContent='Это не файл с прогрессом'}};
+  if($('kcopy'))$('kcopy').onclick=async()=>{let ok=false;try{await navigator.clipboard.writeText(RULES_MD);ok=true}catch(_){try{const t=document.createElement('textarea');t.value=RULES_MD;t.style.position='fixed';t.style.opacity='0';document.body.append(t);t.select();ok=document.execCommand('copy');t.remove()}catch(_){}}$('kcok').textContent=ok?'Скопировано':'Не получилось. Скачай файл'};
   if($('kmd'))$('kmd').onclick=()=>downloadText(RULES_MD,'menu-format.md','text/markdown');
   if($('ktpl'))$('ktpl').onclick=async()=>{const t=JSON.parse(JSON.stringify(BUILTIN.src||BUILTIN));t.id='m2';t.name='Меню 2';await downloadJSON(t,'menu-template.json')};
   if($('kpaste'))$('kpaste').onclick=()=>{kbPaste=!kbPaste;render();if(kbPaste){const t=$('ktext');if(t)t.focus()}};
@@ -3944,7 +3969,7 @@ function placeText(s,w,id){const c0=cookDate(w,0),c1=cookDate(w,1);
   if(s==='s')return `В холодильнике. Из большой готовки${c0?` (${fdate(c0)})`:' накануне недели'}.`;
   if(s==='w')return `В холодильнике. Из короткой готовки${c1?` (${fdate(c1)}, вечер)`:', вечер 3-го дня'}.`;
   if(s==='f'){const d=dishOf(id);if(d&&d.thaw===false)return 'В морозилке. Греется прямо из морозилки, размораживать не надо.';
-    return 'В морозилке. Переложи в холодильник накануне вечером — приложение напомнит.'}
+    return 'В морозилке. Переложи в холодильник накануне вечером, приложение напомнит.'}
   return PLACELONG[s]}
 function openMeal(w,d,mi){
   const m=WEEKS[w].days[d].meals[mi];const k=ateKey(w,d,mi);const done=LS.get(k,false);const rec=REC_OF[m.id];const dt=dateOf(w,d);
@@ -4021,7 +4046,7 @@ function onbNums(){
     perDay:Math.max(1,Math.round(tot/Math.max(1,days))),shops:WEEKS.length};
   onbNums.c=r;return r}
 const oMeal=(w,d,mi)=>{const x=WEEKS[w]&&WEEKS[w].days[d];return x&&x.meals[mi]||null};
-const oWord=id=>((SHORT[id]||'').split('|').filter(Boolean).join('<br>'))||'ОБЕД';
+const oWord=id=>((SHORT[id]||'').split('|').filter(Boolean).map(esc).join('<br>'))||'ОБЕД';
 const oClip=(t,n,full)=>{t=String(t||'').replace(/\s+/g,' ').trim();
   if(!full){const m=t.match(/^[^.!?]+/);t=(m?m[0]:t).trim()}
   if(t.length<=n)return t;
@@ -4039,8 +4064,8 @@ function oTop(k,n){
 function oSell(i,k,n){const N=onbNums();
   if(i===0){const m=oMeal(0,0,1),m2=oMeal(0,1,0),m3=oMeal(0,0,2);
     const over=`<div class="o-obj"><div class="o-stack">
-      <div class="o-mini o-m3"><span class="o-sq" style="background:#FFF1DC">${emo('🥣')}</span><span><span class="o-mt">Полдник · </span>${esc(oClip(m3&&m3.n,28,1))}</span></div>
-      <div class="o-mini o-m2"><span class="o-sq" style="background:#E8F3EC">${emo('🥞')}</span><span><span class="o-mt">Завтра · </span>${esc(oClip(m2&&m2.n,28,1))}</span></div>
+      <div class="o-mini o-m3"><span class="o-sq" style="background:#FFF1DC">${emo('🥣')}</span><span><span class="o-mt">Полдник · </span>${esc(oClip(m3&&m3.n,30,1))}</span></div>
+      <div class="o-mini o-m2"><span class="o-sq" style="background:#E8F3EC">${emo('🥞')}</span><span><span class="o-mt">Завтра · </span>${esc(oClip(m2&&m2.n,30,1))}</span></div>
       <div class="o-tilt"><div class="o-card o-d-card">
         <div class="o-po"><span class="o-pw">${oWord(m&&m.id)}</span></div>
         <div class="o-bd"><div class="o-mt"><span>Обед</span><span>${m&&!NONUM()?m.k+' ккал':''}</span></div>
@@ -4146,11 +4171,12 @@ function renderOnb(){const el=$('onb');if(!el||!ONB)return;
   else{
     const pl=onbPlan(ONB);const rel=(()=>{const x=Math.round((pl.shop-TODAY)/864e5);return x===0?'сегодня':x===1?'завтра':x===2?'послезавтра':`через ${x} ${plural(x,'день','дня','дней')}`})();
     const pan=`<div class="o-pword o-s2">${nm?`<span class="o-fitw">${esc(nm)},</span><br>всё готово`:'Всё<br>готово'}<small>план на четыре недели собран</small></div>
-      <span class="o-stk o-bob" style="right:10px;bottom:34px;font-size:68px;--r:12deg">${emo('🎉')}</span>
       <span class="o-stk" style="right:96px;bottom:120px;font-size:38px;--r:-14deg;animation-delay:460ms">${emo('✨')}</span>`;
+    /* хлопушка живёт внутри .o-obj — так она ложится поверх карточки, а не под неё */
     const over=`<div class="o-obj"><div class="o-tilt"><div class="o-card o-taskcard"><span class="o-tl">Первое дело</span>
-      <span class="o-tt">Заказать продукты</span><span class="o-td">${fdate(pl.shop)} · ${rel}</span></div></div></div>`;
-    html=oScr(k,n,O_G.o,{pan,over},'',{sub:'Останется закупиться и один раз приготовить. Дальше еда ждёт готовой.'},
+      <span class="o-tt">Заказать продукты</span><span class="o-td">${fdate(pl.shop)} · ${rel}</span></div></div>
+      <span class="o-stk o-bob" style="right:-4px;top:-46px;font-size:68px;--r:12deg;z-index:7">${emo('🎉')}</span></div>`;
+    html=oScr(k,n,O_G.o,{pan,over},'',{},
       'К плану',{pfg:O_PFG.o,sec:`<button class="o-btn o-sec" id="obCal">${ic('week')}<span>Добавить в календарь</span></button>`})}
   ONB._rk=k;el.className='';el.innerHTML=html;
   onbCount();onbFit();
@@ -4294,6 +4320,16 @@ function render(){
 {const ms=document.querySelector('.msect');const on=()=>ms&&ms.classList.toggle('edge',scrollY>4);addEventListener('scroll',on,{passive:true});on()}
 {const io=new IntersectionObserver(es=>es.forEach(x=>$('mhdr').classList.toggle('on',!x.isIntersecting&&x.boundingClientRect.top<0)),{threshold:0});io.observe($('title'))}
 {const tz=$('topzone');const s=document.createElement('div');s.className='scroll-sentinel';s.setAttribute('aria-hidden','true');document.body.prepend(s);new IntersectionObserver(([e])=>tz.classList.toggle('stuck',!e.isIntersecting)).observe(s)}
+/* «Что есть дома» в SOS — отметка под конкретный момент, а не настройка.
+   Чистим на каждом входе в приложение: при загрузке и при возврате из фона,
+   если приложение было свёрнуто дольше получаса. */
+const SOS_GAP=30*6e4;
+function sosReset(){LS.set('mp-sos',[]);LS.set('mp-sos-t',Date.now())}
+sosReset();
+addEventListener('visibilitychange',()=>{
+  if(document.hidden){LS.set('mp-sos-t',Date.now());return}
+  if(Date.now()-LS.get('mp-sos-t',0)>SOS_GAP){sosReset();const b=$('sosBody');if(b){b.innerHTML=sosRender();sosBind&&sosBind()}}
+});
 commitNext();addEventListener('visibilitychange',()=>{if(!document.hidden&&commitNext())render()});
 render();
 </script>
