@@ -1616,12 +1616,29 @@ body.cook-prep .pfix{bottom:0;padding:12px 16px calc(18px + env(safe-area-inset-
     document.body.innerHTML='<div class="ip-stage"><div class="ip-scale"><div class="ip-device"><div class="ip-screen"><div class="ip-status"><span class="ip-time">9:41</span><span class="ip-island"></span><span class="ip-icons"><i class="sig"></i><i class="wifi"></i><i class="bat"></i></span></div><iframe name="iphone17" title="Fork Yeah на iPhone 17"></iframe><span class="ip-home"></span></div></div></div></div>';
     const f=document.querySelector('.ip-screen iframe');f.src=location.href.split('#')[0]+(location.hash||'#today');
     const fit=()=>{const s=Math.min(1,(innerHeight-48)/898,(innerWidth-48)/426);document.querySelector('.ip-scale').style.transform=`scale(${s})`};fit();addEventListener('resize',fit);
+    /* сброс прототипа: чистим хранилище и открываем приложение с нуля, с онбординга */
+    const rb=document.createElement('button');rb.type='button';rb.className='ip-reset';
+    const base='Сбросить до онбординга';rb.textContent=base;let armed=0,t=0;
+    rb.onclick=()=>{
+      if(!armed){armed=1;rb.textContent='Точно? Прогресс сотрётся';rb.classList.add('arm');
+        clearTimeout(t);t=setTimeout(()=>{armed=0;rb.textContent=base;rb.classList.remove('arm')},3000);return}
+      clearTimeout(t);armed=0;rb.textContent=base;rb.classList.remove('arm');
+      try{localStorage.clear()}catch(_){}
+      try{f.contentWindow.location.replace(location.href.split('#')[0])}catch(_){f.src=location.href.split('#')[0]}
+    };
+    document.querySelector('.ip-stage').appendChild(rb);
   });
 })();
 </script>
 <style>
 html.ip-host,html.ip-host body{height:100%;margin:0;background:#EDE9E3;overflow:hidden}
-.ip-stage{height:100vh;display:grid;place-items:center}
+.ip-stage{position:relative;height:100vh;display:grid;place-items:center}
+.ip-reset{position:absolute;left:24px;top:24px;z-index:5;border:1px solid #d8d2c9;background:#f6f3ee;color:#4a453f;
+  font:500 13px/1 var(--font);padding:9px 14px;border-radius:var(--r-pill);cursor:pointer;
+  transition:background var(--t-fast) ease,color var(--t-fast) ease,transform var(--t-press) var(--ease-out)}
+.ip-reset:hover{background:#fff;color:#1d1b19}
+.ip-reset:active{transform:scale(.97)}
+.ip-reset.arm{background:#1d1b19;border-color:#1d1b19;color:#fff}
 .ip-scale{transform-origin:center}
 .ip-device{width:426px;height:898px;border-radius:72px;background:#1d1d1f;padding:12px;box-sizing:border-box;box-shadow:0 0 0 2px #3a3a3c,0 40px 90px -30px rgba(40,30,20,.45);position:relative}
 .ip-screen{position:relative;width:402px;height:874px;border-radius:60px;overflow:hidden;background:#fff}
@@ -1873,6 +1890,263 @@ body.nonum .mcard .k,body.nonum .khead .k,body.nonum .mbju,body.nonum .desk-kpis
 h1,h2,h3,.ml-1,.ml-2,.dish,.cn-h{overflow-wrap:anywhere}
 .trayhead h2{min-width:0}
 @media (hover:hover) and (pointer:fine){.as-cook:hover{border-color:var(--ink-2)}}
+
+
+/* ===== Онбординг: белый фон, панель с визуалом, карточки ===== */
+#onb{--orange:#FF8A1F;--yellow:#FFC93C;--pfg:#2A1300;background:#fff!important;color:var(--ink)!important;
+  display:block!important;padding:0!important;transition:none}
+#onb .o-scr{overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;
+  padding-bottom:calc(30px + env(safe-area-inset-bottom) + var(--kb,0px))}
+#onb .o-top,#onb .o-copy,#onb .o-foot,#onb .o-hero{max-width:640px;width:100%;margin-left:auto;margin-right:auto}
+#onb .o-hero{margin-top:26px}
+#onb .o-scr{position:absolute;inset:0;background:#fff;color:var(--ink);overflow:hidden;
+  display:grid;grid-template-rows:auto minmax(0,1fr) auto auto;
+  padding:calc(62px + env(safe-area-inset-top)) 22px calc(30px + env(safe-area-inset-bottom))}
+#onb .o-top{display:grid;grid-template-columns:40px 1fr 40px;align-items:center;height:38px}
+#onb .o-dots{display:flex;gap:5px;justify-content:center}
+#onb .o-back{all:unset;cursor:pointer;width:38px;height:38px;display:grid;place-items:center;border-radius:50%;
+  color:var(--ink);background:var(--panel);box-shadow:inset 0 0 0 1px var(--line-2);
+  transition:transform var(--t-press) var(--ease-out),background-color var(--t-fast) ease-out}
+#onb .o-back:active{transform:scale(.94);background:var(--shell)}
+#onb .o-back svg{width:18px;height:18px}
+#onb .o-dots i{width:5px;height:5px;border-radius:var(--r-pill);background:var(--ink);opacity:.18;
+  transition:opacity var(--t-base) ease-out,width var(--t-base) var(--ease-out)}
+#onb .o-dots i.o-on{opacity:1;width:18px}
+#onb .o-dots i.o-done{opacity:.4}
+#onb .o-btn{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+  gap:7px;height:54px;width:100%;border-radius:var(--r-lg);font-size:var(--fs-4);font-weight:500;
+  color:#fff;background:linear-gradient(180deg,#2b2927 0%,var(--ink) 55%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 -1px 0 rgba(0,0,0,.5),
+    0 1px 1px rgba(40,30,20,.18),0 6px 14px -6px rgba(40,30,20,.45);
+  transition:transform var(--t-press) var(--ease-out),background-color var(--t-fast) ease-out}
+#onb .o-btn:active{background:var(--ink);transform:scale(.985);
+  box-shadow:inset 0 2px 4px rgba(0,0,0,.55),inset 0 -1px 0 rgba(255,255,255,.08)}
+#onb .o-btn.o-sec{height:48px;color:var(--ink);background:var(--panel);
+  box-shadow:inset 0 0 0 1px var(--line-2),0 1px 2px rgba(45,35,25,.05)}
+#onb .o-btn.o-sec:active{background:var(--shell);box-shadow:inset 0 0 0 1px var(--line-2)}
+#onb .o-foot{display:grid;gap:12px;margin-top:38px}
+/* ============ панель ============ */
+#onb .o-hero{position:relative;margin:26px 0 0;min-height:230px}
+#onb .o-pan{position:absolute;inset:0;border-radius:var(--r-2xl);overflow:hidden;
+  box-shadow:0 1px 2px rgba(45,35,25,.06),0 16px 34px -18px rgba(45,35,25,.3);
+  animation:oPanIn 520ms var(--ease-out) both}
+#onb .o-pan .o-bgl{position:absolute;inset:0;z-index:0;background:var(--g)}
+#onb .o-pan .o-fx{position:absolute;inset:0;z-index:1;pointer-events:none}
+#onb .o-pan.o-grid .o-fx{background-image:
+    linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);
+  background-size:38px 38px;
+  -webkit-mask-image:radial-gradient(86% 70% at 50% 8%,#000 0%,rgba(0,0,0,.25) 62%,transparent 86%);
+  mask-image:radial-gradient(86% 70% at 50% 8%,#000 0%,rgba(0,0,0,.25) 62%,transparent 86%)}
+#onb .o-obj{position:absolute;left:18px;right:18px;bottom:-36px;z-index:3;animation:oCardIn 560ms 110ms var(--ease-out) both}
+#onb .o-obj>.o-tilt{transform:rotate(-1.2deg)}
+#onb .o-pword{position:absolute;left:26px;right:22px;top:36px;z-index:3;
+  font-family:'Unbounded',sans-serif;font-weight:800;font-size:clamp(40px,12.5vw,54px);line-height:.84;
+  letter-spacing:-.055em;font-synthesis:none;text-transform:uppercase;color:var(--pfg,#2A1300);
+  
+  animation:oRiseIn 460ms 60ms var(--ease-out) both}
+#onb .o-pword.o-s2{font-size:clamp(32px,9.6vw,42px)}
+#onb .o-pword small{display:block;font-size:.42em;letter-spacing:-.03em;opacity:.68;margin-top:9px;text-transform:none}
+#onb .o-pword .o-fitw{display:inline-block;white-space:nowrap}
+#onb .o-card{background:var(--panel);border-radius:var(--r-xl);color:var(--ink);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 2px 5px rgba(50,34,12,.1),0 20px 38px -16px rgba(50,34,12,.42)}
+#onb .o-obj>.o-tilt{position:relative;z-index:2}
+#onb .o-fchip{position:absolute;z-index:6;display:inline-flex;align-items:center;gap:9px;
+  background:var(--panel);border-radius:var(--r-lg);padding:10px 13px;
+  font-size:var(--fs-2);font-weight:500;color:var(--ink);
+  box-shadow:0 0 0 3px #fff,inset 0 1px 0 rgba(255,255,255,.9),0 3px 6px rgba(50,34,12,.12),0 18px 30px -12px rgba(50,34,12,.5);
+  animation:oChipIn 460ms 260ms var(--ease-spring) both}
+#onb .o-fchip .o-ttl{display:grid;gap:2px}
+#onb .o-fchip .o-sm{font-size:var(--fs-1);color:var(--muted);font-weight:400}
+#onb .o-fchip .o-tv{font-size:var(--fs-5);font-weight:600;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+#onb .o-pulse{width:7px;height:7px;border-radius:50%;background:var(--green);flex:none}
+#onb .o-fchip.o-far{z-index:5;padding:8px 11px;transform:scale(.93) rotate(var(--r,0deg));transform-origin:50% 100%;
+  box-shadow:0 0 0 2.5px #fff,0 2px 4px rgba(50,34,12,.08),0 12px 22px -12px rgba(50,34,12,.38)}
+#onb .o-fchip.o-far .o-ttl span:last-child{font-size:var(--fs-2)}
+/* стопка дня */
+#onb .o-stack{display:grid;gap:9px}
+#onb .o-mini{display:flex;align-items:center;gap:9px;background:var(--panel);border-radius:var(--r-lg);
+  padding:11px 13px;font-size:var(--fs-2);color:var(--ink);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 2px 4px rgba(50,34,12,.08),0 14px 26px -14px rgba(50,34,12,.38);
+  animation:oRiseIn 460ms var(--ease-out) both}
+#onb .o-mini .o-mt{color:var(--muted)}
+#onb .o-mini .o-sq{width:26px;height:26px;border-radius:7px;flex:none;display:grid;place-items:center;font-size:14px}
+#onb .o-mini.o-m2{margin:0 26px 0 22px;transform:rotate(-1.4deg);animation-delay:220ms}
+#onb .o-mini.o-m3{margin:0 48px 0 40px;transform:rotate(1.6deg);opacity:.96;animation-delay:150ms}
+/* таймлайн шагов */
+#onb .o-flow{display:grid;gap:8px;position:relative}
+#onb .o-flow .o-st{display:flex;align-items:center;gap:10px;border-radius:var(--r-lg);padding:10px 13px;
+  font-size:var(--fs-2);background:rgba(255,255,255,.82);color:var(--ink);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  box-shadow:0 2px 4px rgba(50,34,12,.06);animation:oRiseIn 420ms var(--ease-out) both}
+#onb .o-flow .o-st .o-tm{margin-left:auto;color:var(--muted);font-variant-numeric:tabular-nums}
+#onb .o-flow .o-st.o-d1{animation-delay:120ms;margin:0 34px 0 30px}
+#onb .o-flow .o-st.o-d2{animation-delay:190ms;margin-right:14px}
+#onb .o-flow .o-st.o-d4{animation-delay:380ms;margin-left:22px}
+#onb .o-flow .o-tick{width:20px;height:20px;border-radius:50%;background:var(--green);flex:none;position:relative}
+#onb .o-flow .o-tick::after{content:"";position:absolute;left:7px;top:4px;width:5px;height:9px;border:solid #fff;border-width:0 1.8px 1.8px 0;transform:rotate(45deg)}
+#onb .o-flow .o-nm{width:20px;height:20px;border-radius:50%;flex:none;display:grid;place-items:center;
+  font-size:var(--fs-1);font-weight:600;color:var(--muted);box-shadow:inset 0 0 0 1.5px var(--line-2);background:#fff}
+#onb .o-flow .o-now{animation:oCardIn 520ms 260ms var(--ease-out) both}
+/* сетка месяца */
+#onb .o-cal{padding:16px 17px 17px;display:grid;gap:13px}
+#onb .o-calhd{display:flex;align-items:baseline;gap:8px;font-size:var(--fs-3);font-weight:600}
+#onb .o-calhd span{margin-left:auto;font-size:var(--fs-2);font-weight:400;color:var(--muted)}
+#onb .o-calgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+#onb .o-calgrid i{aspect-ratio:1;border-radius:7px;background:#f0eeea;display:grid;place-items:center;font-size:10px}
+#onb .o-calgrid i.o-c{background:var(--ink)}
+#onb .o-calgrid i.o-c::after{content:"";width:6px;height:6px;border-radius:50%;background:var(--yellow)}
+/* неделя */
+#onb .o-week{padding:15px 14px 16px;display:grid;gap:11px}
+#onb .o-weekhd{font-size:var(--fs-3);font-weight:600;padding:0 2px}
+#onb .o-wgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+#onb .o-wd{display:grid;gap:5px;justify-items:center;padding:7px 0 8px;border-radius:var(--r-md);background:#f5f3f0;
+  font-size:var(--fs-1);color:var(--muted);transition:background-color var(--t-fast) ease-out,color var(--t-fast) ease-out}
+#onb .o-wd b{font-weight:500}
+#onb .o-wd .o-m{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;font-size:13px;background:#fff}
+#onb .o-wd.o-on{background:var(--ink);color:#fff}
+#onb .o-wd.o-on .o-m{background:rgba(255,255,255,.14)}
+#onb .o-wd.o-sh .o-m{background:#fff}
+#onb .o-wd .o-m svg{width:14px;height:14px}
+#onb .o-weekft{font-size:var(--fs-2);color:var(--muted);padding:0 2px}
+#onb .o-wrows{display:grid;gap:1px;background:var(--line);border-radius:var(--r-md);overflow:hidden}
+#onb .o-wr{display:flex;align-items:center;gap:9px;background:#fff;padding:10px 12px;font-size:var(--fs-2);color:var(--ink-2)}
+#onb .o-wr b{margin-left:auto;color:var(--ink);font-weight:600}
+#onb .o-wr svg{color:var(--muted)}
+/* месяц со стартом */
+#onb .o-mon{padding:15px 15px 16px;display:grid;gap:11px}
+#onb .o-monhd{display:flex;align-items:baseline;font-size:var(--fs-3);font-weight:600}
+#onb .o-monhd span{margin-left:auto;font-size:var(--fs-2);font-weight:400;color:var(--muted)}
+#onb .o-mgrid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px;align-content:start}
+#onb .o-mgrid b{font-size:9.5px;color:var(--muted);text-align:center;font-weight:500;padding-bottom:2px}
+#onb .o-mgrid i{height:27px;display:grid;place-items:center;border-radius:8px;font-size:11.5px;color:var(--ink-2);
+  font-variant-numeric:tabular-nums;font-style:normal}
+#onb .o-mgrid i.o-off{color:#c3bfb9}
+#onb .o-mgrid i.o-shop{box-shadow:inset 0 0 0 1.5px var(--ink);font-weight:600}
+#onb .o-mgrid i.o-cook{background:var(--yellow);font-weight:600;color:#1B1407}
+#onb .o-mgrid i.o-eat{background:var(--ink);color:#fff;font-weight:600}
+#onb .o-leg{display:flex;gap:12px;font-size:var(--fs-1);color:var(--muted);flex-wrap:wrap}
+#onb .o-leg span{display:inline-flex;align-items:center;gap:5px}
+#onb .o-leg i{width:11px;height:11px;border-radius:4px;display:block}
+/* строки с датами, тапабельные */
+#onb .o-drow{position:relative}
+#onb .o-drow input{position:absolute;inset:0;opacity:0;width:100%;height:100%;cursor:pointer;font-size:16px}
+#onb .o-stk{position:absolute;z-index:5;pointer-events:none;animation:oStkIn 520ms 360ms var(--ease-spring) both}
+/* ============ текст ============ */
+#onb .o-copy{text-align:center;display:grid;justify-items:center;padding:82px 6px 0;align-content:start}
+#onb .o-copy.o-l{text-align:left;justify-items:start;padding:82px 2px 0}
+#onb .o-num{display:flex;align-items:baseline;gap:7px;animation:oRiseIn 420ms 120ms var(--ease-out) both}
+#onb .o-num .o-big{font-family:'Unbounded',sans-serif;font-weight:800;font-size:58px;line-height:.86;
+  letter-spacing:-.05em;font-synthesis:none;font-variant-numeric:tabular-nums}
+#onb .o-num .o-u{font-family:'Unbounded',sans-serif;font-weight:800;font-size:24px;letter-spacing:-.04em}
+#onb .o-h1{margin:12px 0 0;font-size:22px;line-height:1.2;letter-spacing:-.025em;font-weight:600;max-width:18ch;
+  text-wrap:balance;
+  animation:oRiseIn 400ms 190ms var(--ease-out) both}
+#onb .o-copy.o-l .o-h1{margin:0;max-width:none;text-wrap:balance}
+#onb .o-copy.o-l .o-sub{max-width:none;text-wrap:pretty}
+#onb .o-sub{margin:7px 0 0;max-width:31ch;text-wrap:pretty;font-size:var(--fs-3);line-height:1.45;color:var(--muted);max-width:30ch;
+  animation:oRiseIn 400ms 250ms var(--ease-out) both}
+/* ============ контролы настройки ============ */
+#onb .o-ctl{display:grid;gap:14px;padding:18px 0 0;animation:oRiseIn 400ms 220ms var(--ease-out) both}
+#onb .o-inp{all:unset;box-sizing:border-box;width:100%;height:56px;padding:0 16px;border-radius:var(--r-lg);
+  background:var(--panel);box-shadow:inset 0 0 0 1px var(--line-2);font-size:var(--fs-5);color:var(--ink);
+  transition:box-shadow var(--t-fast) ease-out}
+#onb .o-inp::placeholder{color:#a6a19a}
+#onb .o-inp:focus{box-shadow:inset 0 0 0 2px var(--ink)}
+#onb .o-pills{display:flex;gap:5px}
+#onb .o-pills button{all:unset;box-sizing:border-box;cursor:pointer;flex:1;height:48px;display:flex;align-items:center;justify-content:center;
+  border-radius:var(--r-md);background:var(--panel);box-shadow:inset 0 0 0 1px var(--line);
+  font-size:var(--fs-3);font-weight:500;color:var(--ink-2);
+  transition:background-color var(--t-fast) ease-out,color var(--t-fast) ease-out,transform var(--t-press) var(--ease-out),box-shadow var(--t-fast) ease-out}
+#onb .o-pills button:active{transform:scale(.95)}
+#onb .o-pills button[aria-pressed="true"]{background:var(--ink);color:#fff;box-shadow:none}
+#onb .o-seg{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+#onb .o-seg button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:3px;padding:12px 14px;border-radius:var(--r-md);
+  background:var(--panel);box-shadow:inset 0 0 0 1px var(--line);
+  transition:background-color var(--t-fast) ease-out,color var(--t-fast) ease-out,box-shadow var(--t-fast) ease-out}
+#onb .o-seg button b{font-size:var(--fs-3);font-weight:600}
+#onb .o-seg button span{font-size:var(--fs-2);color:var(--muted)}
+#onb .o-seg button[aria-pressed="true"]{background:var(--ink);color:#fff;box-shadow:none}
+#onb .o-seg button[aria-pressed="true"] span{color:rgba(255,255,255,.7)}
+/* строки расписания в панели */
+#onb .o-plan{display:grid;gap:8px}
+#onb .o-prow{display:flex;align-items:center;gap:10px;background:var(--panel);border-radius:var(--r-md);
+  padding:11px 13px;font-size:var(--fs-3);box-shadow:0 1px 2px rgba(50,34,12,.08),0 10px 20px -12px rgba(50,34,12,.3)}
+#onb .o-prow b{margin-left:auto;font-weight:600;font-variant-numeric:tabular-nums}
+#onb .o-prow .o-ico{color:var(--muted);display:flex}
+#onb .o-taskcard{padding:16px 17px;display:grid;gap:5px}
+#onb .o-taskcard .o-tl{font-size:var(--fs-2);color:var(--muted)}
+#onb .o-taskcard .o-tt{font-size:var(--fs-5);font-weight:600;letter-spacing:-.015em}
+#onb .o-taskcard .o-td{font-size:var(--fs-3);color:var(--ink-2)}
+/* карточки приложения */
+#onb .o-d-card{overflow:hidden}
+#onb .o-d-card .o-po{height:104px;display:grid;align-content:center;padding:0 16px;position:relative;
+  background:linear-gradient(104deg,#FF6A00 0%,#FFB04A 100%)}
+#onb .o-d-card .o-pw{font-family:'Unbounded',sans-serif;font-weight:800;font-size:30px;line-height:.84;letter-spacing:-.05em;color:#2A1300}
+#onb .o-d-card .o-bd{padding:14px 16px 16px;display:grid;gap:7px}
+#onb .o-d-card .o-mt{display:flex;justify-content:space-between;font-size:var(--fs-2);color:var(--muted)}
+#onb .o-d-card .o-dn{font-size:var(--fs-4);font-weight:600;line-height:1.3;letter-spacing:-.01em}
+#onb .o-d-card .o-ft{display:flex;gap:8px;margin-top:4px}
+#onb .o-chip{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 11px;border-radius:var(--r-pill);
+  border:1px solid var(--line-2);font-size:var(--fs-2);color:var(--ink-2);background:var(--panel)}
+#onb .o-chip.o-r{margin-left:auto}
+#onb .o-chip .o-dt{width:12px;height:12px;border-radius:50%;border:1.5px dashed #9c9990}
+#onb .o-s-card{padding:16px 17px 17px;display:grid;gap:9px}
+#onb .o-s-card .o-sl{display:flex;align-items:center;gap:7px;font-size:var(--fs-2);color:var(--muted)}
+#onb .o-s-card .o-sl b{font-weight:500;color:var(--ink-2)}
+#onb .o-s-card .o-tx{font-size:var(--fs-5);font-weight:600;line-height:1.3;letter-spacing:-.015em}
+#onb .o-s-card .o-dn{margin-top:4px;height:44px;border-radius:var(--r-md);background:var(--ink);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:var(--fs-4);font-weight:500}
+#onb .o-b-card{padding:16px 17px 17px;display:grid;gap:14px}
+#onb .o-bar{display:grid;gap:7px}
+#onb .o-bar .o-bl{display:flex;justify-content:space-between;font-size:var(--fs-2);color:var(--ink-2)}
+#onb .o-bar .o-bl b{font-weight:600;font-variant-numeric:tabular-nums}
+#onb .o-bar .o-tr{height:11px;border-radius:var(--r-pill);background:rgba(29,27,25,.08);overflow:hidden}
+#onb .o-bar .o-fl{height:100%;border-radius:var(--r-pill);transform-origin:left;animation:oGrow 640ms 520ms var(--ease-out) both}
+#onb .o-bar.o-a .o-fl{width:37.5%;background:var(--orange)}
+#onb .o-bar.o-b .o-fl{width:100%;background:var(--ink)}
+#onb .o-ftr{display:flex;border-top:1px solid var(--line);padding-top:12px}
+#onb .o-ftr div{flex:1;display:grid;gap:2px}
+#onb .o-ftr b{font-size:var(--fs-6);font-weight:600;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+#onb .o-ftr span{font-size:var(--fs-1);color:var(--muted)}
+@keyframes oPanIn{from{opacity:0;transform:translateY(14px) scale(.985)}}
+@keyframes oCardIn{from{opacity:0;transform:translateY(22px)}}
+@keyframes oChipIn{from{opacity:0;transform:translateY(12px) scale(.92) rotate(var(--r,0deg))}to{opacity:1;transform:translateY(0) scale(1) rotate(var(--r,0deg))}}
+@keyframes oStkIn{from{opacity:0;transform:scale(.55) rotate(calc(var(--r,0deg) - 20deg))}to{opacity:1;transform:scale(1) rotate(var(--r,0deg))}}
+@keyframes oRiseIn{from{opacity:0;transform:translateY(12px)}}
+@keyframes oGrow{from{transform:scaleX(0)}}
+@keyframes oBob{0%,100%{transform:rotate(var(--r,0deg)) translateY(0)}50%{transform:rotate(calc(var(--r,0deg) + 2deg)) translateY(-6px)}}
+#onb .o-stk.o-bob{animation:oStkIn 520ms 360ms var(--ease-spring) both,oBob 3.2s 900ms ease-in-out infinite}
+@keyframes oSwapIn{from{opacity:0;transform:translateY(12px)}}
+
+/* сжатый режим: свои даты и невысокие экраны */
+#onb .o-scr.o-tight .o-copy{padding-top:68px}
+#onb .o-scr.o-tight .o-ctl{padding-top:14px}
+#onb .o-scr.o-tight .o-foot{margin-top:22px}
+@media (max-height:780px){
+  #onb .o-scr{padding-top:calc(40px + env(safe-area-inset-top))}
+  #onb .o-hero{min-height:186px;margin-top:18px}
+  #onb .o-copy,#onb .o-copy.o-l{padding-top:64px}
+  #onb .o-foot{margin-top:20px}
+}
+#onb .o-stk .emo{filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 6px 9px rgba(60,40,15,.3))}
+#onb .o-ctl{width:100%}
+#onb .o-num .o-big,#onb .o-num .o-u,#onb .o-pword,#onb .o-d-card .o-pw{font-family:'Unbounded',var(--font)}
+@media (prefers-reduced-motion:reduce){
+  #onb *{animation:none!important}
+  #onb .o-chip,#onb .o-stk{opacity:1!important}
+}
+
+#onb .o-menus{display:grid;gap:8px}
+#onb .o-menus button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:3px;padding:14px 16px;border-radius:var(--r-md);
+  background:var(--panel);box-shadow:inset 0 0 0 1px var(--line);
+  transition:background-color var(--t-fast) ease-out,box-shadow var(--t-fast) ease-out}
+#onb .o-menus button b{font-size:var(--fs-4);font-weight:600}
+#onb .o-menus button span{font-size:var(--fs-2);color:var(--muted)}
+#onb .o-menus button[aria-pressed="true"]{background:var(--ink);color:#fff;box-shadow:none}
+#onb .o-menus button[aria-pressed="true"] span{color:rgba(255,255,255,.7)}
+#onb .o-inp.shake{animation:shake 360ms ease}
+#onb .o-pword.o-s2{line-height:.95}
 </style>
 <body>
 <div id="splash" aria-hidden="true"><div class="spl-c"><div class="spl-ic"><svg class="appic" viewBox="0 0 120 120"><rect width="120" height="120" rx="27" fill="#FF5A1F"/><rect x="22" y="56" width="76" height="42" rx="10" fill="#fff"/><rect class="sp-lid" x="18" y="48" width="84" height="12" rx="6" fill="#FFD9C7"/><g class="sp-eyes"><circle cx="44" cy="40" r="15" fill="#fff"/><circle cx="76" cy="44" r="9" fill="#fff"/><g class="sp-pup"><circle cx="50" cy="45" r="6" fill="#161614"/><circle cx="73" cy="42" r="4" fill="#161614"/></g></g><path d="M46 74 q14 10 28 0" fill="none" stroke="#161614" stroke-width="5" stroke-linecap="round"/><path class="sp-tongue" d="M60 79 v6 q0 6 -5 6 q-5 0 -5 -6 v-4" fill="#FF8FB1"/></svg></div><div class="spl-w"><span>Fork</span> <span>Yeah</span></div><div class="spl-t">вилкой и по плану</div></div><span class="spl-s s0">🥦</span><span class="spl-s s1">🍗</span><span class="spl-s s2">🧀</span><span class="spl-s s3">🥕</span><span class="spl-s s4">🍝</span><span class="spl-s s5">🍳</span></div><script>(function(){try{var s=document.getElementById('splash');if(window.__IPHOST||navigator.webdriver||sessionStorage.getItem('fy-splash')){s.remove();return}sessionStorage.setItem('fy-splash','1');var k=function(){if(!s.isConnected||s.classList.contains('out'))return;s.classList.add('out');setTimeout(function(){s.remove()},580)};s.addEventListener('click',k);setTimeout(k,matchMedia('(prefers-reduced-motion:reduce)').matches?600:2500)}catch(e){}})()</script>
@@ -3720,7 +3994,7 @@ function openOnb(){const P=LS.get(DAYS_KEY(),null)||{shop:6,cook:[0,3]};
   document.body.classList.add('onb-on');renderOnb();onbKb()}
 function onbKb(){const vv=window.visualViewport;if(!vv||onbKb.on)return;onbKb.on=true;const f=()=>{const el=$('onb');if(!el)return;const kb=Math.max(0,innerHeight-vv.height-vv.offsetTop);el.style.setProperty('--kb',kb+'px')};vv.addEventListener('resize',f);vv.addEventListener('scroll',f)}
 function closeOnb(){const el=$('onb');if(el)el.remove();document.body.classList.remove('onb-on');ONB=null}
-function onbSteps(){const st=['hi'];if(!ONB.hadName)st.push('name');if(MENUS.length>1)st.push('menu');st.push('days','start','done');return st}
+function onbSteps(){const st=['s1','s2','s3'];if(!ONB.hadName)st.push('name');if(MENUS.length>1)st.push('menu');st.push('days','start','done');return st}
 /* ближайший старт по ритму: день после большой готовки, закупка не раньше сегодня */
 function onbNatural(o){const ws=(o.c0+1)%7;for(let k=1;k<21;k++){const d=addDays(TODAY,k);if(d.getDay()!==ws)continue;const s=onbPlan(o,toISO(d));if(s.shop>=TODAY)return toISO(d)}return toISO(addDays(TODAY,2))}
 function onbPlan(o,eatISO){const eat=fromISO(eatISO||o.start);const pf=planFrom(toISO(eat),{shop:o.shop,cook:[o.c0,o.c1]});let shop,cook;
@@ -3730,61 +4004,197 @@ function onbPlan(o,eatISO){const eat=fromISO(eatISO||o.start);const pf=planFrom(
   const vs=fromISO(pf.start);let sc=addDays(vs,(o.c1-vs.getDay()+7)%7);if(sc<cook)sc=new Date(cook);
   const r=onbPlan.rh?null:(()=>{onbPlan.rh=1;const x=onbPlan({...o,custom:false},toISO(eat));onbPlan.rh=0;return x})();
   return {eat,shop,cook,sc,skip:pf.skip,start:pf.start,own:!!r&&(toISO(r.shop)!==toISO(shop)||toISO(r.cook)!==toISO(cook))}}
-function renderOnb(){const el=$('onb');if(!el||!ONB)return;const steps=onbSteps();const k=Math.min(ONB.step,steps.length-1);const cur=steps[k];
-  const nm=(ONB.name||'').trim();const NM=nm.toUpperCase();
-  const dots=`<div class="ob-dots">${steps.map((s,i)=>`<i class="${i===k?'on':i<k?'done':''}"></i>`).join('')}</div>`;
-  const back=k>0?`<button class="ob-back" id="obBack" aria-label="Назад">${ic('left')}</button>`:`<button class="ob-back ob-skip" id="obSkip">Позже</button>`;
-  const pill=(row,v)=>`<div class="ob-pills" data-row="${row}">${ONB_DOW.map(d=>`<button data-d="${d}" aria-pressed="${d===v}">${DOW[d]}</button>`).join('')}</div>`;
-  let body='',theme='',cta='Дальше';
-  if(cur==='hi'){theme='t-orange';cta=nm?'Собрать новый план':'Давай знакомиться';body=`<div class="ob-hero"><span class="ob-mz">${mzSVG('happy')}</span><p class="ob-say">${nm?`${esc(nm)}, с возвращением! Соберём новый план?`:'Привет! Я — твой ланчбокс. Буду подсказывать, что поесть, и не буду занудой'}</p></div>
-    <div class="ob-h">${nm?'НОВЫЙ<br>КРУГ':'ЕДА<br>БЕЗ<br>ДРАМЫ'}</div>
-    <ul class="ob-perks"><li>${emo('🛒')}<span>Список покупок соберётся сам</span></li><li>${emo('🍳')}<span>Две готовки в неделю — и всё</span></li><li>${emo('🧘')}<span>Можно без цифр и подсчётов</span></li></ul>
-    <div class="ob-fly">${['🍗','🥦','🥚','🍝','🫐','🥕'].map((e,i)=>emo(e,'f'+i)).join('')}</div>`}
-  else if(cur==='name'){theme='t-blue';cta='Это я';body=`<div class="ob-h">КАК ТЕБЯ<br>ЗВАТЬ?</div>
-    <input class="ob-in" id="obName" maxlength="24" autocomplete="given-name" autocapitalize="words" enterkeyhint="next" placeholder="Имя" value="${esc(ONB.name||'')}">
-    <p class="ob-p ob-q" id="obQuip">${esc(nameQuip(ONB.name||''))}</p><div class="ob-fly sm">${emo('👋','f0')}${emo('🍽️','f3')}</div>`}
-  else if(cur==='menu'){theme='t-green';cta='Беру это';body=`<div class="ob-h">${nm?esc(NM)+',<br>':''}ЧТО<br>ЕДИМ?</div>
-    <div class="ob-menus">${MENUS.map(m=>{const s=menuStats(m);return `<button class="ob-menu" data-m="${m.id}" aria-pressed="${m.id===ONB.menu}"><b>${esc(m.name)}</b><span>${s.dishes} блюд${NONUM()?'':` · ${fmt(s.min)}–${fmt(s.max)} ккал в день`}</span></button>`}).join('')}</div>`}
-  else if(cur==='days'){theme='t-yellow';cta='Мне подходит';body=`<div class="ob-h">КОГДА<br>ГОТОВИМ?</div>
-    <p class="ob-p">Раз в неделю большая готовка — час-полтора, зато потом почти ничего. В какой день обычно есть время?</p>
-    ${pill('c0',ONB.c0)}
-    ${ONB.more?'':`<div class="ob-first ob-rh"><span>${emo('🛒')}Закупка — <b>${DOWF[ONB.shop].toLowerCase()}</b></span><span>${emo('🥄')}Короткая готовка — <b>${DOWF[ONB.c1].toLowerCase()}</b></span><button class="ob-link" id="obMore">Поменять</button></div>`}
-    ${ONB.more?`<div class="ob-row"><div class="ob-rl">${emo('🛒')}<span>Закупка</span></div>${pill('shop',ONB.shop)}</div><div class="ob-row"><div class="ob-rl">${emo('🥄')}<span>Короткая готовка</span></div>${pill('c1',ONB.c1)}</div>`:''}`}
-  else if(cur==='done'){theme='t-green';cta='К плану';const od=onbPlan(ONB).shop;const n=Math.round((od-TODAY)/864e5);
-    body=`<div class="ob-fly sm">${emo('🎉','f0')}${emo('✨','f3')}</div><div class="ob-h">${nm?esc(NM)+',<br>':''}ВСЁ<br>ГОТОВО</div>
-    <div class="ob-first"><span class="ob-first-l">Первое дело</span><b>Заказать продукты</b><span>${fdate(od)}${n>=0?' · '+(n===0?'сегодня':n===1?'завтра':`через ${n} ${plural(n,'день','дня','дней')}`):''}</span></div>
-    <button class="ob-cal" id="obCal">${ic('week')}<span>Добавить в календарь</span></button>
-    <p class="ob-p ob-cal-h" id="obCalH">Все закупки и готовки на 4 недели — с напоминанием накануне вечером.</p>`}
-  else if(cur==='start'){theme='t-pink';cta='Поехали';const nat=onbNatural(ONB);
-    const pl=onbPlan(ONB);const rel=d=>{const n=Math.round((d-TODAY)/864e5);return n===0?'сегодня':n===1?'завтра':n===2?'послезавтра':`через ${n} ${plural(n,'день','дня','дней')}`};
-    const n=7-pl.skip;const C=!!ONB.custom;const eatMin=toISO(TODAY);
-    const rows=[['🛒','Закупка',pl.shop,'shop',toISO(TODAY),toISO(pl.cook)],['🍳','Большая готовка',pl.cook,'cook',toISO(pl.shop),toISO(pl.eat)],['🍽️','Первый день плана',pl.eat,'eat',eatMin,'']];
-    body=`<div class="ob-h">СТАРТ<br>КОГДА?</div>
-    <div class="ob-starts"><button data-mode="r" aria-pressed="${!C}"><b>По ритму</b><span>${fdate(fromISO(nat))}</span></button><button data-mode="c" aria-pressed="${C}"><b>Своя дата</b><span>${C?fdate(pl.eat):'настроить всё самой'}</span></button></div>
-    ${C?'<p class="ob-p ob-note">Тапни дату, чтобы поменять</p>':''}
-    <ol class="ob-mini${C?' ed':''}">${rows.map(([e,t,d,k,mn,mx])=>`<li${C?' class="obd"':''}>${emo(e)}<span>${t}</span><b>${fdate(d)}<small>${rel(d)}</small></b>${C?`${ic('chev','ob-tl-c')}<input type="date" class="obdi" data-k="${k}" value="${toISO(d)}" min="${mn}"${mx?` max="${mx}"`:''} aria-label="${t}">`:''}</li>`).join('')}</ol>
-    ${pl.skip?`<p class="ob-p ob-note">Первая неделя будет короче — ${n} ${plural(n,'день','дня','дней')}. Дальше всё по твоему ритму.</p>`:''}`}
-  el.className=theme;
-  const same=ONB._rk===k&&el.querySelector('.ob-body');ONB._rk=k;
-  if(same){const sy=el.scrollTop;el.querySelector('.ob-body').innerHTML=body;const g=$('obGo');if(g)g.innerHTML=cta;const tp=el.querySelector('.ob-top');if(tp)tp.innerHTML=`${back}${dots}<span class="ob-sp"></span>`;el.scrollTop=sy}
-  else el.innerHTML=`<div class="ob-top">${back}${dots}<span class="ob-sp"></span></div><div class="ob-body">${body}</div><div class="ob-foot"><button class="ob-go" id="obGo">${cta}</button></div>`;
+/* ---------- Онбординг: экраны ---------- */
+const O_BACK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15 6l-6 6 6 6"/></svg>';
+const O_G={o:'linear-gradient(168deg,#FF7A0A 0%,#FF9F3C 26%,#FFC98A 56%,#FFE9D2 80%,#FFF8F1 100%)',
+  g:'linear-gradient(168deg,#0E8F4E 0%,#35BC78 28%,#8FDCB4 58%,#D7F3E4 82%,#F3FBF7 100%)',
+  y:'linear-gradient(168deg,#FFB300 0%,#FFCB4D 28%,#FFE194 58%,#FFF1CE 82%,#FFFBF0 100%)'};
+const MONN=['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+const O_PFG={o:'#2A1300',g:'#063A22',y:'#1B1407'};
+/* цифры онбординга считаем по активному меню, а не хардкодим */
+function onbNums(){
+  if(onbNums.c&&onbNums.c.m===S.menu)return onbNums.c;
+  let meals=0,days=0;WEEKS.forEach(w=>w.days.forEach(d=>{days++;meals+=d.meals.length}));
+  let cooks=0,tot=0,act=0;
+  for(let w=0;w<WEEKS.length;w++)for(let c=0;c<2;c++){const s=cookOf(w,c);if(!s||!(s.steps||[]).length)continue;cooks++;tot+=tlTotal(w,c);act+=tlActive(w,c)}
+  const r={m:S.menu,meals,days,cooks,tot,act,hTot:Math.max(1,Math.round(tot/60)),hAct:Math.max(1,Math.round(act/60)),
+    perDay:Math.max(1,Math.round(tot/Math.max(1,days))),shops:WEEKS.length};
+  onbNums.c=r;return r}
+const oMeal=(w,d,mi)=>{const x=WEEKS[w]&&WEEKS[w].days[d];return x&&x.meals[mi]||null};
+const oWord=id=>((SHORT[id]||'').split('|').filter(Boolean).join('<br>'))||'ОБЕД';
+const oClip=(t,n,full)=>{t=String(t||'').replace(/\s+/g,' ').trim();
+  if(!full){const m=t.match(/^[^.!?]+/);t=(m?m[0]:t).trim()}
+  if(t.length<=n)return t;
+  let c=t.slice(0,n);const sp=c.lastIndexOf(' ');if(sp>n*0.6)c=c.slice(0,sp);
+  return c.replace(/[\s,;:—-]+$/,'')+'…'};
+const oCap=t=>t.charAt(0).toUpperCase()+t.slice(1);
+const oNumW=n=>['ноль','один','два','три','четыре','пять','шесть','семь','восемь','девять','десять','одиннадцать','двенадцать'][n]||String(n);
+function oHero(g,inner,pfg){return `<div class="o-hero" style="--g:${g}${pfg?`;--pfg:${pfg}`:''}">
+  <div class="o-pan o-grid"><span class="o-bgl"></span><span class="o-fx"></span>${inner.pan||''}</div>${inner.over||''}</div>`}
+function oTop(k,n){
+  const back=k>0?`<button class="o-back" id="obBack" aria-label="Назад">${O_BACK}</button>`:'<span></span>';
+  return `<div class="o-top">${back}<div class="o-dots">${Array.from({length:n},(_,i)=>`<i class="${i===k?'o-on':i<k?'o-done':''}"></i>`).join('')}</div><span></span></div>`}
+
+/* ——— продающие экраны ——— */
+function oSell(i,k,n){const N=onbNums();
+  if(i===0){const m=oMeal(0,0,1),m2=oMeal(0,1,0),m3=oMeal(0,0,2);
+    const over=`<div class="o-obj"><div class="o-stack">
+      <div class="o-mini o-m3"><span class="o-sq" style="background:#FFF1DC">${emo('🥣')}</span><span><span class="o-mt">Полдник · </span>${esc(oClip(m3&&m3.n,28,1))}</span></div>
+      <div class="o-mini o-m2"><span class="o-sq" style="background:#E8F3EC">${emo('🥞')}</span><span><span class="o-mt">Завтра · </span>${esc(oClip(m2&&m2.n,28,1))}</span></div>
+      <div class="o-tilt"><div class="o-card o-d-card">
+        <div class="o-po"><span class="o-pw">${oWord(m&&m.id)}</span></div>
+        <div class="o-bd"><div class="o-mt"><span>Обед</span><span>${m&&!NONUM()?m.k+' ккал':''}</span></div>
+        <div class="o-dn">${esc(oClip(m&&m.n,46,1))}</div>
+        <div class="o-ft"><span class="o-chip">${ic('freezer')}Морозилка</span><span class="o-chip o-r"><span class="o-dt"></span>Съела</span></div></div></div></div></div>
+      <span class="o-stk o-bob" style="left:-14px;top:2px;font-size:52px;--r:-13deg">${emo('🍗')}</span></div>`;
+    return oScr(k,n,O_G.o,{over},'',{num:N.meals,h:'приёмов еды на месяц уже расписаны',
+      sub:'Каждый завтрак, обед, полдник и ужин. Выбирать не придётся ни разу.'},'Дальше')}
+  if(i===1){const st=(cookOf(0,0)||{}).steps||[];
+    const row=(s,cls)=>s?`<div class="o-st ${cls}"><i class="o-tick"></i>${esc(oClip(s[2],30))}${s[3]?`<span class="o-tm">${s[3]} мин</span>`:''}</div>`:'';
+    const now=st[2]||st[0];
+    const over=`<div class="o-obj"><div class="o-flow">
+      ${row(st[0],'o-d1')}${row(st[1],'o-d2')}
+      <div class="o-now"><div class="o-card o-s-card"><div class="o-sl">${ic('stove')}<b>${esc((now&&now[1])||'Кухня')}</b></div>
+        <div class="o-tx">${esc(oClip(now&&now[2],38))}</div><div class="o-dn">Готово</div></div></div>
+      ${st[3]?`<div class="o-st o-d4"><i class="o-nm">4</i>${esc(oClip(st[3][2],28))}</div>`:''}
+    </div>
+    ${st[0]&&st[0][3]?`<span class="o-fchip" style="right:-10px;top:-30px;--r:6deg"><i class="o-pulse"></i><span class="o-ttl"><span class="o-sm">Уже готовится</span><span class="o-tv">${st[0][3]} мин</span></span></span>`:''}
+    <span class="o-stk o-bob" style="left:-16px;top:-34px;font-size:48px;--r:12deg">${emo('⏲️')}</span></div>`;
+    return oScr(k,n,O_G.g,{over},'',{num:N.cooks,h:'готовок, и месяц закрыт',
+      sub:'Проведём по шагам и посчитаем таймеры за тебя. Остальные дни еду только разогреваешь.'},'Дальше')}
+  const c0=(ONB.c0+6)%7,c1=(ONB.c1+6)%7;const pct=Math.round(N.act/Math.max(1,N.tot)*100);
+  const over=`<div class="o-obj"><div class="o-tilt"><div class="o-card o-cal">
+    <div class="o-calhd">Четыре недели<span>${N.cooks} готовок</span></div>
+    <div class="o-calgrid">${Array.from({length:28},(_,i)=>`<i class="${i%7===c0||i%7===c1?'o-c':''}"></i>`).join('')}</div>
+    <div class="o-bar o-a"><div class="o-bl"><span>Активно у плиты</span><b>${N.hAct} ч</b></div><div class="o-tr"><div class="o-fl" style="width:${pct}%"></div></div></div>
+    <div class="o-bar o-b"><div class="o-bl"><span>Вся готовка за месяц</span><b>${N.hTot} ч</b></div><div class="o-tr"><div class="o-fl"></div></div></div>
+  </div></div>
+  <span class="o-fchip o-far" style="left:-10px;top:-54px;--r:-6deg">${ic('shop')}<span class="o-ttl"><span class="o-sm">Список собран</span><span>${N.shops} ${plural(N.shops,'закупка','закупки','закупок')}</span></span></span>
+  <span class="o-stk o-bob" style="right:-18px;top:-48px;font-size:48px;--r:11deg">${emo('✨')}</span></div>`;
+  return oScr(k,n,O_G.y,{over},'',{num:N.perDay,u:'мин',h:'в день на готовку',
+    sub:`${oCap(oNumW(N.hTot))} ${plural(N.hTot,'час','часа','часов')} за месяц, из них у плиты всего ${oNumW(N.hAct)}.`},'Дальше')}
+
+/* каркас экрана: панель → цифра/заголовок → кнопка */
+function oScr(k,n,g,inner,extra,copy,cta,opts){opts=opts||{};
+  const num=copy.num!=null?`<div class="o-num"><span class="o-big" data-count="${copy.num}">0</span>${copy.u?`<span class="o-u">${copy.u}</span>`:''}</div>`:'';
+  const body=`<div class="o-copy${opts.left?' o-l':''}">${num}${copy.h?`<h1 class="o-h1">${copy.h}</h1>`:''}${copy.sub?`<p class="o-sub" id="obCalH">${copy.sub}</p>`:''}${copy.ctl?`<div class="o-ctl">${copy.ctl}</div>`:''}${copy.note?`<p class="o-sub" style="margin-top:12px">${copy.note}</p>`:''}</div>`;
+  return `<div class="o-scr${opts.tight?' o-tight':''}">${oTop(k,n,opts.first)}
+    ${oHero(g,inner,opts.pfg)}
+    ${body}
+    <div class="o-foot">${opts.sec||''}<button class="o-btn" id="obGo">${cta}</button></div></div>`}
+
+function renderOnb(){const el=$('onb');if(!el||!ONB)return;
+  const steps=onbSteps();const k=Math.min(ONB.step,steps.length-1);const cur=steps[k];const n=steps.length;
+  const nm=(ONB.name||'').trim();
+  let html='';
+  if(cur==='s1')html=oSell(0,k,n);
+  else if(cur==='s2')html=oSell(1,k,n);
+  else if(cur==='s3')html=oSell(2,k,n);
+  else if(cur==='name'){
+    const pan=`<div class="o-pword">${nm?`Привет,<br><span class="o-fitw">${esc(nm)}</span>`:'Как тебя<br>звать?'}<small>${nm?'будем звать так':'одно слово, можно с эмодзи'}</small></div>
+      <span class="o-stk o-bob" style="right:16px;bottom:30px;font-size:74px;--r:12deg">${emo('👋')}</span>
+      <span class="o-stk" style="right:92px;bottom:92px;font-size:40px;--r:-10deg;animation-delay:440ms">${emo('🍽️')}</span>`;
+    const over=`<div class="o-obj"><div class="o-tilt"><div class="o-card o-taskcard"><span class="o-tl">Каждое утро</span>
+      <span class="o-tt">${nm?'Доброе утро, '+esc(nm):'Доброе утро'}</span></div></div></div>`;
+    html=oScr(k,n,O_G.o,{pan,over},'',{h:'Как тебя звать?',sub:'Будем здороваться по имени.',
+      ctl:`<input class="o-inp" id="obName" maxlength="24" autocomplete="given-name" autocapitalize="words" enterkeyhint="next" placeholder="Имя" value="${esc(ONB.name||'')}">`},
+      'Это я',{left:true,pfg:O_PFG.o})}
+  else if(cur==='menu'){
+    const cm=MENUS.find(m=>m.id===ONB.menu)||MENUS[0];const s=menuStats(cm);
+    const pan=`<div class="o-pword o-s2">Что<br>едим?<small>меню можно поменять позже</small></div>
+      <span class="o-stk o-bob" style="right:14px;bottom:26px;font-size:66px;--r:-11deg">${emo('🥘')}</span>`;
+    const over=`<div class="o-obj"><div class="o-tilt"><div class="o-card o-taskcard"><span class="o-tl">${esc(cm.name)}</span>
+      <span class="o-tt">${s.dishes} ${plural(s.dishes,'блюдо','блюда','блюд')}</span>
+      <span class="o-td">${NONUM()?`${s.recipes} ${plural(s.recipes,'рецепт','рецепта','рецептов')}`:`${fmt(s.min)}–${fmt(s.max)} ккал в день`}</span></div></div></div>`;
+    html=oScr(k,n,O_G.g,{pan,over},'',{h:'Какое меню берём?',sub:'Набор блюд на четыре недели. Поменять можно в настройках.',
+      ctl:`<div class="o-menus">${MENUS.map(m=>{const st=menuStats(m);return `<button data-m="${esc(m.id)}" aria-pressed="${m.id===ONB.menu}"><b>${esc(m.name)}</b><span>${st.dishes} ${plural(st.dishes,'блюдо','блюда','блюд')}${NONUM()?'':` · ${fmt(st.min)}–${fmt(st.max)} ккал`}</span></button>`}).join('')}</div>`},
+      'Беру это',{left:true,pfg:O_PFG.g})}
+  else if(cur==='days'){
+    const sh=ONB.shop,q=ONB.c1,big=ONB.c0;
+    const cell=d=>{const on=d===big,isSh=d===sh,isQ=d===q;
+      return `<div class="o-wd${on?' o-on':''}${isSh||isQ?' o-sh':''}"><b>${DOW[d]}</b><span class="o-m">${on?emo('🍳'):isSh?emo('🛒'):isQ?emo('🥄'):'<span style="width:6px;height:6px;border-radius:50%;background:#d9d4cd;display:block"></span>'}</span></div>`};
+    const over=`<div class="o-obj"><div class="o-tilt"><div class="o-card o-week">
+      <div class="o-weekhd">Твоя неделя</div>
+      <div class="o-wgrid">${ONB_DOW.map(cell).join('')}</div>
+      <div class="o-wrows">
+        <div class="o-wr">${ic('shop')}Закупка<b>${DOWF[sh].toLowerCase()}</b></div>
+        <div class="o-wr">${ic('cook')}Большая готовка<b>${DOWF[big].toLowerCase()}</b></div>
+        <div class="o-wr">${ic('quick')}Короткая готовка<b>${DOWF[q].toLowerCase()}</b></div>
+      </div>
+      <div class="o-weekft">Остальные четыре дня еду только достаёшь и разогреваешь.</div>
+    </div></div>
+    <span class="o-stk o-bob" style="right:-14px;top:-46px;font-size:48px;--r:12deg">${emo('🍳')}</span></div>`;
+    const pills=`<div class="o-pills" data-row="c0">${ONB_DOW.map(d=>`<button data-d="${d}" aria-pressed="${d===big}">${DOW[d]}</button>`).join('')}</div>`;
+    html=oScr(k,n,O_G.g,{over},'',{h:'В какой день удобно готовить?',
+      sub:'Час-полтора один раз в неделю. Закупку и короткую готовку подставим сами.',ctl:pills},
+      'Мне подходит',{left:true,pfg:O_PFG.g})}
+  else if(cur==='start'){
+    const pl=onbPlan(ONB);const C=!!ONB.custom;const nat=onbNatural(ONB);
+    const over=`<div class="o-obj"><div class="o-tilt">${oMonth(pl)}</div>
+      <span class="o-stk o-bob" style="right:-18px;top:-30px;font-size:50px;--r:-12deg">${emo('🗓️')}</span></div>`;
+    const RW=[['shop','Закупка',pl.shop,'shop',toISO(TODAY),toISO(pl.cook)],
+              ['cook','Большая готовка',pl.cook,'cook',toISO(pl.shop),toISO(pl.eat)],
+              ['eat','Первый день плана',pl.eat,'week',toISO(pl.cook),'']];
+    const ctl=`<div class="o-seg">
+        <button data-mode="r" aria-pressed="${!C}"><b>По ритму</b><span>${fdate(fromISO(nat))}</span></button>
+        <button data-mode="c" aria-pressed="${C}"><b>Свои даты</b><span>${C?'тапни строку':'выбрать самой'}</span></button>
+      </div>${C?`<div class="o-plan">${RW.map(([key,t,d,icn,mn,mx])=>`<label class="o-prow o-drow"><span class="o-ico">${ic(icn)}</span>${t}<b>${fdate(d)}</b><input type="date" class="obdi" data-k="${key}" value="${toISO(d)}" min="${mn}"${mx?` max="${mx}"`:''} aria-label="${t}"></label>`).join('')}</div>`:''}`;
+    html=oScr(k,n,O_G.y,{over},'',{h:'Когда стартуем?',
+      sub:C?'':'Возьмём ближайшую неделю, в которую всё успеваешь. Или выбери даты сама.',ctl,
+      note:pl.skip?`Первая неделя будет короче — ${7-pl.skip} ${plural(7-pl.skip,'день','дня','дней')}. Дальше всё по твоему ритму.`:''},
+      'Поехали',{left:true,tight:C,pfg:O_PFG.y})}
+  else{
+    const pl=onbPlan(ONB);const rel=(()=>{const x=Math.round((pl.shop-TODAY)/864e5);return x===0?'сегодня':x===1?'завтра':x===2?'послезавтра':`через ${x} ${plural(x,'день','дня','дней')}`})();
+    const pan=`<div class="o-pword o-s2">${nm?`<span class="o-fitw">${esc(nm)},</span><br>всё готово`:'Всё<br>готово'}<small>план на четыре недели собран</small></div>
+      <span class="o-stk o-bob" style="right:10px;bottom:34px;font-size:68px;--r:12deg">${emo('🎉')}</span>
+      <span class="o-stk" style="right:96px;bottom:120px;font-size:38px;--r:-14deg;animation-delay:460ms">${emo('✨')}</span>`;
+    const over=`<div class="o-obj"><div class="o-tilt"><div class="o-card o-taskcard"><span class="o-tl">Первое дело</span>
+      <span class="o-tt">Заказать продукты</span><span class="o-td">${fdate(pl.shop)} · ${rel}</span></div></div></div>`;
+    html=oScr(k,n,O_G.o,{pan,over},'',{sub:'Останется закупиться и один раз приготовить. Дальше еда ждёт готовой.'},
+      'К плану',{pfg:O_PFG.o,sec:`<button class="o-btn o-sec" id="obCal">${ic('week')}<span>Добавить в календарь</span></button>`})}
+  ONB._rk=k;el.className='';el.innerHTML=html;
+  onbCount();onbFit();
   const next=()=>{if(k<steps.length-1){ONB.step=k+1;renderOnb();if(steps[k+1]==='done')onbBurst()}else finishOnb()};
-  if($('obSkip'))$('obSkip').onclick=()=>{S.onbLater=true;closeOnb();render()};
-  else if($('obBack'))$('obBack').onclick=()=>{ONB.step=k-1;renderOnb()};
-  $('obGo').onclick=()=>{if(cur==='name'){const v=$('obName').value.trim();if(!v){$('obName').focus();$('obQuip').textContent='Ну хоть как-нибудь. Можно даже смайлик';const n=el.querySelector('.ob-in');n.classList.remove('shake');void n.offsetWidth;n.classList.add('shake');return}ONB.name=v;LS.set('mp-name',v)}next()};
-  const ni=$('obName');if(ni){ni.oninput=()=>{ONB.name=ni.value;$('obQuip').textContent=nameQuip(ni.value)};ni.onkeydown=e=>{if(e.key==='Enter')$('obGo').click()};setTimeout(()=>ni.focus(),250)}
+  if($('obBack'))$('obBack').onclick=()=>{ONB.step=k-1;renderOnb()};
+  $('obGo').onclick=()=>{if(cur==='name'){const v=$('obName').value.trim();if(!v){const i=$('obName');i.focus();i.classList.remove('shake');void i.offsetWidth;i.classList.add('shake');return}ONB.name=v;LS.set('mp-name',v)}next()};
+  const ni=$('obName');
+  if(ni){ni.oninput=()=>{ONB.name=ni.value;const v=ni.value.trim();
+      const w=el.querySelector('.o-pword');if(w)w.innerHTML=(v?`Привет,<br><span class="o-fitw">${esc(v)}</span>`:'Как тебя<br>звать?')+`<small>${v?'будем звать так':'одно слово, можно с эмодзи'}</small>`;
+      const t=el.querySelector('.o-taskcard .o-tt');if(t)t.textContent=v?'Доброе утро, '+v:'Доброе утро';onbFit()};
+    ni.onkeydown=e=>{if(e.key==='Enter')$('obGo').click()};setTimeout(()=>ni.focus(),250)}
   el.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{ONB.menu=b.dataset.m;renderOnb()});
-  el.querySelectorAll('.ob-pills').forEach(r=>r.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{const row=r.dataset.row,v=+b.dataset.d;ONB[row]=v;if(row==='c0'&&!ONB.more){ONB.shop=(v+6)%7;ONB.c1=(v+3)%7}ONB.start=onbNatural(ONB);try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}renderOnb()}));
-  if($('obMore'))$('obMore').onclick=()=>{ONB.more=true;renderOnb()};
-  el.querySelectorAll('[data-ed]').forEach(b=>b.onclick=()=>{ONB.ed=ONB.ed===b.dataset.ed?null:b.dataset.ed;renderOnb();const pp=document.querySelector('.ob-tl li.open .ob-pills');if(pp)requestAnimationFrame(()=>pp.scrollIntoView({block:'nearest',behavior:RM.matches?'auto':'smooth'}))});
-  if($('obCal'))$('obCal').onclick=async()=>{const ok=await saveIcs(ONB);const h=$('obCalH');if(h&&ok)h.textContent='Готово! Открой файл — айфон предложит добавить события в Календарь.'};
-  el.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{if(b.dataset.mode==='r'){ONB.custom=false;ONB.start=onbNatural(ONB)}else if(!ONB.custom){const pl=onbPlan(ONB);ONB.custom=true;ONB.fshop=toISO(pl.shop);ONB.fcook=toISO(pl.cook)}renderOnb()});
-  el.querySelectorAll('.obdi').forEach(x=>{x.closest('li').onclick=()=>{try{x.showPicker&&x.showPicker()}catch(_){}};x.onchange=()=>{const v=x.value;if(!v)return;const T=toISO(TODAY),dd=(iso,n)=>toISO(addDays(fromISO(iso),n));let s=ONB.fshop,c=ONB.fcook,e=ONB.start;
+  el.querySelectorAll('.o-pills').forEach(r=>r.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{const row=r.dataset.row,v=+b.dataset.d;ONB[row]=v;if(row==='c0'){ONB.shop=(v+6)%7;ONB.c1=(v+3)%7}ONB.start=onbNatural(ONB);try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}renderOnb()}));
+  if($('obCal'))$('obCal').onclick=async()=>{const ok=await saveIcs(ONB);const b=$('obCal');if(b&&ok)b.querySelector('span').textContent='Готово, открой файл'};
+  el.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{if(b.dataset.mode==='r'){ONB.custom=false;ONB.start=onbNatural(ONB)}else if(!ONB.custom){const pl=onbPlan(ONB);ONB.custom=true;ONB.fshop=toISO(pl.shop);ONB.fcook=toISO(pl.cook);ONB.start=toISO(pl.eat)}renderOnb()});
+  el.querySelectorAll('.obdi').forEach(x=>{x.onchange=()=>{const v=x.value;if(!v)return;const T=toISO(TODAY);let s=ONB.fshop,c=ONB.fcook,e=ONB.start;
     if(x.dataset.k==='shop'){s=v<T?T:v;if(c<s)c=s;if(e<c)e=c}
     else if(x.dataset.k==='cook'){c=v<T?T:v;if(s>c)s=c;if(e<c)e=c}
     else{e=v<T?T:v;if(c>e)c=e;if(c<T)c=T;if(s>c)s=c}
     ONB.fshop=s;ONB.fcook=c;ONB.start=e;renderOnb()}});
 }
+/* календарь месяца со стартом плана */
+function oMonth(pl){const y=pl.eat.getFullYear(),m=pl.eat.getMonth();
+  const first=new Date(y,m,1);const lead=(first.getDay()+6)%7;const days=new Date(y,m+1,0).getDate();
+  const mk={};mk[toISO(pl.shop)]='o-shop';mk[toISO(pl.cook)]='o-cook';mk[toISO(pl.eat)]='o-eat';
+  let c='';for(let i=0;i<lead;i++)c+='<i class="o-off"></i>';
+  for(let d=1;d<=days;d++){const iso=toISO(new Date(y,m,d));c+=`<i class="${mk[iso]||''}">${d}</i>`}
+  return `<div class="o-card o-mon"><div class="o-monhd">${MONN[m]} ${y}</div>
+    <div class="o-mgrid">${ONB_DOW.map(d=>`<b>${DOW[d]}</b>`).join('')}${c}</div>
+    <div class="o-leg"><span><i style="box-shadow:inset 0 0 0 1.5px var(--ink)"></i>закупка</span>
+      <span><i style="background:var(--yellow)"></i>готовка</span>
+      <span><i style="background:var(--ink)"></i>первый день</span></div></div>`}
+function onbCount(){const rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('#onb [data-count]').forEach(el=>{const to=+el.dataset.count;
+    if(rm){el.textContent=to;return}
+    const dur=Math.min(900,480+to*2.2),t0=performance.now();
+    const f=now=>{const p=Math.min(1,(now-t0)/dur);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(f)};
+    requestAnimationFrame(f)})}
+/* длинное имя не должно вылезать за панель */
+function onbFit(){document.querySelectorAll('#onb .o-pword').forEach(w=>{
+  const nd=w.querySelector('.o-fitw');if(!nd)return;
+  w.style.removeProperty('font-size');
+  const base=parseFloat(getComputedStyle(w).fontSize)||48;
+  for(let f=base;f>=20;f-=1){w.style.fontSize=f+'px';if(nd.scrollWidth<=w.clientWidth)break}})}
 function onbSched(o){const sd=fromISO(o.start);const bd=addDays(sd,-1-((addDays(sd,-1).getDay()-o.c0+7)%7));const od=addDays(bd,-1-((addDays(bd,-1).getDay()-o.shop+7)%7));return {sd,bd,od,dv:addDays(od,1),sc:addDays(sd,(o.c1-sd.getDay()+7)%7)}}
 function icsFor(o){const pl=onbPlan(o);const vs=fromISO(pl.start);const f=d=>`${d.getFullYear()}${String(d.getMonth()+1).padStart(2,'0')}${String(d.getDate()).padStart(2,'0')}`;const L=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Fork Yeah//RU','CALSCALE:GREGORIAN'];let n=0;
   const ev=(d,t,desc)=>{L.push('BEGIN:VEVENT',`UID:fy-${f(d)}-${n++}@forkyeah`,`DTSTAMP:${f(TODAY)}T090000Z`,`DTSTART;VALUE=DATE:${f(d)}`,`DTEND;VALUE=DATE:${f(addDays(d,1))}`,`SUMMARY:${t}`,`DESCRIPTION:${desc}`,'BEGIN:VALARM','TRIGGER:-PT15H','ACTION:DISPLAY',`DESCRIPTION:${t}`,'END:VALARM','END:VEVENT')};
