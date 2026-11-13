@@ -2161,6 +2161,43 @@ h1,h2,h3,.ml-1,.ml-2,.dish,.cn-h{overflow-wrap:anywhere}
 #onb .o-stack,#onb .o-stack>*,#onb .o-mini{min-width:0}
 #onb .o-mini>span:last-child{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #onb .o-d-card .o-pw{overflow-wrap:normal;word-break:normal}
+
+/* ===== Раскладка готовой еды: места как в «Разложи покупки», внутри лента карточек тары ===== */
+#outTray .otw{padding:2px 4px 6px;display:grid;gap:10px}
+#outTray .ot-rule{margin:0 2px;font-size:var(--fs-2);color:var(--muted);line-height:1.45}
+#outTray .as-places{gap:8px}
+/* место должно доминировать над своими карточками, иначе два уровня читаются как один */
+#outTray .as-plh{font-size:var(--fs-4);margin-bottom:12px}
+#outTray .as-plh .i{width:18px;height:18px}
+.ot-items{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;
+  scroll-padding-inline:14px;padding:1px 14px 4px;margin-inline:-14px;
+  overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;
+  scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
+.ot-items::-webkit-scrollbar{height:4px}
+.ot-items::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:var(--r-pill)}
+.ot-items::-webkit-scrollbar-track{background:transparent}
+.og{flex:none;width:228px;scroll-snap-align:start;display:grid;grid-template-rows:auto auto 1fr auto;
+  padding:12px 13px 11px;border-radius:var(--r-md);background:var(--shell);
+  animation:ogIn 320ms var(--ease-out) both;animation-delay:var(--d,0ms)}
+/* верхняя строка — подпись к карточке, а не её заголовок: только число держит вес */
+.og-top{display:flex;align-items:center;gap:7px;margin-bottom:10px}
+.og-v{width:26px;height:26px;flex:none;border-radius:8px;background:var(--panel);display:grid;place-items:center;
+  color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--line)}
+.og-v .i{width:16px;height:16px}
+.ot-p-fz .og-v{background:#EAF1FA;color:#2E6BA8;box-shadow:inset 0 0 0 1px #D8E6F5}
+.og-x{font-size:var(--fs-2);font-weight:400;color:var(--muted);white-space:nowrap;letter-spacing:.01em}
+.og-x b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
+.og-e{margin-left:auto;font-size:26px;line-height:1;transform:rotate(-6deg)}
+.og-n{margin:0 0 5px;font-size:var(--fs-4);font-weight:600;line-height:1.25;letter-spacing:-.015em;text-wrap:balance}
+.og-how{margin:0;font-size:var(--fs-2);color:var(--ink-2);line-height:1.45;text-wrap:pretty}
+.og-w{align-self:end;margin:10px 0 0;padding-top:8px;border-top:1px solid var(--line);
+  font-size:var(--fs-1);color:var(--muted);font-variant-numeric:tabular-nums}
+@keyframes ogIn{from{opacity:0;transform:translateY(8px)}}
+@media (prefers-reduced-motion:reduce){.og{animation:none}}
+@media (min-width:861px){
+  .ot-items{flex-wrap:wrap;overflow:visible;margin-inline:0;padding-inline:0;scroll-snap-type:none}
+  .og{width:calc(50% - 4px)}
+}
 </style>
 <body>
 <div id="splash" aria-hidden="true"><div class="spl-c"><div class="spl-ic"><svg class="appic" viewBox="0 0 120 120"><rect width="120" height="120" rx="27" fill="#FF5A1F"/><rect x="22" y="56" width="76" height="42" rx="10" fill="#fff"/><rect class="sp-lid" x="18" y="48" width="84" height="12" rx="6" fill="#FFD9C7"/><g class="sp-eyes"><circle cx="44" cy="40" r="15" fill="#fff"/><circle cx="76" cy="44" r="9" fill="#fff"/><g class="sp-pup"><circle cx="50" cy="45" r="6" fill="#161614"/><circle cx="73" cy="42" r="4" fill="#161614"/></g></g><path d="M46 74 q14 10 28 0" fill="none" stroke="#161614" stroke-width="5" stroke-linecap="round"/><path class="sp-tongue" d="M60 79 v6 q0 6 -5 6 q-5 0 -5 -6 v-4" fill="#FF8FB1"/></svg></div><div class="spl-w"><span>Fork</span> <span>Yeah</span></div><div class="spl-t">вилкой и по плану</div></div><span class="spl-s s0">🥦</span><span class="spl-s s1">🍗</span><span class="spl-s s2">🧀</span><span class="spl-s s3">🥕</span><span class="spl-s s4">🍝</span><span class="spl-s s5">🍳</span></div><script>(function(){try{var s=document.getElementById('splash');if(window.__IPHOST||navigator.webdriver||sessionStorage.getItem('fy-splash')){s.remove();return}sessionStorage.setItem('fy-splash','1');var k=function(){if(!s.isConnected||s.classList.contains('out'))return;s.classList.add('out');setTimeout(function(){s.remove()},580)};s.addEventListener('click',k);setTimeout(k,matchMedia('(prefers-reduced-motion:reduce)').matches?600:2500)}catch(e){}})()</script>
@@ -3024,7 +3061,8 @@ const IC={
  copy:'<rect x="8" y="8" width="12" height="12" rx="2"/><path d="M16 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v8a2 2 0 0 0 2 2h2"/>',
  timer:'<circle cx="12" cy="13" r="7.5"/><path d="M12 9v4l2.5 1.5M9.5 2.5h5"/>',
  box:'<path d="M4 7.5L12 3l8 4.5v9L12 21l-8-4.5z"/><path d="M4 7.5L12 12l8-4.5M12 12v9"/>',
- search:'<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',
+ cont:'<path d="M2.8 8h18.4v3H2.8z"/><path d="M4.7 11h14.6l-.9 6.5a1.9 1.9 0 0 1-1.9 1.6H7.5a1.9 1.9 0 0 1-1.9-1.6z"/>',
+ bag:'<rect x="3.6" y="5.2" width="16.8" height="3.2" rx="1.1"/><path d="M16.2 5.2v3.2"/><path d="M5.2 8.4h13.6v7.4a4 4 0 0 1-4 4H9.2a4 4 0 0 1-4-4z"/>', jar:'<rect x="7.2" y="6.2" width="9.6" height="4" rx="1.2"/><path d="M9.5 7.2v2M12 7.2v2M14.5 7.2v2"/><path d="M8 10.2h8v7.8a2.2 2.2 0 0 1-2.2 2.2h-3.6A2.2 2.2 0 0 1 8 18z"/>', search:'<circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4.2-4.2"/>',
  oven:'<rect x="3.5" y="4" width="17" height="16" rx="2"/><path d="M3.5 8.5h17M7 6.2h.01M10 6.2h.01"/><rect x="7" y="11.5" width="10" height="5.5" rx="1"/>',
  stove:'<circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><circle cx="8" cy="16" r="3"/><circle cx="16" cy="16" r="3"/>',
  board:'<path d="M4 6h16M4 12h10M4 18h7"/>',
@@ -3227,7 +3265,7 @@ function vToday(){
   const el=$('v-today');const st=start();
   if(!st){
     setHead('Сегодня','План не настроен');
-    el.innerHTML=`<button class="onb-cta" id="qonb"><span class="oc-w">НАСТРОИТЬ<br>ПЛАН</span><span class="oc-s">${emo('🍳','a')}${emo('🥦','b')}${emo('🗓️','c')}</span><span class="oc-t">Минута на настройку, и четыре недели без вопроса «что поесть»</span></button>`;
+    el.innerHTML=`<button class="onb-cta" id="qonb"><span class="og-w">НАСТРОИТЬ<br>ПЛАН</span><span class="oc-s">${emo('🍳','a')}${emo('🥦','b')}${emo('🗓️','c')}</span><span class="oc-t">Минута на настройку, и четыре недели без вопроса «что поесть»</span></button>`;
     $('qonb').onclick=()=>openOnb();return;
   }
   S.offset=0;const idx=dayIdx(TODAY)+S.offset;const date=addDays(st,idx);
@@ -3479,6 +3517,8 @@ function vWeek(){
 function tlTotal(w,c){return Math.max(...cookOf(w,c).steps.map(s=>s[0]+s[3]))+2}
 function tlActive(w,c){return cookOf(w,c).steps.filter(x=>!x[3]).length*5}
 const TIMERS=LS.get('mp-timers',{});
+/* не «по контейнерам»: часть еды уезжает в пакетах и баночках */
+const OUT_T='Разложи готовое';
 function vCook(){if(cookEmpty(S.week,S.cookSel)){const n=S.cookSel===0?1:0;if(!cookEmpty(S.week,n))S.cookSel=n}
   const el=$('v-cook');const w=S.week,c=S.cookSel,s=cookOf(w,c);const LS_='';
   const key=mkey(`mp-tl-${w}-${c}${LS_}`);const done=LS.get(key,{});
@@ -3504,22 +3544,37 @@ function vCook(){if(cookEmpty(S.week,S.cookSel)){const n=S.cookSel===0?1:0;if(!c
   const packTail=t=>{let r=String(t).replace(/^\s*\d+\s+(?:контейнер|пакет|баноч)\S*(?:\s+в\s+морозилку[^.]*)?\.\s*/i,'').trim();
     if(!r)r=String(t).trim();r=r.replace(/\.$/,'');return r.charAt(0).toLowerCase()+r.slice(1)};
   const whenPlain=o=>o[4]&&o[4].length?`${['завтрак','обед','полдник','ужин'][o[3]]} ${o[4].map(dm).filter(Boolean).join(', ')}`:String(o[2]).toLowerCase();
-  const SEC=[['fz','Морозилка','freezer'],['fr','Холодильник','fridge']];
-  const out=`<div class="after"><div class="as-places">${SEC.map(([st,ttl,icn])=>{
-    const rows=s.out.map((o,i)=>[o,i]).filter(([o])=>o[1]===st);if(!rows.length)return '';
-    return `<div class="inner as-pl"><div class="as-plh">${ic(icn)}<span>${ttl}</span><span class="cnt">${rows.reduce((a,[o])=>a+(o[4]?o[4].length:1),0)}</span></div><ul class="as-chips stacked">${
-      rows.map(([o,i])=>`<li class="wide">${esc(o[0])}<div class="small muted">${esc(boxTxt(pk[i]))} · ${esc(whenPlain(o))} — ${esc(packTail(pk[i][3]))}</div></li>`).join('')}</ul></div>`}).join('')}</div></div>`;
-  const outBody=out;
+  /* Раскладка готовой еды. Экран-справка: смотришь и закрываешь, отмечать нечего.
+     Верстка та же, что у «Разложи покупки»: белая карточка на место, внутри чипы.
+     В морозилку всё уходит плоскими пакетами без исключений, поэтому правило наверху.
+     Граммовки сюда не выносим: на этом шаге еда уже разложена по порциям. */
+  const SEC=[['fr','Холодильник','fridge'],['fz','Морозилка','freezer']];
+  const outBody=`<div class="after otw">
+    <p class="ot-rule">В морозилку всё уходит плоскими пакетами: так быстрее размораживается и меньше занимает.</p>
+    <div class="as-places">${SEC.map(([st,ttl,icn])=>{
+      const rows=s.out.map((o,i)=>[o,i]).filter(([o])=>o[1]===st);
+      if(!rows.length)return '';
+      return `<div class="inner as-pl ot-p-${st}"><div class="as-plh">${ic(icn)}<span>${ttl}</span><span class="cnt">${rows.reduce((a,[o])=>a+(o[4]?o[4].length:1),0)}</span></div>
+        <div class="ot-items" role="list">${rows.map(([o,i],k)=>{const p=pk[i],kind=p[0]?'cont':(p[1]?'bag':'jar');
+          return `<article class="og" role="listitem" style="--d:${Math.min(k,6)*34}ms"><div class="og-top"><span class="og-v">${ic(kind)}</span>
+            <span class="og-x">${(()=>{const K=[['контейнер','контейнера','контейнеров'],['пакет','пакета','пакетов'],['баночка','баночки','баночек']];
+              const ki=p[0]?0:(p[1]?1:2),q=p[ki]||1;return `<b>${q}</b> ${plural(q,K[ki][0],K[ki][1],K[ki][2])}`})()}</span><span class="og-e">${emo(emosOf(o[0],1)[0]||'🥡')}</span></div>
+            <h4 class="og-n">${esc(o[0])}</h4>
+            <p class="og-how">${esc(packTail(p[3]))}</p>
+            <p class="og-w">${esc(whenPlain(o))}</p></article>`}).join('')}</div></div>`}).join('')}</div>
+  </div>`;
   const nh=s.need.filter((n,i)=>have[i]).length;
   const needList=`<div class="inner"><table class="tbl shoptbl"><tbody>${s.need.map((n,i)=>`<tr class="${have[i]?'got':''}"><td><label class="chk"><input type="checkbox" data-need="${i}" ${have[i]?'checked':''}><span class="box"></span><span class="semo">${emo(emosOf(n,1)[0]||'🧂')}</span><span class="name">${esc(n)}</span></label></td></tr>`).join('')}</tbody></table></div>`;
   const finPoster=()=>`<div class="nx-ph nx-fin${popOnce('cook-'+w+'-'+c)}"><span class="nx-stk s1">${emo('🥦')}</span><span class="nx-stk s2">${emo('🍗')}</span><span class="nx-stk s3">${emo('🥕')}</span><span class="nx-mascot">${MASCOT}</span><b>Готовка закрыта</b><span class="nx-tx2">${s.steps.length} ${plural(s.steps.length,'шаг','шага','шагов')} за ${tlTotal(w,c)} ${plural(tlTotal(w,c),'минуту','минуты','минут')}. Еда разложена и ждёт.</span></div>`;
   const stepRows=(list,compact)=>`<div class="inner">${list.map((o,oi)=>{const [t,kind,text,wait]=o.x;const dn=done[o.i];const isCur=cur&&cur.i===o.i;
-    return `<div class="step${dn?' done':''}${isCur?' cur':''}${compact?' cmp':''}"><div class="sl"><button class="stchk" data-toggle="${o.i}" aria-pressed="${!!dn}" aria-label="${dn?'Вернуть шаг':'Отметить шаг сделанным'}"></button></div><div class="body">${compact&&o.x[5]&&!dn?`<details class="sx"><summary><span class="txt">${esc(clean(text))}</span><span class="smeta">${ic(KIND[kind]||'board')}<span>${kind}${wait?` · ${wait} мин`:''}</span></span>${ic('chev','sxc')}</summary><div class="sdet">${esc(o.x[5])}</div></details>`:`<div class="txt">${esc(clean(text))}</div>${o.x[5]?`<div class="sdet">${esc(o.x[5])}</div>`:''}<div class="smeta">${ic(KIND[kind]||'board')}<span>${kind}${wait?` · ${wait} мин`:''}</span></div>`}</div></div>`}).join('')}</div>`;
+    return `<div class="step${dn?' done':''}${isCur?' cur':''}${compact?' cmp':''}"><div class="sl"><button class="stchk" data-toggle="${o.i}" aria-pressed="${!!dn}" aria-label="${dn?'Вернуть шаг':'Отметить шаг выполненным'}"></button></div><div class="body">${compact&&o.x[5]&&!dn?`<details class="sx"><summary><span class="txt">${esc(clean(text))}</span><span class="smeta">${ic(KIND[kind]||'board')}<span>${kind}${wait?` · ${wait} мин`:''}</span></span>${ic('chev','sxc')}</summary><div class="sdet">${esc(o.x[5])}</div></details>`:`<div class="txt">${esc(clean(text))}</div>${o.x[5]?`<div class="sdet">${esc(o.x[5])}</div>`:''}<div class="smeta">${ic(KIND[kind]||'board')}<span>${kind}${wait?` · ${wait} мин`:''}</span></div>`}</div></div>`}).join('')}</div>`;
   const allSteps=stepRows(order);
   const wide=matchMedia('(min-width:861px)').matches;
   const B=(o,html)=>html?`<div class="cb" style="order:${o}">${html}</div>`:'';
   const fold=(title,cntTxt,body,open,id='')=>{if(FOLDOPEN[title]!=null)open=FOLDOPEN[title];return `<div class="tray"${id?` id="${id}"`:''}><details class="fold" data-f="${esc(title)}" ${open?'open':''}><summary><h2>${title}<span class="cnt">${cntTxt}</span></h2>${ic('chev','chev')}</summary>${body}</details></div>`};
   const needFold=open=>fold('Продукты',`${nh} из ${s.need.length}`,needList,open);
+  const outFold=open=>{const np=s.out.reduce((a,o)=>a+(o[4]?o[4].length:1),0);
+    return fold(OUT_T,`${np} ${plural(np,'порция','порции','порций')}`,outBody,open,'outTray')};
   const reset=started?`<div><button class="btn ghost" id="resetCook">Начать заново</button></div>`:'';
   const ahead=cur?order.slice(curK+1).filter(o=>!done[o.i]):[];const past=order.filter(o=>done[o.i]);
   let L='',R='';
@@ -3528,7 +3583,8 @@ function vCook(){if(cookEmpty(S.week,S.cookSel)){const n=S.cookSel===0?1:0;if(!c
       const np=s.out.reduce((a,o)=>a+(o[4]?o[4].length:1),0);
       L=B(1,`<div class="cfin">${finPoster()}
       <div class="cdone-st">${[[np,'порция','порции','порций'],[tot[0],'контейнер','контейнера','контейнеров'],[tot[1],'пакет','пакета','пакетов']].filter(x=>x[0]).map(x=>`<div class="cds"><b>${x[0]}</b><span>${plural(x[0],x[1],x[2],x[3])}</span></div>`).join('')}</div>
-      <button class="btn dark cstart" id="cStart">${ic('chev')}<span>Смотреть шаги</span></button></div>`);
+      <button class="btn dark cstart" id="cStart">${ic('chev')}<span>Смотреть шаги</span></button></div>`)
+      +B(2,outFold(true));
       R='';
     }else{
     L=B(1,`<div class="cprep">
@@ -3584,7 +3640,7 @@ function vCook(){if(cookEmpty(S.week,S.cookSel)){const n=S.cookSel===0?1:0;if(!c
     if(allDone)L=B(1,`<div class="cdone dayclosed${popOnce('cookx-'+w+'-'+c)}"><div class="dc-w">ГОТОВКА<br>ЗАКРЫТА</div><div class="dc-sub mono">${s.steps.length} из ${s.steps.length} шагов</div>${['🍗','🥦','🥕','🍝'].map((e,i)=>emo(e,'dc'+i)).join('')}</div>`);
     L+=B(2,`<div id="timers"></div>`);
     const AN=3,more=Math.max(0,ahead.length-AN),shown=AHEADALL?ahead:ahead.slice(0,AN);
-    R=B(3,ahead.length?`<div class="tray"><div class="trayhead"><h2>Следующие шаги<span class="cnt">${ahead.length}</span></h2></div>${stepRows(shown,true)}${more?`<button class="ahmore${AHEADALL?' up':''}" id="ahMore">${AHEADALL?'Свернуть':`Ещё ${more} ${plural(more,'шаг','шага','шагов')}`}${ic('chev','ahc')}</button>`:''}</div>`:'')+B(5,fold('Разложи',`${s.out.reduce((a,o)=>a+(o[4]?o[4].length:1),0)} ${plural(s.out.reduce((a,o)=>a+(o[4]?o[4].length:1),0),'порция','порции','порций')}`,outBody,allDone,'outTray'))+B(6,past.length?fold('Сделано',past.length,stepRows(past,true),false):'')+B(8,reset);
+    R=B(3,ahead.length?`<div class="tray"><div class="trayhead"><h2>Следующие шаги<span class="cnt">${ahead.length}</span></h2></div>${stepRows(shown,true)}${more?`<button class="ahmore${AHEADALL?' up':''}" id="ahMore">${AHEADALL?'Свернуть':`Ещё ${more} ${plural(more,'шаг','шага','шагов')}`}${ic('chev','ahc')}</button>`:''}</div>`:'')+B(5,outFold(allDone||!!(cur&&/по контейнерам|разлож/i.test(cur.x[2]))))+B(6,past.length?fold('Сделано',past.length,stepRows(past,true),false):'')+B(8,reset);
   }
   const cpills=`<div class="utabs mob cpills" role="group" aria-label="Готовки">${[0,1,2,3,4,5,6,7].map(i=>{const dt=cookDate(Math.floor(i/2),i%2);return `<button data-ci="${i}" aria-pressed="${i===ci}">${dt?`${DOW[dt.getDay()]} ${dt.getDate()}`:`Н${Math.floor(i/2)+1}${i%2?' · 2':''}`}<small>${i%2?'короткая':'большая'}</small></button>`}).join('')}</div>`;
   const locked=phase!=='before';CLOCKED=locked;
@@ -3595,7 +3651,7 @@ function vCook(){if(cookEmpty(S.week,S.cookSel)){const n=S.cookSel===0?1:0;if(!c
   bindWeeks(el);
   const setStep=(i,on,wait,tid,label)=>{if(on){done[i]=true;if(wait&&!TIMERS[tid]){TIMERS[tid]={end:Date.now()+wait*60000,label};LS.set('mp-timers',TIMERS)}}else delete done[i];LS.set(key,done);
     if(order.every(o=>done[o.i])){let ch=false;Object.keys(TIMERS).forEach(k=>{if(k.startsWith(`${w}-${c}-`)){delete TIMERS[k];ch=true}});if(ch){LS.set('mp-timers',TIMERS);timerSig=''}
-      if(on&&phase!=='before'){S.csteps=ci;S.cover=-1;FOLDOPEN['Разложи']=true}}};
+      if(on&&phase!=='before'){S.csteps=ci;S.cover=-1;FOLDOPEN[OUT_T]=true}}};
   el.querySelectorAll('[data-toggle]').forEach(b=>b.onclick=()=>{const i=+b.dataset.toggle;const st=s.steps[i];setStep(i,!done[i],st[3],`${w}-${c}-${i}`,short(st[2]));render()});
   if($('cDone'))$('cDone').onclick=()=>{armSound();try{navigator.vibrate&&navigator.vibrate(8)}catch(_){}const b=$('cDone');const i=+b.dataset.step;setStep(i,true,+b.dataset.wait,b.dataset.tid,short(s.steps[i][2]));render();window.scrollTo({top:0,behavior:RM.matches?'auto':'smooth'})};
   if($('cStart'))$('cStart').onclick=()=>{armSound();if(allDone)S.csteps=ci;else if(!(started||inPrep))LS.set(skey,'prep');S.cover=-1;render();window.scrollTo(0,0)};
@@ -3616,7 +3672,7 @@ function vCook(){if(cookEmpty(S.week,S.cookSel)){const n=S.cookSel===0?1:0;if(!c
   if($('resetCook'))$('resetCook').onclick=e=>{const b=e.currentTarget;if(!b.dataset.sure){b.dataset.sure=1;b.textContent='Точно? Прогресс и таймеры сотрутся';setTimeout(()=>{if(b.isConnected){delete b.dataset.sure;b.textContent='Начать заново'}},4000);return}
     LS.set(key,{});LS.set(skey,false);S.cover=-1;S.csteps=-1;Object.keys(TIMERS).forEach(k=>{if(k.startsWith(`${w}-${c}-`))delete TIMERS[k]});LS.set('mp-timers',TIMERS);timerSig='';render()};
   {const pc=$('prevC'),nc=$('nextC');const goC=i=>{S.week=Math.floor(i/2);S.cookSel=i%2;S.cover=i;S.csteps=-1;AHEADALL=false;render();window.scrollTo(0,0)};if(pc)pc.onclick=()=>{if(ci>0)goC(ci-1)};if(nc)nc.onclick=()=>{if(ci<7)goC(ci+1)}}
-  el.querySelectorAll('[data-goout]').forEach(b=>b.onclick=()=>{const o=$('outTray');const d=o&&o.querySelector('details');if(d&&!d.open){d.open=true;FOLDOPEN['Разложи']=true}if(o)o.scrollIntoView({block:'start',behavior:RM.matches?'auto':'smooth'})});
+  el.querySelectorAll('[data-goout]').forEach(b=>b.onclick=()=>{const o=$('outTray');const d=o&&o.querySelector('details');if(d&&!d.open){d.open=true;FOLDOPEN[OUT_T]=true}if(o)o.scrollIntoView({block:'start',behavior:RM.matches?'auto':'smooth'})});
   cookBar();timerSig='';
   tick();
 }
