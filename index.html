@@ -74,7 +74,6 @@ h2{font-size:var(--fs-4);font-weight:500;margin:0;letter-spacing:-.005em}
 .btn.run{background:var(--ink);color:#fff;border-color:var(--ink)}
 .utabs{display:flex;gap:2px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
 .utabs button{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:7px;padding:9px 10px;margin-bottom:-1px;font-size:var(--fs-3);color:var(--muted);border-bottom:1.5px solid transparent;white-space:nowrap}
-.tsep{flex:none;width:1px;align-self:center;height:16px;background:var(--line-2);margin:0 6px}
 .utabs button small{font-family:var(--mono);font-size:var(--fs-1);color:var(--faint)}
 .utabs button[aria-pressed="true"]{color:var(--ink);border-bottom-color:var(--ink)}
 .mtop{display:none}
@@ -113,7 +112,6 @@ button.rowi:first-child{border-top:0}
 /* meals board */
 .tray{container-type:inline-size}
 .cols{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
-@container (min-width:500px){}
 @container (min-width:500px){.cols{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @container (min-width:1000px){.cols{grid-template-columns:repeat(4,minmax(0,1fr))}}
 .mcard{position:relative;background:var(--panel);border:1px solid var(--line);border-radius:var(--r-md);display:grid}
@@ -150,10 +148,8 @@ button.rowi:first-child{border-top:0}
 .kcard .dish{font-size:var(--fs-3)}
 .kevent{all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;padding:8px 10px;border:1px dashed var(--line-2);border-radius:var(--r-sm);font-size:var(--fs-2);color:var(--ink-2)}
 @media (hover:hover) and (pointer:fine){.kevent:hover{background:var(--panel)}}
-.daylist{display:none}
 
 /* cook */
-.cookgrid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;align-items:start}
 .aside{display:grid;gap:12px;position:sticky;top:16px}
 .step{display:grid;grid-template-columns:76px 1fr;gap:12px;padding:14px 16px;border-top:1px solid var(--line)}
 .step:first-child{border-top:0}
@@ -165,7 +161,6 @@ button.rowi:first-child{border-top:0}
 .stchk[aria-pressed="true"]{background:var(--ink);border-color:var(--ink)}
 .stchk[aria-pressed="true"]::after{content:"";width:4px;height:8px;border:solid #fff;border-width:0 1.8px 1.8px 0;transform:rotate(45deg) translate(-1px,-1px)}
 .step.cur .stchk{border-color:var(--ink)}
-.tbtn span{font-variant-numeric:tabular-nums;min-width:9ch}
 .step .body{display:grid;gap:8px}
 .step .txt{font-size:var(--fs-3);line-height:1.45}
 .step .meta{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
@@ -174,13 +169,6 @@ button.rowi:first-child{border-top:0}
 .step.cur .t{color:var(--ink)}
 .step.done .body{opacity:.5}
 .step.done .txt{text-decoration:line-through}
-.timerow{display:flex;align-items:center;gap:12px;padding:10px 14px;border-top:1px solid var(--line)}
-.timerow:first-child{border-top:0}
-.timerow .mono{font-size:var(--fs-6);min-width:72px;font-variant-numeric:tabular-nums}
-.timerow .tlabel{flex:1;min-width:0;font-size:var(--fs-3);color:var(--ink-2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.timerow .tlabel b{font-weight:500;color:var(--green)}
-.timerow .btn{flex:none}
-.timerow.end .mono{color:var(--green)}
 .chips{display:flex;flex-wrap:wrap;gap:6px;padding:12px}
 .chips span{border:1px solid var(--line);border-radius:var(--r-sm);padding:4px 8px;font-size:var(--fs-2);background:var(--panel)}
 details.fold summary{list-style:none;cursor:pointer;display:flex;align-items:center;gap:8px;padding:8px 10px 10px}
@@ -194,7 +182,6 @@ details.fold[open] summary .chev{transform:rotate(90deg)}
 .tbl td{padding:0 14px;height:46px;border-top:1px solid var(--line);font-size:var(--fs-3)}
 .tbl tr:first-child td{border-top:0}
 .tbl .num{text-align:right;font-family:var(--mono);font-size:var(--fs-2);white-space:nowrap}
-.tbl .qty{color:var(--muted);white-space:nowrap}
 .chk{display:flex;align-items:center;gap:12px;cursor:pointer;min-height:46px}
 .chk input{position:absolute;opacity:0;width:1px;height:1px}
 .chk .box{flex:none;width:16px;height:16px;border-radius:var(--r-xs);border:1.5px solid var(--line-2);display:grid;place-items:center;background:var(--panel)}
@@ -250,13 +237,10 @@ dialog::backdrop{background:rgba(27,27,25,.28)}
 .field{display:grid;gap:6px}
 .field label{font-size:var(--fs-2);color:var(--muted)}
 .field input,.field select{width:100%;height:38px;border:1px solid var(--line-2);border-radius:var(--r-sm);padding:0 10px;font:inherit;background:var(--panel);color:var(--ink)}
-.help{font-size:var(--fs-2);color:var(--muted)}
 .actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 
 .view[hidden]{display:none}
 .stack{display:grid;gap:14px}
-
-
 
 /* media: illustrations & photos */
 .media{position:relative;background:var(--mbg,#f1ece3);display:grid;place-items:center;overflow:hidden;aspect-ratio:16/9}
@@ -286,7 +270,6 @@ dialog::backdrop{background:rgba(27,27,25,.28)}
 @media (max-width:860px){.media.hero{margin:-20px -20px 0;border-radius:var(--r-lg) var(--r-lg) 0 0;height:160px}.grab{position:absolute;top:8px;left:50%;margin-left:-18px;z-index:2;background:rgba(27,27,25,.25)}}
 @media (prefers-contrast:more){.media{border-color:var(--line-2)}}
 
-
 /* style Г — typographic dish blocks */
 .media.ty{background:var(--bg);color:var(--fg);place-items:start;container-type:inline-size;border-color:transparent!important}
 .media.ty .w{font-family:'Unbounded',var(--font);font-weight:800;line-height:.9;letter-spacing:-.04em;padding:12px 14px;font-size:min(44px,calc(74cqw / var(--n) * 1.05));font-synthesis:none;position:relative;z-index:1}
@@ -304,31 +287,7 @@ dialog::backdrop{background:rgba(27,27,25,.28)}
 .shoptbl .name{display:flex;flex-wrap:wrap;column-gap:8px;align-items:baseline}
 .shoptbl .q{font-family:var(--mono);font-size:var(--fs-2);color:var(--muted)}
 .shoptbl td.go{width:1%;white-space:nowrap;text-align:right}
-.shoptbl tr.got .lbtn{opacity:.45}
 a.btn{text-decoration:none;color:var(--ink)}a.btn.dark{color:#fff}
-@media (max-width:560px){.lbtn span{display:none}.lbtn{width:34px;height:34px;padding:0;justify-content:center}}
-.needrow{display:grid;gap:6px;padding:0 9px 9px}
-.outrow{padding:11px 14px;border-top:1px solid var(--line);display:grid;gap:6px}
-#outTray .as-plh{margin-bottom:6px}
-.ocard{padding:12px 14px 14px;border-top:1px solid var(--line);display:grid;gap:10px}
-.ocard:first-child{border-top:0}
-.ocard.pk .oc-n{text-decoration:line-through;color:var(--muted)}
-.oc-h{display:flex;align-items:baseline;gap:10px;justify-content:space-between}
-.oc-n{font-weight:600;font-size:var(--fs-4);line-height:1.3;min-width:0}
-.oc-p{flex:none;font-family:var(--mono);font-size:var(--fs-2);color:var(--muted)}
-.opart{display:grid;grid-template-columns:22px minmax(0,1fr);gap:10px;align-items:start}
-.opart+.opart{padding-top:10px;border-top:1px solid var(--line)}
-.op-b{display:grid;gap:6px;min-width:0}
-.op-w{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-size:var(--fs-3)}
-.op-w b{font-weight:500}
-.op-t{font-size:var(--fs-3);line-height:1.45;color:var(--ink-2);background:var(--shell);border-radius:var(--r-sm);padding:8px 10px}
-.opart.pk .op-w b{text-decoration:line-through;color:var(--muted)}
-.opart.pk .op-t,.opart.pk .ot-t{opacity:.55}
-.outrow:first-child{border-top:0}
-.outtop{display:flex;gap:10px;align-items:flex-start}
-.outtop .grow{flex:1;min-width:0;display:grid;gap:2px}
-.outtop .on{font-weight:500}
-.outtop .sub{font-size:var(--fs-2);color:var(--muted)}
 .pack{font-size:var(--fs-3);line-height:1.45;color:var(--ink-2);background:var(--shell);border-radius:var(--r-sm);padding:8px 10px}
 .mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,380px),1fr));gap:8px;padding:0 6px 6px}
 .mcardkb{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-md);padding:14px;display:grid;gap:12px}
@@ -342,8 +301,6 @@ a.btn{text-decoration:none;color:var(--ink)}a.btn.dark{color:#fff}
 .macts{display:flex;gap:6px;flex-wrap:wrap}
 .btn.danger{background:#c8321f;border-color:#c8321f;color:#fff}
 .kbconf{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto;gap:14px;padding:14px;align-items:end}
-.kbcyc{grid-column:1/-1;display:flex;gap:8px 28px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:12px}
-.kbcyc>span{display:grid;gap:2px}.kbcyc .lab{font-family:var(--mono);font-size:var(--fs-1);letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}.kbcyc b{font-weight:500;font-size:var(--fs-3)}
 .kbsave{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
 .kbimp{display:grid;gap:12px;padding:14px}
 .improw{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
@@ -359,13 +316,9 @@ a.btn{text-decoration:none;color:var(--ink)}a.btn.dark{color:#fff}
 .rules .rec{padding:0 14px 14px}
 .rules code{font-family:var(--mono);font-size:var(--fs-2);background:var(--shell);padding:1px 5px;border-radius:var(--r-xs);word-break:break-word}
 .rules ul{margin:0;padding-left:18px;display:grid;gap:6px;color:var(--ink-2);font-size:var(--fs-3);line-height:1.5}
-.kbrhead{flex-wrap:wrap;gap:10px}
-.kbrhead .search{width:min(300px,100%);min-width:0}
-.kbgroup{display:grid;gap:6px;padding:0 6px 8px}
-.kbgh{padding:4px 8px 0}
 .rmenus{display:inline-flex;gap:4px;flex-wrap:wrap}
 #crumbs:empty{display:none}
-@media (max-width:860px){.kbconf{grid-template-columns:minmax(0,1fr)}.kbsave .btn{flex:1;justify-content:center}.kbrhead .search{width:100%}.improw .btn{flex:1 1 auto;justify-content:center}.macts .btn{flex:1 1 auto;justify-content:center}}
+@media (max-width:860px){.kbconf{grid-template-columns:minmax(0,1fr)}.kbsave .btn{flex:1;justify-content:center}.improw .btn{flex:1 1 auto;justify-content:center}.macts .btn{flex:1 1 auto;justify-content:center}}
 @media (max-width:560px){.rname{flex-wrap:wrap}.mstats b{font-size:var(--fs-3)}}
 .rd[open]{background:linear-gradient(var(--panel),var(--panel)) padding-box;box-shadow:inset 3px 0 0 var(--ink)}
 .rd[open] summary{align-items:flex-start;padding:16px 14px 4px;min-height:0}
@@ -393,8 +346,7 @@ a.btn{text-decoration:none;color:var(--ink)}a.btn.dark{color:#fff}
   .tabbar button .i{width:20px;height:20px;stroke-width:1.7}
   .tabbar button[aria-current="page"]{color:var(--ink)}
   .tabbar button:active{transform:scale(.92)}
-  .tabbar button:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}
-}
+  .tabbar button:focus-visible{outline:2px solid var(--ink);outline-offset:-2px}}
 @media (max-width:860px) and (prefers-reduced-transparency:reduce){.tabbar{background:var(--panel);backdrop-filter:none;-webkit-backdrop-filter:none}}
 @media (max-width:860px) and (prefers-reduced-motion:reduce){.tabbar .lens{transition:none}}
 .mhdr,.dstrip{display:none}
@@ -415,8 +367,7 @@ a.btn{text-decoration:none;color:var(--ink)}a.btn.dark{color:#fff}
   .dstrip button.tday:not([aria-selected="true"]) b{color:var(--ink);text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1.5px}
   .dd{width:5px;height:5px;border-radius:50%;background:transparent}
   .dd.part{background:var(--faint)}.dd.full{background:var(--green)}
-  #tstack{will-change:transform;touch-action:pan-y}
-}
+  #tstack{will-change:transform;touch-action:pan-y}}
 @media (max-width:860px){
   .head:has(.daynav){flex-wrap:nowrap;align-items:flex-start}
   .head:has(.daynav) .headacts{flex-wrap:nowrap;flex:none;margin-top:-5px}
@@ -424,13 +375,11 @@ a.btn{text-decoration:none;color:var(--ink)}a.btn.dark{color:#fff}
   .daynav span{display:none}
   .todaybtn{height:38px;border-radius:var(--r-xl);padding:0 14px}
   .head:has(.daynav) h1{white-space:nowrap;font-size:clamp(17px,6.4vw,26px);min-width:0}
-  .head:has(.daynav) .headacts{gap:6px}
-}
+  .head:has(.daynav) .headacts{gap:6px}}
 @media (max-width:340px){.head:has(.daynav) h1{font-size:var(--fs-5)}}
 @media (max-width:400px){
   .daynav{width:36px;height:36px}
-  .todaybtn{height:36px;padding:0 10px;font-size:var(--fs-2)}
-}
+  .todaybtn{height:36px;padding:0 10px;font-size:var(--fs-2)}}
 .daynav.mob,.hsub.mob{display:none}
 .media.dot{width:10px;height:10px;border-radius:var(--r-xs);aspect-ratio:auto;flex:none;border:0}
 .media.dot .w,.media.dot .gl{display:none}
@@ -442,20 +391,14 @@ a.btn{text-decoration:none;color:var(--ink)}a.btn.dark{color:#fff}
   .dday>summary{list-style:none;cursor:pointer;-webkit-tap-highlight-color:transparent;padding:12px 14px}
   .dday>summary::-webkit-details-marker{display:none}
   .dday:not([open])>summary{padding-bottom:12px}
-  .dsum{display:flex;align-items:center;gap:10px}
-  .dchips{display:flex;gap:3px}
   .dday .chev{color:var(--faint);transition:transform .2s var(--ease-out)}
   .dday[open] .chev{transform:rotate(90deg)}
   .dday.istoday{border-color:var(--ink)}
-  .dday[open]>summary .dchips{display:none}
-  .daylist{gap:10px}
-  .btn[disabled]{opacity:.35;pointer-events:none}
-}
+  .btn[disabled]{opacity:.35;pointer-events:none}}
 .rowi.ate .media,.kcard.ate .media{filter:grayscale(1);opacity:.45}
 .rowi.ate .grow>span,.kcard.ate .dish{color:var(--muted)}
 .rowi.ate .media.th{position:relative}
-.rowi.ate .media.th::after{content:"";position:absolute;inset:0;margin:auto;width:8px;height:14px;border:solid var(--green);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-2px,-2px)}
-.wrow.ate .slot::before,.kcard.ate .slot::before{content:"✓ ";color:var(--green);font-weight:600}
+.rowi.ate .media.th::after{content:"";position:absolute;inset:0;margin:auto;width:8px;height:14px;border:solid var(--green);border-width:0 2.5px 2.5px 0;transform:rotate(45deg) translate(-2px,-2px)}.kcard.ate .slot::before{content:"✓ ";color:var(--green);font-weight:600}
 .mactions{display:flex;flex-wrap:wrap;gap:8px}
 .mactions>.btn{flex:1 1 140px;min-width:0}
 .mactions .btn{justify-content:center;text-align:center;height:42px}
@@ -470,29 +413,16 @@ a.btn{text-decoration:none;color:var(--ink)}a.btn.dark{color:#fff}
   #crumbs.keep{display:none}
   .tback:not([hidden]){display:inline-flex;width:38px;height:38px;padding:0;justify-content:center;border-radius:50%;flex:none;margin-right:-6px;align-self:center}
   .head:has(.tback:not([hidden])){align-items:center}
-  .head:has(.tback:not([hidden])) .htext{flex:1;min-width:0}
-}
-.rtop{display:flex;align-items:center;gap:8px;margin-bottom:4px;min-width:0}
-.rtop>span:last-child{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
-.rtop .media{flex:none}
+  .head:has(.tback:not([hidden])) .htext{flex:1;min-width:0}}
 .rowi.ate .media.sm{filter:grayscale(1);opacity:.45}
 @media (max-width:860px){
   body,.frame{background:var(--panel)!important}
   .main{background:var(--panel)!important}
   .mhdr{background:rgba(255,255,255,.78)!important}
   .mtop .ws{background:var(--tray);border-color:var(--line)}
-  .mtop .ws .logo{box-shadow:0 0 0 1px rgba(255,255,255,.4) inset}
-}
-.wrow{padding:14px 16px;align-items:stretch}
-.wrow .grow{display:grid;gap:8px}
-.wrow .rtop{margin:0;gap:8px}
-.wrow .rtop .tag{margin-left:auto;flex:none}
-.wrow .wname{font-size:var(--fs-4);line-height:1.4;color:var(--ink)}
-.wrow.ate .wname{color:var(--muted)}
-.wrow.ate .slot,.kcard.ate .slot{color:#2c7a51;font-weight:500}
-.kcomp,.sprog,div.mob,.kbentry,.mmore,.mhead .media.sm{display:none}
+  .mtop .ws .logo{box-shadow:0 0 0 1px rgba(255,255,255,.4) inset}}.kcard.ate .slot{color:#2c7a51;font-weight:500}
+.kcomp,.sprog,div.mob,.mhead .media.sm{display:none}
 .cookbar{display:none}
-@media (min-width:861px){button.rowi.kbentry{display:none!important}}
 @media (max-width:860px){
   body:not(.on-recipes) .mtop{display:none!important}
   body:not(.on-recipes) .main{padding-top:calc(18px + env(safe-area-inset-top))!important}
@@ -501,9 +431,6 @@ a.btn{text-decoration:none;color:var(--ink)}a.btn.dark{color:#fff}
   .kcomp,.sprog{display:grid;gap:8px;background:var(--tray);border:1px solid var(--line);border-radius:var(--r-md);padding:12px 14px}
   .kc-top{display:flex;justify-content:space-between;align-items:baseline;font-size:var(--fs-3)}
   .kc-top b{font-size:var(--fs-6);font-weight:500;margin-right:2px}
-  .kc-mac{display:flex;gap:14px;font-size:var(--fs-2);color:var(--ink-2)}
-  .sacts{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:4px}
-  .sacts .btn{justify-content:center}
   #v-shop .utabs,#v-cook .utabs{display:none}
   /* compact meal cards */
   .mcard:not(.next) .media:not(.sm){display:none}
@@ -514,13 +441,7 @@ a.btn{text-decoration:none;color:var(--ink)}a.btn.dark{color:#fff}
   .mhead .media.sm{margin-right:2px}
   .mcard.done:not(.next) .mhead .media.sm{filter:grayscale(1);opacity:.45}
   /* kb entry */
-  .kbentry{display:flex;border:1px solid var(--line);border-radius:var(--r-md);margin-bottom:14px;background:var(--panel)}
   /* kb menu more */
-  .macts-d{display:none}
-  .mmore{display:block;position:relative}
-  .mmore>summary{list-style:none}.mmore>summary::-webkit-details-marker{display:none}
-  .mmenu{display:grid;gap:6px;margin-top:8px}
-  .mmenu .btn{justify-content:center}
   /* sheet hero */
   .media.hero{height:104px!important}
   .media.ty.hero .w{font-size:min(44px,calc(70cqw / var(--n) * 1.05))!important;padding:14px 20px!important}
@@ -528,28 +449,10 @@ a.btn{text-decoration:none;color:var(--ink)}a.btn.dark{color:#fff}
   /* cook bar */
   .cookbar:not([hidden]){display:grid;gap:10px;position:fixed;z-index:29;left:10px;right:10px;bottom:calc(var(--tabh,54px) + var(--bgap) + 10px);padding:12px 12px 12px 14px;border-radius:var(--r-xl);
     background:rgba(255,255,255,.9);-webkit-backdrop-filter:blur(20px) saturate(180%);backdrop-filter:blur(20px) saturate(180%);border:1px solid rgba(27,27,25,.1);box-shadow:0 12px 30px -10px rgba(27,27,25,.35)}
-  .cb-head{all:unset;cursor:pointer;display:flex;align-items:center;gap:8px;-webkit-tap-highlight-color:transparent}
-  .cb-lab{flex:1;min-width:0;font-family:var(--mono);font-size:var(--fs-1);letter-spacing:.02em;color:var(--muted);text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .cb-chev{transform:rotate(90deg);color:var(--faint);transition:transform .2s var(--ease-out)}
-  .cookbar.min .cb-chev{transform:rotate(-90deg)}
-  .cb-s{font-size:var(--fs-4);line-height:1.4;font-weight:500;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
   .cb-acts{display:flex;gap:8px}
   .cb-acts .btn{flex:1;justify-content:center;height:42px;font-size:var(--fs-3)}
-  .cookbar .cb-timer.run{background:#fff6d9;border-color:#f3e2a6;color:#5a4500}
-  .cookbar.min .cb-s{-webkit-line-clamp:1;font-size:var(--fs-3)}
   .cookbar.min{gap:6px}
-  #v-cook{padding-bottom:24px}
-}
-@media (max-width:860px){
-  #v-cook .kpis.kpis-c{gap:6px!important;grid-template-columns:repeat(3,minmax(0,1fr))!important}
-  .kpis-c .kpi{padding:4px;border-radius:var(--r-md);grid-column:auto!important}
-  .kpis-c .kpi .in{padding:8px 9px;gap:3px;border-radius:var(--r-sm)}
-  .kpis-c .kpi .lab{font-size:var(--fs-1)}
-  .kpis-c .kpi .val{font-size:var(--fs-5)}
-  .kpis-c .kpi .val small{font-size:var(--fs-1);margin-left:2px}
-  .kpis-c .kpi .foot{display:none}
-  .kpis-c .bar{height:4px}
-}
+  #v-cook{padding-bottom:24px}}
 @media (max-width:860px){
   .rd[open] summary{padding:18px 18px 6px}
   .rd[open] .rec{padding:4px 18px 24px 18px!important;gap:20px}
@@ -558,8 +461,7 @@ a.btn{text-decoration:none;color:var(--ink)}a.btn.dark{color:#fff}
   .rd .steps li{grid-template-columns:26px 1fr;gap:12px;line-height:1.55}
   .rd .rsec{gap:10px}
   .rd .ings{gap:8px}
-  .rd .tip{padding:12px 14px}
-}
+  .rd .tip{padding:12px 14px}}
 /* motion */
 :root{
   /* кривые: 4 на всё приложение */
@@ -601,7 +503,7 @@ dialog[data-state="open"]::backdrop{opacity:1}
 .sheet{opacity:0;transform:translate(-50%,-50%) scale(.97);transition:opacity var(--t-fast) ease,transform var(--t-base) var(--ease-out)}
 dialog[data-state="open"] .sheet{opacity:1;transform:translate(-50%,-50%) scale(1)}
 dialog[data-state="closing"] .sheet{transition-duration:140ms}
-@media (max-width:1080px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.cookgrid{grid-template-columns:1fr}.aside{position:static}}
+@media (max-width:1080px){.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.aside{position:static}}
 @media (max-width:860px){
   body{background:var(--shell)}
   .frame{margin:0;border:0;border-radius:0;grid-template-columns:minmax(0,1fr);min-height:100%;overflow:visible}
@@ -617,7 +519,7 @@ dialog[data-state="closing"] .sheet{transition-duration:140ms}
   .msect .utabs{border-bottom-color:transparent;transition:border-color var(--t-base) ease}
   .msect.edge{box-shadow:0 8px 16px -12px rgba(27,27,25,.18)}
   .msect.edge .utabs{border-bottom-color:var(--line)}
-  .kanban{display:none}.daylist{display:grid;gap:14px}
+  .kanban{display:none}
   h1{font-size:24px}
   .search{min-width:0;width:100%}
   .sheet{top:auto;bottom:0;left:0;right:0;transform:none;width:100%;max-width:none;border-radius:var(--r-lg) var(--r-lg) 0 0;padding-bottom:calc(24px + env(safe-area-inset-bottom))}
@@ -627,14 +529,12 @@ dialog[data-state="closing"] .sheet{transition-duration:140ms}
   .sheet.dragging{transition:none}
   .eatbtn{height:32px;padding:0 12px 0 9px;font-size:var(--fs-2)}
   .msect::after{content:"";position:absolute;right:0;top:0;bottom:1px;width:28px;background:linear-gradient(90deg,transparent,var(--shell));pointer-events:none}
-  .grab{display:block;width:36px;height:4px;border-radius:var(--r-xs);background:var(--line-2);justify-self:center;margin:-8px 0 -4px}
-}
-@media (max-width:560px){.kpis > .kpi:nth-child(3):last-child{grid-column:span 2}.kpis{grid-template-columns:1fr 1fr!important}.kpi .in{padding:10px 12px}.kpi .val{font-size:var(--fs-6)}.tbl .qty{display:none}}
+  .grab{display:block;width:36px;height:4px;border-radius:var(--r-xs);background:var(--line-2);justify-self:center;margin:-8px 0 -4px}}
+@media (max-width:560px){.kpis > .kpi:nth-child(3):last-child{grid-column:span 2}.kpis{grid-template-columns:1fr 1fr!important}.kpi .in{padding:10px 12px}.kpi .val{font-size:var(--fs-6)}}
 @media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 @media (prefers-reduced-transparency:reduce){.msect{background:var(--shell)!important;backdrop-filter:none!important;-webkit-backdrop-filter:none!important}}
 @media (prefers-contrast:more){:root{--line:#bdbab3;--line-2:#9c9990;--muted:#4F4C48;--faint:#55524E}.btn,.eatbtn,.tag{border-color:var(--line-2)}}
 @media (prefers-reduced-motion:reduce){.sheet,dialog[data-state] .sheet{transition:opacity var(--t-fast) ease!important}}
-
 
 /* ===== Theme v5: тёплый мягкий (референс Oculis) ===== */
 :root{--page:#d6d2ce;--shell:#f2f0ee;--tray:#f3f2f0;--panel:#fff;--line:#ebe8e4;--line-2:#ddd9d4;--ink:#1d1b19;--ink-2:#3a3734;--muted:#696560;--faint:#6F6B67;--accent:#a9562a;
@@ -682,8 +582,7 @@ h2 .cnt{background:#e8e5e1;border:0;border-radius:var(--r-pill);padding:1px 7px;
 @media (max-width:860px){
   .main{border-radius:0;box-shadow:none}
   .sheet{border-radius:var(--r-2xl) var(--r-2xl) 0 0}
-  .mtop .ws{background:var(--tray)!important;border:0!important;border-radius:var(--r-lg)}
-}
+  .mtop .ws{background:var(--tray)!important;border:0!important;border-radius:var(--r-lg)}}
 
 /* ===== Standard buttons ===== */
 .btn{height:36px;border-radius:var(--r-md)!important;border:1px solid var(--line-2);box-shadow:none!important;font-weight:500}
@@ -713,9 +612,7 @@ h2 .cnt{background:#e8e5e1;border:0;border-radius:var(--r-pill);padding:1px 7px;
   body{background:var(--shell)}
   .frame{max-width:none;margin:0;min-height:100vh;min-height:100dvh;border-radius:0;box-shadow:none;overflow:visible}
   .side{position:sticky;top:0;height:100vh;height:100dvh;overflow:auto}
-  .main{margin:10px 10px 10px 0;min-height:calc(100dvh - 20px)}
-}
-
+  .main{margin:10px 10px 10px 0;min-height:calc(100dvh - 20px)}}
 
 /* ===== Sticky header (web) ===== */
 .topzone{display:grid;gap:14px}
@@ -724,8 +621,7 @@ h2 .cnt{background:#e8e5e1;border:0;border-radius:var(--r-pill);padding:1px 7px;
   .topzone.stuck{box-shadow:0 1px 0 var(--line),0 8px 16px -12px rgba(45,35,25,.18);border-radius:0;padding-top:14px;padding-bottom:12px}
   .topzone.stuck .htext h1{transform:scale(.75)}
   .topzone.stuck .hsub{display:none}
-  .topzone .htext h1{transform-origin:left center;transition:transform var(--t-base) var(--ease-out)}
-}
+  .topzone .htext h1{transform-origin:left center;transition:transform var(--t-base) var(--ease-out)}}
 
 /* ===== Week kanban — more air (web) ===== */
 @media (min-width:861px){
@@ -734,24 +630,16 @@ h2 .cnt{background:#e8e5e1;border:0;border-radius:var(--r-pill);padding:1px 7px;
   .kcol .khead{padding:6px 6px 4px}
   .kcard{padding:16px 16px 14px;gap:10px;border-radius:var(--r-lg)}
   .kcard .dish{font-size:var(--fs-3);line-height:1.4}
-  .kcard .ktop{margin-bottom:2px}
-}
+  .kcard .ktop{margin-bottom:2px}}
 
 /* ===== Emoji stickers ===== */
 .emo{font-family:"Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",sans-serif;font-style:normal;line-height:1;display:inline-block;
   filter:drop-shadow(0 0 1px #fff) drop-shadow(0 0 1px #fff) drop-shadow(0 0 1.2px #fff) drop-shadow(0 3px 4px rgba(70,45,20,.22))}
 .media.em{background:var(--soft,#f3eee6);container-type:size;place-items:center;border-color:transparent!important}
-.media.em .ecl{display:flex;align-items:center;justify-content:center}
-.media.em .e0{font-size:52cqh;order:2;z-index:2;transform:rotate(-4deg)}
-.media.em .e1{font-size:34cqh;order:1;margin-right:-6cqh;transform:translateY(14cqh) rotate(-12deg)}
-.media.em .e2{font-size:34cqh;order:3;margin-left:-6cqh;transform:translateY(-12cqh) rotate(10deg)}
-.media.em.th .e1,.media.em.th .e2{display:none}
-.media.em.th .e0{font-size:62cqh;transform:none}
 .media.em.th{border-radius:var(--r-md)}
 .media.em.sm,.media.em.dot{background:none;aspect-ratio:auto;height:auto;width:auto;margin:0;border:0;border-radius:0;overflow:visible;display:inline-flex;align-items:center;gap:2px;container-type:normal;flex:none}
 .media.em.sm .emo{font-size:var(--fs-6);filter:drop-shadow(0 0 .6px #fff) drop-shadow(0 0 .6px #fff) drop-shadow(0 1.5px 1.5px rgba(70,45,20,.22))}
 .media.em.dot .emo{font-size:var(--fs-4);filter:drop-shadow(0 1px 1px rgba(70,45,20,.2))}
-.dchips{display:inline-flex;gap:3px;align-items:center}
 .kcard .ktop{align-items:center}
 .semo{flex:none;display:inline-grid;place-items:center;width:38px;height:38px;margin:-4px 2px -4px 0}
 .semo .emo{font-size:24px;transform:rotate(-6deg);
@@ -801,8 +689,6 @@ tr.got .semo .emo{filter:grayscale(1) drop-shadow(2px 0 0 #fff) drop-shadow(-2px
 
 @media (max-width:860px){.dday.istoday{box-shadow:none!important;border-color:transparent!important}}
 
-.dday .dchips{display:none!important}
-
 /* ===== Cook v2: phases ===== */
 .cookv{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr);gap:16px;align-items:start;min-width:0}
 .ccol{display:grid;gap:16px;min-width:0}
@@ -810,15 +696,11 @@ tr.got .semo .emo{filter:grayscale(1) drop-shadow(2px 0 0 #fff) drop-shadow(-2px
 .cb,.cg-list,.cg{min-width:0}
 @media (max-width:860px){.cookv{display:flex;flex-direction:column;align-items:stretch;gap:14px}.ccol{display:contents}}
 .cprep{background:var(--tray);border-radius:var(--r-2xl);padding:22px;display:grid;gap:18px}
-.cfacts{display:flex;flex-wrap:wrap;gap:8px 22px;font-size:var(--fs-3);color:var(--ink-2)}
-.cfacts b{font-size:var(--fs-6);font-weight:600;color:var(--ink);margin-right:4px;font-variant-numeric:tabular-nums}
 .cstart{height:52px;font-size:var(--fs-4);justify-content:center;border-radius:var(--r-lg)}
 .cnow{background:var(--panel);border-radius:var(--r-2xl);padding:22px 22px 18px;box-shadow:0 0 0 1.5px var(--ink),var(--sh-2);display:grid;gap:14px}
 .cn-lab{display:flex;align-items:center;gap:7px;font-size:var(--fs-3);color:var(--muted)}
 .cn-lab .i{width:16px;height:16px}
 .cn-txt{font-size:clamp(20px,2.4vw,26px);line-height:1.3;font-weight:500;letter-spacing:-.01em;text-wrap:pretty}
-.cn-hint{display:flex;align-items:center;gap:7px;font-size:var(--fs-3);color:var(--ink-2)}
-.cn-hint .i{width:15px;height:15px}
 .cn-acts{display:grid;grid-auto-flow:column;grid-auto-columns:1fr;gap:8px}
 .cn-done{height:52px;min-width:0;justify-content:center;font-size:var(--fs-4);border-radius:var(--r-lg)}
 .cn-done .cd-t{display:grid;gap:1px;text-align:left;line-height:1.15;min-width:0}
@@ -834,8 +716,6 @@ tr.got .semo .emo{filter:grayscale(1) drop-shadow(2px 0 0 #fff) drop-shadow(-2px
 .cg-x{all:unset;cursor:pointer;width:32px;height:32px;display:grid;place-items:center;border-radius:var(--r-md);color:var(--muted)}
 .cg-x .i{width:16px;height:16px}
 @media (hover:hover) and (pointer:fine){.cg-x:hover{background:rgba(0,0,0,.05);color:var(--ink)}}
-.cnext{display:grid;gap:4px;padding:2px 6px;color:var(--muted);font-size:var(--fs-4)}
-.cnext .rh{margin:0}
 .cookv .step .smeta{display:flex;align-items:center;gap:6px;font-size:var(--fs-2);color:var(--muted);margin-top:4px}
 .cookv .step .smeta .i{width:14px;height:14px}
 .cookv .step{grid-template-columns:28px 1fr}
@@ -863,15 +743,9 @@ tr.got .semo .emo{filter:grayscale(1) drop-shadow(2px 0 0 #fff) drop-shadow(-2px
 @media (max-width:860px){.mtop{align-items:stretch!important;gap:8px!important}}
 .mset{width:52px;flex:none;justify-content:center;border-radius:var(--r-lg)}
 .setv .kbconf{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
-.setv .kbsave,.setv .kbcyc{grid-column:1/-1}
+.setv .kbsave{grid-column:1/-1}
 @media (max-width:860px){.setv .kbconf{grid-template-columns:1fr}}
-
-.kbsearch{width:100%;max-width:520px;box-sizing:border-box}
-
-.setnote{margin:2px 4px 0;color:var(--muted);font-size:var(--fs-3)}
 #v-settings .utabs{max-width:none}
-
-.fhint{display:block;margin-top:6px;font-size:var(--fs-2);color:var(--muted)}
 select:disabled{opacity:.6;cursor:not-allowed}
 
 .field select{-webkit-appearance:none;appearance:none;padding-right:40px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237a746c' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 10l5 5 5-5'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:18px 18px;cursor:pointer}
@@ -900,8 +774,6 @@ select:disabled{opacity:.6;cursor:not-allowed}
 .cy-leg i{width:8px;height:8px}
 .cy-pre{color:var(--muted)}
 @media (max-width:560px){.cycard{padding:16px}.cy-range,.cy-prog b{font-size:var(--fs-6)}.cy-w{grid-template-columns:22px repeat(7,minmax(0,1fr));gap:4px}.cy-d{height:40px;border-radius:var(--r-md)}}
-
-.lockhint{grid-column:1/-1;margin:0;padding:10px 12px;border-radius:var(--r-md);background:var(--tray);color:var(--ink-2)}
 .ep-in{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:14px 16px}
 .ep-in p{margin:0;font-size:var(--fs-3);color:var(--ink-2);max-width:560px}
 .ep-in .btn{flex:none}
@@ -950,9 +822,6 @@ input:disabled{opacity:.6;cursor:not-allowed}
   .mchips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:0 -16px 14px;padding:0 16px}
   .mchips button{all:unset;flex:none;height:36px;padding:0 14px;border-radius:var(--r-pill);background:var(--tray);font-size:var(--fs-3);display:inline-flex;align-items:center;cursor:pointer}
   .mchips button[aria-pressed=true]{background:var(--ink);color:#fff}
-  .rtgroup{display:grid;gap:10px}
-  .rtg{font-size:var(--fs-5);font-weight:600;margin:6px 2px 0;display:flex;align-items:center;gap:6px}
-  .rtiles{display:grid;grid-template-columns:1fr 1fr;gap:10px}
   .rtile{all:unset;display:grid;gap:6px;cursor:pointer;align-content:start;-webkit-tap-highlight-color:transparent}
   .rtile:active{transform:scale(.97)}
   .rt-p{position:relative;container-type:inline-size;aspect-ratio:1.15;border-radius:var(--r-xl);background:var(--bg);color:var(--fg);overflow:hidden;display:block}
@@ -968,12 +837,10 @@ input:disabled{opacity:.6;cursor:not-allowed}
   /* shop */
   .semo .emo{font-size:28px!important}
   .semo{width:44px;height:44px;text-decoration:none}
-  .sp-hint{font-size:var(--fs-2);color:var(--muted)}
   /* toast */
   .toast{position:fixed;left:16px;right:16px;bottom:calc(var(--tabh,54px) + var(--bgap,16px) + 14px);z-index:60;background:var(--ink);color:#fff;border-radius:var(--r-lg);padding:14px 16px;font-size:var(--fs-3);display:flex;gap:10px;align-items:center;box-shadow:0 10px 30px rgba(0,0,0,.25);animation:tin 260ms var(--ease-spring) both}
   .toast.out{opacity:0;transform:translateY(10px);transition:opacity var(--t-slow),transform var(--t-slow)}
-  @keyframes tin{from{opacity:0;transform:translateY(16px)}}
-}
+  @keyframes tin{from{opacity:0;transform:translateY(16px)}}}
 .sheet .rmeta-m{display:none}
 .toast .t-ic{font-size:var(--fs-5)}
 
@@ -986,8 +853,7 @@ input:disabled{opacity:.6;cursor:not-allowed}
   .stchk{position:relative}
   .stchk::before{content:"";position:absolute;inset:-11px}
   #v-settings .utabs button{height:40px}
-  .setv .btn.sm{height:40px}
-}
+  .setv .btn.sm{height:40px}}
 
 @media (max-width:860px){
   .khero{display:grid!important;gap:18px!important;padding:20px 18px 18px!important}
@@ -1001,8 +867,7 @@ input:disabled{opacity:.6;cursor:not-allowed}
   .kh-mac>div{background:var(--tray);border-radius:var(--r-lg);padding:10px 12px;display:grid;gap:3px}
   .kh-mac span{font-size:var(--fs-2);color:var(--muted)}
   .kh-mac b{margin:0!important;font-size:var(--fs-5);font-weight:600;color:var(--ink)}
-  .kh-mac small{font-size:var(--fs-2);font-weight:400;color:var(--muted);margin-left:2px}
-}
+  .kh-mac small{font-size:var(--fs-2);font-weight:400;color:var(--muted);margin-left:2px}}
 
 .stamp-in{display:none}
 @media (max-width:860px){
@@ -1010,8 +875,7 @@ input:disabled{opacity:.6;cursor:not-allowed}
   .mcard:not(.next) .stamp-in{display:inline-flex;align-items:center;margin:0 2px 0 -2px}
   .stamp-in .emo{font-size:var(--fs-6);transform:rotate(-8deg);filter:drop-shadow(1.5px 0 0 #fff) drop-shadow(-1.5px 0 0 #fff) drop-shadow(0 1.5px 0 #fff) drop-shadow(0 -1.5px 0 #fff) drop-shadow(0 2px 3px rgba(60,35,15,.25))!important;opacity:1!important}
   .mcard.just .stamp-in .emo{animation:stampIn2 380ms var(--ease-spring) both}
-  @keyframes stampIn2{0%{transform:scale(2) rotate(-25deg);opacity:0}100%{transform:scale(1) rotate(-8deg);opacity:1}}
-}
+  @keyframes stampIn2{0%{transform:scale(2) rotate(-25deg);opacity:0}100%{transform:scale(1) rotate(-8deg);opacity:1}}}
 @media (prefers-reduced-motion:reduce){.mcard.just .stamp-in .emo{animation:none}}
 
 /* ===== Mobile sticky header (as web) ===== */
@@ -1024,37 +888,14 @@ input:disabled{opacity:.6;cursor:not-allowed}
   .topzone.stuck .hsub{display:none}
   .topzone.stuck .head{align-items:center}
   .topzone.stuck .daynav{height:36px;width:36px}
-  .topzone.stuck .search{height:38px}
-}
+  .topzone.stuck .search{height:38px}}
 
 /* ===== Onboarding ===== */
 body.onb-on{overflow:hidden}
 #onb{position:fixed;inset:0;z-index:100;display:grid;grid-template-rows:auto 1fr auto;padding:calc(14px + env(safe-area-inset-top)) 20px calc(20px + env(safe-area-inset-bottom));background:var(--obg);color:var(--ofg);transition:background-color var(--t-slow) ease,color var(--t-slow) ease;overflow:hidden}
-#onb.t-orange{--obg:#FF5A36;--ofg:#FFF1EC;--oacc:#1B1407}
-#onb.t-blue{--obg:#3157F5;--ofg:#EEF2FF;--oacc:#0b1442}
-#onb.t-green{--obg:#13A15A;--ofg:#E9FBF0;--oacc:#062b17}
-#onb.t-yellow{--obg:#FFC93C;--ofg:#1B1407;--oacc:#1B1407}
-#onb.t-pink{--obg:#FF6FB0;--ofg:#2A0B19;--oacc:#2A0B19}
-.ob-top{display:flex;align-items:center;justify-content:space-between;gap:12px;max-width:640px;width:100%;margin:0 auto}
-.ob-back{all:unset;cursor:pointer;height:40px;min-width:40px;border-radius:var(--r-pill);display:grid;place-items:center;background:color-mix(in srgb,var(--ofg) 18%,transparent);color:var(--ofg);font-size:var(--fs-3);font-weight:500;padding:0 12px;box-sizing:border-box}
-.ob-back .i{width:18px;height:18px}
-.ob-dots{display:flex;gap:6px}
-.ob-dots i{width:8px;height:8px;border-radius:var(--r-pill);background:color-mix(in srgb,var(--ofg) 35%,transparent);transition:transform var(--t-slow) var(--ease-out),background-color var(--t-slow) ease}
-.ob-dots i.on{width:26px;background:var(--ofg)}
-.ob-dots i.done{background:var(--ofg)}
-.ob-sp{width:40px}
 .ob-body{max-width:640px;width:100%;margin:0 auto;align-self:center;display:grid;gap:22px;position:relative;animation:obIn 340ms var(--ease-out) both}
 @keyframes obIn{from{opacity:0;transform:translateY(12px)}}
-.ob-h{font-family:'Unbounded',var(--font);font-weight:800;font-size:clamp(46px,13vw,96px);line-height:.86;letter-spacing:-.05em;font-synthesis:none;position:relative;z-index:2;word-break:break-word}
-.ob-p{margin:0;font-size:var(--fs-5);line-height:1.4;max-width:460px;position:relative;z-index:2;opacity:.92}
-.ob-q{min-height:48px}
 .ob-foot{max-width:640px;width:100%;margin:0 auto}
-.ob-go{all:unset;cursor:pointer;box-sizing:border-box;width:100%;height:60px;border-radius:var(--r-xl);background:var(--oacc);color:var(--obg);font-size:var(--fs-5);font-weight:600;display:grid;place-items:center;box-shadow:0 10px 24px -12px rgba(0,0,0,.45);transition:transform var(--t-press) ease}
-#onb.t-yellow .ob-go,#onb.t-pink .ob-go{color:#fff}
-.ob-go:active{transform:scale(.97)}
-.ob-in{all:unset;box-sizing:border-box;width:100%;font-family:'Unbounded',var(--font);font-weight:800;font-size:clamp(32px,9vw,52px)!important;letter-spacing:-.03em;padding:6px 0 10px;border-bottom:3px solid currentColor;color:var(--ofg)}
-.ob-in::placeholder{color:color-mix(in srgb,var(--ofg) 45%,transparent)}
-.ob-in.shake{animation:shake 360ms ease}
 @keyframes shake{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
 .ob-fly{position:absolute;inset:-40px -10px -40px -10px;pointer-events:none;z-index:1}
 .ob-fly .emo{position:absolute;font-size:56px;filter:drop-shadow(2.5px 0 0 #fff) drop-shadow(-2.5px 0 0 #fff) drop-shadow(0 2.5px 0 #fff) drop-shadow(0 -2.5px 0 #fff) drop-shadow(0 8px 10px rgba(0,0,0,.25));animation:obFloat 4s ease-in-out infinite alternate}
@@ -1070,34 +911,13 @@ body.onb-on{overflow:hidden}
 .ob-fly.sm .f3{right:26%;top:-40%;bottom:auto;font-size:44px}
 @keyframes obFloat{from{transform:translateY(0) rotate(var(--r,0deg))}to{transform:translateY(-14px) rotate(calc(var(--r,0deg) * -1))}}
 @media (prefers-reduced-motion:reduce){.ob-fly .emo,.ob-body{animation:none}}
-.ob-menus{display:grid;gap:10px}
-.ob-menu{all:unset;cursor:pointer;box-sizing:border-box;padding:18px 20px;border-radius:var(--r-xl);background:color-mix(in srgb,var(--ofg) 14%,transparent);display:grid;gap:4px;border:2px solid transparent}
-.ob-menu b{font-size:var(--fs-6);font-weight:600}
-.ob-menu span{font-size:var(--fs-3);opacity:.8}
-.ob-menu[aria-pressed=true]{background:var(--ofg);color:var(--obg)}
-.ob-row{display:grid;gap:10px}
-.ob-rl{display:flex;align-items:center;gap:10px;font-size:var(--fs-5);font-weight:600}
-.ob-rl .emo{font-size:28px;filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)}
-.ob-rl small{display:block;font-size:var(--fs-3);font-weight:400;opacity:.75}
 .ob-pills{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:6px}
 .ob-pills button{all:unset;cursor:pointer;height:44px;border-radius:var(--r-lg);display:grid;place-items:center;font-size:var(--fs-4);font-weight:600;background:color-mix(in srgb,var(--ofg) 12%,transparent);text-transform:capitalize;transition:transform var(--t-press) ease}
 .ob-pills button:active{transform:scale(.94)}
 .ob-pills button[aria-pressed=true]{background:var(--oacc);color:#fff}
-.ob-starts{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:10px}
-.ob-starts button,.ob-date{all:unset;cursor:pointer;box-sizing:border-box;padding:14px 16px;border-radius:var(--r-xl);background:color-mix(in srgb,#fff 30%,transparent);display:grid;gap:2px}
-.ob-starts b{font-size:var(--fs-5)}
-.ob-starts span{font-size:var(--fs-3);opacity:.8}
-.ob-starts button[aria-pressed=true]{background:var(--oacc);color:#fff}
-.ob-date{position:relative}
-.ob-date b{font-size:var(--fs-5)}
-.ob-date span{font-size:var(--fs-3);opacity:.8}
-.ob-date[aria-pressed=true]{background:var(--oacc);color:#fff}
-.ob-date input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:var(--fs-4)!important;border:0;margin:0;padding:0;-webkit-appearance:none;appearance:none}
-.ob-date input::-webkit-calendar-picker-indicator{position:absolute;inset:0;width:100%;height:100%;cursor:pointer;opacity:0}
 .ob-confetti{position:fixed;left:50%;top:55%;z-index:200;pointer-events:none}
 .ob-confetti .emo{position:absolute;left:0;top:0;font-size:36px;filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff)}
 .onb-cta{all:unset;cursor:pointer;box-sizing:border-box;position:relative;display:grid;gap:14px;max-width:560px;padding:28px;border-radius:var(--r-2xl);background:#FF5A36;color:#FFF1EC;overflow:hidden;min-height:220px;align-content:end}
-.oc-w{font-family:'Unbounded',var(--font);font-weight:800;font-size:clamp(40px,8vw,64px);line-height:.88;letter-spacing:-.05em;position:relative;z-index:2}
 .oc-t{font-size:var(--fs-4);opacity:.9;position:relative;z-index:2}
 .oc-s .emo{position:absolute;filter:drop-shadow(2px 0 0 #fff) drop-shadow(-2px 0 0 #fff) drop-shadow(0 2px 0 #fff) drop-shadow(0 -2px 0 #fff) drop-shadow(0 6px 8px rgba(0,0,0,.25))}
 .oc-s .a{right:24px;top:18px;font-size:56px;transform:rotate(12deg)}
@@ -1108,23 +928,10 @@ body.onb-on{overflow:hidden}
 @media (min-width:861px){#v-cook .cpills{display:flex!important;margin-bottom:16px}#v-cook .cpills small{margin-left:6px}#headacts #prevC,#headacts #nextC{display:none!important}}
 
 /* logo ООО «Пожуём» */
-.lg-ooo{position:relative;overflow:visible!important;background:#161614!important}
-.lg-t{font-family:'Unbounded',var(--font);font-weight:800;font-size:var(--fs-1);letter-spacing:-.02em;color:#FFD23F;font-synthesis:none}
-.lg-s{position:absolute;right:-9px;bottom:-7px;font-size:var(--fs-6);transform:rotate(-14deg);filter:drop-shadow(1.5px 0 0 #fff) drop-shadow(-1.5px 0 0 #fff) drop-shadow(0 1.5px 0 #fff) drop-shadow(0 -1.5px 0 #fff) drop-shadow(0 2px 3px rgba(0,0,0,.25))}
 .side .ws b{letter-spacing:-.01em}
-.ob-brand{display:inline-flex;align-items:center;gap:10px;font-size:var(--fs-3);font-weight:600;opacity:.95;position:relative;z-index:2}
-.ob-brand .lg-ooo{width:36px;height:36px;border-radius:var(--r-md);display:grid;place-items:center}
-.ob-brand small{display:block;font-weight:400;font-size:var(--fs-2);opacity:.75}
-.ob-top{position:relative;z-index:5}
 .ob-fly .f7{top:-8%}
 
 /* logo v2: sticker */
-.lg-st{position:relative;background:#FFD23F!important;transform:rotate(-7deg);box-shadow:0 0 0 3px #fff,0 4px 8px -2px rgba(0,0,0,.28);overflow:hidden}
-.lg-st .lg-t{color:#161614;font-size:var(--fs-1)}
-.lg-st::after{content:"";position:absolute;right:0;bottom:0;width:11px;height:11px;background:linear-gradient(135deg,#FFD23F 50%,#e7e1d4 50%);border-top-left-radius:4px;box-shadow:-1px -1px 2px rgba(0,0,0,.12)}
-.ob-stk{display:inline-block;transform:rotate(-6deg);background:#FFD23F;color:#161614;border-radius:var(--r-xl);padding:12px 16px;box-shadow:0 0 0 5px #fff,0 10px 18px -8px rgba(0,0,0,.35);position:relative;overflow:hidden;font-family:'Unbounded',var(--font);font-weight:800;font-size:var(--fs-5);line-height:.92;letter-spacing:-.04em}
-.ob-stk::after{content:"";position:absolute;right:0;bottom:0;width:20px;height:20px;background:linear-gradient(135deg,#FFD23F 50%,#e7e1d4 50%);border-top-left-radius:7px;box-shadow:-1px -1px 3px rgba(0,0,0,.12)}
-.ob-brand{gap:16px!important}
 
 .mbrand{display:none}
 @media (max-width:860px){
@@ -1136,17 +943,13 @@ body.onb-on{overflow:hidden}
   body.on-today .mbrand{all:unset;cursor:pointer;display:grid;place-items:center;flex:none;-webkit-tap-highlight-color:transparent}
   .mbrand>span:not(.logo){display:none}
   .mbrand .logo{width:38px;height:38px;border-radius:var(--r-md);display:grid;place-items:center}
-  .mbrand .lg-t{font-size:var(--fs-1)}
-  .topzone.stuck .mbrand .logo{width:30px;height:30px;border-radius:var(--r-sm)}
-  .topzone.stuck .mbrand .lg-t{font-size:var(--fs-1)}
-}
+  .topzone.stuck .mbrand .logo{width:30px;height:30px;border-radius:var(--r-sm)}}
 @media (max-width:860px){
   body.on-today .topzone .head{display:grid!important;grid-template-columns:minmax(0,1fr) auto;align-items:center;column-gap:10px;row-gap:2px}
   body.on-today .topzone .htext{display:contents}
   body.on-today .topzone .htext h1{grid-column:1;grid-row:1}
   body.on-today .topzone .headacts{grid-column:2;grid-row:1}
-  body.on-today .topzone .hsub{grid-column:1/-1;grid-row:2;margin:0}
-}
+  body.on-today .topzone .hsub{grid-column:1/-1;grid-row:2;margin:0}}
 
 .cn-det{font-size:var(--fs-4);line-height:1.5;color:var(--ink-2);max-width:62ch;text-wrap:pretty}
 .cookv .step .sdet{font-size:var(--fs-3);line-height:1.45;color:var(--muted);margin-top:4px;max-width:70ch}
@@ -1159,16 +962,15 @@ body.onb-on{overflow:hidden}
   dialog#sheet{position:fixed;inset:0;width:100%;height:100%;max-height:none}
   .sheet{position:fixed!important;left:0!important;right:0!important;bottom:0!important;top:auto!important;max-height:calc(100% - 48px)!important;-webkit-overflow-scrolling:touch}
   .htoday{all:unset;cursor:pointer;display:inline-flex;align-items:center;gap:6px;font-size:var(--fs-3);font-weight:600;color:var(--ink);padding:4px 10px;margin-left:-2px;border-radius:var(--r-pill);background:var(--tray)}
-  #headacts #toToday{display:none!important}
-}
+  #headacts #toToday{display:none!important}}
 @media (min-width:861px){.htoday{display:none}}
 html.sheet-open{overflow:hidden}
 @media (max-width:860px){body.on-today .topzone .htext h1{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;min-width:0}}
 
 /* ===== Motion pass ===== */
 @keyframes stepIn{from{opacity:0;transform:translateY(6px)}}
-.cnow.cn-new .cn-lab,.cnow.cn-new .cn-txt,.cnow.cn-new .cn-det,.cnow.cn-new .cn-hint{animation:stepIn 220ms var(--ease-out) both}
-.cnow.cn-new .cn-txt{animation-delay:20ms}.cnow.cn-new .cn-det{animation-delay:40ms}.cnow.cn-new .cn-hint{animation-delay:60ms}
+.cnow.cn-new .cn-lab,.cnow.cn-new .cn-txt,.cnow.cn-new .cn-det{animation:stepIn 220ms var(--ease-out) both}
+.cnow.cn-new .cn-txt{animation-delay:20ms}.cnow.cn-new .cn-det{animation-delay:40ms}
 @keyframes cgIn{from{opacity:0;transform:translateY(4px) scale(.98)}}
 .cg.cg-new{animation:cgIn 240ms var(--ease-out) both}
 @keyframes cgEnd{from{background:var(--tray)}}
@@ -1176,12 +978,11 @@ html.sheet-open{overflow:hidden}
 @supports (interpolate-size:allow-keywords){
   :root{interpolate-size:allow-keywords}
   details::details-content{transition:none}
-  details[open]::details-content{block-size:auto}
-}
+  details[open]::details-content{block-size:auto}}
 ::view-transition-group(*){animation-duration:220ms;animation-timing-function:var(--ease-out)}
 ::view-transition-old(root),::view-transition-new(root){animation:none}
-.utabs button,.cpills button,.mchips button,.htoday,.ob-back,.cg-x{transition:transform var(--t-press) var(--ease-out),background-color var(--t-fast) ease,color var(--t-fast) ease}
-.utabs button:active,.cpills button:active,.mchips button:active,.htoday:active,.ob-back:active,.cg-x:active{transform:scale(.96)}
+.utabs button,.cpills button,.mchips button,.htoday,.cg-x{transition:transform var(--t-press) var(--ease-out),background-color var(--t-fast) ease,color var(--t-fast) ease}
+.utabs button:active,.cpills button:active,.mchips button:active,.htoday:active,.cg-x:active{transform:scale(.96)}
 @keyframes posterIn{from{opacity:0;transform:scale(.96)}}
 @keyframes stkIn{0%{scale:1.8;opacity:0}60%{scale:.92;opacity:1}100%{scale:1;opacity:1}}
 .menustrip{display:flex;gap:6px;overflow-x:auto;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;touch-action:pan-x;padding:0;scrollbar-width:none}
@@ -1196,18 +997,15 @@ html.sheet-open{overflow:hidden}
 .ms-c .pstk .s1{font-size:21px;margin-left:-5px;transform:translateY(-12px) rotate(12deg)}
 .ms-c .media .w{font-size:min(32px,calc(72cqw / var(--n) * 1.05))}
 .ms-n{font-size:var(--fs-3);line-height:1.3;color:var(--ink);min-height:calc(13px * 1.3 * 2);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-@media (prefers-reduced-motion:reduce){.cd-soon.pop{animation:none}.ms-c{transition:none}}
-.cd-soon .dc-sub{opacity:.9}
-.cd-soon:not(.cd-wait){cursor:pointer}
+@media (prefers-reduced-motion:reduce){.ms-c{transition:none}}
 .dayclosed.pop{animation:posterIn 300ms var(--ease-out) both}
 .dayclosed.pop .emo{animation:stkIn 420ms var(--ease-spring) both}
 .dayclosed.pop .dc0{animation-delay:180ms}.dayclosed.pop .dc1{animation-delay:240ms}.dayclosed.pop .dc2{animation-delay:300ms}.dayclosed.pop .dc3{animation-delay:360ms}
 .cdone{overflow:hidden;min-height:150px}
 @media (prefers-reduced-motion:reduce){
-  .cnow.cn-new .cn-lab,.cnow.cn-new .cn-txt,.cnow.cn-new .cn-det,.cnow.cn-new .cn-hint,.cg.cg-new{animation:fadeOnly 150ms ease both!important}
+  .cnow.cn-new .cn-lab,.cnow.cn-new .cn-txt,.cnow.cn-new .cn-det,.cg.cg-new{animation:fadeOnly 150ms ease both!important}
   .dayclosed.pop,.dayclosed.pop .emo{animation:fadeOnly 150ms ease both!important}
-  ::view-transition-group(*){animation:none}
-}
+  ::view-transition-group(*){animation:none}}
 @keyframes fadeOnly{from{opacity:0}}
 @media (max-width:560px){.cdone .dc0,.cdone .dc1{display:none}.cdone .dc2{right:26%;bottom:12px}.cdone .dc3{right:6%;bottom:10px}}
 @media (max-width:860px){#v-today,#v-week,#v-cook{touch-action:pan-y}}
@@ -1225,29 +1023,17 @@ html.sheet-open{overflow:hidden}
 .rules .rl-body code{word-break:normal;overflow-wrap:anywhere}
 .after .inner{display:grid;gap:18px}
 .after.hot{box-shadow:0 0 0 2px var(--ink)}
-.as-h{display:flex;align-items:center;gap:10px;margin-bottom:8px}.as-h b{flex:1;font-weight:600}
-.as-n{width:24px;height:24px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font-size:var(--fs-2);font-weight:600;flex:none}
 .as-places{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
 .as-pl{background:var(--shell);border-radius:var(--r-md);padding:10px 12px}
 .as-plh{display:flex;gap:8px;align-items:center;font-weight:600;font-size:var(--fs-3);margin-bottom:6px}.as-plh svg{width:16px;height:16px}
-.as-pl ul,.as-out{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:var(--fs-3)}
+.as-pl ul{margin:0;padding:0;list-style:none;display:grid;gap:6px;font-size:var(--fs-3)}
 .as-pl li .small{margin-top:2px;line-height:1.4}
-.as-p{margin:0 0 8px}
-.as-out li{border:1px solid var(--line);border-radius:var(--r-md);padding:10px 12px;display:grid;gap:4px}
-.ao-top{display:flex;gap:8px;align-items:flex-start;justify-content:space-between}.ao-n{font-weight:500}
-.ao-pk{color:var(--ink-2);line-height:1.45}
-.tag.tfz{background:#e3eefc;color:#1d4f91;white-space:nowrap}.tag.tfr{background:#e6f4ea;color:#1f6b3a;white-space:nowrap}
 .as-pl ul.as-chips{display:flex;flex-wrap:wrap;gap:4px 6px}
 .as-chips li{background:#fff;border-radius:var(--r-xs);padding:3px 8px;font-size:var(--fs-3)}
 .as-chips li.wide{flex-basis:100%;padding:6px 8px}
-.as-det summary{list-style:none;cursor:pointer;display:flex;gap:8px;align-items:center;font-size:var(--fs-3);color:var(--ink-2);min-height:36px}
-.as-det summary::-webkit-details-marker{display:none}
-.as-det .chev{transition:transform .15s;flex:none}.as-det[open] .chev{transform:rotate(90deg)}
-.as-det .as-out{margin-top:6px}
 .as-cook{display:flex;gap:12px;align-items:center;width:100%;text-align:left;border:1px solid var(--line);background:#fff;border-radius:var(--r-md);padding:12px;font:inherit;color:inherit;cursor:pointer;min-height:44px}
 .as-cook .grow{display:grid;gap:2px;flex:1}.as-cook b{font-weight:600}
-.after .inner{gap:12px!important}.as-step{margin-bottom:6px}
-.trayhead .as-date{margin-left:auto}.after .as-step{margin:0}
+.after .inner{gap:12px!important}
 /* разложи покупки v3 */
 .after .as-places{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;align-items:start}
 @container (max-width:700px){.after .as-places{grid-template-columns:minmax(0,1fr)}}
@@ -1258,11 +1044,8 @@ html.sheet-open{overflow:hidden}
 .after .as-chips li{background:var(--shell);border-radius:var(--r-sm);padding:5px 9px;font-size:var(--fs-3);line-height:1.3}
 .after .as-chips li.wide{flex-basis:100%;padding:8px 10px}
 .after .as-chips li.wide .small{margin-top:3px;line-height:1.4}
-.after .as-mdate{margin:-4px 10px 8px}
 .after.hot{box-shadow:none;outline:2px solid var(--ink);outline-offset:-2px}
-.after .as-mdate{display:none}@media (max-width:860px){.after .as-mdate{display:block}}
 .after .as-plh{min-height:24px}
-@media (max-width:860px){.sacts{grid-template-columns:1fr!important}}
 details.after>summary{list-style:none;cursor:pointer;min-height:44px}
 details.after>summary::-webkit-details-marker{display:none}
 details.after>summary .chev{transition:transform .2s var(--ease-drawer,ease);color:var(--ink-2)}
@@ -1271,19 +1054,6 @@ details.after:not([open])>summary{padding-bottom:8px}
 details.after::details-content{transition:none}
 details.after[open]::details-content{height:auto}
 @media (prefers-reduced-motion:reduce){details.after::details-content{transition:none}}
-.after ul.as-chips.stacked{display:grid;grid-template-columns:minmax(0,1fr)}.after ul.as-chips.stacked li{padding:8px 10px}
-.cfacts{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr));gap:0!important}
-.cfacts>div{display:flex;flex-direction:column;gap:6px;padding:0 16px;min-width:0}
-.cfacts>div:first-child{padding-left:0}
-.cfacts>div+div{border-left:1px solid var(--line)}
-.cfacts .rh{white-space:nowrap}
-.cfacts b{margin:0!important;font-size:24px!important;line-height:1;font-weight:600;letter-spacing:-.01em;white-space:nowrap}
-.cfacts b small{font-size:var(--fs-3);font-weight:500;color:var(--ink-2);margin-left:3px;letter-spacing:0}
-.cprep .needrow{padding-left:0!important;padding-right:0!important;margin-left:0!important}
-.cprep .cfacts{padding-bottom:16px;border-bottom:1px solid var(--line);margin-bottom:2px}
-.cfacts{gap:8px!important}
-.cfacts>div,.cfacts>div:first-child{background:var(--panel);border:0!important;border-radius:var(--r-md);padding:12px 14px}
-.cprep .cfacts{border-bottom:0!important;padding-bottom:0!important}
 /* мобильная шапка: стекло */
 .mbar{display:none}
 @media (max-width:860px){
@@ -1319,15 +1089,13 @@ details.after[open]::details-content{height:auto}
   .ml-1,.ml-2{margin:0;font-size:28px;line-height:1.12;letter-spacing:-.03em;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
   .ml-1{color:var(--ink)}
   .ml-2{color:var(--faint);font-weight:600}
-  body.mb-pushed .topzone{padding-top:calc(60px + env(safe-area-inset-top))!important}
-}
+  body.mb-pushed .topzone{padding-top:calc(60px + env(safe-area-inset-top))!important}}
 @media (max-width:860px){
   .ml-tx{min-width:0;flex:1}
   .ml.ml-g{display:flex;align-items:flex-start;gap:12px}
   .ml.ml-g .gl{flex:none;margin-top:-1px}
   body.mb-nobar .topzone{padding-top:calc(14px + env(safe-area-inset-top))!important}
-  body.mb-nobar:not(.mb-stuck) .mb-bar{visibility:hidden}
-}
+  body.mb-nobar:not(.mb-stuck) .mb-bar{visibility:hidden}}
 @media (max-width:860px){body:not(.mb-stuck) .gl-so{visibility:hidden}}
 @media (max-width:860px){.ml-1{font-size:28px!important}
   .ml-2{font-size:var(--fs-6)!important;font-weight:600;line-height:1.25;letter-spacing:-.02em;margin-top:2px}}
@@ -1335,7 +1103,6 @@ details.after[open]::details-content{height:auto}
 .wmob{display:none}
 @media (max-width:860px){
   .wmob{display:grid;gap:14px}
-  #v-week .daylist{display:none!important}
   .wstrip{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px;background:var(--tray);border-radius:var(--r-xl);padding:6px;touch-action:pan-y}
   .wstrip button{border:0;background:none;font:inherit;color:var(--ink);display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 0 7px;border-radius:var(--r-md);cursor:pointer;min-height:64px;transition:background .2s ease,color .2s ease}
   .wstrip button span{font-size:var(--fs-1);color:var(--muted);text-transform:lowercase}
@@ -1350,13 +1117,7 @@ details.after[open]::details-content{height:auto}
   .wstrip button[aria-selected="true"].tday b{color:#fff}
   .wstrip button[aria-selected="true"] i.ev{background:rgba(255,255,255,.6)}
   .wday{display:grid;gap:12px}
-  .wd-h{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;padding:2px 4px}
-  .wd-h>div{display:grid;gap:3px;min-width:0}
-  .wd-h b{font-size:var(--fs-6);font-weight:600;letter-spacing:-.02em}
-  .wd-h span{font-size:var(--fs-3);color:var(--ink-2)}
-  .wd-e{background:var(--shell);border-radius:var(--r-pill);padding:3px 10px;font-size:var(--fs-2)!important;white-space:nowrap}
-  .wd-cards{display:grid;gap:10px}
-}
+  .wd-cards{display:grid;gap:10px}}
 @media (max-width:860px){.wd-cards .mcard .how{display:block!important;margin-top:2px}}
 @media (max-width:860px){.wd-tray{padding:6px!important}.wd-tray .wd-cards{gap:6px}}
 @media (max-width:860px){.mb-bar{grid-template-columns:auto minmax(0,1fr) auto}.mb-l:empty{display:none}.mb-t{justify-self:start!important;font-size:var(--fs-6)!important;font-weight:700!important}}
@@ -1368,18 +1129,15 @@ details.after[open]::details-content{height:auto}
 @media (max-width:860px){
   .sheet{left:8px!important;right:8px!important;bottom:8px!important;width:auto!important;border-radius:38px 38px 52px 52px!important;max-height:calc(100% - 64px)!important;padding-bottom:max(22px,calc(env(safe-area-inset-bottom) - 2px))!important;overflow:auto;clip-path:inset(0 round 38px 38px 52px 52px);box-shadow:0 20px 60px -12px rgba(30,20,10,.35)}
   dialog[data-state="open"] .sheet{transform:translateY(0)}
-  .sheet{transform:translateY(calc(100% + 24px))}
-}
+  .sheet{transform:translateY(calc(100% + 24px))}}
 /* perf pass */
 .scroll-sentinel{position:absolute;top:0;left:0;width:1px;height:8px;pointer-events:none;visibility:hidden}
 details.acc-anim[open]>:not(summary){animation:accIn 180ms var(--ease-out,ease-out)}
 @keyframes accIn{from{opacity:0;transform:translateY(-4px)}}
 @media (prefers-reduced-motion:reduce){details.acc-anim[open]>:not(summary){animation:none}}
-.ob-dots i.on{width:8px!important;transform:scaleX(2.75);margin:0 7px}
 @media (max-width:860px){
   .gl{background:rgba(255,255,255,.9)!important;-webkit-backdrop-filter:blur(8px)!important;backdrop-filter:blur(8px)!important}
-  .mb-bar::before{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;-webkit-mask-image:none!important;mask-image:none!important;background:linear-gradient(var(--panel) 55%,color-mix(in srgb,var(--panel) 0%,transparent))!important}
-}
+  .mb-bar::before{-webkit-backdrop-filter:none!important;backdrop-filter:none!important;-webkit-mask-image:none!important;mask-image:none!important;background:linear-gradient(var(--panel) 55%,color-mix(in srgb,var(--panel) 0%,transparent))!important}}
 @media (max-width:860px){.ml.ml-g:not(:has(.ml-2)){align-items:center}.ml.ml-g:not(:has(.ml-2)) .gl{margin-top:0}}
 .imp-div{width:1px;align-self:stretch;min-height:28px;background:var(--line);margin:0 4px}
 @media (max-width:860px){.imp-div{flex-basis:100%;width:auto;height:1px;min-height:0;margin:4px 0}}
@@ -1390,9 +1148,6 @@ details.acc-anim[open]>:not(summary){animation:accIn 180ms var(--ease-out,ease-o
 .logo.lg-ic{background:none!important;padding:0!important;box-shadow:none!important;transform:none!important;overflow:visible!important;border-radius:0!important}
 .logo.lg-ic::after{display:none!important}
 .lg-ic .appic{width:100%;height:100%;display:block;border-radius:24%;box-shadow:0 2px 6px -2px rgba(255,90,31,.45)}
-.ob-brand .ob-ic{width:64px;height:64px;flex:none;transform:rotate(-6deg)}
-.ob-brand .ob-ic .appic{width:100%;height:100%;display:block;box-shadow:0 0 0 4px #fff,0 10px 18px -8px rgba(0,0,0,.35);border-radius:24%}
-.ob-brand b{display:block;font-size:var(--fs-5);font-weight:700;letter-spacing:-.01em}
 /* следующий план */
 .nx-card{display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap;background:#161614;color:#fff;border-radius:var(--r-xl);padding:16px 18px}
 .nx-card.on{background:var(--tray);color:var(--ink)}
@@ -1408,7 +1163,6 @@ details.acc-anim[open]>:not(summary){animation:accIn 180ms var(--ease-out,ease-o
 .peekbar button{border:0;background:#FF5A1F;color:#fff;font:inherit;font-weight:600;border-radius:var(--r-pill);padding:8px 14px;cursor:pointer}
 @media (min-width:861px){.peekbar{bottom:24px}}
 .shoptbl .chk{width:100%}.shoptbl .name{flex:1;min-width:0;flex-wrap:nowrap!important;justify-content:space-between}.shoptbl .q{margin-left:auto;padding-left:12px;white-space:nowrap;text-align:right}
-.fakebar{position:fixed;top:calc(8px + env(safe-area-inset-top));left:50%;transform:translateX(-50%);z-index:70;border:0;background:#2F5BFF;color:#fff;font:inherit;font-size:var(--fs-2);font-weight:600;border-radius:var(--r-pill);padding:5px 12px;cursor:pointer;white-space:nowrap}
 .nx-acts{display:flex;gap:8px}.nx-acts .btn{flex:1;justify-content:center;min-height:48px}
 .nx-card.on .btn.ghost{background:var(--panel);border:0;box-shadow:0 0 0 1px var(--line);color:var(--ink)!important}
 /* iOS date input */
@@ -1423,25 +1177,21 @@ details.acc-anim[open]>:not(summary){animation:accIn 180ms var(--ease-out,ease-o
   .pk-row{display:flex;align-items:center;gap:10px;margin:2px 0 6px}
   .pk-back{display:inline-flex;align-items:center;gap:2px;border:0;background:#161614;color:#fff;font:inherit;font-size:var(--fs-3);font-weight:600;border-radius:var(--r-pill);padding:7px 14px 7px 8px;cursor:pointer}
   .pk-back svg{width:18px;height:18px}
-  .pk-lab{font-size:var(--fs-3);color:var(--ink-2)}
   .mb-l .pk-back{background:#161614;color:#fff;padding:0 14px 0 8px}
   body.in-peek .mb-l{display:flex!important}
-  body.has-fake .topzone{padding-top:calc(48px + env(safe-area-inset-top))!important}
-}
+  body.has-fake .topzone{padding-top:calc(48px + env(safe-area-inset-top))!important}}
 .field input[type="date"]{height:38px!important;padding-top:0!important;padding-bottom:0!important;line-height:36px!important}
 .field input[type="date"]::-webkit-date-and-time-value{line-height:36px;min-height:36px}
 .field input[type="date"]::-webkit-datetime-edit{line-height:36px}
-@media (max-width:860px){.mb-l .pk-back{background:#161614!important;color:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}.fakebar{top:auto!important;bottom:calc(var(--tabh,54px) + var(--bgap) + 14px)}body.has-fake .topzone{padding-top:calc(14px + env(safe-area-inset-top))!important}}
-.mcard.mini .open.mini-r{flex-direction:row;height:auto;padding:12px 14px}.mcard.mini .mini-e{flex:none;width:36px;height:36px;display:grid;place-items:center;border-radius:var(--r-md);background:var(--tray)}.mcard.mini .mini-e .emo{width:24px;height:24px}
+@media (max-width:860px){.mb-l .pk-back{background:#161614!important;color:#fff!important;-webkit-backdrop-filter:none!important;backdrop-filter:none!important}body.has-fake .topzone{padding-top:calc(14px + env(safe-area-inset-top))!important}}
+.mcard.mini .open.mini-r{flex-direction:row;height:auto;padding:12px 14px}
 .mcard.mini .mini-r{display:flex;align-items:center;gap:12px;padding:10px 12px 10px 10px}
 .mcard.mini .mini-t{flex:1;min-width:0;display:grid;gap:6px}.mcard.mini .mini-h{display:flex;align-items:center;gap:8px}
 .mcard.mini .slotl{font-size:var(--fs-2);color:var(--muted)}
 .mcard.mini .mini-d{font-size:var(--fs-3);color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .mcard.mini .eatbtn{margin-left:0;flex:none}
 button.past[data-wd]:not([aria-selected="true"]){opacity:.62}
-.fh-h{margin:6px 0 -2px;font-weight:600;color:var(--ink-2)}
 .kf{display:grid;gap:10px;padding:12px;border-radius:var(--r-lg);background:var(--tray)}
-.kf-t{margin:0;display:grid;gap:3px;font-size:var(--fs-3);line-height:1.4}.kf-t span{color:var(--muted)}
 button.skip[data-wd]:not([aria-selected="true"]){opacity:.62}button.skip[data-wd] i{visibility:hidden}
 .wd-skip{display:flex;gap:12px;align-items:center;padding:16px;background:var(--panel);border-radius:var(--r-lg)}.wd-skip .emo{font-size:32px}.wd-skip p{margin:0;display:grid;gap:3px}.wd-skip span{color:var(--muted);font-size:var(--fs-3)}
 .sched .inner{padding:4px 0}
@@ -1460,29 +1210,8 @@ button.skip[data-wd]:not([aria-selected="true"]){opacity:.62}button.skip[data-wd
 .sched .s-sub+.s-hint{margin-top:-2px}
 .cy-d.skip{background:transparent;box-shadow:inset 0 0 0 1px var(--line)}.cy-d.skip .cy-n{color:var(--faint,#b2aea6)}
 .sched .trayhead .okc{margin-left:auto}
-.ob-hero{display:flex;align-items:flex-end;gap:12px;position:relative;z-index:2}
-.ob-mz{flex:none;width:96px;height:96px;border-radius:var(--r-2xl);box-shadow:0 0 0 4px #fff,0 10px 24px rgba(0,0,0,.18);transform:rotate(-6deg);animation:obMz 2.4s ease-in-out infinite}
-.ob-mz svg{width:100%;height:100%;display:block;border-radius:var(--r-2xl)}
 @keyframes obMz{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(4deg) translateY(-4px)}}
-.ob-say{margin:0 0 14px;padding:12px 14px;border-radius:var(--r-xl) var(--r-xl) var(--r-xl) var(--r-xs);background:#fff;color:#161614;font-size:var(--fs-4);line-height:1.35;box-shadow:0 6px 18px rgba(0,0,0,.12);animation:obSay 420ms 200ms var(--ease-out) both}
 @keyframes obSay{from{opacity:0;transform:translateY(8px) scale(.96)}to{opacity:1;transform:none}}
-.ob-perks{list-style:none;margin:0;padding:0;display:grid;gap:10px;position:relative;z-index:2}
-.ob-perks li{display:flex;align-items:center;gap:12px;font-size:var(--fs-5);font-weight:500}
-.ob-perks .emo{font-size:24px;flex:none}
-.ob-rh{gap:8px!important}.ob-rh b{font-size:var(--fs-4)!important;font-weight:700;letter-spacing:0}.ob-rh span{display:flex;align-items:center;gap:8px;font-size:var(--fs-4)!important;opacity:1!important}.ob-rh .emo{font-size:var(--fs-6)}
-.ob-link{all:unset;cursor:pointer;justify-self:start;margin-top:4px;font-size:var(--fs-3);font-weight:600;text-decoration:underline;text-underline-offset:3px}
-.ob-mini{list-style:none;margin:0;padding:6px 16px;border-radius:var(--r-xl);background:color-mix(in srgb,#fff 30%,transparent);display:grid;position:relative;z-index:2}
-.ob-mini li{display:flex;align-items:center;gap:10px;padding:10px 0;font-size:var(--fs-4)}
-.ob-mini li+li{border-top:1px solid color-mix(in srgb,var(--ofg) 12%,transparent)}
-.ob-mini .emo{font-size:var(--fs-6);flex:none}
-.ob-mini span{flex:1}
-.ob-mini b{display:grid;text-align:right;font-weight:600;font-size:var(--fs-4)}.ob-mini small{font-weight:400;font-size:var(--fs-2);opacity:.7}
-.ob-note{font-size:var(--fs-3)!important}
-@media (prefers-reduced-motion: reduce){.ob-mz,.ob-say{animation:none}}
-.ob-mini li.obd{position:relative;cursor:pointer}
-.ob-mini li.obd .obdi{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:pointer;font-size:var(--fs-4);border:0;-webkit-appearance:none;appearance:none}
-.ob-mini li.obd .i{flex:none;width:16px;height:16px;opacity:.6}
-.ob-mini.ed{background:color-mix(in srgb,#fff 45%,transparent)}
 .step.cmp .sx summary{list-style:none!important;display:block;position:relative;cursor:pointer;padding-right:22px;transition:opacity var(--t-press) ease}
 .step.cmp .sx summary:active{opacity:.6}
 .step.cmp .sx summary>.sxc{position:absolute;right:0;top:2px;width:16px;height:16px;color:var(--faint);transition:transform var(--t-fast) var(--ease-out)}
@@ -1497,69 +1226,27 @@ button.skip[data-wd]:not([aria-selected="true"]){opacity:.62}button.skip[data-wd
 .cn-bar i{display:block;height:100%;width:100%;transform-origin:left;background:var(--ink);border-radius:var(--r-xs);transition:transform var(--t-slow) var(--ease-out)}
 .tmfold>summary::-webkit-details-marker{display:none}
 .step.cmp+.step.cmp{border-top:1px solid var(--line)}
-.cn-lead{display:block;font-size:var(--fs-5);line-height:1.45}
 .cn-tip{margin-top:12px;border-radius:var(--r-md);padding:12px 14px;font-size:var(--fs-3)}
-.cn-more{margin-top:8px}
-.cn-more>summary{list-style:none;cursor:pointer;font-size:var(--fs-3);font-weight:600;color:var(--ink-2);display:inline-flex;align-items:center;gap:4px}
-.cn-more>summary::marker,.cn-more>summary::-webkit-details-marker{display:none;content:none}
-.cn-more>summary::after{content:'▾';font-size:var(--fs-1)}
-.cn-more[open]>summary::after{content:'▴'}
-.cn-more>span{display:block;margin-top:6px;font-size:var(--fs-4);line-height:1.5;color:var(--ink-2)}
 b.nm{font-family:var(--mono);font-size:.88em;font-weight:500;color:var(--muted);white-space:nowrap}
 .cn-det .cn-s{display:block;font-size:var(--fs-5);line-height:1.45}
 .cn-det .cn-s+.cn-s{margin-top:7px}
 @media (max-width:860px){.cn-det .cn-s{font-size:var(--fs-4)}}
-.cp-gear{display:grid;gap:6px;padding:12px 2px 2px}
-.cp-gl{font-size:var(--fs-2);font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
-.cp-gi{display:flex;flex-wrap:wrap;gap:6px}
-.outrow .outtop{display:flex;align-items:flex-start;gap:10px}
-.outrow.pk{opacity:.5}
-.outrow.pk .on{text-decoration:line-through}
 .tpill{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(var(--tabh,54px) + var(--bgap,16px) + 10px);z-index:40;display:flex;align-items:center;gap:8px;max-width:min(92vw,420px);padding:10px 14px;border:0;border-radius:var(--r-pill);background:var(--ink);color:#fff;box-shadow:0 10px 30px rgba(0,0,0,.25);font:inherit;font-size:var(--fs-3);cursor:pointer;animation:tpIn .3s var(--ease-out) both}
 .tpill .i{width:16px;height:16px;flex:none}
-.tpill .tp-l{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left}
-.tpill .tp-t{font-weight:700;flex:none}
 .tpill.end{background:#1f7a3f}
-.tpill.end .tp-t{display:none}
 @keyframes tpIn{from{opacity:0;transform:translate(-50%,12px)}to{opacity:1;transform:translate(-50%,0)}}
 @media (prefers-reduced-motion: reduce){.tpill{animation:none}}
 .cgoing .cg-list{margin:0;padding:0;gap:0}
 .cgoing .cg{background:transparent;border-radius:0;padding:12px 8px 12px 14px}
 .cgoing .cg+.cg{border-top:1px solid var(--line)}
-.grow-row{display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer}
-.grow-row+.grow-row{border-top:1px solid var(--line)}
-.grow-row input{width:22px;height:22px;flex:none;accent-color:var(--ink)}
-.prepbar{display:grid;gap:10px;justify-items:stretch;padding:4px 0 8px}
-.prepbar .btn{box-sizing:border-box}
-.prepbar .pb-c{font-size:var(--fs-3);color:var(--muted);text-align:center}
-.prepbar .btn{width:100%;justify-content:center}
-.prepbar .pb-back{font-size:var(--fs-3);padding:8px}
-.cd-list .cd-h{display:block;padding:14px 14px 4px;font-size:var(--fs-2);font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);background:none}
-.cd-list .cd-h::before{display:none}
-.pgrp .pg-h{padding:14px 14px 4px;font-size:var(--fs-2);font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
-.pgrp .pg-h:first-child{padding-top:6px}
-.pgrp .grow-row .emo-s{flex:none;width:26px;display:grid;place-items:center}
-.pgrp .grow-row+.pg-h{border-top:1px solid var(--line)}
-.prepspace{display:none}
 body.cook-prep .main{padding-bottom:0!important}
 body.cook-prep #v-cook{padding-bottom:calc(var(--pfixh,80px) + 14px)}
 .pfix{position:fixed;left:0;right:0;bottom:calc(var(--tabh,54px) + var(--bgap,16px) + 6px);z-index:30;padding:10px 16px;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid var(--line)}
 .pf-in{max-width:640px;margin:0 auto;display:grid;gap:8px}
-.pf-c,.pfix .pb-c{font-size:var(--fs-3);color:var(--muted);text-align:center}
 .pf-b{display:grid;grid-template-columns:1fr 1.6fr;gap:8px}
 .pf-b .btn{width:100%;justify-content:center;box-sizing:border-box}
 body.cook-prep .tabbar,body.cook-run .tabbar{display:none!important}
 body.cook-run .main{padding-bottom:calc(20px + var(--bpad,20px))!important}
-.op-box{display:inline-flex;align-items:center;gap:2px}
-.op-box b{font-family:var(--mono);font-size:var(--fs-1);font-weight:600;color:var(--muted)}
-.op-ic{display:flex;flex-direction:column;align-items:center;gap:3px;min-width:30px;padding-top:1px}
-.op-ic .emo{font-size:var(--fs-5)}
-.oc-n{letter-spacing:-.01em}
-.opart{grid-template-columns:auto minmax(0,1fr)}
-.ot-t{display:inline-flex;align-items:center;gap:5px}
-.ot-fr{background:#E6F0FA;color:#2B5C8A}
-.ot-fz{background:#E8F4F6;color:#276C78}
-.ot-t svg{width:13px;height:13px}
 .cfin{display:grid;gap:12px}
 .cfin .cstart{box-sizing:border-box;width:100%;height:54px;justify-content:center;font-size:var(--fs-4);border-radius:var(--r-lg)}
 .nx-ph.nx-fin{background:radial-gradient(120% 80% at 50% 18%,#F4FDF7 0%,#BCEBCE 46%,#6FC894 100%)!important;padding:40px 24px 34px}
@@ -1575,10 +1262,6 @@ body.cook-run .main{padding-bottom:calc(20px + var(--bpad,20px))!important}
 .cds b{font-family:var(--mono);font-size:var(--fs-6);line-height:1;font-weight:600}
 .cds span{font-size:var(--fs-1);color:var(--muted);text-align:center}
 body.cook-prep .pfix{bottom:0;padding:12px 16px var(--bpad,20px);background:var(--panel);border-top:1px solid var(--line);box-shadow:0 -8px 24px rgba(60,45,30,.08);backdrop-filter:none;-webkit-backdrop-filter:none}
-.psect{display:grid;gap:12px}
-.psect+.psect,.cb+.cb .psect{margin-top:4px}
-.psect-h{display:flex;align-items:baseline;justify-content:space-between;gap:10px;padding:2px 4px}
-.psect-h h3{margin:0;font-size:var(--fs-3);font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
 .tray.psec+.tray.psec{margin-top:0}
 
 .tray.dsec+.tray.dsec{margin-top:16px}
@@ -1606,14 +1289,7 @@ body.cook-prep .pfix{bottom:0;padding:12px 16px var(--bpad,20px);background:var(
 .pseg button[aria-pressed=true]{color:var(--ink);font-weight:600}
 .pseg button:active{transform:scale(.97)}
 @media (prefers-reduced-motion:reduce){.pseg::before{transition:none}.prow-r .name,.prow-r .semo .emo{transition:none}}
-.pf-b{grid-template-columns:1fr 1fr}
-.outrow .outtop{display:block;position:relative;padding-left:34px}
-.outrow .outtop .stchk{position:absolute;left:0;top:2px}
-.outrow .outtop .grow{display:block}
-.outrow .outtop .on{display:block;font-weight:600}
-.outrow .outtop .sub{display:block;margin-top:3px;color:var(--muted);font-size:var(--fs-3)}
-.outrow .ot-t{display:inline-flex;margin-top:6px}
-</style>
+.pf-b{grid-template-columns:1fr 1fr}</style>
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20viewBox%3D%220%200%20120%20120%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Crect%20width%3D%22120%22%20height%3D%22120%22%20rx%3D%2227%22%20fill%3D%22%23FF5A1F%22/%3E%3Crect%20x%3D%2222%22%20y%3D%2256%22%20width%3D%2276%22%20height%3D%2242%22%20rx%3D%2210%22%20fill%3D%22%23fff%22/%3E%3Crect%20x%3D%2218%22%20y%3D%2248%22%20width%3D%2284%22%20height%3D%2212%22%20rx%3D%226%22%20fill%3D%22%23FFD9C7%22/%3E%3Ccircle%20cx%3D%2244%22%20cy%3D%2240%22%20r%3D%2215%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%2276%22%20cy%3D%2244%22%20r%3D%229%22%20fill%3D%22%23fff%22/%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2245%22%20r%3D%226%22%20fill%3D%22%23161614%22/%3E%3Ccircle%20cx%3D%2273%22%20cy%3D%2242%22%20r%3D%224%22%20fill%3D%22%23161614%22/%3E%3Cpath%20d%3D%22M46%2074%20q14%2010%2028%200%22%20fill%3D%22none%22%20stroke%3D%22%23161614%22%20stroke-width%3D%225%22%20stroke-linecap%3D%22round%22/%3E%3Cpath%20d%3D%22M60%2079%20v6%20q0%206%20-5%206%20q-5%200%20-5%20-6%20v-4%22%20fill%3D%22%23FF8FB1%22/%3E%3C/svg%3E"></head>
 <script>
 /* Прототип: на широком экране открываем приложение в рамке iPhone 17 (402×874) */
@@ -2162,42 +1838,21 @@ h1,h2,h3,.ml-1,.ml-2,.dish,.cn-h{overflow-wrap:anywhere}
 #onb .o-mini>span:last-child{min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 #onb .o-d-card .o-pw{overflow-wrap:normal;word-break:normal}
 
-/* ===== Раскладка готовой еды: места как в «Разложи покупки», внутри лента карточек тары ===== */
-#outTray .otw{padding:2px 4px 6px;display:grid;gap:10px}
-#outTray .ot-rule{margin:0 2px;font-size:var(--fs-2);color:var(--muted);line-height:1.45}
-#outTray .as-places{gap:8px}
-/* место должно доминировать над своими карточками, иначе два уровня читаются как один */
-#outTray .as-plh{font-size:var(--fs-4);margin-bottom:12px}
+/* ===== Раскладка готовой еды: строка на позицию ===== */
+#outTray .otw{display:grid;gap:6px}
+#outTray .as-pl{background:var(--panel);box-shadow:var(--sh-1);border-radius:var(--r-lg);padding:12px 14px 14px}
+#outTray .as-plh{font-size:var(--fs-4);margin-bottom:10px;min-height:24px;flex-wrap:wrap}
 #outTray .as-plh .i{width:18px;height:18px}
-.ot-items{display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;
-  scroll-padding-inline:14px;padding:1px 14px 4px;margin-inline:-14px;
-  overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;
-  scrollbar-width:thin;scrollbar-color:var(--line-2) transparent}
-.ot-items::-webkit-scrollbar{height:4px}
-.ot-items::-webkit-scrollbar-thumb{background:var(--line-2);border-radius:var(--r-pill)}
-.ot-items::-webkit-scrollbar-track{background:transparent}
-.og{flex:none;width:228px;scroll-snap-align:start;display:grid;grid-template-rows:auto auto 1fr auto;
-  padding:12px 13px 11px;border-radius:var(--r-md);background:var(--shell);
-  animation:ogIn 320ms var(--ease-out) both;animation-delay:var(--d,0ms)}
-/* верхняя строка — подпись к карточке, а не её заголовок: только число держит вес */
-.og-top{display:flex;align-items:center;gap:7px;margin-bottom:10px}
-.og-v{width:26px;height:26px;flex:none;border-radius:8px;background:var(--panel);display:grid;place-items:center;
-  color:var(--ink-2);box-shadow:inset 0 0 0 1px var(--line)}
-.og-v .i{width:16px;height:16px}
-.ot-p-fz .og-v{background:#EAF1FA;color:#2E6BA8;box-shadow:inset 0 0 0 1px #D8E6F5}
-.og-x{font-size:var(--fs-2);font-weight:400;color:var(--muted);white-space:nowrap;letter-spacing:.01em}
-.og-x b{font-weight:600;color:var(--ink);font-variant-numeric:tabular-nums}
-.og-e{margin-left:auto;font-size:26px;line-height:1;transform:rotate(-6deg)}
-.og-n{margin:0 0 5px;font-size:var(--fs-4);font-weight:600;line-height:1.25;letter-spacing:-.015em;text-wrap:balance}
-.og-how{margin:0;font-size:var(--fs-2);color:var(--ink-2);line-height:1.45;text-wrap:pretty}
-.og-w{align-self:end;margin:10px 0 0;padding-top:8px;border-top:1px solid var(--line);
-  font-size:var(--fs-1);color:var(--muted);font-variant-numeric:tabular-nums}
-@keyframes ogIn{from{opacity:0;transform:translateY(8px)}}
-@media (prefers-reduced-motion:reduce){.og{animation:none}}
-@media (min-width:861px){
-  .ot-items{flex-wrap:wrap;overflow:visible;margin-inline:0;padding-inline:0;scroll-snap-type:none}
-  .og{width:calc(50% - 4px)}
-}
+#outTray .as-plh small{font-weight:400;font-size:var(--fs-2);color:var(--muted)}
+.og-list{list-style:none;margin:0;padding:0}
+.og-list li{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--line)}
+.og-list li:first-child{border-top:0}
+.og-list li:last-child{padding-bottom:2px}
+.og-e{flex:none;font-size:20px;line-height:1.2}
+.og-t{flex:1;min-width:0;font-size:var(--fs-3);line-height:1.4;color:var(--ink);text-wrap:pretty}
+.og-q{flex:none;display:inline-flex;align-items:baseline;gap:4px;font-size:var(--fs-2);
+  color:var(--muted);white-space:nowrap}
+.og-q b{font-weight:600;color:var(--ink);font-size:var(--fs-3);font-variant-numeric:tabular-nums}
 </style>
 <body>
 <div id="splash" aria-hidden="true"><div class="spl-c"><div class="spl-ic"><svg class="appic" viewBox="0 0 120 120"><rect width="120" height="120" rx="27" fill="#FF5A1F"/><rect x="22" y="56" width="76" height="42" rx="10" fill="#fff"/><rect class="sp-lid" x="18" y="48" width="84" height="12" rx="6" fill="#FFD9C7"/><g class="sp-eyes"><circle cx="44" cy="40" r="15" fill="#fff"/><circle cx="76" cy="44" r="9" fill="#fff"/><g class="sp-pup"><circle cx="50" cy="45" r="6" fill="#161614"/><circle cx="73" cy="42" r="4" fill="#161614"/></g></g><path d="M46 74 q14 10 28 0" fill="none" stroke="#161614" stroke-width="5" stroke-linecap="round"/><path class="sp-tongue" d="M60 79 v6 q0 6 -5 6 q-5 0 -5 -6 v-4" fill="#FF8FB1"/></svg></div><div class="spl-w"><span>Fork</span> <span>Yeah</span></div><div class="spl-t">вилкой и по плану</div></div><span class="spl-s s0">🥦</span><span class="spl-s s1">🍗</span><span class="spl-s s2">🧀</span><span class="spl-s s3">🥕</span><span class="spl-s s4">🍝</span><span class="spl-s s5">🍳</span></div><script>(function(){try{var s=document.getElementById('splash');if(window.__IPHOST||navigator.webdriver||sessionStorage.getItem('fy-splash')){s.remove();return}sessionStorage.setItem('fy-splash','1');var k=function(){if(!s.isConnected||s.classList.contains('out'))return;s.classList.add('out');setTimeout(function(){s.remove()},580)};s.addEventListener('click',k);setTimeout(k,matchMedia('(prefers-reduced-motion:reduce)').matches?600:2500)}catch(e){}})()</script>
@@ -2396,7 +2051,7 @@ function compileV2(M,skip){skip=Math.max(0,Math.min(6,skip|0));const I=M.ingredi
   const dishes={};Object.keys(D).forEach(id=>{const x=D[id];dishes[id]={how:x.how||'',recipe:x.recipe||null,short:x.short||null,art:x.art||null}});
   return {format:'mealplan-menu',version:1,id:M.id,name:M.name,v2:true,src:M,weeks,dishes,pull:PULL,cookDays:CD,cooks,shop,pantry,recipes:M.recipes||[]}}
 
-const MENU_V2={"format":"mealplan-menu","version":2,"id":"m1","name":"Меню 1, только разогреть","ingredients":{"chk":{"n":"Куриная грудка","u":"г","kb":[113,23.6,1.9,0.4],"g":"Мясо и рыба"},"thigh":{"n":"Бедро куриное без кости","u":"г","kb":[185,18,12,0],"g":"Мясо и рыба"},"mince":{"n":"Фарш куриный","u":"г","kb":[143,17.4,8.1,0],"g":"Мясо и рыба"},"tuna":{"n":"Тунец в собственном соку","u":"г","kb":[96,21,1,0],"g":"Мясо и рыба","pack":130,"pn":"банка"},"salmon":{"n":"Горбуша консервированная","u":"г","kb":[136,20.9,5.8,0],"g":"Мясо и рыба","pack":245,"pn":"банка"},"egg":{"n":"Яйца","u":"шт","kb":[86,7,6,0.4],"g":"Молочное и яйца","pack":10},"tvorog":{"n":"Творог 5%","u":"г","kb":[121,17.2,5,1.8],"g":"Молочное и яйца","pack":200},"yog":{"n":"Йогурт греческий 2%","u":"г","kb":[63,8.5,2,3.5],"g":"Молочное и яйца","pack":400},"kefir":{"n":"Кефир 1%","u":"мл","kb":[40,3,1,4],"g":"Молочное и яйца","pack":900},"milk":{"n":"Молоко 2,5%","u":"мл","kb":[52,2.9,2.5,4.7],"g":"Молочное и яйца","pack":1000},"smet":{"n":"Сметана 15%","u":"г","kb":[158,2.6,15,3],"g":"Молочное и яйца","pack":300},"cheese":{"n":"Сыр полутвёрдый","u":"г","kb":[350,25,27,0],"g":"Молочное и яйца","pack":200},"potato":{"n":"Картофель","u":"г","kb":[77,2,0.4,16.3],"g":"Овощи и фрукты"},"carrot":{"n":"Морковь","u":"г","kb":[35,1.3,0.1,6.9],"g":"Овощи и фрукты"},"beet":{"n":"Свёкла","u":"г","kb":[42,1.5,0.1,8.8],"g":"Овощи и фрукты"},"onion":{"n":"Лук репчатый","u":"г","kb":[41,1.4,0.2,8.2],"g":"Овощи и фрукты"},"zucc":{"n":"Кабачок","u":"г","kb":[24,0.6,0.3,4.6],"g":"Овощи и фрукты"},"pumpk":{"n":"Тыква","u":"г","kb":[22,1,0.1,4.4],"g":"Овощи и фрукты"},"pepper":{"n":"Перец болгарский","u":"г","kb":[26,1.3,0.1,5.3],"g":"Овощи и фрукты"},"cucum":{"n":"Огурцы","u":"г","kb":[15,0.8,0.1,2.8],"g":"Овощи и фрукты"},"cherry":{"n":"Томаты черри","u":"г","kb":[20,0.9,0.2,3.8],"g":"Овощи и фрукты","pack":250},"dill":{"n":"Укроп","u":"г","kb":[40,2.5,0.5,6.3],"g":"Овощи и фрукты","pack":50},"apple":{"n":"Яблоки","u":"шт","kb":[85,0.7,0.7,17.6],"g":"Овощи и фрукты"},"banana":{"n":"Бананы","u":"шт","kb":[107,1.3,0.4,27],"g":"Овощи и фрукты"},"broc":{"n":"Брокколи замороженная","u":"г","kb":[28,3,0.4,4],"g":"Заморозка","pack":400},"vegmix":{"n":"Овощная смесь замороженная","u":"г","kb":[45,2,0.4,8],"g":"Заморозка","pack":400},"berry":{"n":"Ягоды замороженные","u":"г","kb":[40,0.8,0.3,8],"g":"Заморозка","pack":300},"bread":{"n":"Хлеб цельнозерновой","u":"г","kb":[230,8.5,2.5,43],"g":"Хлеб и бакалея","pack":300},"lavash":{"n":"Лаваш тонкий","u":"г","kb":[275,9,1.2,56],"g":"Хлеб и бакалея","pack":250},"buck":{"n":"Гречка","u":"г","kb":[313,12.6,3.3,62],"g":"Хлеб и бакалея","pack":900,"pantry":1},"rice":{"n":"Рис","u":"г","kb":[344,6.7,0.7,78.9],"g":"Хлеб и бакалея","pack":900,"pantry":1},"bulgur":{"n":"Булгур","u":"г","kb":[342,12.3,1.3,57.6],"g":"Хлеб и бакалея","pack":500,"pantry":1},"cous":{"n":"Кускус","u":"г","kb":[376,12.8,0.6,77],"g":"Хлеб и бакалея","pack":500,"pantry":1},"pasta":{"n":"Макароны из твёрдых сортов","u":"г","kb":[350,12,1.5,71],"g":"Хлеб и бакалея","pack":450,"pantry":1},"oats":{"n":"Овсяные хлопья","u":"г","kb":[352,12.3,6.1,59.5],"g":"Хлеб и бакалея","pack":500,"pantry":1},"lentil":{"n":"Чечевица красная","u":"г","kb":[318,24,1.5,48],"g":"Хлеб и бакалея","pack":450,"pantry":1},"beans":{"n":"Фасоль красная консервированная","u":"г","kb":[96,6.7,0.3,16],"g":"Хлеб и бакалея","pack":240,"pn":"банка","pantry":1},"tomcan":{"n":"Томаты в собственном соку","u":"г","kb":[20,1,0.2,3.5],"g":"Хлеб и бакалея","pack":400,"pn":"банка","pantry":1},"flour":{"n":"Мука рисовая","u":"г","kb":[366,6,1.4,80],"g":"Хлеб и бакалея","pack":500,"pantry":1},"granola":{"n":"Гранола","u":"г","kb":[430,9,14,66],"g":"Хлеб и бакалея","pack":300,"pantry":1},"honey":{"n":"Мёд","u":"г","kb":[304,0.3,0,82],"g":"Хлеб и бакалея","pack":250,"pantry":1},"cocoa":{"n":"Какао-порошок","u":"г","kb":[289,24,15,10],"g":"Хлеб и бакалея","pack":100,"pantry":1},"pb":{"n":"Арахисовая паста","u":"г","kb":[600,25,50,16],"g":"Хлеб и бакалея","pack":250,"pantry":1},"oil":{"n":"Масло растительное","u":"г","kb":[899,0,99.9,0],"staple":1},"soy":{"n":"Соевый соус","u":"г","kb":[50,6,0,6],"staple":1}},"dishes":{"A_chk_buck":{"n":"Курица с паприкой, гречка, запечённая свёкла","short":"КУРИ|ЦА","art":"grain","kind":"cook","ing":[["chk",135,"chk"],["oil",3,"chk"],["buck",85,"buck"],["beet",140,"beet"],["oil",4,"beet"]],"how":"Всё из одного контейнера — 2,5 мин в микроволновке под крышкой.","pack":"Курица, гречка и свёкла вместе.","recipe":"chicken","box":"glass","keep":3,"pull":"курица с гречкой"},"A_cut_mash":{"n":"Куриные котлеты, пюре, овощи","short":"КОТ|ЛЕТЫ","art":"cutlets","kind":"cook","ing":[["mince",115,"cut"],["zucc",40,"cut"],["onion",15,"cut"],["egg",0.2,"cut"],["oats",8,"cut"],["potato",250,"mash"],["milk",40,"mash"],["vegmix",140,"vm2"]],"how":"Всё из одного контейнера — 3 мин в микроволновке.","pack":"Три котлеты, пюре и овощи вместе.","recipe":"cutlets","box":"glass","keep":3,"pull":"котлеты с пюре"},"A_chk_rice":{"n":"Курица с травами, рис, запечённые овощи, йогуртовый соус","short":"КУРИ|ЦА","art":"oven","kind":"cook","ing":[["chk",132,"chk"],["oil",3,"chk"],["rice",58,"rice"],["zucc",120,"veg"],["pepper",80,"veg"],["carrot",60,"veg"],["oil",5,"veg"],["yog",40,"ys"],["dill",3,"ys"]],"how":"Курицу, рис и овощи — 2 мин в микроволновке. Соус холодным сверху.","pack":"Курица, рис и овощи вместе, соус в уголок или в крышечку.","recipe":"chicken","box":"glass","keep":3,"pull":"курица с рисом"},"A_cut_buck":{"n":"Куриные котлеты, гречка, запечённые овощи","short":"КОТ|ЛЕТЫ","art":"cutlets","kind":"cook","ing":[["mince",115,"cut"],["zucc",40,"cut"],["onion",15,"cut"],["egg",0.2,"cut"],["oats",8,"cut"],["buck",85,"buck"],["zucc",120,"veg"],["pepper",80,"veg"],["carrot",60,"veg"],["oil",5,"veg"]],"how":"Всё из контейнера — 2,5 мин в микроволновке.","pack":"Три котлеты, гречка и овощи вместе.","recipe":"cutlets","box":"glass","keep":3,"pull":"котлеты с гречкой"},"A_plov":{"n":"Плов с куриным бедром и овощами","short":"ПЛОВ","art":"grain","kind":"cook","ing":[["thigh",135,"plov"],["rice",55,"plov"],["carrot",90,"plov"],["onion",40,"plov"],["oil",5,"plov"],["vegmix",140,"vm2"]],"how":"Плов — 3 мин в микроволновке, сбрызни ложкой воды.","pack":"Плов и овощи вместе.","recipe":"plov","box":"glass","keep":3,"pull":"плов"},"A_tuna_pasta":{"n":"Паста с тунцом в томатном соусе, сыр","short":"ПАСТА","art":"pasta","kind":"cook","ing":[["pasta",80,"pasta"],["tuna",110,"pasta"],["tomcan",150,"pasta"],["onion",30,"pasta"],["oil",5,"pasta"],["cheese",15,"pasta"]],"how":"Пасту — 2 мин в микроволновке, перемешай на середине.","pack":"Паста с соусом, сыр сверху.","recipe":"tunapasta","box":"glass","keep":3,"pull":"паста с тунцом","make":1},"A_soup":{"n":"Тыквенный крем-суп с курицей, хлеб","short":"КРЕМ|СУП","art":"soup","kind":"cook","ing":[["pumpk",300,"soup"],["potato",80,"soup"],["carrot",50,"soup"],["onion",30,"soup"],["milk",100,"soup"],["chk",85,"soup"],["oil",5,"soup"],["bread",75,"bread"]],"how":"Суп — 3 мин в микроволновке, на середине перемешай. Ломтик хлеба из морозилки — 20 сек.","pack":"Суп почти доверху, курица прямо в суп.","recipe":"pumpkin","box":"glass","keep":3,"pull":"тыквенный суп"},"A_hedge":{"n":"Ёжики в томатно-сметанном соусе, овощи","short":"ЁЖИ|КИ","art":"cutlets","kind":"cook","ing":[["mince",118,"hedge"],["rice",45,"hedge"],["onion",20,"hedge"],["egg",0.2,"hedge"],["tomcan",100,"hedge"],["smet",20,"hedge"],["vegmix",185,"vm"]],"how":"Ёжики с соусом и овощами — 3 мин в микроволновке под крышкой.","pack":"Четыре ёжика с соусом и овощи.","recipe":"hedgehogs","box":"glass","keep":3,"pull":"ёжики"},"B_teri_rice":{"n":"Курица терияки, рис, брокколи","short":"ТЕРИ|ЯКИ","art":"oven","kind":"cook","ing":[["chk",138,"teri"],["soy",12,"teri"],["honey",8,"teri"],["oil",7,"teri"],["rice",58,"rice"],["broc",160,"broc"],["oil",4,"broc"]],"how":"Всё из контейнера — 2 мин в микроволновке.","pack":"Курица, рис и брокколи, соус сверху.","recipe":"teriyaki","box":"glass","keep":3,"pull":"курица терияки"},"B_mb_cous":{"n":"Фрикадельки в томатном соусе, кускус, брокколи","short":"ФРИКА|ДЕЛЬКИ","art":"cutlets","kind":"cook","ing":[["mince",120,"mb"],["onion",20,"mb"],["egg",0.2,"mb"],["oats",8,"mb"],["tomcan",100,"mb"],["smet",20,"mb"],["cous",58,"cous"],["broc",140,"broc"]],"how":"Всё из одного контейнера — 3 мин в микроволновке.","pack":"Фрикадельки с соусом, кускус и брокколи вместе.","recipe":"meatballs","box":"glass","keep":3,"pull":"фрикадельки"},"B_teri_bulgur":{"n":"Курица терияки, булгур, запечённая морковь","short":"ТЕРИ|ЯКИ","art":"grain","kind":"cook","ing":[["chk",138,"teri"],["soy",12,"teri"],["honey",8,"teri"],["oil",7,"teri"],["bulgur",66,"bulgur"],["carrot",120,"csal"],["oil",5,"csal"]],"how":"Всё из одного контейнера — 2 мин в микроволновке.","pack":"Курица, булгур и морковь вместе.","recipe":"teriyaki","box":"glass","keep":3,"pull":"курица с булгуром"},"B_mb_buck":{"n":"Фрикадельки в томатном соусе, гречка, брокколи","short":"ФРИКА|ДЕЛЬКИ","art":"cutlets","kind":"cook","ing":[["mince",112,"mb"],["onion",20,"mb"],["egg",0.2,"mb"],["oats",8,"mb"],["tomcan",100,"mb"],["smet",20,"mb"],["buck",85,"buck"],["broc",160,"broc"]],"how":"Всё из контейнера — 2,5 мин в микроволновке.","pack":"Фрикадельки, гречка и брокколи.","recipe":"meatballs","box":"glass","keep":3,"pull":"фрикадельки с гречкой"},"B_curry":{"n":"Чечевичный дал с курицей и рисом","short":"ДАЛ","art":"soup","kind":"cook","ing":[["lentil",50,"dal"],["chk",95,"dal"],["tomcan",100,"dal"],["onion",30,"dal"],["carrot",50,"dal"],["oil",10,"dal"],["rice",55,"rice"]],"how":"Дал с рисом — 2,5 мин в микроволновке, перемешай на середине.","pack":"Рис на одну сторону, дал на другую.","recipe":"dal","box":"glass","keep":3,"pull":"дал"},"B_salmon":{"n":"Котлеты из горбуши, картофель из духовки, овощи","short":"ГОР|БУША","art":"oven","kind":"cook","ing":[["salmon",110,"scut"],["egg",0.3,"scut"],["oats",18,"scut"],["onion",20,"scut"],["potato",215,"wedge"],["oil",5,"wedge"],["vegmix",140,"vm2"]],"how":"Всё из одного контейнера — 2,5 мин в микроволновке.","pack":"Три котлетки, картофель и овощи вместе.","recipe":"salmoncut","box":"glass","keep":3,"pull":"котлеты из горбуши"},"B_chili":{"n":"Чили с фасолью и курицей, рис","short":"ЧИ|ЛИ","art":"soup","kind":"cook","ing":[["mince",120,"chili"],["beans",110,"chili"],["tomcan",120,"chili"],["pepper",70,"chili"],["onion",30,"chili"],["oil",4,"chili"],["rice",50,"rice"]],"how":"Чили с рисом — 2,5 мин в микроволновке под крышкой.","pack":"Рис на одну сторону, чили на другую.","recipe":"chili","box":"glass","keep":3,"pull":"чили"},"B_bolo":{"n":"Паста болоньезе из куриного фарша, сыр","short":"БОЛО|НЬЕЗЕ","art":"pasta","kind":"cook","ing":[["pasta",80,"bpasta"],["mince",115,"bolo"],["tomcan",120,"bolo"],["carrot",40,"bolo"],["onion",30,"bolo"],["oil",4,"bolo"],["cheese",12,"bolo"]],"how":"Пасту — 2 мин в микроволновке, перемешай на середине.","pack":"Пасту с соусом в контейнер, сыр сверху.","recipe":"bolognese","box":"glass","keep":3,"pull":"болоньезе","make":1},"Q_yog_bowl":{"n":"Греческий йогурт с гранолой и ягодами","short":"ЙО|ГУРТ","art":"yogurt","kind":"quick","ing":[["yog",175,""],["granola",32,""],["berry",60,""]],"how":"Йогурт в миску, сверху гранола и ягоды прямо из морозилки — к концу завтрака оттают.","pack":"","recipe":null,"box":"glass","keep":3},"Q_oats":{"n":"Ночная овсянка с бананом","short":"ОВ|СЯНКА","art":"oat","kind":"quick","ing":[["oats",45,""],["milk",120,""],["yog",60,""],["banana",0.5,""],["honey",5,""]],"how":"Вечером: хлопья, молоко и йогурт в банку, перемешай — в холодильник. Утром сверху банан и мёд.","pack":"","recipe":null,"box":"glass","keep":3},"Q_toast":{"n":"Тост с творогом, сыром и огурцом","short":"ТОСТ","art":"toast","kind":"quick","ing":[["bread",60,""],["tvorog",100,""],["cucum",60,""],["cheese",20,""]],"how":"Хлеб из морозилки — 30 сек в микроволновке или в тостер. Сверху творог, сыр и огурец.","pack":"","recipe":null,"box":"glass","keep":3},"P_eggmuf":{"n":"Омлетные маффины с сыром и перцем, хлеб","short":"МАФ|ФИНЫ","art":"eggs","kind":"cook","ing":[["egg",1.5,"em"],["cheese",15,"em"],["pepper",40,"em"],["milk",20,"em"],["bread",55,"bread"]],"how":"3 маффина — 40 сек в микроволновке. Хлеб — 20 сек.","pack":"По 3 маффина.","recipe":"eggmuffins","box":"bag","keep":3,"pull":"омлетные маффины"},"P_syrniki":{"n":"Сырники со сметаной и ягодами","short":"СЫР|НИКИ","art":"syrniki","kind":"cook","ing":[["tvorog",140,"syr"],["egg",0.5,"syr"],["flour",34,"syr"],["honey",5,"syr"],["smet",20,"top"],["berry",30,"top"]],"how":"Сырники прямо из морозилки или холодильника — 1,5 мин в микроволновке. Сметану и ягоды сверху.","pack":"По 4 сырника. Ягоды возьмёшь из пачки утром.","recipe":"syrniki","box":"bag","keep":3,"store":"fz","thaw":false},"P_wrap":{"n":"Лаваш-ролл с яйцом, сыром и томатами","short":"РОЛЛ","art":"toast","kind":"cook","ing":[["lavash",52,"wrap"],["egg",1.5,"wrap"],["cheese",12,"wrap"],["cherry",70,"wrap"]],"how":"Ролл — 1 мин в микроволновке или 2 мин на сухой сковороде, тогда будет хрустящий.","pack":"По одному роллу, заверни в плёнку.","recipe":"wrap","box":"bag","keep":3,"store":"fz","thaw":false},"P_pancake":{"n":"Овсяные оладьи с бананом и йогуртом","short":"ОЛА|ДЬИ","art":"oat","kind":"cook","ing":[["oats",34,"pan"],["kefir",100,"pan"],["egg",0.5,"pan"],["banana",0.5,"pan"],["honey",5,"pan"],["yog",60,"top"]],"how":"Оладьи из морозилки — 1 мин в микроволновке. Йогурт сверху.","pack":"По 5 оладий, переложи пергаментом.","recipe":"pancakes","box":"bag","keep":3,"store":"fz","thaw":false},"P_zap":{"n":"Творожная запеканка с ягодами","short":"ЗАПЕ|КАНКА","art":"cottage","kind":"cook","ing":[["tvorog",125,"zap"],["egg",0.5,"zap"],["oats",22,"zap"],["honey",10,"zap"],["berry",40,"zap"]],"how":"Кусок запеканки — холодным или 40 сек в микроволновке.","pack":"По куску запеканки.","recipe":"zapekanka","box":"bag","keep":3,"pull":"запеканка"},"P_cookie":{"n":"Овсяное печенье с бананом и какао","short":"ПЕЧЕ|НЬЕ","art":"cookies","kind":"cook","ing":[["oats",38,"ck"],["banana",0.5,"ck"],["pb",10,"ck"],["cocoa",5,"ck"]],"how":"4 печенья из банки — есть как есть.","pack":"По 4 печенья на порцию, всё в одну банку — хранится 5 дней.","recipe":"cookies","box":"jar","keep":5,"make":1},"P_moco":{"n":"Творожный мусс с какао","short":"МУСС","art":"cottage","kind":"cook","ing":[["tvorog",95,"moco"],["yog",55,"moco"],["cocoa",5,"moco"],["honey",16,"moco"],["berry",55,"moco"]],"how":"Достань баночку из холодильника — есть холодным, ложкой.","pack":"По баночке мусса, ягоды сверху.","recipe":"mousse","box":"jar","keep":3,"pull":"мусс с какао"},"P_mobe":{"n":"Творожный мусс с ягодами и хлопьями","short":"МУСС","art":"cottage","kind":"cook","ing":[["tvorog",85,"mobe"],["yog",55,"mobe"],["berry",70,"mobe"],["honey",18,"mobe"],["oats",15,"mobe"]],"how":"Достань баночку из холодильника — есть холодным, ложкой.","pack":"По баночке мусса, ягоды сверху.","recipe":"mousse","box":"jar","keep":3,"pull":"мусс с ягодами","make":1},"Q_smoothie":{"n":"Смузи: кефир, банан, ягоды","short":"СМУ|ЗИ","art":"smoothie","kind":"quick","ing":[["kefir",200,""],["banana",1,""],["berry",60,""],["oats",10,""]],"how":"Всё в блендер на 30 секунд.","pack":"","recipe":null,"box":"glass","keep":3},"Q_tvorog":{"n":"Творог с ягодами, мёдом и гранолой","short":"ТВО|РОГ","art":"cottage","kind":"quick","ing":[["tvorog",115,""],["berry",60,""],["honey",8,""],["granola",25,""]],"how":"Творог в миску, сверху ягоды, мёд и гранола.","pack":"","recipe":null,"box":"glass","keep":3},"P_bbread":{"n":"Банановый хлеб, йогурт","short":"БАНАН|ХЛЕБ","art":"bake","kind":"cook","ing":[["banana",1,"bb"],["oats",24,"bb"],["egg",0.5,"bb"],["yog",30,"bb"],["pb",10,"bb"],["honey",5,"bb"],["yog",60,""]],"how":"Кусок хлеба — 20 сек в микроволновке, рядом йогурт из банки.","pack":"По куску.","recipe":"bananabread","box":"bag","keep":3,"store":"fz","thaw":false},"Q_yog_cocoa":{"n":"Йогурт с бананом, какао и гранолой","short":"ЙО|ГУРТ","art":"yogurt","kind":"quick","ing":[["yog",150,""],["banana",0.5,""],["cocoa",5,""],["honey",5,""],["granola",15,""]],"how":"Йогурт перемешай с какао и мёдом, сверху банан и гранола.","pack":"","recipe":null,"box":"glass","keep":3},"P_cmuf":{"n":"Творожные маффины с ягодами","short":"МАФ|ФИНЫ","art":"bake2","kind":"cook","ing":[["tvorog",110,"cm"],["egg",0.5,"cm"],["oats",22,"cm"],["berry",40,"cm"],["honey",8,"cm"]],"how":"2 маффина — холодными или 30 сек в микроволновке.","pack":"По 2 маффина.","recipe":"curdmuffins","box":"bag","keep":3,"pull":"творожные маффины","make":1},"Q_apple":{"n":"Яблоко с арахисовой пастой, кефир","short":"ЯБЛО|КО","art":"apple","kind":"quick","ing":[["apple",1,""],["pb",15,""],["kefir",150,""]],"how":"Яблоко дольками, к нему ложка арахисовой пасты и стакан кефира.","pack":"","recipe":null,"box":"glass","keep":3}},"weeks":[[["Q_yog_bowl","A_chk_buck","P_zap","A_cut_mash"],["P_eggmuf","A_chk_rice","P_moco","A_cut_buck"],["Q_oats","A_chk_buck","P_zap","A_cut_mash"],["Q_toast","A_plov","P_cookie","A_tuna_pasta"],["P_syrniki","A_soup","P_mobe","A_hedge"],["P_eggmuf","A_plov","P_cookie","A_tuna_pasta"],["P_syrniki","A_soup","P_cmuf","A_hedge"]],[["Q_yog_bowl","B_teri_rice","P_bbread","B_mb_cous"],["P_wrap","B_teri_bulgur","P_moco","B_mb_buck"],["P_pancake","B_teri_rice","P_bbread","B_mb_cous"],["Q_toast","B_curry","P_mobe","B_salmon"],["Q_oats","B_chili","P_cmuf","B_bolo"],["P_wrap","B_curry","P_cookie","B_salmon"],["P_pancake","B_chili","P_cmuf","B_bolo"]],[["Q_oats","A_chk_buck","P_zap","A_cut_mash"],["P_eggmuf","A_chk_rice","P_moco","A_cut_buck"],["Q_yog_bowl","A_chk_buck","P_zap","A_cut_mash"],["P_syrniki","A_soup","P_mobe","A_hedge"],["P_eggmuf","A_plov","P_cookie","A_tuna_pasta"],["P_syrniki","A_soup","P_cmuf","A_hedge"],["Q_toast","A_plov","P_cookie","A_tuna_pasta"]],[["P_pancake","B_teri_rice","P_bbread","B_mb_cous"],["P_wrap","B_teri_bulgur","P_moco","B_mb_buck"],["Q_yog_bowl","B_teri_rice","P_bbread","B_mb_cous"],["Q_oats","B_chili","P_cmuf","B_bolo"],["P_wrap","B_curry","P_cookie","B_salmon"],["P_pancake","B_chili","P_cmuf","B_bolo"],["Q_toast","B_curry","P_mobe","B_salmon"]]],"cooks":[[{"steps":[[0,"Духовка","Свёклу — в духовку",60,null,"Включи духовку на 200°, ждать разогрева не надо. Свёклу ({beet@beet}) помой щёткой, не чисть. Заверни каждую в фольгу и положи на решётку сбоку. ",["beet"],"Духовка и крупы"],[3,"Плита",["свари ",["buck","гречку"],["rice","рис"]],15,null,"Гречка: {buck@buck} в кастрюлю, воды вдвое больше по объёму, щепотка соли. Рис: {rice@rice} промой, воды в полтора раза больше, соль. Обе на сильный огонь; закипело — крышка и самый слабый огонь на 15 минут. Крышки не открывай.",["buck","rice"],"Духовка и крупы"],[6,"Стол",["замаринуй ",["chk","курицу"],["veg","нарежь овощи"]],0,"chicken","Грудку ({chk@chk}) разрежь на {n:chk} равных куска. Натри солью, паприкой и маслом ({oil@chk}); один кусок можно сухими травами — будет другой вкус. Кабачок, перец и морковь ({zucc@veg}, {pepper@veg}, {carrot@veg}) порежь крупно, посоли, сбрызни маслом.",["chk","veg"],"Курица и картофель"],[12,"Духовка",[["chk","курицу"],["veg","овощи"]," — в духовку"],25,null,"Противень застели пергаментом. Курицу и овощи разложи в один слой, чтобы не касались друг друга. Средний уровень, рядом со свёклой. ",["chk","veg"],"Курица и картофель"],[15,"Плита","Поставь картофель на пюре",20,null,"Картофель ({potato@mash}) почисти, порежь на четвертинки, залей холодной водой, посоли. После закипания — 20 минут на среднем огне.",["mash"],"Курица и картофель"],[18,"Стол","Замеси фарш и слепи котлеты",0,"cutlets","Кабачок ({zucc@cut}) натри и хорошо отожми руками. Лук ({onion@cut}) мелко порежь. Смешай с фаршем ({mince@cut}), яйцом ({egg@cut}), хлопьями ({oats@cut}) и солью. Мокрыми руками слепи {x:cut:3} шт и выложи на второй противень с пергаментом.",["cut"],"Котлеты, плов, пюре"],[24,"Плита","Плов: обжарь мясо и залей рис",25,"plov","Бедро ({thigh@plov}) порежь кусочками, обжарь в сотейнике на масле ({oil@plov}) 5 минут на сильном огне. Добавь лук полукольцами ({onion@plov}) и морковь соломкой ({carrot@plov}), ещё 3 минуты. Всыпь промытый рис ({rice@plov}), соль, специи для плова. Залей водой на палец выше риса. Закипело — крышка, слабый огонь, 20 минут. Не мешай.",["plov"],"Котлеты, плов, пюре"],[38,"Духовка","Достань курицу, поставь котлеты",25,null,"Курицу и овощи достань: курица готова, если сок прозрачный. На их место — противень с котлетами, 200°, 25 минут. Переворачивать не нужно.",["cut"],"Котлеты, плов, пюре"],[40,"Плита","Сделай пюре",0,null,"Слей воду с картофеля, разомни толкушкой с тёплым молоком ({milk@mash}) и щепоткой соли. Комочки — это нормально.",["mash"],"Котлеты, плов, пюре"],[43,"Плита","Суп: свари овощи и курицу",20,"pumpkin","Тыкву ({pumpk@soup}), картофель ({potato@soup}), морковь ({carrot@soup}) и лук ({onion@soup}) порежь кубиками, сложи в кастрюлю. Грудку ({chk@soup}) положи целым куском сверху. Залей водой вровень с овощами, посоли. После закипания — 20 минут под крышкой.",["soup"],"Суп и ёжики"],[46,"Стол","Слепи ёжики",0,"hedgehogs","Фарш ({mince@hedge}) смешай с сырым промытым рисом ({rice@hedge}), мелко порезанным луком ({onion@hedge}), яйцом ({egg@hedge}) и солью. Мокрыми руками слепи {x:hedge:4} шт.",["hedge"],"Суп и ёжики"],[52,"Плита","Потуши ёжики в соусе",25,null,"В глубокую сковороду вылей томаты ({tomcan@hedge}), разомни вилкой, добавь сметану ({smet@hedge}), полстакана воды и соль. Выложи ёжики в один слой. Закипело — крышка, слабый огонь, 25 минут.",["hedge"],"Суп и ёжики"],[56,"Стол",["замеси ",["syr","сырники"],["zap","запеканку"],["em","омлетные маффины"]],0,"syrniki","Сырники: творог {tvorog@syr}, яйца {egg@syr}, рисовая мука {flour@syr}, мёд {honey@syr} — разомни вилкой, слепи {x:syr:4} шт, обваляй в муке. Запеканка: творог {tvorog@zap}, яйца {egg@zap}, хлопья {oats@zap}, мёд {honey@zap} — перемешай, выложи в форму слоем в 3 см, сверху ягоды ({berry@zap}). Омлетные маффины: яйца {egg@em} взбей с молоком ({milk@em}) и солью, добавь перец кубиками ({pepper@em}) и тёртый сыр ({cheese@em}), разлей по {x:em:3} формочкам.",["syr","zap","em"],"Выпечка"],[66,"Духовка",["запеки ",["syr","сырники"],["zap","запеканку"],["em","маффины"]],20,null,"Котлеты достань. Убавь до 180°. Сырники — на противень с пергаментом, форму с запеканкой и формочки с маффинами — рядом или на второй уровень. Через 20 минут достань сырники и маффины, запеканку оставь ещё на 10 минут.",["syr","zap","em"],"Выпечка"],[70,"Стол","Сделай из супа крем",0,null,"Курицу достань и порежь кубиками. Овощи с половиной отвара перелей в блендер порциями, добавь молоко ({milk@soup}) — 30 секунд до гладкости. Горячее наливай не больше половины чаши и придерживай крышку полотенцем. Верни курицу в суп.",["soup"],"Суп и овощи"],[78,"Плита","Прогрей овощную смесь",7,null,"Овощную смесь ({vegmix}) — на сковороду без разморозки, 6–7 минут под крышкой, посоли.",["vm","vm2"],"Суп и овощи"],[82,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@moco}), йогурт ({yog@moco}), какао ({cocoa@moco}) и мёд ({honey@moco}) взбей блендером до гладкости — 30 секунд. Разложи по {n:moco} баночкам, сверху ягоды ({berry@moco}).",["moco"],"Мусс и соус"],[84,"Стол",["",["beet","порежь свёклу"],["ys","смешай соус"]],0,null,"Свёклу разверни, сними кожуру (сходит руками) и порежь крупными кубиками, посоли и сбрызни маслом ({oil@beet}) — она пойдёт в контейнер к курице. Соус: йогурт ({yog@ys}), рубленый укроп, соль.",["beet","ys"],"Мусс и соус"]],"gear":["2 кастрюли","сковорода","сотейник","2 противня","форма для запеканки","формочки для маффинов","блендер","тёрка"]},{"steps":[[0,"Стол","Замеси творожные маффины",0,"curdmuffins","Творог ({tvorog@cm}), яйца ({egg@cm}), хлопья ({oats@cm}), мёд ({honey@cm}) — перемешай вилкой, вмешай ягоды ({berry@cm}). Разложи по {x:cm:2} формочкам.",["cm"],"Выпечка"],[2,"Стол","Замеси печенье",0,"cookies","Бананы ({banana@ck}) разомни вилкой, смешай с хлопьями ({oats@ck}), арахисовой пастой ({pb@ck}) и какао ({cocoa@ck}). Ложкой выложи {x:ck:4} шт на пергамент.",["ck"],"Выпечка"],[5,"Духовка",["испеки ",["ck","печенье"],["cm","маффины"]],20,null,"Духовка 180°, средний уровень. Печенье достань через 15 минут — оно останется мягким, так и должно быть; маффины через 20, до золотистой макушки.",["ck","cm"],"Выпечка"],[6,"Плита","Свари пасту и соус с тунцом",12,"tunapasta","Макароны ({pasta@pasta}) — в кипящую подсоленную воду на 9 минут. Рядом в сковороде обжарь лук ({onion@pasta}) на масле 2 минуты, добавь томаты ({tomcan@pasta}), 5 минут на среднем огне, в конце — тунец без жидкости ({tuna@pasta}). Смешай с пастой.",["pasta"],"Паста и мусс"],[20,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@mobe}), йогурт ({yog@mobe}) и мёд ({honey@mobe}) взбей блендером 30 секунд. Разложи по {n:mobe} баночкам, сверху ягоды ({berry@mobe}). Хлопья ({oats@mobe}) вмешай прямо в мусс — к утру станут мягкими.",["mobe"],"Паста и мусс"]],"gear":["кастрюля","сковорода","противень","блендер"]}],[{"steps":[[0,"Духовка","Банановый хлеб — в духовку",35,"bananabread","Духовка 180°. Бананы ({banana@bb}) разомни вилкой, смешай с яйцами ({egg@bb}), йогуртом ({yog@bb}), арахисовой пастой ({pb@bb}), мёдом ({honey@bb}) и хлопьями ({oats@bb}), щепотка соды. Вылей в форму с пергаментом слоем 3–4 см. 35 минут; готов, если зубочистка сухая.",["bb"],"Выпечка и крупы"],[6,"Плита",["свари ",["rice","рис"],["bulgur","булгур"],["buck","гречку"]],15,null,"Рис ({rice@rice}) промой, воды в полтора раза больше. Булгур ({bulgur@bulgur}) и гречка ({buck@buck}) — воды вдвое больше. Всё посоли, после закипания — крышка и слабый огонь на 15 минут.",["rice","bulgur","buck"],"Выпечка и крупы"],[10,"Стол","Замаринуй курицу в терияки",0,"teriyaki","Грудку ({chk@teri}) порежь полосками в палец. Смешай с соевым соусом ({soy@teri}), мёдом ({honey@teri}) и маслом ({oil@teri}). Пусть постоит, пока лепишь фрикадельки.",["teri"],"Курица и фрикадельки"],[13,"Стол","Слепи фрикадельки",0,"meatballs","Фарш ({mince@mb}) смешай с мелко порезанным луком ({onion@mb}), яйцом ({egg@mb}), хлопьями ({oats@mb}) и солью. Мокрыми руками слепи {x:mb:5} шт размером с грецкий орех.",["mb"],"Курица и фрикадельки"],[22,"Плита","Потуши фрикадельки в томатном соусе",20,null,"В глубокую сковороду — томаты ({tomcan@mb}), разомни, добавь сметану ({smet@mb}), полстакана воды, соль. Выложи фрикадельки, после закипания — крышка, слабый огонь, 20 минут.",["mb"],"Курица и фрикадельки"],[25,"Плита","Обжарь курицу терияки",10,null,"Сковороду разогрей на сильном огне. Курицу вместе с маринадом — 8–10 минут, помешивая, пока соус не загустеет и не станет липким.",["teri"],"Курица и фрикадельки"],[36,"Стол","Слепи котлеты из горбуши",0,"salmoncut","Горбушу ({salmon@scut}) слей и разомни вилкой, кости вынимать не надо — они мягкие. Смешай с яйцами ({egg@scut}), хлопьями ({oats@scut}) и мелким луком ({onion@scut}). Слепи {x:scut:3} шт — плоских, по 3 на порцию.",["scut"],"Рыба, картофель, морковь"],[40,"Духовка","Картофель дольками — в духовку",30,null,"Банановый хлеб достань. Поставь 200°. Картофель ({potato@wedge}) помой, не чисть, порежь дольками. Посоли, сбрызни маслом ({oil@wedge}), паприка по желанию. В один слой на пергамент, 30 минут.",["wedge"],"Рыба, картофель, морковь"],[41,"Духовка","Запеки морковь",20,null,"Морковь ({carrot@csal}) порежь брусочками, посоли, сбрызни маслом ({oil@csal}) и запеки вместе с картофелем — она пойдёт в контейнер к курице.",["csal"],"Рыба, картофель, морковь"],[44,"Плита","Свари дал",25,"dal","В кастрюле обжарь лук ({onion@dal}) и морковь ({carrot@dal}) на масле ({oil@dal}) 3 минуты. Добавь грудку кубиками ({chk@dal}), ещё 3 минуты. Всыпь чечевицу ({lentil@dal}), томаты ({tomcan@dal}), карри или куркуму, соль. Воды — на два пальца выше. 20 минут под крышкой на слабом огне.",["dal"],"Дал и чили"],[48,"Плита","Обжарь фарш для чили",8,"chili","В сковороде обжарь лук ({onion@chili}) на масле ({oil@chili}) 2 минуты, добавь фарш ({mince@chili}). Разбивай лопаткой, 6–8 минут, пока не побелеет.",["chili"],"Дал и чили"],[57,"Плита","Доведи чили",15,null,"Добавь перец кубиками ({pepper@chili}), фасоль без жидкости ({beans@chili}), томаты ({tomcan@chili}), паприку и соль. 15 минут на слабом огне без крышки.",["chili"],"Дал и чили"],[71,"Духовка","Котлеты из горбуши — в духовку",15,null,"Картофель достань. Котлеты — на тот же пергамент, 200°, 15 минут, на середине переверни.",["scut"],"Рыба и гарниры"],[74,"Плита",["",["broc","брокколи"],["cous","кускус"]],6,null,"Брокколи ({broc@broc}) — в кипящую подсоленную воду на 4 минуты, откинь. Кускус ({cous@cous}) залей кипятком в полтора раза больше по объёму, посоли, накрой на 5 минут и разрыхли вилкой.",["broc","cous"],"Рыба и гарниры"],[80,"Плита","Испеки оладьи",15,"pancakes","Хлопья ({oats@pan}) залей кефиром ({kefir@pan}) на 5 минут. Добавь яйца ({egg@pan}), размятый банан ({banana@pan}), мёд ({honey@pan}), щепотку соды. Жарь на сухой антипригарной сковороде на среднем огне по 2 минуты с каждой стороны — выйдет {x:pan:5} шт.",["pan"],"Завтраки и мусс"],[90,"Плита","Собери лаваш-роллы",10,"wrap","Яйца ({egg@wrap}) взбей с солью и пожарь тонким омлетом в {n:wrap} захода. На лист лаваша ({lavash@wrap} всего) — омлет, тёртый сыр ({cheese@wrap}) и черри половинками ({cherry@wrap}). Сверни плотным рулетом, подогни края.",["wrap"],"Завтраки и мусс"],[96,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@moco}), йогурт ({yog@moco}), какао ({cocoa@moco}) и мёд ({honey@moco}) взбей блендером 30 секунд. Разложи по {n:moco} баночкам, сверху ягоды ({berry@moco}).",["moco"],"Завтраки и мусс"]],"gear":["2 кастрюли","2 сковороды","2 противня","форма для хлеба","блендер","тёрка"]},{"steps":[[0,"Стол","Замеси творожные маффины",0,"curdmuffins","Творог ({tvorog@cm}), яйца ({egg@cm}), хлопья ({oats@cm}), мёд ({honey@cm}) — перемешай вилкой, вмешай ягоды ({berry@cm}). Разложи по {x:cm:2} формочкам.",["cm"],"Выпечка"],[2,"Стол","Замеси печенье",0,"cookies","Бананы ({banana@ck}) разомни вилкой, смешай с хлопьями ({oats@ck}), арахисовой пастой ({pb@ck}) и какао ({cocoa@ck}). Ложкой выложи {x:ck:4} шт на пергамент.",["ck"],"Выпечка"],[5,"Духовка",["испеки ",["cm","маффины"],["ck","печенье"]],20,null,"Духовка 180°, средний уровень. Маффины 20 минут, до золотистой макушки; печенье достань через 15 — оно останется мягким.",["cm","ck"],"Выпечка"],[6,"Плита","Обжарь фарш и сделай соус",12,"bolognese","Обжарь лук ({onion@bolo}) на масле ({oil@bolo}) 2 минуты, добавь фарш ({mince@bolo}) и тёртую морковь ({carrot@bolo}), 6 минут. Влей томаты ({tomcan@bolo}), посоли, добавь сушёный базилик — ещё 10 минут на слабом огне.",["bolo"],"Паста и мусс"],[14,"Плита","Свари пасту",10,null,"Макароны ({pasta@bpasta}) — в кипящую подсоленную воду на 9 минут. Слей и сразу смешай с соусом, сверху тёртый сыр ({cheese@bolo}).",["bpasta"],"Паста и мусс"],[22,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@mobe}), йогурт ({yog@mobe}) и мёд ({honey@mobe}) взбей блендером 30 секунд. Разложи по {n:mobe} баночкам, сверху ягоды ({berry@mobe}). Гранолу ({granola@mobe}) положи в пакетик отдельно.",["mobe"],"Паста и мусс"]],"gear":["кастрюля","сковорода","формочки для маффинов","блендер"]}],[{"steps":[[0,"Духовка","Свёклу — в духовку",60,null,"Включи духовку на 200°, ждать разогрева не надо. Свёклу ({beet@beet}) помой щёткой, не чисть. Заверни каждую в фольгу и положи на решётку сбоку. ",["beet"],"Духовка и крупы"],[3,"Плита",["свари ",["buck","гречку"],["rice","рис"]],15,null,"Гречка: {buck@buck} в кастрюлю, воды вдвое больше по объёму, щепотка соли. Рис: {rice@rice} промой, воды в полтора раза больше, соль. Обе на сильный огонь; закипело — крышка и самый слабый огонь на 15 минут. Крышки не открывай.",["buck","rice"],"Духовка и крупы"],[6,"Стол",["замаринуй ",["chk","курицу"],["veg","нарежь овощи"]],0,"chicken","Грудку ({chk@chk}) разрежь на {n:chk} равных куска. Натри солью, паприкой и маслом ({oil@chk}); один кусок можно сухими травами — будет другой вкус. Кабачок, перец и морковь ({zucc@veg}, {pepper@veg}, {carrot@veg}) порежь крупно, посоли, сбрызни маслом.",["chk","veg"],"Курица и картофель"],[12,"Духовка",[["chk","курицу"],["veg","овощи"]," — в духовку"],25,null,"Противень застели пергаментом. Курицу и овощи разложи в один слой, чтобы не касались друг друга. Средний уровень, рядом со свёклой. ",["chk","veg"],"Курица и картофель"],[15,"Плита","Поставь картофель на пюре",20,null,"Картофель ({potato@mash}) почисти, порежь на четвертинки, залей холодной водой, посоли. После закипания — 20 минут на среднем огне.",["mash"],"Курица и картофель"],[18,"Стол","Замеси фарш и слепи котлеты",0,"cutlets","Кабачок ({zucc@cut}) натри и хорошо отожми руками. Лук ({onion@cut}) мелко порежь. Смешай с фаршем ({mince@cut}), яйцом ({egg@cut}), хлопьями ({oats@cut}) и солью. Мокрыми руками слепи {x:cut:3} шт и выложи на второй противень с пергаментом.",["cut"],"Котлеты, плов, пюре"],[24,"Плита","Плов: обжарь мясо и залей рис",25,"plov","Бедро ({thigh@plov}) порежь кусочками, обжарь в сотейнике на масле ({oil@plov}) 5 минут на сильном огне. Добавь лук полукольцами ({onion@plov}) и морковь соломкой ({carrot@plov}), ещё 3 минуты. Всыпь промытый рис ({rice@plov}), соль, специи для плова. Залей водой на палец выше риса. Закипело — крышка, слабый огонь, 20 минут. Не мешай.",["plov"],"Котлеты, плов, пюре"],[38,"Духовка","Достань курицу, поставь котлеты",25,null,"Курицу и овощи достань: курица готова, если сок прозрачный. На их место — противень с котлетами, 200°, 25 минут. Переворачивать не нужно.",["cut"],"Котлеты, плов, пюре"],[40,"Плита","Сделай пюре",0,null,"Слей воду с картофеля, разомни толкушкой с тёплым молоком ({milk@mash}) и щепоткой соли. Комочки — это нормально.",["mash"],"Котлеты, плов, пюре"],[43,"Плита","Суп: свари овощи и курицу",20,"pumpkin","Тыкву ({pumpk@soup}), картофель ({potato@soup}), морковь ({carrot@soup}) и лук ({onion@soup}) порежь кубиками, сложи в кастрюлю. Грудку ({chk@soup}) положи целым куском сверху. Залей водой вровень с овощами, посоли. После закипания — 20 минут под крышкой.",["soup"],"Суп и ёжики"],[46,"Стол","Слепи ёжики",0,"hedgehogs","Фарш ({mince@hedge}) смешай с сырым промытым рисом ({rice@hedge}), мелко порезанным луком ({onion@hedge}), яйцом ({egg@hedge}) и солью. Мокрыми руками слепи {x:hedge:4} шт.",["hedge"],"Суп и ёжики"],[52,"Плита","Потуши ёжики в соусе",25,null,"В глубокую сковороду вылей томаты ({tomcan@hedge}), разомни вилкой, добавь сметану ({smet@hedge}), полстакана воды и соль. Выложи ёжики в один слой. Закипело — крышка, слабый огонь, 25 минут.",["hedge"],"Суп и ёжики"],[56,"Стол",["замеси ",["syr","сырники"],["zap","запеканку"],["em","омлетные маффины"]],0,"syrniki","Сырники: творог {tvorog@syr}, яйца {egg@syr}, рисовая мука {flour@syr}, мёд {honey@syr} — разомни вилкой, слепи {x:syr:4} шт, обваляй в муке. Запеканка: творог {tvorog@zap}, яйца {egg@zap}, хлопья {oats@zap}, мёд {honey@zap} — перемешай, выложи в форму слоем в 3 см, сверху ягоды ({berry@zap}). Омлетные маффины: яйца {egg@em} взбей с молоком ({milk@em}) и солью, добавь перец кубиками ({pepper@em}) и тёртый сыр ({cheese@em}), разлей по {x:em:3} формочкам.",["syr","zap","em"],"Выпечка"],[66,"Духовка",["запеки ",["syr","сырники"],["zap","запеканку"],["em","маффины"]],20,null,"Котлеты достань. Убавь до 180°. Сырники — на противень с пергаментом, форму с запеканкой и формочки с маффинами — рядом или на второй уровень. Через 20 минут достань сырники и маффины, запеканку оставь ещё на 10 минут.",["syr","zap","em"],"Выпечка"],[70,"Стол","Сделай из супа крем",0,null,"Курицу достань и порежь кубиками. Овощи с половиной отвара перелей в блендер порциями, добавь молоко ({milk@soup}) — 30 секунд до гладкости. Горячее наливай не больше половины чаши и придерживай крышку полотенцем. Верни курицу в суп.",["soup"],"Суп и овощи"],[78,"Плита","Прогрей овощную смесь",7,null,"Овощную смесь ({vegmix}) — на сковороду без разморозки, 6–7 минут под крышкой, посоли.",["vm","vm2"],"Суп и овощи"],[82,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@moco}), йогурт ({yog@moco}), какао ({cocoa@moco}) и мёд ({honey@moco}) взбей блендером до гладкости — 30 секунд. Разложи по {n:moco} баночкам, сверху ягоды ({berry@moco}).",["moco"],"Мусс и соус"],[84,"Стол",["",["beet","порежь свёклу"],["ys","смешай соус"]],0,null,"Свёклу разверни, сними кожуру (сходит руками) и порежь крупными кубиками, посоли и сбрызни маслом ({oil@beet}) — она пойдёт в контейнер к курице. Соус: йогурт ({yog@ys}), рубленый укроп, соль.",["beet","ys"],"Мусс и соус"]],"gear":["2 кастрюли","сковорода","сотейник","2 противня","форма для запеканки","формочки для маффинов","блендер","тёрка"]},{"steps":[[0,"Стол","Замеси творожные маффины",0,"curdmuffins","Творог ({tvorog@cm}), яйца ({egg@cm}), хлопья ({oats@cm}), мёд ({honey@cm}) — перемешай вилкой, вмешай ягоды ({berry@cm}). Разложи по {x:cm:2} формочкам.",["cm"],"Выпечка"],[2,"Стол","Замеси печенье",0,"cookies","Бананы ({banana@ck}) разомни вилкой, смешай с хлопьями ({oats@ck}), арахисовой пастой ({pb@ck}) и какао ({cocoa@ck}). Ложкой выложи {x:ck:4} шт на пергамент.",["ck"],"Выпечка"],[5,"Духовка",["испеки ",["ck","печенье"],["cm","маффины"]],20,null,"Духовка 180°, средний уровень. Печенье достань через 15 минут — оно останется мягким, так и должно быть; маффины через 20, до золотистой макушки.",["ck","cm"],"Выпечка"],[6,"Плита","Свари пасту и соус с тунцом",12,"tunapasta","Макароны ({pasta@pasta}) — в кипящую подсоленную воду на 9 минут. Рядом в сковороде обжарь лук ({onion@pasta}) на масле 2 минуты, добавь томаты ({tomcan@pasta}), 5 минут на среднем огне, в конце — тунец без жидкости ({tuna@pasta}). Смешай с пастой.",["pasta"],"Паста и мусс"],[20,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@mobe}), йогурт ({yog@mobe}) и мёд ({honey@mobe}) взбей блендером 30 секунд. Разложи по {n:mobe} баночкам, сверху ягоды ({berry@mobe}). Хлопья ({oats@mobe}) вмешай прямо в мусс — к утру станут мягкими.",["mobe"],"Паста и мусс"]],"gear":["кастрюля","сковорода","противень","блендер"]}],[{"steps":[[0,"Духовка","Банановый хлеб — в духовку",35,"bananabread","Духовка 180°. Бананы ({banana@bb}) разомни вилкой, смешай с яйцами ({egg@bb}), йогуртом ({yog@bb}), арахисовой пастой ({pb@bb}), мёдом ({honey@bb}) и хлопьями ({oats@bb}), щепотка соды. Вылей в форму с пергаментом слоем 3–4 см. 35 минут; готов, если зубочистка сухая.",["bb"],"Выпечка и крупы"],[6,"Плита",["свари ",["rice","рис"],["bulgur","булгур"],["buck","гречку"]],15,null,"Рис ({rice@rice}) промой, воды в полтора раза больше. Булгур ({bulgur@bulgur}) и гречка ({buck@buck}) — воды вдвое больше. Всё посоли, после закипания — крышка и слабый огонь на 15 минут.",["rice","bulgur","buck"],"Выпечка и крупы"],[10,"Стол","Замаринуй курицу в терияки",0,"teriyaki","Грудку ({chk@teri}) порежь полосками в палец. Смешай с соевым соусом ({soy@teri}), мёдом ({honey@teri}) и маслом ({oil@teri}). Пусть постоит, пока лепишь фрикадельки.",["teri"],"Курица и фрикадельки"],[13,"Стол","Слепи фрикадельки",0,"meatballs","Фарш ({mince@mb}) смешай с мелко порезанным луком ({onion@mb}), яйцом ({egg@mb}), хлопьями ({oats@mb}) и солью. Мокрыми руками слепи {x:mb:5} шт размером с грецкий орех.",["mb"],"Курица и фрикадельки"],[22,"Плита","Потуши фрикадельки в томатном соусе",20,null,"В глубокую сковороду — томаты ({tomcan@mb}), разомни, добавь сметану ({smet@mb}), полстакана воды, соль. Выложи фрикадельки, после закипания — крышка, слабый огонь, 20 минут.",["mb"],"Курица и фрикадельки"],[25,"Плита","Обжарь курицу терияки",10,null,"Сковороду разогрей на сильном огне. Курицу вместе с маринадом — 8–10 минут, помешивая, пока соус не загустеет и не станет липким.",["teri"],"Курица и фрикадельки"],[36,"Стол","Слепи котлеты из горбуши",0,"salmoncut","Горбушу ({salmon@scut}) слей и разомни вилкой, кости вынимать не надо — они мягкие. Смешай с яйцами ({egg@scut}), хлопьями ({oats@scut}) и мелким луком ({onion@scut}). Слепи {x:scut:3} шт — плоских, по 3 на порцию.",["scut"],"Рыба, картофель, морковь"],[40,"Духовка","Картофель дольками — в духовку",30,null,"Банановый хлеб достань. Поставь 200°. Картофель ({potato@wedge}) помой, не чисть, порежь дольками. Посоли, сбрызни маслом ({oil@wedge}), паприка по желанию. В один слой на пергамент, 30 минут.",["wedge"],"Рыба, картофель, морковь"],[41,"Духовка","Запеки морковь",20,null,"Морковь ({carrot@csal}) порежь брусочками, посоли, сбрызни маслом ({oil@csal}) и запеки вместе с картофелем — она пойдёт в контейнер к курице.",["csal"],"Рыба, картофель, морковь"],[44,"Плита","Свари дал",25,"dal","В кастрюле обжарь лук ({onion@dal}) и морковь ({carrot@dal}) на масле ({oil@dal}) 3 минуты. Добавь грудку кубиками ({chk@dal}), ещё 3 минуты. Всыпь чечевицу ({lentil@dal}), томаты ({tomcan@dal}), карри или куркуму, соль. Воды — на два пальца выше. 20 минут под крышкой на слабом огне.",["dal"],"Дал и чили"],[48,"Плита","Обжарь фарш для чили",8,"chili","В сковороде обжарь лук ({onion@chili}) на масле ({oil@chili}) 2 минуты, добавь фарш ({mince@chili}). Разбивай лопаткой, 6–8 минут, пока не побелеет.",["chili"],"Дал и чили"],[57,"Плита","Доведи чили",15,null,"Добавь перец кубиками ({pepper@chili}), фасоль без жидкости ({beans@chili}), томаты ({tomcan@chili}), паприку и соль. 15 минут на слабом огне без крышки.",["chili"],"Дал и чили"],[71,"Духовка","Котлеты из горбуши — в духовку",15,null,"Картофель достань. Котлеты — на тот же пергамент, 200°, 15 минут, на середине переверни.",["scut"],"Рыба и гарниры"],[74,"Плита",["",["broc","брокколи"],["cous","кускус"]],6,null,"Брокколи ({broc@broc}) — в кипящую подсоленную воду на 4 минуты, откинь. Кускус ({cous@cous}) залей кипятком в полтора раза больше по объёму, посоли, накрой на 5 минут и разрыхли вилкой.",["broc","cous"],"Рыба и гарниры"],[80,"Плита","Испеки оладьи",15,"pancakes","Хлопья ({oats@pan}) залей кефиром ({kefir@pan}) на 5 минут. Добавь яйца ({egg@pan}), размятый банан ({banana@pan}), мёд ({honey@pan}), щепотку соды. Жарь на сухой антипригарной сковороде на среднем огне по 2 минуты с каждой стороны — выйдет {x:pan:5} шт.",["pan"],"Завтраки и мусс"],[90,"Плита","Собери лаваш-роллы",10,"wrap","Яйца ({egg@wrap}) взбей с солью и пожарь тонким омлетом в {n:wrap} захода. На лист лаваша ({lavash@wrap} всего) — омлет, тёртый сыр ({cheese@wrap}) и черри половинками ({cherry@wrap}). Сверни плотным рулетом, подогни края.",["wrap"],"Завтраки и мусс"],[96,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@moco}), йогурт ({yog@moco}), какао ({cocoa@moco}) и мёд ({honey@moco}) взбей блендером 30 секунд. Разложи по {n:moco} баночкам, сверху ягоды ({berry@moco}).",["moco"],"Завтраки и мусс"]],"gear":["2 кастрюли","2 сковороды","2 противня","форма для хлеба","блендер","тёрка"]},{"steps":[[0,"Стол","Замеси творожные маффины",0,"curdmuffins","Творог ({tvorog@cm}), яйца ({egg@cm}), хлопья ({oats@cm}), мёд ({honey@cm}) — перемешай вилкой, вмешай ягоды ({berry@cm}). Разложи по {x:cm:2} формочкам.",["cm"],"Выпечка"],[2,"Стол","Замеси печенье",0,"cookies","Бананы ({banana@ck}) разомни вилкой, смешай с хлопьями ({oats@ck}), арахисовой пастой ({pb@ck}) и какао ({cocoa@ck}). Ложкой выложи {x:ck:4} шт на пергамент.",["ck"],"Выпечка"],[5,"Духовка",["испеки ",["cm","маффины"],["ck","печенье"]],20,null,"Духовка 180°, средний уровень. Маффины 20 минут, до золотистой макушки; печенье достань через 15 — оно останется мягким.",["cm","ck"],"Выпечка"],[6,"Плита","Обжарь фарш и сделай соус",12,"bolognese","Обжарь лук ({onion@bolo}) на масле ({oil@bolo}) 2 минуты, добавь фарш ({mince@bolo}) и тёртую морковь ({carrot@bolo}), 6 минут. Влей томаты ({tomcan@bolo}), посоли, добавь сушёный базилик — ещё 10 минут на слабом огне.",["bolo"],"Паста и мусс"],[14,"Плита","Свари пасту",10,null,"Макароны ({pasta@bpasta}) — в кипящую подсоленную воду на 9 минут. Слей и сразу смешай с соусом, сверху тёртый сыр ({cheese@bolo}).",["bpasta"],"Паста и мусс"],[22,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@mobe}), йогурт ({yog@mobe}) и мёд ({honey@mobe}) взбей блендером 30 секунд. Разложи по {n:mobe} баночкам, сверху ягоды ({berry@mobe}). Гранолу ({granola@mobe}) положи в пакетик отдельно.",["mobe"],"Паста и мусс"]],"gear":["кастрюля","сковорода","формочки для маффинов","блендер"]}]],"recipes":[["Основные блюда",[["chicken","Запечённая курица","1 порция · 25 мин в духовке","Базовая курица, которая не сохнет: кусок целиком и не передержать.",["куриная грудка 135 г","масло растительное 3 г","соль и специи по вкусу"],["Натри кусок солью, специями и маслом.","200°, 25 минут на пергаменте, куски не касаются друг друга.","Дай полежать 5 минут и только потом режь — сок останется внутри."],"Готова, когда сок прозрачный. Резать лучше перед едой, а не при раскладке."],["cutlets","Куриные котлеты","3 шт на порцию · 25 мин","Без жарки и брызг: всё делает духовка.",["фарш куриный 115 г","кабачок 40 г","лук репчатый 15 г","яйца 1 шт на 5 порций","овсяные хлопья 8 г","соль и специи по вкусу"],["Кабачок натри и отожми — лишняя вода враг котлеты.","Смешай всё, слепи мокрыми руками.","200°, 25 минут, не переворачивая."],"Мокрые руки — и фарш не липнет."],["plov","Плов с куриным бедром","1 порция · 30 мин","Ленивый плов в одном сотейнике.",["бедро куриное без кости 135 г","рис 55 г","морковь 90 г","лук репчатый 40 г","масло растительное 5 г","соль и специи по вкусу"],["Обжарь мясо, потом лук и морковь.","Всыпь рис, залей водой на палец выше.","Крышка, слабый огонь, 20 минут. Не мешай."],"Не открывай крышку — пар доделает рис сам."],["tunapasta","Паста с тунцом","1 порция · 15 мин","Томатный соус из банки и тунец — быстрее доставки.",["макароны из твёрдых сортов 80 г","тунец в собственном соку 110 г","томаты в собственном соку 150 г","лук репчатый 30 г","масло растительное 5 г","сыр полутвёрдый 15 г","соль и специи по вкусу"],["Свари пасту на минуту меньше, чем на пачке.","Лук 2 минуты, томаты 5 минут, в конце тунец.","Смешай, сыр сверху."],"Тунец добавляй в конце, чтобы не стал сухим."],["pumpkin","Тыквенный крем-суп с курицей","1 порция · 30 мин","Густой и сладковатый, с курицей — полноценный обед.",["тыква 300 г","картофель 80 г","морковь 50 г","лук репчатый 30 г","молоко 2,5% 100 мл","куриная грудка 85 г","масло растительное 5 г","соль и специи по вкусу"],["Овощи и курицу свари вместе 20 минут.","Курицу достань, овощи пробей блендером с молоком.","Курицу кубиками верни в суп."],"Горячее в блендер — не больше половины чаши."],["hedgehogs","Ёжики в томатно-сметанном соусе","4 шт на порцию · 35 мин","Рис внутри разбухает и торчит иголками.",["фарш куриный 120 г","рис 45 г","лук репчатый 20 г","яйца 1 шт на 5 порций","томаты в собственном соку 100 г","сметана 15% 20 г","соль и специи по вкусу"],["Смешай фарш с сырым рисом, луком и яйцом.","Слепи шарики, выложи в соус.","25 минут под крышкой на слабом огне."],"Рис кладётся сырым — он сварится в соусе."],["teriyaki","Курица терияки","1 порция · 15 мин","Липкая, сладко-солёная, как из доставки.",["куриная грудка 140 г","соевый соус 12 г","мёд 8 г","масло растительное 7 г","соль и специи по вкусу"],["Порежь полосками, замаринуй 10 минут.","Сильный огонь, 8–10 минут вместе с маринадом.","Соус должен загустеть и обволакивать."],"Не убавляй огонь — иначе курица потушится, а не поджарится."],["meatballs","Фрикадельки в томатном соусе","5 шт на порцию · 30 мин","Сочные из-за соуса, разогреваются лучше котлет.",["фарш куриный 120 г","лук репчатый 20 г","яйца 1 шт на 5 порций","овсяные хлопья 8 г","томаты в собственном соку 100 г","сметана 15% 20 г","соль и специи по вкусу"],["Слепи шарики с грецкий орех.","Томаты, сметана, вода — выложи фрикадельки.","20 минут под крышкой."],"Не мешай первые 10 минут — развалятся."],["dal","Чечевичный дал с курицей","1 порция · 30 мин","Густая чечевица с карри — уютно и сытно.",["чечевица красная 50 г","куриная грудка 95 г","томаты в собственном соку 100 г","лук репчатый 30 г","морковь 50 г","масло растительное 10 г","соль и специи по вкусу"],["Обжарь лук, морковь и курицу.","Всыпь чечевицу, томаты, специи, залей водой.","20 минут под крышкой."],"Красную чечевицу не замачивают, она разваривается сама."],["salmoncut","Котлеты из горбуши","3 шт на порцию · 20 мин","Рыбные котлеты из банки, без чистки рыбы.",["горбуша консервированная 110 г","яйца 1 шт на 3 порции","овсяные хлопья 18 г","лук репчатый 20 г","соль и специи по вкусу"],["Разомни рыбу вилкой вместе с косточками.","Смешай, слепи плоские котлетки.","200°, 15 минут, переверни на середине."],"Жидкость из банки слей полностью, иначе не слепятся."],["chili","Чили с фасолью","1 порция · 25 мин","Одна сковорода, много вкуса.",["фарш куриный 120 г","фасоль красная консервированная 110 г","томаты в собственном соку 120 г","перец болгарский 70 г","лук репчатый 30 г","масло растительное 4 г","соль и специи по вкусу"],["Обжарь лук и фарш.","Добавь перец, фасоль, томаты и специи.","15 минут на слабом огне."],"На второй день вкуснее, чем в первый."],["bolognese","Паста болоньезе","1 порция · 25 мин","Болоньезе из куриного фарша — легче классики.",["фарш куриный 115 г","томаты в собственном соку 120 г","морковь 40 г","лук репчатый 30 г","масло растительное 4 г","сыр полутвёрдый 12 г","соль и специи по вкусу"],["Обжарь лук, фарш и тёртую морковь.","Томаты и базилик, 15 минут.","Смешай с пастой, сыр сверху."],"Пасту смешивай с соусом сразу — не слипнется в контейнере."]]],["Завтраки",[["eggmuffins","Омлетные маффины","3 шт на порцию · 15 мин","Омлет, который можно взять рукой.",["яйца 1½ шт","сыр полутвёрдый 15 г","перец болгарский 40 г","молоко 2,5% 20 мл","соль и специи по вкусу"],["Взбей яйца с молоком и солью.","Добавь перец и сыр, разлей по формочкам.","180°, 15 минут."],"Формочки наполняй на две трети — поднимутся."],["syrniki","Сырники из духовки","4 шт на порцию · 20 мин","Без жарки, держат форму и отлично замораживаются.",["творог 5% 140 г","яйца 1 шт на 2 порции","мука рисовая 35 г","мёд 5 г","соль и специи по вкусу"],["Разомни творог с яйцом, мукой и мёдом.","Слепи шайбы, обваляй в муке.","180°, 20 минут."],"Если творог мокрый — добавь ещё ложку муки."],["wrap","Лаваш-ролл с яйцом и сыром","1 ролл · 10 мин","Завтрак, который едят одной рукой.",["лаваш тонкий 50 г","яйца 1½ шт","сыр полутвёрдый 12 г","томаты черри 70 г","соль и специи по вкусу"],["Пожарь тонкий омлет.","На лаваш — омлет, сыр, черри.","Сверни плотно, подогни края."],"На сухой сковороде 2 минуты — и он хрустит."],["pancakes","Овсяные оладьи","5 шт на порцию · 15 мин","Мягкие, банановые, без муки.",["овсяные хлопья 35 г","кефир 1% 100 мл","яйца 1 шт на 2 порции","бананы 1 шт на 2 порции","мёд 5 г","соль и специи по вкусу"],["Замочи хлопья в кефире на 5 минут.","Добавь яйцо, банан, соду.","По 2 минуты с каждой стороны."],"Переворачивай, когда по краям пойдут пузырьки."]]],["Десерты",[["zapekanka","Творожная запеканка","1 кусок · 30 мин","Плотная, как чизкейк, только проще.",["творог 5% 125 г","яйца 1 шт на 2 порции","овсяные хлопья 20 г","мёд 10 г","ягоды замороженные 40 г","соль и специи по вкусу"],["Смешай всё вилкой.","В форму слоем 3 см, ягоды сверху.","180°, 30 минут."],"Режь только остывшую — горячая разваливается."],["cookies","Овсяное печенье с бананом","4 шт на порцию · 15 мин","Три ингредиента и какао.",["овсяные хлопья 40 г","бананы 1 шт на 2 порции","арахисовая паста 10 г","какао-порошок 5 г","соль и специи по вкусу"],["Разомни банан, смешай со всем.","Выложи ложкой лепёшки.","180°, 15 минут."],"Чем спелее банан, тем слаще печенье."],["bananabread","Банановый хлеб","1 кусок · 35 мин","Пахнет на всю квартиру.",["бананы 1 шт","овсяные хлопья 25 г","яйца 1 шт на 2 порции","йогурт греческий 2% 30 г","арахисовая паста 10 г","мёд 5 г","соль и специи по вкусу"],["Разомни банан, смешай со всем и щепоткой соды.","В форму слоем 3–4 см.","180°, 35 минут."],"Замораживай кусками — 20 секунд в микроволновке, и как свежий."],["mousse","Творожный мусс","1 банка · 5 мин","Без готовки и без миксера: блендер, ложка, баночка.",["творог 5% 95 г","йогурт греческий 2% 55 г","какао-порошок 5 г","мёд 16 г","ягоды замороженные 55 г","соль и специи по вкусу"],["Взбей творог с йогуртом, какао и мёдом 30 секунд — до гладкости.","Разложи по баночкам, сверху ягоды.","В холодильнике стоит 3 дня и не расслаивается."],"Если мусс густой — добавь ложку молока, если жидкий — ложку творога."],["curdmuffins","Творожные маффины с ягодами","2 шт на порцию · 20 мин","Сырник в форме маффина.",["творог 5% 110 г","яйца 1 шт на 2 порции","овсяные хлопья 20 г","ягоды замороженные 40 г","мёд 8 г","соль и специи по вкусу"],["Смешай всё вилкой.","Разложи по формочкам.","180°, 20 минут."],"Ягоды клади замороженными — не растекутся."]]]]};
+const MENU_V2={"format":"mealplan-menu","version":2,"id":"m1","name":"Меню 1, только разогреть","ingredients":{"chk":{"n":"Куриная грудка","u":"г","kb":[113,23.6,1.9,0.4],"g":"Мясо и рыба"},"thigh":{"n":"Бедро куриное без кости","u":"г","kb":[185,18,12,0],"g":"Мясо и рыба"},"mince":{"n":"Фарш куриный","u":"г","kb":[143,17.4,8.1,0],"g":"Мясо и рыба"},"tuna":{"n":"Тунец в собственном соку","u":"г","kb":[96,21,1,0],"g":"Мясо и рыба","pack":130,"pn":"банка"},"salmon":{"n":"Горбуша консервированная","u":"г","kb":[136,20.9,5.8,0],"g":"Мясо и рыба","pack":245,"pn":"банка"},"egg":{"n":"Яйца","u":"шт","kb":[86,7,6,0.4],"g":"Молочное и яйца","pack":10},"tvorog":{"n":"Творог 5%","u":"г","kb":[121,17.2,5,1.8],"g":"Молочное и яйца","pack":200},"yog":{"n":"Йогурт греческий 2%","u":"г","kb":[63,8.5,2,3.5],"g":"Молочное и яйца","pack":400},"kefir":{"n":"Кефир 1%","u":"мл","kb":[40,3,1,4],"g":"Молочное и яйца","pack":900},"milk":{"n":"Молоко 2,5%","u":"мл","kb":[52,2.9,2.5,4.7],"g":"Молочное и яйца","pack":1000},"smet":{"n":"Сметана 15%","u":"г","kb":[158,2.6,15,3],"g":"Молочное и яйца","pack":300},"cheese":{"n":"Сыр полутвёрдый","u":"г","kb":[350,25,27,0],"g":"Молочное и яйца","pack":200},"potato":{"n":"Картофель","u":"г","kb":[77,2,0.4,16.3],"g":"Овощи и фрукты"},"carrot":{"n":"Морковь","u":"г","kb":[35,1.3,0.1,6.9],"g":"Овощи и фрукты"},"beet":{"n":"Свёкла","u":"г","kb":[42,1.5,0.1,8.8],"g":"Овощи и фрукты"},"onion":{"n":"Лук репчатый","u":"г","kb":[41,1.4,0.2,8.2],"g":"Овощи и фрукты"},"zucc":{"n":"Кабачок","u":"г","kb":[24,0.6,0.3,4.6],"g":"Овощи и фрукты"},"pumpk":{"n":"Тыква","u":"г","kb":[22,1,0.1,4.4],"g":"Овощи и фрукты"},"pepper":{"n":"Перец болгарский","u":"г","kb":[26,1.3,0.1,5.3],"g":"Овощи и фрукты"},"cucum":{"n":"Огурцы","u":"г","kb":[15,0.8,0.1,2.8],"g":"Овощи и фрукты"},"cherry":{"n":"Томаты черри","u":"г","kb":[20,0.9,0.2,3.8],"g":"Овощи и фрукты","pack":250},"dill":{"n":"Укроп","u":"г","kb":[40,2.5,0.5,6.3],"g":"Овощи и фрукты","pack":50},"apple":{"n":"Яблоки","u":"шт","kb":[85,0.7,0.7,17.6],"g":"Овощи и фрукты"},"banana":{"n":"Бананы","u":"шт","kb":[107,1.3,0.4,27],"g":"Овощи и фрукты"},"broc":{"n":"Брокколи замороженная","u":"г","kb":[28,3,0.4,4],"g":"Заморозка","pack":400},"vegmix":{"n":"Овощная смесь замороженная","u":"г","kb":[45,2,0.4,8],"g":"Заморозка","pack":400},"berry":{"n":"Ягоды замороженные","u":"г","kb":[40,0.8,0.3,8],"g":"Заморозка","pack":300},"bread":{"n":"Хлеб цельнозерновой","u":"г","kb":[230,8.5,2.5,43],"g":"Хлеб и бакалея","pack":300},"lavash":{"n":"Лаваш тонкий","u":"г","kb":[275,9,1.2,56],"g":"Хлеб и бакалея","pack":250},"buck":{"n":"Гречка","u":"г","kb":[313,12.6,3.3,62],"g":"Хлеб и бакалея","pack":900,"pantry":1},"rice":{"n":"Рис","u":"г","kb":[344,6.7,0.7,78.9],"g":"Хлеб и бакалея","pack":900,"pantry":1},"bulgur":{"n":"Булгур","u":"г","kb":[342,12.3,1.3,57.6],"g":"Хлеб и бакалея","pack":500,"pantry":1},"cous":{"n":"Кускус","u":"г","kb":[376,12.8,0.6,77],"g":"Хлеб и бакалея","pack":500,"pantry":1},"pasta":{"n":"Макароны из твёрдых сортов","u":"г","kb":[350,12,1.5,71],"g":"Хлеб и бакалея","pack":450,"pantry":1},"oats":{"n":"Овсяные хлопья","u":"г","kb":[352,12.3,6.1,59.5],"g":"Хлеб и бакалея","pack":500,"pantry":1},"lentil":{"n":"Чечевица красная","u":"г","kb":[318,24,1.5,48],"g":"Хлеб и бакалея","pack":450,"pantry":1},"beans":{"n":"Фасоль красная консервированная","u":"г","kb":[96,6.7,0.3,16],"g":"Хлеб и бакалея","pack":240,"pn":"банка","pantry":1},"tomcan":{"n":"Томаты в собственном соку","u":"г","kb":[20,1,0.2,3.5],"g":"Хлеб и бакалея","pack":400,"pn":"банка","pantry":1},"flour":{"n":"Мука рисовая","u":"г","kb":[366,6,1.4,80],"g":"Хлеб и бакалея","pack":500,"pantry":1},"granola":{"n":"Гранола","u":"г","kb":[430,9,14,66],"g":"Хлеб и бакалея","pack":300,"pantry":1},"honey":{"n":"Мёд","u":"г","kb":[304,0.3,0,82],"g":"Хлеб и бакалея","pack":250,"pantry":1},"cocoa":{"n":"Какао-порошок","u":"г","kb":[289,24,15,10],"g":"Хлеб и бакалея","pack":100,"pantry":1},"pb":{"n":"Арахисовая паста","u":"г","kb":[600,25,50,16],"g":"Хлеб и бакалея","pack":250,"pantry":1},"oil":{"n":"Масло растительное","u":"г","kb":[899,0,99.9,0],"staple":1},"soy":{"n":"Соевый соус","u":"г","kb":[50,6,0,6],"staple":1}},"dishes":{"A_chk_buck":{"n":"Курица с паприкой, гречка, запечённая свёкла","short":"КУРИ|ЦА","art":"grain","kind":"cook","ing":[["chk",135,"chk"],["oil",3,"chk"],["buck",85,"buck"],["beet",140,"beet"],["oil",4,"beet"]],"how":"Всё из одного контейнера — 2,5 мин в микроволновке под крышкой.","pack":"Курица, гречка и свёкла.","recipe":"chicken","box":"glass","keep":3,"pull":"курица с гречкой"},"A_cut_mash":{"n":"Куриные котлеты, пюре, овощи","short":"КОТ|ЛЕТЫ","art":"cutlets","kind":"cook","ing":[["mince",115,"cut"],["zucc",40,"cut"],["onion",15,"cut"],["egg",0.2,"cut"],["oats",8,"cut"],["potato",250,"mash"],["milk",40,"mash"],["vegmix",140,"vm2"]],"how":"Всё из одного контейнера — 3 мин в микроволновке.","pack":"Три котлеты, пюре и овощи.","recipe":"cutlets","box":"glass","keep":3,"pull":"котлеты с пюре"},"A_chk_rice":{"n":"Курица с травами, рис, запечённые овощи, йогуртовый соус","short":"КУРИ|ЦА","art":"oven","kind":"cook","ing":[["chk",132,"chk"],["oil",3,"chk"],["rice",58,"rice"],["zucc",120,"veg"],["pepper",80,"veg"],["carrot",60,"veg"],["oil",5,"veg"],["yog",40,"ys"],["dill",3,"ys"]],"how":"Курицу, рис и овощи — 2 мин в микроволновке. Соус холодным сверху.","pack":"Курица, рис и овощи, соус в уголок или в крышечку.","recipe":"chicken","box":"glass","keep":3,"pull":"курица с рисом"},"A_cut_buck":{"n":"Куриные котлеты, гречка, запечённые овощи","short":"КОТ|ЛЕТЫ","art":"cutlets","kind":"cook","ing":[["mince",115,"cut"],["zucc",40,"cut"],["onion",15,"cut"],["egg",0.2,"cut"],["oats",8,"cut"],["buck",85,"buck"],["zucc",120,"veg"],["pepper",80,"veg"],["carrot",60,"veg"],["oil",5,"veg"]],"how":"Всё из контейнера — 2,5 мин в микроволновке.","pack":"Три котлеты, гречка и овощи.","recipe":"cutlets","box":"glass","keep":3,"pull":"котлеты с гречкой"},"A_plov":{"n":"Плов с куриным бедром и овощами","short":"ПЛОВ","art":"grain","kind":"cook","ing":[["thigh",135,"plov"],["rice",55,"plov"],["carrot",90,"plov"],["onion",40,"plov"],["oil",5,"plov"],["vegmix",140,"vm2"]],"how":"Плов — 3 мин в микроволновке, сбрызни ложкой воды.","pack":"Плов и овощи.","recipe":"plov","box":"glass","keep":3,"pull":"плов"},"A_tuna_pasta":{"n":"Паста с тунцом в томатном соусе, сыр","short":"ПАСТА","art":"pasta","kind":"cook","ing":[["pasta",80,"pasta"],["tuna",110,"pasta"],["tomcan",150,"pasta"],["onion",30,"pasta"],["oil",5,"pasta"],["cheese",15,"pasta"]],"how":"Пасту — 2 мин в микроволновке, перемешай на середине.","pack":"Паста с соусом, сыр сверху.","recipe":"tunapasta","box":"glass","keep":3,"pull":"паста с тунцом","make":1},"A_soup":{"n":"Тыквенный крем-суп с курицей, хлеб","short":"КРЕМ|СУП","art":"soup","kind":"cook","ing":[["pumpk",300,"soup"],["potato",80,"soup"],["carrot",50,"soup"],["onion",30,"soup"],["milk",100,"soup"],["chk",85,"soup"],["oil",5,"soup"],["bread",75,"bread"]],"how":"Суп — 3 мин в микроволновке, на середине перемешай. Ломтик хлеба из морозилки — 20 сек.","pack":"Суп почти доверху, курица прямо в суп.","recipe":"pumpkin","box":"glass","keep":3,"pull":"тыквенный суп"},"A_hedge":{"n":"Ёжики в томатно-сметанном соусе, овощи","short":"ЁЖИ|КИ","art":"cutlets","kind":"cook","ing":[["mince",118,"hedge"],["rice",45,"hedge"],["onion",20,"hedge"],["egg",0.2,"hedge"],["tomcan",100,"hedge"],["smet",20,"hedge"],["vegmix",185,"vm"]],"how":"Ёжики с соусом и овощами — 3 мин в микроволновке под крышкой.","pack":"Четыре ёжика с соусом и овощи.","recipe":"hedgehogs","box":"glass","keep":3,"pull":"ёжики"},"B_teri_rice":{"n":"Курица терияки, рис, брокколи","short":"ТЕРИ|ЯКИ","art":"oven","kind":"cook","ing":[["chk",138,"teri"],["soy",12,"teri"],["honey",8,"teri"],["oil",7,"teri"],["rice",58,"rice"],["broc",160,"broc"],["oil",4,"broc"]],"how":"Всё из контейнера — 2 мин в микроволновке.","pack":"Курица, рис и брокколи, соус сверху.","recipe":"teriyaki","box":"glass","keep":3,"pull":"курица терияки"},"B_mb_cous":{"n":"Фрикадельки в томатном соусе, кускус, брокколи","short":"ФРИКА|ДЕЛЬКИ","art":"cutlets","kind":"cook","ing":[["mince",120,"mb"],["onion",20,"mb"],["egg",0.2,"mb"],["oats",8,"mb"],["tomcan",100,"mb"],["smet",20,"mb"],["cous",58,"cous"],["broc",140,"broc"]],"how":"Всё из одного контейнера — 3 мин в микроволновке.","pack":"Фрикадельки с соусом, кускус и брокколи.","recipe":"meatballs","box":"glass","keep":3,"pull":"фрикадельки"},"B_teri_bulgur":{"n":"Курица терияки, булгур, запечённая морковь","short":"ТЕРИ|ЯКИ","art":"grain","kind":"cook","ing":[["chk",138,"teri"],["soy",12,"teri"],["honey",8,"teri"],["oil",7,"teri"],["bulgur",66,"bulgur"],["carrot",120,"csal"],["oil",5,"csal"]],"how":"Всё из одного контейнера — 2 мин в микроволновке.","pack":"Курица, булгур и морковь.","recipe":"teriyaki","box":"glass","keep":3,"pull":"курица с булгуром"},"B_mb_buck":{"n":"Фрикадельки в томатном соусе, гречка, брокколи","short":"ФРИКА|ДЕЛЬКИ","art":"cutlets","kind":"cook","ing":[["mince",112,"mb"],["onion",20,"mb"],["egg",0.2,"mb"],["oats",8,"mb"],["tomcan",100,"mb"],["smet",20,"mb"],["buck",85,"buck"],["broc",160,"broc"]],"how":"Всё из контейнера — 2,5 мин в микроволновке.","pack":"Фрикадельки, гречка и брокколи.","recipe":"meatballs","box":"glass","keep":3,"pull":"фрикадельки с гречкой"},"B_curry":{"n":"Чечевичный дал с курицей и рисом","short":"ДАЛ","art":"soup","kind":"cook","ing":[["lentil",50,"dal"],["chk",95,"dal"],["tomcan",100,"dal"],["onion",30,"dal"],["carrot",50,"dal"],["oil",10,"dal"],["rice",55,"rice"]],"how":"Дал с рисом — 2,5 мин в микроволновке, перемешай на середине.","pack":"Рис на одну сторону, дал на другую.","recipe":"dal","box":"glass","keep":3,"pull":"дал"},"B_salmon":{"n":"Котлеты из горбуши, картофель из духовки, овощи","short":"ГОР|БУША","art":"oven","kind":"cook","ing":[["salmon",110,"scut"],["egg",0.3,"scut"],["oats",18,"scut"],["onion",20,"scut"],["potato",215,"wedge"],["oil",5,"wedge"],["vegmix",140,"vm2"]],"how":"Всё из одного контейнера — 2,5 мин в микроволновке.","pack":"Три котлетки, картофель и овощи.","recipe":"salmoncut","box":"glass","keep":3,"pull":"котлеты из горбуши"},"B_chili":{"n":"Чили с фасолью и курицей, рис","short":"ЧИ|ЛИ","art":"soup","kind":"cook","ing":[["mince",120,"chili"],["beans",110,"chili"],["tomcan",120,"chili"],["pepper",70,"chili"],["onion",30,"chili"],["oil",4,"chili"],["rice",50,"rice"]],"how":"Чили с рисом — 2,5 мин в микроволновке под крышкой.","pack":"Рис на одну сторону, чили на другую.","recipe":"chili","box":"glass","keep":3,"pull":"чили"},"B_bolo":{"n":"Паста болоньезе из куриного фарша, сыр","short":"БОЛО|НЬЕЗЕ","art":"pasta","kind":"cook","ing":[["pasta",80,"bpasta"],["mince",115,"bolo"],["tomcan",120,"bolo"],["carrot",40,"bolo"],["onion",30,"bolo"],["oil",4,"bolo"],["cheese",12,"bolo"]],"how":"Пасту — 2 мин в микроволновке, перемешай на середине.","pack":"Паста с соусом, сыр сверху.","recipe":"bolognese","box":"glass","keep":3,"pull":"болоньезе","make":1},"Q_yog_bowl":{"n":"Греческий йогурт с гранолой и ягодами","short":"ЙО|ГУРТ","art":"yogurt","kind":"quick","ing":[["yog",175,""],["granola",32,""],["berry",60,""]],"how":"Йогурт в миску, сверху гранола и ягоды прямо из морозилки — к концу завтрака оттают.","pack":"","recipe":null,"box":"glass","keep":3},"Q_oats":{"n":"Ночная овсянка с бананом","short":"ОВ|СЯНКА","art":"oat","kind":"quick","ing":[["oats",45,""],["milk",120,""],["yog",60,""],["banana",0.5,""],["honey",5,""]],"how":"Вечером: хлопья, молоко и йогурт в банку, перемешай — в холодильник. Утром сверху банан и мёд.","pack":"","recipe":null,"box":"glass","keep":3},"Q_toast":{"n":"Тост с творогом, сыром и огурцом","short":"ТОСТ","art":"toast","kind":"quick","ing":[["bread",60,""],["tvorog",100,""],["cucum",60,""],["cheese",20,""]],"how":"Хлеб из морозилки — 30 сек в микроволновке или в тостер. Сверху творог, сыр и огурец.","pack":"","recipe":null,"box":"glass","keep":3},"P_eggmuf":{"n":"Омлетные маффины с сыром и перцем, хлеб","short":"МАФ|ФИНЫ","art":"eggs","kind":"cook","ing":[["egg",1.5,"em"],["cheese",15,"em"],["pepper",40,"em"],["milk",20,"em"],["bread",55,"bread"]],"how":"3 маффина — 40 сек в микроволновке. Хлеб — 20 сек.","pack":"Три маффина.","recipe":"eggmuffins","box":"bag","keep":3,"pull":"омлетные маффины"},"P_syrniki":{"n":"Сырники со сметаной и ягодами","short":"СЫР|НИКИ","art":"syrniki","kind":"cook","ing":[["tvorog",140,"syr"],["egg",0.5,"syr"],["flour",34,"syr"],["honey",5,"syr"],["smet",20,"top"],["berry",30,"top"]],"how":"Сырники прямо из морозилки или холодильника — 1,5 мин в микроволновке. Сметану и ягоды сверху.","pack":"Четыре сырника, без ягод: добавишь утром.","recipe":"syrniki","box":"bag","keep":3,"store":"fz","thaw":false},"P_wrap":{"n":"Лаваш-ролл с яйцом, сыром и томатами","short":"РОЛЛ","art":"toast","kind":"cook","ing":[["lavash",52,"wrap"],["egg",1.5,"wrap"],["cheese",12,"wrap"],["cherry",70,"wrap"]],"how":"Ролл — 1 мин в микроволновке или 2 мин на сухой сковороде, тогда будет хрустящий.","pack":"Один ролл, заверни в плёнку.","recipe":"wrap","box":"bag","keep":3,"store":"fz","thaw":false},"P_pancake":{"n":"Овсяные оладьи с бананом и йогуртом","short":"ОЛА|ДЬИ","art":"oat","kind":"cook","ing":[["oats",34,"pan"],["kefir",100,"pan"],["egg",0.5,"pan"],["banana",0.5,"pan"],["honey",5,"pan"],["yog",60,"top"]],"how":"Оладьи из морозилки — 1 мин в микроволновке. Йогурт сверху.","pack":"Пять оладий, переложи пергаментом.","recipe":"pancakes","box":"bag","keep":3,"store":"fz","thaw":false},"P_zap":{"n":"Творожная запеканка с ягодами","short":"ЗАПЕ|КАНКА","art":"cottage","kind":"cook","ing":[["tvorog",125,"zap"],["egg",0.5,"zap"],["oats",22,"zap"],["honey",10,"zap"],["berry",40,"zap"]],"how":"Кусок запеканки — холодным или 40 сек в микроволновке.","pack":"Кусок запеканки.","recipe":"zapekanka","box":"bag","keep":3,"pull":"запеканка"},"P_cookie":{"n":"Овсяное печенье с бананом и какао","short":"ПЕЧЕ|НЬЕ","art":"cookies","kind":"cook","ing":[["oats",38,"ck"],["banana",0.5,"ck"],["pb",10,"ck"],["cocoa",5,"ck"]],"how":"4 печенья из банки — есть как есть.","pack":"Четыре печенья, хранятся 5 дней.","recipe":"cookies","box":"jar","keep":5,"make":1},"P_moco":{"n":"Творожный мусс с какао","short":"МУСС","art":"cottage","kind":"cook","ing":[["tvorog",95,"moco"],["yog",55,"moco"],["cocoa",5,"moco"],["honey",16,"moco"],["berry",55,"moco"]],"how":"Достань баночку из холодильника — есть холодным, ложкой.","pack":"Мусс, ягоды сверху.","recipe":"mousse","box":"jar","keep":3,"pull":"мусс с какао"},"P_mobe":{"n":"Творожный мусс с ягодами и хлопьями","short":"МУСС","art":"cottage","kind":"cook","ing":[["tvorog",85,"mobe"],["yog",55,"mobe"],["berry",70,"mobe"],["honey",18,"mobe"],["oats",15,"mobe"]],"how":"Достань баночку из холодильника — есть холодным, ложкой.","pack":"Мусс, ягоды сверху.","recipe":"mousse","box":"jar","keep":3,"pull":"мусс с ягодами","make":1},"Q_smoothie":{"n":"Смузи: кефир, банан, ягоды","short":"СМУ|ЗИ","art":"smoothie","kind":"quick","ing":[["kefir",200,""],["banana",1,""],["berry",60,""],["oats",10,""]],"how":"Всё в блендер на 30 секунд.","pack":"","recipe":null,"box":"glass","keep":3},"Q_tvorog":{"n":"Творог с ягодами, мёдом и гранолой","short":"ТВО|РОГ","art":"cottage","kind":"quick","ing":[["tvorog",115,""],["berry",60,""],["honey",8,""],["granola",25,""]],"how":"Творог в миску, сверху ягоды, мёд и гранола.","pack":"","recipe":null,"box":"glass","keep":3},"P_bbread":{"n":"Банановый хлеб, йогурт","short":"БАНАН|ХЛЕБ","art":"bake","kind":"cook","ing":[["banana",1,"bb"],["oats",24,"bb"],["egg",0.5,"bb"],["yog",30,"bb"],["pb",10,"bb"],["honey",5,"bb"],["yog",60,""]],"how":"Кусок хлеба — 20 сек в микроволновке, рядом йогурт из банки.","pack":"Кусок хлеба.","recipe":"bananabread","box":"bag","keep":3,"store":"fz","thaw":false},"Q_yog_cocoa":{"n":"Йогурт с бананом, какао и гранолой","short":"ЙО|ГУРТ","art":"yogurt","kind":"quick","ing":[["yog",150,""],["banana",0.5,""],["cocoa",5,""],["honey",5,""],["granola",15,""]],"how":"Йогурт перемешай с какао и мёдом, сверху банан и гранола.","pack":"","recipe":null,"box":"glass","keep":3},"P_cmuf":{"n":"Творожные маффины с ягодами","short":"МАФ|ФИНЫ","art":"bake2","kind":"cook","ing":[["tvorog",110,"cm"],["egg",0.5,"cm"],["oats",22,"cm"],["berry",40,"cm"],["honey",8,"cm"]],"how":"2 маффина — холодными или 30 сек в микроволновке.","pack":"Два маффина.","recipe":"curdmuffins","box":"bag","keep":3,"pull":"творожные маффины","make":1},"Q_apple":{"n":"Яблоко с арахисовой пастой, кефир","short":"ЯБЛО|КО","art":"apple","kind":"quick","ing":[["apple",1,""],["pb",15,""],["kefir",150,""]],"how":"Яблоко дольками, к нему ложка арахисовой пасты и стакан кефира.","pack":"","recipe":null,"box":"glass","keep":3}},"weeks":[[["Q_yog_bowl","A_chk_buck","P_zap","A_cut_mash"],["P_eggmuf","A_chk_rice","P_moco","A_cut_buck"],["Q_oats","A_chk_buck","P_zap","A_cut_mash"],["Q_toast","A_plov","P_cookie","A_tuna_pasta"],["P_syrniki","A_soup","P_mobe","A_hedge"],["P_eggmuf","A_plov","P_cookie","A_tuna_pasta"],["P_syrniki","A_soup","P_cmuf","A_hedge"]],[["Q_yog_bowl","B_teri_rice","P_bbread","B_mb_cous"],["P_wrap","B_teri_bulgur","P_moco","B_mb_buck"],["P_pancake","B_teri_rice","P_bbread","B_mb_cous"],["Q_toast","B_curry","P_mobe","B_salmon"],["Q_oats","B_chili","P_cmuf","B_bolo"],["P_wrap","B_curry","P_cookie","B_salmon"],["P_pancake","B_chili","P_cmuf","B_bolo"]],[["Q_oats","A_chk_buck","P_zap","A_cut_mash"],["P_eggmuf","A_chk_rice","P_moco","A_cut_buck"],["Q_yog_bowl","A_chk_buck","P_zap","A_cut_mash"],["P_syrniki","A_soup","P_mobe","A_hedge"],["P_eggmuf","A_plov","P_cookie","A_tuna_pasta"],["P_syrniki","A_soup","P_cmuf","A_hedge"],["Q_toast","A_plov","P_cookie","A_tuna_pasta"]],[["P_pancake","B_teri_rice","P_bbread","B_mb_cous"],["P_wrap","B_teri_bulgur","P_moco","B_mb_buck"],["Q_yog_bowl","B_teri_rice","P_bbread","B_mb_cous"],["Q_oats","B_chili","P_cmuf","B_bolo"],["P_wrap","B_curry","P_cookie","B_salmon"],["P_pancake","B_chili","P_cmuf","B_bolo"],["Q_toast","B_curry","P_mobe","B_salmon"]]],"cooks":[[{"steps":[[0,"Духовка","Свёклу — в духовку",60,null,"Включи духовку на 200°, ждать разогрева не надо. Свёклу ({beet@beet}) помой щёткой, не чисть. Заверни каждую в фольгу и положи на решётку сбоку. ",["beet"],"Духовка и крупы"],[3,"Плита",["свари ",["buck","гречку"],["rice","рис"]],15,null,"Гречка: {buck@buck} в кастрюлю, воды вдвое больше по объёму, щепотка соли. Рис: {rice@rice} промой, воды в полтора раза больше, соль. Обе на сильный огонь; закипело — крышка и самый слабый огонь на 15 минут. Крышки не открывай.",["buck","rice"],"Духовка и крупы"],[6,"Стол",["замаринуй ",["chk","курицу"],["veg","нарежь овощи"]],0,"chicken","Грудку ({chk@chk}) разрежь на {n:chk} равных куска. Натри солью, паприкой и маслом ({oil@chk}); один кусок можно сухими травами — будет другой вкус. Кабачок, перец и морковь ({zucc@veg}, {pepper@veg}, {carrot@veg}) порежь крупно, посоли, сбрызни маслом.",["chk","veg"],"Курица и картофель"],[12,"Духовка",[["chk","курицу"],["veg","овощи"]," — в духовку"],25,null,"Противень застели пергаментом. Курицу и овощи разложи в один слой, чтобы не касались друг друга. Средний уровень, рядом со свёклой. ",["chk","veg"],"Курица и картофель"],[15,"Плита","Поставь картофель на пюре",20,null,"Картофель ({potato@mash}) почисти, порежь на четвертинки, залей холодной водой, посоли. После закипания — 20 минут на среднем огне.",["mash"],"Курица и картофель"],[18,"Стол","Замеси фарш и слепи котлеты",0,"cutlets","Кабачок ({zucc@cut}) натри и хорошо отожми руками. Лук ({onion@cut}) мелко порежь. Смешай с фаршем ({mince@cut}), яйцом ({egg@cut}), хлопьями ({oats@cut}) и солью. Мокрыми руками слепи {x:cut:3} шт и выложи на второй противень с пергаментом.",["cut"],"Котлеты, плов, пюре"],[24,"Плита","Плов: обжарь мясо и залей рис",25,"plov","Бедро ({thigh@plov}) порежь кусочками, обжарь в сотейнике на масле ({oil@plov}) 5 минут на сильном огне. Добавь лук полукольцами ({onion@plov}) и морковь соломкой ({carrot@plov}), ещё 3 минуты. Всыпь промытый рис ({rice@plov}), соль, специи для плова. Залей водой на палец выше риса. Закипело — крышка, слабый огонь, 20 минут. Не мешай.",["plov"],"Котлеты, плов, пюре"],[38,"Духовка","Достань курицу, поставь котлеты",25,null,"Курицу и овощи достань: курица готова, если сок прозрачный. На их место — противень с котлетами, 200°, 25 минут. Переворачивать не нужно.",["cut"],"Котлеты, плов, пюре"],[40,"Плита","Сделай пюре",0,null,"Слей воду с картофеля, разомни толкушкой с тёплым молоком ({milk@mash}) и щепоткой соли. Комочки — это нормально.",["mash"],"Котлеты, плов, пюре"],[43,"Плита","Суп: свари овощи и курицу",20,"pumpkin","Тыкву ({pumpk@soup}), картофель ({potato@soup}), морковь ({carrot@soup}) и лук ({onion@soup}) порежь кубиками, сложи в кастрюлю. Грудку ({chk@soup}) положи целым куском сверху. Залей водой вровень с овощами, посоли. После закипания — 20 минут под крышкой.",["soup"],"Суп и ёжики"],[46,"Стол","Слепи ёжики",0,"hedgehogs","Фарш ({mince@hedge}) смешай с сырым промытым рисом ({rice@hedge}), мелко порезанным луком ({onion@hedge}), яйцом ({egg@hedge}) и солью. Мокрыми руками слепи {x:hedge:4} шт.",["hedge"],"Суп и ёжики"],[52,"Плита","Потуши ёжики в соусе",25,null,"В глубокую сковороду вылей томаты ({tomcan@hedge}), разомни вилкой, добавь сметану ({smet@hedge}), полстакана воды и соль. Выложи ёжики в один слой. Закипело — крышка, слабый огонь, 25 минут.",["hedge"],"Суп и ёжики"],[56,"Стол",["замеси ",["syr","сырники"],["zap","запеканку"],["em","омлетные маффины"]],0,"syrniki","Сырники: творог {tvorog@syr}, яйца {egg@syr}, рисовая мука {flour@syr}, мёд {honey@syr} — разомни вилкой, слепи {x:syr:4} шт, обваляй в муке. Запеканка: творог {tvorog@zap}, яйца {egg@zap}, хлопья {oats@zap}, мёд {honey@zap} — перемешай, выложи в форму слоем в 3 см, сверху ягоды ({berry@zap}). Омлетные маффины: яйца {egg@em} взбей с молоком ({milk@em}) и солью, добавь перец кубиками ({pepper@em}) и тёртый сыр ({cheese@em}), разлей по {x:em:3} формочкам.",["syr","zap","em"],"Выпечка"],[66,"Духовка",["запеки ",["syr","сырники"],["zap","запеканку"],["em","маффины"]],20,null,"Котлеты достань. Убавь до 180°. Сырники — на противень с пергаментом, форму с запеканкой и формочки с маффинами — рядом или на второй уровень. Через 20 минут достань сырники и маффины, запеканку оставь ещё на 10 минут.",["syr","zap","em"],"Выпечка"],[70,"Стол","Сделай из супа крем",0,null,"Курицу достань и порежь кубиками. Овощи с половиной отвара перелей в блендер порциями, добавь молоко ({milk@soup}) — 30 секунд до гладкости. Горячее наливай не больше половины чаши и придерживай крышку полотенцем. Верни курицу в суп.",["soup"],"Суп и овощи"],[78,"Плита","Прогрей овощную смесь",7,null,"Овощную смесь ({vegmix}) — на сковороду без разморозки, 6–7 минут под крышкой, посоли.",["vm","vm2"],"Суп и овощи"],[82,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@moco}), йогурт ({yog@moco}), какао ({cocoa@moco}) и мёд ({honey@moco}) взбей блендером до гладкости — 30 секунд. Разложи по {n:moco} баночкам, сверху ягоды ({berry@moco}).",["moco"],"Мусс и соус"],[84,"Стол",["",["beet","порежь свёклу"],["ys","смешай соус"]],0,null,"Свёклу разверни, сними кожуру (сходит руками) и порежь крупными кубиками, посоли и сбрызни маслом ({oil@beet}) — она пойдёт в контейнер к курице. Соус: йогурт ({yog@ys}), рубленый укроп, соль.",["beet","ys"],"Мусс и соус"]],"gear":["2 кастрюли","сковорода","сотейник","2 противня","форма для запеканки","формочки для маффинов","блендер","тёрка"]},{"steps":[[0,"Стол","Замеси творожные маффины",0,"curdmuffins","Творог ({tvorog@cm}), яйца ({egg@cm}), хлопья ({oats@cm}), мёд ({honey@cm}) — перемешай вилкой, вмешай ягоды ({berry@cm}). Разложи по {x:cm:2} формочкам.",["cm"],"Выпечка"],[2,"Стол","Замеси печенье",0,"cookies","Бананы ({banana@ck}) разомни вилкой, смешай с хлопьями ({oats@ck}), арахисовой пастой ({pb@ck}) и какао ({cocoa@ck}). Ложкой выложи {x:ck:4} шт на пергамент.",["ck"],"Выпечка"],[5,"Духовка",["испеки ",["ck","печенье"],["cm","маффины"]],20,null,"Духовка 180°, средний уровень. Печенье достань через 15 минут — оно останется мягким, так и должно быть; маффины через 20, до золотистой макушки.",["ck","cm"],"Выпечка"],[6,"Плита","Свари пасту и соус с тунцом",12,"tunapasta","Макароны ({pasta@pasta}) — в кипящую подсоленную воду на 9 минут. Рядом в сковороде обжарь лук ({onion@pasta}) на масле 2 минуты, добавь томаты ({tomcan@pasta}), 5 минут на среднем огне, в конце — тунец без жидкости ({tuna@pasta}). Смешай с пастой.",["pasta"],"Паста и мусс"],[20,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@mobe}), йогурт ({yog@mobe}) и мёд ({honey@mobe}) взбей блендером 30 секунд. Разложи по {n:mobe} баночкам, сверху ягоды ({berry@mobe}). Хлопья ({oats@mobe}) вмешай прямо в мусс — к утру станут мягкими.",["mobe"],"Паста и мусс"]],"gear":["кастрюля","сковорода","противень","блендер"]}],[{"steps":[[0,"Духовка","Банановый хлеб — в духовку",35,"bananabread","Духовка 180°. Бананы ({banana@bb}) разомни вилкой, смешай с яйцами ({egg@bb}), йогуртом ({yog@bb}), арахисовой пастой ({pb@bb}), мёдом ({honey@bb}) и хлопьями ({oats@bb}), щепотка соды. Вылей в форму с пергаментом слоем 3–4 см. 35 минут; готов, если зубочистка сухая.",["bb"],"Выпечка и крупы"],[6,"Плита",["свари ",["rice","рис"],["bulgur","булгур"],["buck","гречку"]],15,null,"Рис ({rice@rice}) промой, воды в полтора раза больше. Булгур ({bulgur@bulgur}) и гречка ({buck@buck}) — воды вдвое больше. Всё посоли, после закипания — крышка и слабый огонь на 15 минут.",["rice","bulgur","buck"],"Выпечка и крупы"],[10,"Стол","Замаринуй курицу в терияки",0,"teriyaki","Грудку ({chk@teri}) порежь полосками в палец. Смешай с соевым соусом ({soy@teri}), мёдом ({honey@teri}) и маслом ({oil@teri}). Пусть постоит, пока лепишь фрикадельки.",["teri"],"Курица и фрикадельки"],[13,"Стол","Слепи фрикадельки",0,"meatballs","Фарш ({mince@mb}) смешай с мелко порезанным луком ({onion@mb}), яйцом ({egg@mb}), хлопьями ({oats@mb}) и солью. Мокрыми руками слепи {x:mb:5} шт размером с грецкий орех.",["mb"],"Курица и фрикадельки"],[22,"Плита","Потуши фрикадельки в томатном соусе",20,null,"В глубокую сковороду — томаты ({tomcan@mb}), разомни, добавь сметану ({smet@mb}), полстакана воды, соль. Выложи фрикадельки, после закипания — крышка, слабый огонь, 20 минут.",["mb"],"Курица и фрикадельки"],[25,"Плита","Обжарь курицу терияки",10,null,"Сковороду разогрей на сильном огне. Курицу вместе с маринадом — 8–10 минут, помешивая, пока соус не загустеет и не станет липким.",["teri"],"Курица и фрикадельки"],[36,"Стол","Слепи котлеты из горбуши",0,"salmoncut","Горбушу ({salmon@scut}) слей и разомни вилкой, кости вынимать не надо — они мягкие. Смешай с яйцами ({egg@scut}), хлопьями ({oats@scut}) и мелким луком ({onion@scut}). Слепи {x:scut:3} шт — плоских, по 3 на порцию.",["scut"],"Рыба, картофель, морковь"],[40,"Духовка","Картофель дольками — в духовку",30,null,"Банановый хлеб достань. Поставь 200°. Картофель ({potato@wedge}) помой, не чисть, порежь дольками. Посоли, сбрызни маслом ({oil@wedge}), паприка по желанию. В один слой на пергамент, 30 минут.",["wedge"],"Рыба, картофель, морковь"],[41,"Духовка","Запеки морковь",20,null,"Морковь ({carrot@csal}) порежь брусочками, посоли, сбрызни маслом ({oil@csal}) и запеки вместе с картофелем — она пойдёт в контейнер к курице.",["csal"],"Рыба, картофель, морковь"],[44,"Плита","Свари дал",25,"dal","В кастрюле обжарь лук ({onion@dal}) и морковь ({carrot@dal}) на масле ({oil@dal}) 3 минуты. Добавь грудку кубиками ({chk@dal}), ещё 3 минуты. Всыпь чечевицу ({lentil@dal}), томаты ({tomcan@dal}), карри или куркуму, соль. Воды — на два пальца выше. 20 минут под крышкой на слабом огне.",["dal"],"Дал и чили"],[48,"Плита","Обжарь фарш для чили",8,"chili","В сковороде обжарь лук ({onion@chili}) на масле ({oil@chili}) 2 минуты, добавь фарш ({mince@chili}). Разбивай лопаткой, 6–8 минут, пока не побелеет.",["chili"],"Дал и чили"],[57,"Плита","Доведи чили",15,null,"Добавь перец кубиками ({pepper@chili}), фасоль без жидкости ({beans@chili}), томаты ({tomcan@chili}), паприку и соль. 15 минут на слабом огне без крышки.",["chili"],"Дал и чили"],[71,"Духовка","Котлеты из горбуши — в духовку",15,null,"Картофель достань. Котлеты — на тот же пергамент, 200°, 15 минут, на середине переверни.",["scut"],"Рыба и гарниры"],[74,"Плита",["",["broc","брокколи"],["cous","кускус"]],6,null,"Брокколи ({broc@broc}) — в кипящую подсоленную воду на 4 минуты, откинь. Кускус ({cous@cous}) залей кипятком в полтора раза больше по объёму, посоли, накрой на 5 минут и разрыхли вилкой.",["broc","cous"],"Рыба и гарниры"],[80,"Плита","Испеки оладьи",15,"pancakes","Хлопья ({oats@pan}) залей кефиром ({kefir@pan}) на 5 минут. Добавь яйца ({egg@pan}), размятый банан ({banana@pan}), мёд ({honey@pan}), щепотку соды. Жарь на сухой антипригарной сковороде на среднем огне по 2 минуты с каждой стороны — выйдет {x:pan:5} шт.",["pan"],"Завтраки и мусс"],[90,"Плита","Собери лаваш-роллы",10,"wrap","Яйца ({egg@wrap}) взбей с солью и пожарь тонким омлетом в {n:wrap} захода. На лист лаваша ({lavash@wrap} всего) — омлет, тёртый сыр ({cheese@wrap}) и черри половинками ({cherry@wrap}). Сверни плотным рулетом, подогни края.",["wrap"],"Завтраки и мусс"],[96,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@moco}), йогурт ({yog@moco}), какао ({cocoa@moco}) и мёд ({honey@moco}) взбей блендером 30 секунд. Разложи по {n:moco} баночкам, сверху ягоды ({berry@moco}).",["moco"],"Завтраки и мусс"]],"gear":["2 кастрюли","2 сковороды","2 противня","форма для хлеба","блендер","тёрка"]},{"steps":[[0,"Стол","Замеси творожные маффины",0,"curdmuffins","Творог ({tvorog@cm}), яйца ({egg@cm}), хлопья ({oats@cm}), мёд ({honey@cm}) — перемешай вилкой, вмешай ягоды ({berry@cm}). Разложи по {x:cm:2} формочкам.",["cm"],"Выпечка"],[2,"Стол","Замеси печенье",0,"cookies","Бананы ({banana@ck}) разомни вилкой, смешай с хлопьями ({oats@ck}), арахисовой пастой ({pb@ck}) и какао ({cocoa@ck}). Ложкой выложи {x:ck:4} шт на пергамент.",["ck"],"Выпечка"],[5,"Духовка",["испеки ",["cm","маффины"],["ck","печенье"]],20,null,"Духовка 180°, средний уровень. Маффины 20 минут, до золотистой макушки; печенье достань через 15 — оно останется мягким.",["cm","ck"],"Выпечка"],[6,"Плита","Обжарь фарш и сделай соус",12,"bolognese","Обжарь лук ({onion@bolo}) на масле ({oil@bolo}) 2 минуты, добавь фарш ({mince@bolo}) и тёртую морковь ({carrot@bolo}), 6 минут. Влей томаты ({tomcan@bolo}), посоли, добавь сушёный базилик — ещё 10 минут на слабом огне.",["bolo"],"Паста и мусс"],[14,"Плита","Свари пасту",10,null,"Макароны ({pasta@bpasta}) — в кипящую подсоленную воду на 9 минут. Слей и сразу смешай с соусом, сверху тёртый сыр ({cheese@bolo}).",["bpasta"],"Паста и мусс"],[22,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@mobe}), йогурт ({yog@mobe}) и мёд ({honey@mobe}) взбей блендером 30 секунд. Разложи по {n:mobe} баночкам, сверху ягоды ({berry@mobe}). Гранолу ({granola@mobe}) положи в пакетик отдельно.",["mobe"],"Паста и мусс"]],"gear":["кастрюля","сковорода","формочки для маффинов","блендер"]}],[{"steps":[[0,"Духовка","Свёклу — в духовку",60,null,"Включи духовку на 200°, ждать разогрева не надо. Свёклу ({beet@beet}) помой щёткой, не чисть. Заверни каждую в фольгу и положи на решётку сбоку. ",["beet"],"Духовка и крупы"],[3,"Плита",["свари ",["buck","гречку"],["rice","рис"]],15,null,"Гречка: {buck@buck} в кастрюлю, воды вдвое больше по объёму, щепотка соли. Рис: {rice@rice} промой, воды в полтора раза больше, соль. Обе на сильный огонь; закипело — крышка и самый слабый огонь на 15 минут. Крышки не открывай.",["buck","rice"],"Духовка и крупы"],[6,"Стол",["замаринуй ",["chk","курицу"],["veg","нарежь овощи"]],0,"chicken","Грудку ({chk@chk}) разрежь на {n:chk} равных куска. Натри солью, паприкой и маслом ({oil@chk}); один кусок можно сухими травами — будет другой вкус. Кабачок, перец и морковь ({zucc@veg}, {pepper@veg}, {carrot@veg}) порежь крупно, посоли, сбрызни маслом.",["chk","veg"],"Курица и картофель"],[12,"Духовка",[["chk","курицу"],["veg","овощи"]," — в духовку"],25,null,"Противень застели пергаментом. Курицу и овощи разложи в один слой, чтобы не касались друг друга. Средний уровень, рядом со свёклой. ",["chk","veg"],"Курица и картофель"],[15,"Плита","Поставь картофель на пюре",20,null,"Картофель ({potato@mash}) почисти, порежь на четвертинки, залей холодной водой, посоли. После закипания — 20 минут на среднем огне.",["mash"],"Курица и картофель"],[18,"Стол","Замеси фарш и слепи котлеты",0,"cutlets","Кабачок ({zucc@cut}) натри и хорошо отожми руками. Лук ({onion@cut}) мелко порежь. Смешай с фаршем ({mince@cut}), яйцом ({egg@cut}), хлопьями ({oats@cut}) и солью. Мокрыми руками слепи {x:cut:3} шт и выложи на второй противень с пергаментом.",["cut"],"Котлеты, плов, пюре"],[24,"Плита","Плов: обжарь мясо и залей рис",25,"plov","Бедро ({thigh@plov}) порежь кусочками, обжарь в сотейнике на масле ({oil@plov}) 5 минут на сильном огне. Добавь лук полукольцами ({onion@plov}) и морковь соломкой ({carrot@plov}), ещё 3 минуты. Всыпь промытый рис ({rice@plov}), соль, специи для плова. Залей водой на палец выше риса. Закипело — крышка, слабый огонь, 20 минут. Не мешай.",["plov"],"Котлеты, плов, пюре"],[38,"Духовка","Достань курицу, поставь котлеты",25,null,"Курицу и овощи достань: курица готова, если сок прозрачный. На их место — противень с котлетами, 200°, 25 минут. Переворачивать не нужно.",["cut"],"Котлеты, плов, пюре"],[40,"Плита","Сделай пюре",0,null,"Слей воду с картофеля, разомни толкушкой с тёплым молоком ({milk@mash}) и щепоткой соли. Комочки — это нормально.",["mash"],"Котлеты, плов, пюре"],[43,"Плита","Суп: свари овощи и курицу",20,"pumpkin","Тыкву ({pumpk@soup}), картофель ({potato@soup}), морковь ({carrot@soup}) и лук ({onion@soup}) порежь кубиками, сложи в кастрюлю. Грудку ({chk@soup}) положи целым куском сверху. Залей водой вровень с овощами, посоли. После закипания — 20 минут под крышкой.",["soup"],"Суп и ёжики"],[46,"Стол","Слепи ёжики",0,"hedgehogs","Фарш ({mince@hedge}) смешай с сырым промытым рисом ({rice@hedge}), мелко порезанным луком ({onion@hedge}), яйцом ({egg@hedge}) и солью. Мокрыми руками слепи {x:hedge:4} шт.",["hedge"],"Суп и ёжики"],[52,"Плита","Потуши ёжики в соусе",25,null,"В глубокую сковороду вылей томаты ({tomcan@hedge}), разомни вилкой, добавь сметану ({smet@hedge}), полстакана воды и соль. Выложи ёжики в один слой. Закипело — крышка, слабый огонь, 25 минут.",["hedge"],"Суп и ёжики"],[56,"Стол",["замеси ",["syr","сырники"],["zap","запеканку"],["em","омлетные маффины"]],0,"syrniki","Сырники: творог {tvorog@syr}, яйца {egg@syr}, рисовая мука {flour@syr}, мёд {honey@syr} — разомни вилкой, слепи {x:syr:4} шт, обваляй в муке. Запеканка: творог {tvorog@zap}, яйца {egg@zap}, хлопья {oats@zap}, мёд {honey@zap} — перемешай, выложи в форму слоем в 3 см, сверху ягоды ({berry@zap}). Омлетные маффины: яйца {egg@em} взбей с молоком ({milk@em}) и солью, добавь перец кубиками ({pepper@em}) и тёртый сыр ({cheese@em}), разлей по {x:em:3} формочкам.",["syr","zap","em"],"Выпечка"],[66,"Духовка",["запеки ",["syr","сырники"],["zap","запеканку"],["em","маффины"]],20,null,"Котлеты достань. Убавь до 180°. Сырники — на противень с пергаментом, форму с запеканкой и формочки с маффинами — рядом или на второй уровень. Через 20 минут достань сырники и маффины, запеканку оставь ещё на 10 минут.",["syr","zap","em"],"Выпечка"],[70,"Стол","Сделай из супа крем",0,null,"Курицу достань и порежь кубиками. Овощи с половиной отвара перелей в блендер порциями, добавь молоко ({milk@soup}) — 30 секунд до гладкости. Горячее наливай не больше половины чаши и придерживай крышку полотенцем. Верни курицу в суп.",["soup"],"Суп и овощи"],[78,"Плита","Прогрей овощную смесь",7,null,"Овощную смесь ({vegmix}) — на сковороду без разморозки, 6–7 минут под крышкой, посоли.",["vm","vm2"],"Суп и овощи"],[82,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@moco}), йогурт ({yog@moco}), какао ({cocoa@moco}) и мёд ({honey@moco}) взбей блендером до гладкости — 30 секунд. Разложи по {n:moco} баночкам, сверху ягоды ({berry@moco}).",["moco"],"Мусс и соус"],[84,"Стол",["",["beet","порежь свёклу"],["ys","смешай соус"]],0,null,"Свёклу разверни, сними кожуру (сходит руками) и порежь крупными кубиками, посоли и сбрызни маслом ({oil@beet}) — она пойдёт в контейнер к курице. Соус: йогурт ({yog@ys}), рубленый укроп, соль.",["beet","ys"],"Мусс и соус"]],"gear":["2 кастрюли","сковорода","сотейник","2 противня","форма для запеканки","формочки для маффинов","блендер","тёрка"]},{"steps":[[0,"Стол","Замеси творожные маффины",0,"curdmuffins","Творог ({tvorog@cm}), яйца ({egg@cm}), хлопья ({oats@cm}), мёд ({honey@cm}) — перемешай вилкой, вмешай ягоды ({berry@cm}). Разложи по {x:cm:2} формочкам.",["cm"],"Выпечка"],[2,"Стол","Замеси печенье",0,"cookies","Бананы ({banana@ck}) разомни вилкой, смешай с хлопьями ({oats@ck}), арахисовой пастой ({pb@ck}) и какао ({cocoa@ck}). Ложкой выложи {x:ck:4} шт на пергамент.",["ck"],"Выпечка"],[5,"Духовка",["испеки ",["ck","печенье"],["cm","маффины"]],20,null,"Духовка 180°, средний уровень. Печенье достань через 15 минут — оно останется мягким, так и должно быть; маффины через 20, до золотистой макушки.",["ck","cm"],"Выпечка"],[6,"Плита","Свари пасту и соус с тунцом",12,"tunapasta","Макароны ({pasta@pasta}) — в кипящую подсоленную воду на 9 минут. Рядом в сковороде обжарь лук ({onion@pasta}) на масле 2 минуты, добавь томаты ({tomcan@pasta}), 5 минут на среднем огне, в конце — тунец без жидкости ({tuna@pasta}). Смешай с пастой.",["pasta"],"Паста и мусс"],[20,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@mobe}), йогурт ({yog@mobe}) и мёд ({honey@mobe}) взбей блендером 30 секунд. Разложи по {n:mobe} баночкам, сверху ягоды ({berry@mobe}). Хлопья ({oats@mobe}) вмешай прямо в мусс — к утру станут мягкими.",["mobe"],"Паста и мусс"]],"gear":["кастрюля","сковорода","противень","блендер"]}],[{"steps":[[0,"Духовка","Банановый хлеб — в духовку",35,"bananabread","Духовка 180°. Бананы ({banana@bb}) разомни вилкой, смешай с яйцами ({egg@bb}), йогуртом ({yog@bb}), арахисовой пастой ({pb@bb}), мёдом ({honey@bb}) и хлопьями ({oats@bb}), щепотка соды. Вылей в форму с пергаментом слоем 3–4 см. 35 минут; готов, если зубочистка сухая.",["bb"],"Выпечка и крупы"],[6,"Плита",["свари ",["rice","рис"],["bulgur","булгур"],["buck","гречку"]],15,null,"Рис ({rice@rice}) промой, воды в полтора раза больше. Булгур ({bulgur@bulgur}) и гречка ({buck@buck}) — воды вдвое больше. Всё посоли, после закипания — крышка и слабый огонь на 15 минут.",["rice","bulgur","buck"],"Выпечка и крупы"],[10,"Стол","Замаринуй курицу в терияки",0,"teriyaki","Грудку ({chk@teri}) порежь полосками в палец. Смешай с соевым соусом ({soy@teri}), мёдом ({honey@teri}) и маслом ({oil@teri}). Пусть постоит, пока лепишь фрикадельки.",["teri"],"Курица и фрикадельки"],[13,"Стол","Слепи фрикадельки",0,"meatballs","Фарш ({mince@mb}) смешай с мелко порезанным луком ({onion@mb}), яйцом ({egg@mb}), хлопьями ({oats@mb}) и солью. Мокрыми руками слепи {x:mb:5} шт размером с грецкий орех.",["mb"],"Курица и фрикадельки"],[22,"Плита","Потуши фрикадельки в томатном соусе",20,null,"В глубокую сковороду — томаты ({tomcan@mb}), разомни, добавь сметану ({smet@mb}), полстакана воды, соль. Выложи фрикадельки, после закипания — крышка, слабый огонь, 20 минут.",["mb"],"Курица и фрикадельки"],[25,"Плита","Обжарь курицу терияки",10,null,"Сковороду разогрей на сильном огне. Курицу вместе с маринадом — 8–10 минут, помешивая, пока соус не загустеет и не станет липким.",["teri"],"Курица и фрикадельки"],[36,"Стол","Слепи котлеты из горбуши",0,"salmoncut","Горбушу ({salmon@scut}) слей и разомни вилкой, кости вынимать не надо — они мягкие. Смешай с яйцами ({egg@scut}), хлопьями ({oats@scut}) и мелким луком ({onion@scut}). Слепи {x:scut:3} шт — плоских, по 3 на порцию.",["scut"],"Рыба, картофель, морковь"],[40,"Духовка","Картофель дольками — в духовку",30,null,"Банановый хлеб достань. Поставь 200°. Картофель ({potato@wedge}) помой, не чисть, порежь дольками. Посоли, сбрызни маслом ({oil@wedge}), паприка по желанию. В один слой на пергамент, 30 минут.",["wedge"],"Рыба, картофель, морковь"],[41,"Духовка","Запеки морковь",20,null,"Морковь ({carrot@csal}) порежь брусочками, посоли, сбрызни маслом ({oil@csal}) и запеки вместе с картофелем — она пойдёт в контейнер к курице.",["csal"],"Рыба, картофель, морковь"],[44,"Плита","Свари дал",25,"dal","В кастрюле обжарь лук ({onion@dal}) и морковь ({carrot@dal}) на масле ({oil@dal}) 3 минуты. Добавь грудку кубиками ({chk@dal}), ещё 3 минуты. Всыпь чечевицу ({lentil@dal}), томаты ({tomcan@dal}), карри или куркуму, соль. Воды — на два пальца выше. 20 минут под крышкой на слабом огне.",["dal"],"Дал и чили"],[48,"Плита","Обжарь фарш для чили",8,"chili","В сковороде обжарь лук ({onion@chili}) на масле ({oil@chili}) 2 минуты, добавь фарш ({mince@chili}). Разбивай лопаткой, 6–8 минут, пока не побелеет.",["chili"],"Дал и чили"],[57,"Плита","Доведи чили",15,null,"Добавь перец кубиками ({pepper@chili}), фасоль без жидкости ({beans@chili}), томаты ({tomcan@chili}), паприку и соль. 15 минут на слабом огне без крышки.",["chili"],"Дал и чили"],[71,"Духовка","Котлеты из горбуши — в духовку",15,null,"Картофель достань. Котлеты — на тот же пергамент, 200°, 15 минут, на середине переверни.",["scut"],"Рыба и гарниры"],[74,"Плита",["",["broc","брокколи"],["cous","кускус"]],6,null,"Брокколи ({broc@broc}) — в кипящую подсоленную воду на 4 минуты, откинь. Кускус ({cous@cous}) залей кипятком в полтора раза больше по объёму, посоли, накрой на 5 минут и разрыхли вилкой.",["broc","cous"],"Рыба и гарниры"],[80,"Плита","Испеки оладьи",15,"pancakes","Хлопья ({oats@pan}) залей кефиром ({kefir@pan}) на 5 минут. Добавь яйца ({egg@pan}), размятый банан ({banana@pan}), мёд ({honey@pan}), щепотку соды. Жарь на сухой антипригарной сковороде на среднем огне по 2 минуты с каждой стороны — выйдет {x:pan:5} шт.",["pan"],"Завтраки и мусс"],[90,"Плита","Собери лаваш-роллы",10,"wrap","Яйца ({egg@wrap}) взбей с солью и пожарь тонким омлетом в {n:wrap} захода. На лист лаваша ({lavash@wrap} всего) — омлет, тёртый сыр ({cheese@wrap}) и черри половинками ({cherry@wrap}). Сверни плотным рулетом, подогни края.",["wrap"],"Завтраки и мусс"],[96,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@moco}), йогурт ({yog@moco}), какао ({cocoa@moco}) и мёд ({honey@moco}) взбей блендером 30 секунд. Разложи по {n:moco} баночкам, сверху ягоды ({berry@moco}).",["moco"],"Завтраки и мусс"]],"gear":["2 кастрюли","2 сковороды","2 противня","форма для хлеба","блендер","тёрка"]},{"steps":[[0,"Стол","Замеси творожные маффины",0,"curdmuffins","Творог ({tvorog@cm}), яйца ({egg@cm}), хлопья ({oats@cm}), мёд ({honey@cm}) — перемешай вилкой, вмешай ягоды ({berry@cm}). Разложи по {x:cm:2} формочкам.",["cm"],"Выпечка"],[2,"Стол","Замеси печенье",0,"cookies","Бананы ({banana@ck}) разомни вилкой, смешай с хлопьями ({oats@ck}), арахисовой пастой ({pb@ck}) и какао ({cocoa@ck}). Ложкой выложи {x:ck:4} шт на пергамент.",["ck"],"Выпечка"],[5,"Духовка",["испеки ",["cm","маффины"],["ck","печенье"]],20,null,"Духовка 180°, средний уровень. Маффины 20 минут, до золотистой макушки; печенье достань через 15 — оно останется мягким.",["cm","ck"],"Выпечка"],[6,"Плита","Обжарь фарш и сделай соус",12,"bolognese","Обжарь лук ({onion@bolo}) на масле ({oil@bolo}) 2 минуты, добавь фарш ({mince@bolo}) и тёртую морковь ({carrot@bolo}), 6 минут. Влей томаты ({tomcan@bolo}), посоли, добавь сушёный базилик — ещё 10 минут на слабом огне.",["bolo"],"Паста и мусс"],[14,"Плита","Свари пасту",10,null,"Макароны ({pasta@bpasta}) — в кипящую подсоленную воду на 9 минут. Слей и сразу смешай с соусом, сверху тёртый сыр ({cheese@bolo}).",["bpasta"],"Паста и мусс"],[22,"Стол","Собери творожный мусс",0,"mousse","Творог ({tvorog@mobe}), йогурт ({yog@mobe}) и мёд ({honey@mobe}) взбей блендером 30 секунд. Разложи по {n:mobe} баночкам, сверху ягоды ({berry@mobe}). Гранолу ({granola@mobe}) положи в пакетик отдельно.",["mobe"],"Паста и мусс"]],"gear":["кастрюля","сковорода","формочки для маффинов","блендер"]}]],"recipes":[["Основные блюда",[["chicken","Запечённая курица","1 порция · 25 мин в духовке","Базовая курица, которая не сохнет: кусок целиком и не передержать.",["куриная грудка 135 г","масло растительное 3 г","соль и специи по вкусу"],["Натри кусок солью, специями и маслом.","200°, 25 минут на пергаменте, куски не касаются друг друга.","Дай полежать 5 минут и только потом режь — сок останется внутри."],"Готова, когда сок прозрачный. Резать лучше перед едой, а не при раскладке."],["cutlets","Куриные котлеты","3 шт на порцию · 25 мин","Без жарки и брызг: всё делает духовка.",["фарш куриный 115 г","кабачок 40 г","лук репчатый 15 г","яйца 1 шт на 5 порций","овсяные хлопья 8 г","соль и специи по вкусу"],["Кабачок натри и отожми — лишняя вода враг котлеты.","Смешай всё, слепи мокрыми руками.","200°, 25 минут, не переворачивая."],"Мокрые руки — и фарш не липнет."],["plov","Плов с куриным бедром","1 порция · 30 мин","Ленивый плов в одном сотейнике.",["бедро куриное без кости 135 г","рис 55 г","морковь 90 г","лук репчатый 40 г","масло растительное 5 г","соль и специи по вкусу"],["Обжарь мясо, потом лук и морковь.","Всыпь рис, залей водой на палец выше.","Крышка, слабый огонь, 20 минут. Не мешай."],"Не открывай крышку — пар доделает рис сам."],["tunapasta","Паста с тунцом","1 порция · 15 мин","Томатный соус из банки и тунец — быстрее доставки.",["макароны из твёрдых сортов 80 г","тунец в собственном соку 110 г","томаты в собственном соку 150 г","лук репчатый 30 г","масло растительное 5 г","сыр полутвёрдый 15 г","соль и специи по вкусу"],["Свари пасту на минуту меньше, чем на пачке.","Лук 2 минуты, томаты 5 минут, в конце тунец.","Смешай, сыр сверху."],"Тунец добавляй в конце, чтобы не стал сухим."],["pumpkin","Тыквенный крем-суп с курицей","1 порция · 30 мин","Густой и сладковатый, с курицей — полноценный обед.",["тыква 300 г","картофель 80 г","морковь 50 г","лук репчатый 30 г","молоко 2,5% 100 мл","куриная грудка 85 г","масло растительное 5 г","соль и специи по вкусу"],["Овощи и курицу свари вместе 20 минут.","Курицу достань, овощи пробей блендером с молоком.","Курицу кубиками верни в суп."],"Горячее в блендер — не больше половины чаши."],["hedgehogs","Ёжики в томатно-сметанном соусе","4 шт на порцию · 35 мин","Рис внутри разбухает и торчит иголками.",["фарш куриный 120 г","рис 45 г","лук репчатый 20 г","яйца 1 шт на 5 порций","томаты в собственном соку 100 г","сметана 15% 20 г","соль и специи по вкусу"],["Смешай фарш с сырым рисом, луком и яйцом.","Слепи шарики, выложи в соус.","25 минут под крышкой на слабом огне."],"Рис кладётся сырым — он сварится в соусе."],["teriyaki","Курица терияки","1 порция · 15 мин","Липкая, сладко-солёная, как из доставки.",["куриная грудка 140 г","соевый соус 12 г","мёд 8 г","масло растительное 7 г","соль и специи по вкусу"],["Порежь полосками, замаринуй 10 минут.","Сильный огонь, 8–10 минут вместе с маринадом.","Соус должен загустеть и обволакивать."],"Не убавляй огонь — иначе курица потушится, а не поджарится."],["meatballs","Фрикадельки в томатном соусе","5 шт на порцию · 30 мин","Сочные из-за соуса, разогреваются лучше котлет.",["фарш куриный 120 г","лук репчатый 20 г","яйца 1 шт на 5 порций","овсяные хлопья 8 г","томаты в собственном соку 100 г","сметана 15% 20 г","соль и специи по вкусу"],["Слепи шарики с грецкий орех.","Томаты, сметана, вода — выложи фрикадельки.","20 минут под крышкой."],"Не мешай первые 10 минут — развалятся."],["dal","Чечевичный дал с курицей","1 порция · 30 мин","Густая чечевица с карри — уютно и сытно.",["чечевица красная 50 г","куриная грудка 95 г","томаты в собственном соку 100 г","лук репчатый 30 г","морковь 50 г","масло растительное 10 г","соль и специи по вкусу"],["Обжарь лук, морковь и курицу.","Всыпь чечевицу, томаты, специи, залей водой.","20 минут под крышкой."],"Красную чечевицу не замачивают, она разваривается сама."],["salmoncut","Котлеты из горбуши","3 шт на порцию · 20 мин","Рыбные котлеты из банки, без чистки рыбы.",["горбуша консервированная 110 г","яйца 1 шт на 3 порции","овсяные хлопья 18 г","лук репчатый 20 г","соль и специи по вкусу"],["Разомни рыбу вилкой вместе с косточками.","Смешай, слепи плоские котлетки.","200°, 15 минут, переверни на середине."],"Жидкость из банки слей полностью, иначе не слепятся."],["chili","Чили с фасолью","1 порция · 25 мин","Одна сковорода, много вкуса.",["фарш куриный 120 г","фасоль красная консервированная 110 г","томаты в собственном соку 120 г","перец болгарский 70 г","лук репчатый 30 г","масло растительное 4 г","соль и специи по вкусу"],["Обжарь лук и фарш.","Добавь перец, фасоль, томаты и специи.","15 минут на слабом огне."],"На второй день вкуснее, чем в первый."],["bolognese","Паста болоньезе","1 порция · 25 мин","Болоньезе из куриного фарша — легче классики.",["фарш куриный 115 г","томаты в собственном соку 120 г","морковь 40 г","лук репчатый 30 г","масло растительное 4 г","сыр полутвёрдый 12 г","соль и специи по вкусу"],["Обжарь лук, фарш и тёртую морковь.","Томаты и базилик, 15 минут.","Смешай с пастой, сыр сверху."],"Пасту смешивай с соусом сразу — не слипнется в контейнере."]]],["Завтраки",[["eggmuffins","Омлетные маффины","3 шт на порцию · 15 мин","Омлет, который можно взять рукой.",["яйца 1½ шт","сыр полутвёрдый 15 г","перец болгарский 40 г","молоко 2,5% 20 мл","соль и специи по вкусу"],["Взбей яйца с молоком и солью.","Добавь перец и сыр, разлей по формочкам.","180°, 15 минут."],"Формочки наполняй на две трети — поднимутся."],["syrniki","Сырники из духовки","4 шт на порцию · 20 мин","Без жарки, держат форму и отлично замораживаются.",["творог 5% 140 г","яйца 1 шт на 2 порции","мука рисовая 35 г","мёд 5 г","соль и специи по вкусу"],["Разомни творог с яйцом, мукой и мёдом.","Слепи шайбы, обваляй в муке.","180°, 20 минут."],"Если творог мокрый — добавь ещё ложку муки."],["wrap","Лаваш-ролл с яйцом и сыром","1 ролл · 10 мин","Завтрак, который едят одной рукой.",["лаваш тонкий 50 г","яйца 1½ шт","сыр полутвёрдый 12 г","томаты черри 70 г","соль и специи по вкусу"],["Пожарь тонкий омлет.","На лаваш — омлет, сыр, черри.","Сверни плотно, подогни края."],"На сухой сковороде 2 минуты — и он хрустит."],["pancakes","Овсяные оладьи","5 шт на порцию · 15 мин","Мягкие, банановые, без муки.",["овсяные хлопья 35 г","кефир 1% 100 мл","яйца 1 шт на 2 порции","бананы 1 шт на 2 порции","мёд 5 г","соль и специи по вкусу"],["Замочи хлопья в кефире на 5 минут.","Добавь яйцо, банан, соду.","По 2 минуты с каждой стороны."],"Переворачивай, когда по краям пойдут пузырьки."]]],["Десерты",[["zapekanka","Творожная запеканка","1 кусок · 30 мин","Плотная, как чизкейк, только проще.",["творог 5% 125 г","яйца 1 шт на 2 порции","овсяные хлопья 20 г","мёд 10 г","ягоды замороженные 40 г","соль и специи по вкусу"],["Смешай всё вилкой.","В форму слоем 3 см, ягоды сверху.","180°, 30 минут."],"Режь только остывшую — горячая разваливается."],["cookies","Овсяное печенье с бананом","4 шт на порцию · 15 мин","Три ингредиента и какао.",["овсяные хлопья 40 г","бананы 1 шт на 2 порции","арахисовая паста 10 г","какао-порошок 5 г","соль и специи по вкусу"],["Разомни банан, смешай со всем.","Выложи ложкой лепёшки.","180°, 15 минут."],"Чем спелее банан, тем слаще печенье."],["bananabread","Банановый хлеб","1 кусок · 35 мин","Пахнет на всю квартиру.",["бананы 1 шт","овсяные хлопья 25 г","яйца 1 шт на 2 порции","йогурт греческий 2% 30 г","арахисовая паста 10 г","мёд 5 г","соль и специи по вкусу"],["Разомни банан, смешай со всем и щепоткой соды.","В форму слоем 3–4 см.","180°, 35 минут."],"Замораживай кусками — 20 секунд в микроволновке, и как свежий."],["mousse","Творожный мусс","1 банка · 5 мин","Без готовки и без миксера: блендер, ложка, баночка.",["творог 5% 95 г","йогурт греческий 2% 55 г","какао-порошок 5 г","мёд 16 г","ягоды замороженные 55 г","соль и специи по вкусу"],["Взбей творог с йогуртом, какао и мёдом 30 секунд — до гладкости.","Разложи по баночкам, сверху ягоды.","В холодильнике стоит 3 дня и не расслаивается."],"Если мусс густой — добавь ложку молока, если жидкий — ложку творога."],["curdmuffins","Творожные маффины с ягодами","2 шт на порцию · 20 мин","Сырник в форме маффина.",["творог 5% 110 г","яйца 1 шт на 2 порции","овсяные хлопья 20 г","ягоды замороженные 40 г","мёд 8 г","соль и специи по вкусу"],["Смешай всё вилкой.","Разложи по формочкам.","180°, 20 минут."],"Ягоды клади замороженными — не растекутся."]]]]};
 
 
 /* Таймлайн готовок: [минута старта, где, что сделать, ждать мин (0 — активный шаг), рецепт] */
@@ -3077,6 +2732,9 @@ const DOW=['вс','пн','вт','ср','чт','пт','сб'];
 const DOWF=['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
 const MON=['янв','фев','мар','апр','мая','июн','июл','авг','сен','окт','нояб','дек'];
 const MONF=['января','февраля','марта','апреля','мая','июня','июля','августа','сентября','октября','ноября','декабря'];
+/* единственный список слов тары: раньше он был скопирован в трёх местах */
+const TARA=[['контейнер','контейнера','контейнеров'],['пакет','пакета','пакетов'],['баночка','баночки','баночек']];
+const taraList=p=>TARA.map((x,k)=>p[k]?`${p[k]} ${plural(p[k],x[0],x[1],x[2])}`:'').filter(Boolean);
 const VIEWS=[['today','Сегодня'],['week','Неделя'],['cook','Готовка'],['shop','Покупки'],['recipes','Рецепты']];
 
 const LS={get(k,d){try{const v=localStorage.getItem(k);return v===null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
@@ -3533,35 +3191,31 @@ function vCook(){if(cookEmpty(S.week,S.cookSel)){const n=S.cookSel===0?1:0;if(!c
   const clean=t=>t.replace(' — список справа','');
   const short=t=>{const ss=clean(t).split(/\.\s+/);const s1=ss.find(x=>emosOf(x,1).length)||ss[0];let m=s1.split(' — ')[0].replace(/\.$/,'').trim();if(m.length>44)m=m.slice(0,42)+'…';const e=emosOf(s1,1)[0];return (e?e+' ':'')+m};
   const pk=PACK[w][c];const tot=pk.reduce((a,p)=>[a[0]+p[0],a[1]+p[1],a[2]+p[2]],[0,0,0]);
-  const need=[[tot[0],'контейнер','контейнера','контейнеров'],[tot[1],'пакет','пакета','пакетов'],[tot[2],'баночка','баночки','баночек']].filter(x=>x[0]).map(x=>`<span class="tag">${x[0]} ${plural(x[0],x[1],x[2],x[3])}</span>`).join('');
-  const dm=d=>{const dt=dateOf(w,d);return dt?`${dt.getDate()}.${String(dt.getMonth()+1).padStart(2,'0')}`:''};
-  const whenTxt=o=>o[4]&&o[4].length?`${['Завтрак','Обед','Полдник','Ужин'][o[3]]} · ${o[4].map(dm).filter(Boolean).join(', ')}`:esc(o[2]);
-  const ogrp=[],omap={};
-  s.out.forEach((o,i)=>{const k=o[5]||o[0];if(!omap[k]){omap[k]={n:o[0],it:[]};ogrp.push(omap[k])}omap[k].it.push([o,i])});
-  const stor=t=>`<span class="tag ot-t ot-${t}">${ic(t==='fr'?'fridge':'freezer')}${t==='fr'?'Холодильник':'Морозилка'}</span>`;
-  const BOXN=[['контейнер','контейнера','контейнеров'],['пакет','пакета','пакетов'],['баночка','баночки','баночек']];
-  const boxTxt=p=>BOXN.map((x,k)=>p[k]?`${p[k]} ${plural(p[k],x[0],x[1],x[2])}`:'').filter(Boolean).join(', ');
+  const need=taraList(tot).map(t=>`<span class="tag">${t}</span>`).join('');
+  const boxTxt=p=>taraList(p).join(', ');
   const packTail=t=>{let r=String(t).replace(/^\s*\d+\s+(?:контейнер|пакет|баноч)\S*(?:\s+в\s+морозилку[^.]*)?\.\s*/i,'').trim();
     if(!r)r=String(t).trim();r=r.replace(/\.$/,'');return r.charAt(0).toLowerCase()+r.slice(1)};
-  const whenPlain=o=>o[4]&&o[4].length?`${['завтрак','обед','полдник','ужин'][o[3]]} ${o[4].map(dm).filter(Boolean).join(', ')}`:String(o[2]).toLowerCase();
   /* Раскладка готовой еды. Экран-справка: смотришь и закрываешь, отмечать нечего.
-     Верстка та же, что у «Разложи покупки»: белая карточка на место, внутри чипы.
-     В морозилку всё уходит плоскими пакетами без исключений, поэтому правило наверху.
-     Граммовки сюда не выносим: на этом шаге еда уже разложена по порциям. */
+     Во всех 65 позициях месяца тары ровно столько же, сколько порций, поэтому
+     «в каждой таре одна порция» вынесено наверх одной строкой: без неё «три котлеты
+     в 2 контейнера» читается и как «по три в каждый», и как «три на двоих».
+     Текст раскладки сам называет содержимое, так что названия блюд и даты не нужны. */
+  const otTxt=t=>packTail(t).replace(/ вместе(?=,|$)/g,'').replace(/ в контейнер(?=,|$)/g,'');
   const SEC=[['fr','Холодильник','fridge'],['fz','Морозилка','freezer']];
-  const outBody=`<div class="after otw">
-    <p class="ot-rule">В морозилку всё уходит плоскими пакетами: так быстрее размораживается и меньше занимает.</p>
-    <div class="as-places">${SEC.map(([st,ttl,icn])=>{
+  const outBody=`<div class="otw">
+    ${SEC.map(([st,ttl,icn])=>{
       const rows=s.out.map((o,i)=>[o,i]).filter(([o])=>o[1]===st);
       if(!rows.length)return '';
-      return `<div class="inner as-pl ot-p-${st}"><div class="as-plh">${ic(icn)}<span>${ttl}</span><span class="cnt">${rows.reduce((a,[o])=>a+(o[4]?o[4].length:1),0)}</span></div>
-        <div class="ot-items" role="list">${rows.map(([o,i],k)=>{const p=pk[i],kind=p[0]?'cont':(p[1]?'bag':'jar');
-          return `<article class="og" role="listitem" style="--d:${Math.min(k,6)*34}ms"><div class="og-top"><span class="og-v">${ic(kind)}</span>
-            <span class="og-x">${(()=>{const K=[['контейнер','контейнера','контейнеров'],['пакет','пакета','пакетов'],['баночка','баночки','баночек']];
-              const ki=p[0]?0:(p[1]?1:2),q=p[ki]||1;return `<b>${q}</b> ${plural(q,K[ki][0],K[ki][1],K[ki][2])}`})()}</span><span class="og-e">${emo(emosOf(o[0],1)[0]||'🥡')}</span></div>
-            <h4 class="og-n">${esc(o[0])}</h4>
-            <p class="og-how">${esc(packTail(p[3]))}</p>
-            <p class="og-w">${esc(whenPlain(o))}</p></article>`}).join('')}</div></div>`}).join('')}</div>
+      const sum=[0,0,0];rows.forEach(([,i])=>{const p=pk[i];for(let k=0;k<3;k++)sum[k]+=p[k]||0});
+      return `<div class="inner as-pl ot-p-${st}">
+        <div class="as-plh">${ic(icn)}<span>${ttl}</span><small>${esc(boxTxt(sum))}</small></div>
+        <ul class="og-list">${rows.map(([o,i])=>{const p=pk[i];
+          /* на 15px контейнер и пакет путаются, поэтому тара словом, а не иконкой */
+          const W=p[0]?'конт.':(p[1]?'пак.':'бан.'),n=p[0]||p[1]||p[2]||1;
+          return `<li><span class="og-e">${emo(emosOf(o[0],1)[0]||'🥡')}</span>
+            <span class="og-t">${esc(otTxt(p[3]))}</span>
+            <span class="og-q"><b>\u00d7${n}</b> ${W}</span></li>`}).join('')}</ul>
+      </div>`}).join('')}
   </div>`;
   const nh=s.need.filter((n,i)=>have[i]).length;
   const needList=`<div class="inner"><table class="tbl shoptbl"><tbody>${s.need.map((n,i)=>`<tr class="${have[i]?'got':''}"><td><label class="chk"><input type="checkbox" data-need="${i}" ${have[i]?'checked':''}><span class="box"></span><span class="semo">${emo(emosOf(n,1)[0]||'🧂')}</span><span class="name">${esc(n)}</span></label></td></tr>`).join('')}</tbody></table></div>`;
@@ -3600,7 +3254,7 @@ function vCook(){if(cookEmpty(S.week,S.cookSel)){const n=S.cookSel===0?1:0;if(!c
     }
   }else if(phase==='prep'){
     const gl=s.gear||[];const gk=mkey(`mp-tlg-${w}-${c}`);const gh=LS.get(gk,{});
-    const tara=[[tot[0],'контейнер','контейнера','контейнеров'],[tot[1],'пакет','пакета','пакетов'],[tot[2],'баночка','баночки','баночек']].filter(x=>x[0]).map(x=>`${x[0]} ${plural(x[0],x[1],x[2],x[3])}`);
+    const tara=taraList(tot);
     const gall=gl.concat(tara);const gn=gall.filter((g,i)=>gh[i]).length;
     const total=s.need.length+gall.length;const okn=nh+gn;
     const ngs=(s.needg&&s.needg.length&&Array.isArray(s.needg[0][1][0]))?s.needg:[['Продукты',s.need.map(n=>{const m=String(n).match(/^(.*?)\s([\d.,]+\s?\S+)$/);return m?[m[1],m[2]]:[n,'']})]];
@@ -4077,10 +3731,20 @@ function onbKb(){const vv=window.visualViewport;if(!vv||onbKb.on)return;onbKb.on
 function closeOnb(){const el=$('onb');if(el)el.remove();document.body.classList.remove('onb-on');ONB=null}
 function onbSteps(){const st=['s1','s2','s3'];if(!ONB.hadName)st.push('name');if(MENUS.length>1)st.push('menu');st.push('days','start','done');return st}
 /* ближайший старт по ритму: день после большой готовки, закупка не раньше сегодня */
-function onbNatural(o){const ws=(o.c0+1)%7;for(let k=1;k<21;k++){const d=addDays(TODAY,k);if(d.getDay()!==ws)continue;const s=onbPlan(o,toISO(d));if(s.shop>=TODAY)return toISO(d)}return toISO(addDays(TODAY,2))}
+function onbNatural(o){const ws=(o.c0+1)%7;for(let k=1;k<21;k++){const d=addDays(TODAY,k);if(d.getDay()!==ws)continue;const s=onbPlan(o,toISO(d));if(s.shop>=TODAY&&s.cook>s.shop&&s.eat>s.cook)return toISO(d)}return toISO(addDays(TODAY,2))}
+/* Заказ → готовка → первый день: между соседними минимум сутки. Без этого все три
+   даты встают на одно число, и выходит «заказала, приготовила и позавтракала сегодня»,
+   хотя приложение само обещает доставку назавтра, а большая готовка идёт полтора часа.
+   pin — поле, которое только что тронул человек: его держим, двигаем соседей. */
+function onbGaps(s,c,e,pin){const T=toISO(TODAY),d=(x,n)=>toISO(addDays(fromISO(x),n));
+  if(pin==='cook'){if(c<d(T,1))c=d(T,1);if(s>=c)s=d(c,-1);if(s<T){s=T;c=d(T,1)}if(e<=c)e=d(c,1)}
+  else if(pin==='eat'){if(e<d(T,2))e=d(T,2);if(c>=e)c=d(e,-1);if(c<d(T,1))c=d(T,1);if(s>=c)s=d(c,-1);if(s<T)s=T}
+  else{if(s<T)s=T;if(c<=s)c=d(s,1);if(e<=c)e=d(c,1)}
+  return [s,c,e]}
 function onbPlan(o,eatISO){const eat=fromISO(eatISO||o.start);const pf=planFrom(toISO(eat),{shop:o.shop,cook:[o.c0,o.c1]});let shop,cook;
   if(o.custom&&!eatISO){shop=fromISO(o.fshop);cook=fromISO(o.fcook)}
-  else if(pf.skip){cook=addDays(eat,-1);shop=addDays(eat,-2);if(shop<TODAY)shop=new Date(TODAY);if(cook<shop)cook=new Date(shop)}
+  else if(pf.skip){cook=addDays(eat,-1);shop=addDays(eat,-2);
+    if(shop<TODAY){shop=new Date(TODAY);if(cook<=shop)cook=addDays(shop,1)}}
   else{cook=addDays(eat,-1);shop=addDays(cook,-1-((addDays(cook,-1).getDay()-o.shop+7)%7))}
   const vs=fromISO(pf.start);let sc=addDays(vs,(o.c1-vs.getDay()+7)%7);if(sc<cook)sc=new Date(cook);
   const r=onbPlan.rh?null:(()=>{onbPlan.rh=1;const x=onbPlan({...o,custom:false},toISO(eat));onbPlan.rh=0;return x})();
@@ -4213,9 +3877,9 @@ function renderOnb(){const el=$('onb');if(!el||!ONB)return;
     const pl=onbPlan(ONB);const C=!!ONB.custom;const nat=onbNatural(ONB);
     const over=`<div class="o-obj"><div class="o-tilt">${oMonth(pl)}</div>
       <span class="o-stk o-bob" style="right:-18px;top:-30px;font-size:50px;--r:-12deg">${emo('🗓️')}</span></div>`;
-    const RW=[['shop','Закупка',pl.shop,'shop',toISO(TODAY),toISO(pl.cook)],
-              ['cook','Большая готовка',pl.cook,'cook',toISO(pl.shop),toISO(pl.eat)],
-              ['eat','Первый день плана',pl.eat,'week',toISO(pl.cook),'']];
+    const RW=[['shop','Закупка',pl.shop,'shop',toISO(TODAY),''],
+              ['cook','Большая готовка',pl.cook,'cook',toISO(addDays(TODAY,1)),''],
+              ['eat','Первый день плана',pl.eat,'week',toISO(addDays(TODAY,2)),'']];
     const ctl=`<div class="o-seg">
         <button data-mode="r" aria-pressed="${!C}"><b>По ритму</b><span>${fdate(fromISO(nat))}</span></button>
         <button data-mode="c" aria-pressed="${C}"><b>Свои даты</b><span>${C?'тапни строку':'выбрать самой'}</span></button>
@@ -4248,10 +3912,10 @@ function renderOnb(){const el=$('onb');if(!el||!ONB)return;
   el.querySelectorAll('.o-pills').forEach(r=>r.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{const row=r.dataset.row,v=+b.dataset.d;ONB[row]=v;if(row==='c0'){ONB.shop=(v+6)%7;ONB.c1=(v+3)%7}ONB.start=onbNatural(ONB);try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}renderOnb()}));
   if($('obCal'))$('obCal').onclick=async()=>{const ok=await saveIcs(ONB);const b=$('obCal');if(b&&ok)b.querySelector('span').textContent='Готово, открой файл'};
   el.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{if(b.dataset.mode==='r'){ONB.custom=false;ONB.start=onbNatural(ONB)}else if(!ONB.custom){const pl=onbPlan(ONB);ONB.custom=true;ONB.fshop=toISO(pl.shop);ONB.fcook=toISO(pl.cook);ONB.start=toISO(pl.eat)}renderOnb()});
-  el.querySelectorAll('.obdi').forEach(x=>{x.onchange=()=>{const v=x.value;if(!v)return;const T=toISO(TODAY);let s=ONB.fshop,c=ONB.fcook,e=ONB.start;
-    if(x.dataset.k==='shop'){s=v<T?T:v;if(c<s)c=s;if(e<c)e=c}
-    else if(x.dataset.k==='cook'){c=v<T?T:v;if(s>c)s=c;if(e<c)e=c}
-    else{e=v<T?T:v;if(c>e)c=e;if(c<T)c=T;if(s>c)s=c}
+  el.querySelectorAll('.obdi').forEach(x=>{x.onchange=()=>{const v=x.value;if(!v)return;const k=x.dataset.k;
+    let s=ONB.fshop,c=ONB.fcook,e=ONB.start;
+    if(k==='shop')s=v;else if(k==='cook')c=v;else e=v;
+    [s,c,e]=onbGaps(s,c,e,k);
     ONB.fshop=s;ONB.fcook=c;ONB.start=e;renderOnb()}});
 }
 /* календарь месяца со стартом плана */
