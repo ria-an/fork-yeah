@@ -2735,10 +2735,9 @@ function vToday(){
     const rel=dt=>{const n=Math.round((dt-TODAY)/864e5);return n===0?'сегодня':n===1?'завтра':n===-1?'вчера':n<0?'уже прошло':`через ${n} ${plural(n,'день','дня','дней')}`};
     const tl0=LS.get(mkey(`mp-tl-0-${fc}`),{});const stDone=Object.values(tl0).filter(Boolean).length;
     const stAll=(TL[0]&&TL[0][fc]?TL[0][fc].steps.length:0);const cookOk=!!stAll&&stDone>=stAll;
-    const dv0=dateOf(0,delivOff(0));
     el.innerHTML=`<div class="stack" id="tstack">${cookOk
       ? `<button class="sp-done ready${popOnce('ready-'+S.menu)}" data-go="week" role="status"><span class="sp-ck">${ic('check')}</span><span class="sp-t"><b>Всё готово к старту</b><small>Еда в контейнерах. Первый приём — ${fdate(firstEat())}</small></span>${emo('🎉','sp-e')}</button>`
-      : `<div class="tray"><div class="trayhead"><h2>Перед стартом<span class="cnt">3</span></h2></div><div class="inner">${(()=>{const L=[[od,'shop','Заказать продукты','data-go="shop" data-cw="0"',''],[dv0,'box','Разложить покупки','data-go="shop" data-cw="0" data-after="1"','что в морозилку, что в холодильник'],[cd,'cook','Первая большая готовка',`data-go="cook" data-cw="0" data-cs="${fc}"`,`≈${tlTotal(0,fc)} мин`]];
+      : `<div class="tray"><div class="trayhead"><h2>Перед стартом<span class="cnt">2</span></h2></div><div class="inner">${(()=>{const L=[[od,'shop','Заказать продукты','data-go="shop" data-cw="0"',''],[cd,'cook','Первая большая готовка',`data-go="cook" data-cw="0" data-cs="${fc}"`,`≈${tlTotal(0,fc)} мин`]];
       const nx=L.findIndex(x=>Math.round((x[0]-TODAY)/864e5)>=0);
       return L.map(([dt,icn,ttl,at,tail],i)=>row(icn,ttl,[fdate(dt),i===nx?rel(dt):'',tail].filter(Boolean).join(' · '),at)).join('')})()}</div></div>`}
 ${(()=>{const dd=WEEKS[0]&&WEEKS[0].days[E0];if(!dd||!dd.meals.length)return '';
@@ -2913,7 +2912,6 @@ function nextCard(idx){if(PEEK||idx<21||idx>27)return '';const n=nextPlan();cons
   const m=MENUS.find(x=>x.id===n.menu);return `<div class="nx-card on"><div class="nx-tx"><b>Следующий план: ${esc(m?m.name:'меню')}</b><span>С ${fdate(fromISO(n.start)).toLowerCase()}</span></div><div class="nx-b"><button class="btn dark" id="nxOpen">Открыть</button><button class="btn ghost" id="nxPlan">Изменить</button></div></div>`}
 function nextTasks(date){const n=nextPlan();if(PEEK||!n)return [];const o=nextOffs(n);const t=[];const iso=toISO(date);
   if(toISO(o.order)===iso)t.push(['Заказать продукты на новый план','shop']);
-  if(toISO(o.deliv)===iso)t.push(['Разложить покупки нового плана','box']);
   if(toISO(o.cook)===iso)t.push(['Большая готовка нового плана','cook']);return t}
 function bindNext(el){if($('nxPlan'))$('nxPlan').onclick=openNextSheet;if($('nxLater'))$('nxLater').onclick=()=>{LS.set('mp-nextlater',toISO(TODAY));render()};if($('nxOpen'))$('nxOpen').onclick=()=>enterPeek('today');
   el.querySelectorAll('[data-peek]').forEach(b=>b.onclick=()=>{enterPeek(b.dataset.peek);if(b.dataset.peek==='shop'&&b.dataset.after){requestAnimationFrame(()=>{const a=$('afterShop');if(a){a.open=true;window.scrollTo({top:a.getBoundingClientRect().top+scrollY-90})}})}})}
