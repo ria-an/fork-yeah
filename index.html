@@ -1647,6 +1647,9 @@ h1,h2,h3,.ml-1,.ml-2,.dish{overflow-wrap:anywhere}
   #onb .o-chip,#onb .o-stk{opacity:1!important}}
 
 #onb .o-menus{display:grid;gap:8px}
+#onb .o-menus.o-g2{grid-template-columns:1fr 1fr}
+#onb .o-warn{margin:12px 0 0;padding:12px 14px;border-radius:var(--r-md);background:var(--tray);
+  font-size:var(--fs-2);line-height:1.4;color:var(--ink-2)}
 #onb .o-menus button{all:unset;box-sizing:border-box;cursor:pointer;display:grid;gap:3px;padding:14px 16px;border-radius:var(--r-md);
   background:var(--panel);box-shadow:inset 0 0 0 1px var(--line);
   transition:background-color var(--t-fast) ease-out,box-shadow var(--t-fast) ease-out}
@@ -3501,13 +3504,28 @@ function renderNav(){
 /* ---------- Онбординг ---------- */
 let ONB=null;
 const ONB_DOW=[1,2,3,4,5,6,0];
+/* ---------- профиль плана ---------- */
+const O_SLOTS=['Завтрак','Обед','Полдник','Ужин'];
+/* калории делятся не поровну: полдник не может весить столько же, сколько ужин */
+const O_WSLOT=[.25,.30,.15,.30];
+const PROF_D={people:1,slots:[0,1,2,3],kcal:1700,gear:{stove:1,oven:1,micro:1,blender:1,air:0,multi:0}};
+function prof(){const p=LS.get('mp-profile',null);
+  if(!p)return JSON.parse(JSON.stringify(PROF_D));
+  return {people:+p.people||1,slots:Array.isArray(p.slots)&&p.slots.length?p.slots:[0,1,2,3],
+    kcal:+p.kcal||1700,gear:Object.assign({},PROF_D.gear,p.gear||{})}}
+function oSlotK(slots,kcal,mi){const sum=slots.reduce((a,i)=>a+O_WSLOT[i],0);
+  return sum?Math.round(kcal*O_WSLOT[mi]/sum/5)*5:0}
+const O_GEAR=[['stove','Плита','🔥'],['oven','Духовка','🔲'],['micro','Микроволновка','📻'],
+  ['blender','Блендер','🌀'],['air','Аэрогриль','💨'],['multi','Мультиварка','🍲']];
 function openOnb(){const P=LS.get(DAYS_KEY(),null)||{shop:6,cook:[0,3]};
-  ONB={step:0,name:uname(),menu:S.menu,shop:P.shop,c0:P.cook[0],c1:P.cook[1],hadName:!!uname()};ONB.start=onbNatural(ONB);
+  ONB={step:0,name:uname(),menu:S.menu,shop:P.shop,c0:P.cook[0],c1:P.cook[1],hadName:!!uname()};
+  Object.assign(ONB,prof());ONB.start=onbNatural(ONB);
   let el=$('onb');if(!el){el=document.createElement('div');el.id='onb';el.setAttribute('role','dialog');el.setAttribute('aria-modal','true');el.setAttribute('aria-label','Настройка плана');document.body.appendChild(el)}
   document.body.classList.add('onb-on');renderOnb();onbKb()}
 function onbKb(){const vv=window.visualViewport;if(!vv||onbKb.on)return;onbKb.on=true;const f=()=>{const el=$('onb');if(!el)return;const kb=Math.max(0,innerHeight-vv.height-vv.offsetTop);el.style.setProperty('--kb',kb+'px')};vv.addEventListener('resize',f);vv.addEventListener('scroll',f)}
 function closeOnb(){const el=$('onb');if(el)el.remove();document.body.classList.remove('onb-on');ONB=null}
-function onbSteps(){const st=['s1','s2','s3'];if(!ONB.hadName)st.push('name');if(MENUS.length>1)st.push('menu');st.push('days','start','done');return st}
+function onbSteps(){const st=['s1','s2','s3','people','slots','kcal','gear'];
+  if(!ONB.hadName)st.push('name');if(MENUS.length>1)st.push('menu');st.push('days','start','done');return st}
 /* ближайший старт по ритму: день после большой готовки, закупка не раньше сегодня */
 function onbNatural(o){const ws=(o.c0+1)%7;for(let k=1;k<21;k++){const d=addDays(TODAY,k);if(d.getDay()!==ws)continue;const s=onbPlan(o,toISO(d));if(s.shop>=TODAY&&s.cook>s.shop&&s.eat>s.cook)return toISO(d)}return toISO(addDays(TODAY,2))}
 /* Заказ → готовка → первый день: между соседними минимум сутки. Без этого все три
@@ -3613,6 +3631,63 @@ function renderOnb(){const el=$('onb');if(!el||!ONB)return;
   if(cur==='s1')html=oSell(0,k,n);
   else if(cur==='s2')html=oSell(1,k,n);
   else if(cur==='s3')html=oSell(2,k,n);
+  else if(cur==='people'){
+    const W=['ОДНОГО','ДВОИХ','ТРОИХ','ЧЕТВЕРЫХ'][ONB.people-1];
+    const pan=`<div class="o-pword o-s2">НА<br>${W}<small>${ONB.people===1?'порция на одного'
+        :'по порции на каждого'}</small></div>
+      <span class="o-stk o-bob" style="right:16px;bottom:26px;font-size:68px;--r:11deg">${emo('🍽️')}</span>
+      <span class="o-stk" style="right:94px;bottom:88px;font-size:34px;--r:-13deg;animation-delay:440ms">${emo('🥄')}</span>`;
+    const over=`<div class="o-obj"><div class="o-tilt"><div class="o-card o-taskcard">
+      <span class="o-tl">Каждое блюдо</span>
+      <span class="o-tt">${ONB.people} ${plural(ONB.people,'порция','порции','порций')} · покупки ×${ONB.people}</span>
+      </div></div></div>`;
+    html=oScr(k,n,O_G.o,{pan,over},'',{h:'На скольких готовим?',
+      ctl:`<div class="o-pills" data-row="people">${[1,2,3,4].map(x=>
+        `<button data-pp="${x}" aria-pressed="${ONB.people===x}">${x}</button>`).join('')}</div>`},
+      'Дальше',{left:true,pfg:O_PFG.o})}
+  else if(cur==='slots'){
+    const keep=ONB.slots.slice().sort((a,b)=>a-b);
+    const pan=`<div class="o-pword o-s2">ЧТО<br>ЕДИМ<small>${keep.length
+        ?keep.length+' '+plural(keep.length,'приём','приёма','приёмов')+' в день':'выбери приёмы'}</small></div>
+      <span class="o-stk o-bob" style="right:18px;bottom:96px;font-size:62px;--r:-10deg">${emo('🥣')}</span>`;
+    const over=keep.length?`<div class="o-obj"><div class="o-tilt"><div class="o-card o-taskcard">
+      <span class="o-tl">Готовим</span>
+      <span class="o-tt">${keep.map(mi=>O_SLOTS[mi]).join(' · ')}</span>
+      </div></div></div>`:'';
+    html=oScr(k,n,O_G.g,{pan,over},'',{h:'Какие приёмы готовим?',
+      ctl:`<div class="o-menus o-g2">${O_SLOTS.map((t,i)=>
+        `<button data-sl="${i}" aria-pressed="${keep.includes(i)}"><b>${t}</b></button>`).join('')}</div>`
+        +(keep.length?'':`<p class="o-warn">Нужен хотя бы один приём.</p>`)},
+      'Дальше',{left:true,pfg:O_PFG.g})}
+  else if(cur==='kcal'){
+    const keep=ONB.slots.slice().sort((a,b)=>a-b);
+    const pan=`<div class="o-pword o-s2">РАЗМЕР<br>ТАРЕЛКИ<small>${NONUM()?'без цифр'
+        :ONB.kcal+' ккал в день'}</small></div>
+      <span class="o-stk o-bob" style="right:14px;bottom:26px;font-size:64px;--r:9deg">${emo('🍲')}</span>
+      <span class="o-stk" style="right:92px;bottom:86px;font-size:32px;--r:-14deg;animation-delay:440ms">${emo('🥑')}</span>`;
+    const over=(keep.length&&!NONUM())?`<div class="o-obj"><div class="o-tilt"><div class="o-card o-taskcard">
+      <span class="o-tl">Ккал по приёмам</span>
+      <span class="o-tt">${keep.map(mi=>oSlotK(keep,ONB.kcal,mi)).join(' · ')}</span>
+      </div></div></div>`:'';
+    html=oScr(k,n,O_G.y,{pan,over},'',{h:'Какая порция?',
+      sub:'Это не цель и не норма, просто размер тарелки.',
+      ctl:`<div class="o-menus">${[[1500,'Поменьше'],[1700,'Обычная'],[2000,'Побольше']].map(([v,t])=>
+        `<button data-kc="${v}" aria-pressed="${ONB.kcal===v}"><b>${t}</b>${NONUM()?'':`<span>${v} ккал</span>`}</button>`).join('')}</div>`},
+      'Дальше',{left:true,pfg:O_PFG.y})}
+  else if(cur==='gear'){
+    const on=O_GEAR.filter(([key])=>ONB.gear[key]);
+    const pan=`<div class="o-pword o-s2">ЧТО<br>НА КУХНЕ<small>${on.length
+        ?on.length+' '+plural(on.length,'прибор','прибора','приборов'):'ничего не отмечено'}</small></div>
+      <span class="o-stk o-bob" style="right:18px;bottom:104px;font-size:60px;--r:10deg">${emo('🍳')}</span>`;
+    const over=on.length?`<div class="o-obj"><div class="o-tilt"><div class="o-card o-taskcard">
+      <span class="o-tl">Готовим на этом</span>
+      <span class="o-tt">${on.map(([,t])=>t).join(' · ')}</span>
+      </div></div></div>`:'';
+    html=oScr(k,n,O_G.o,{pan,over},'',{h:'Что есть на кухне?',
+      ctl:`<div class="o-menus o-g2">${O_GEAR.map(([key,t,e])=>
+        `<button data-gr="${key}" aria-pressed="${!!ONB.gear[key]}"><b>${e} ${t}</b></button>`).join('')}</div>`
+        +(ONB.gear.micro?'':`<p class="o-warn">Без микроволновки греть придётся на плите или в духовке.</p>`)},
+      'Дальше',{left:true,pfg:O_PFG.o})}
   else if(cur==='name'){
     const pan=`<div class="o-pword">${nm?`Привет,<br><span class="o-fitw">${esc(nm)}</span>`:'Как тебя<br>звать?'}<small>${nm?'будем звать так':'одно слово, можно с эмодзи'}</small></div>
       <span class="o-stk o-bob" style="right:16px;bottom:30px;font-size:74px;--r:12deg">${emo('👋')}</span>
@@ -3680,13 +3755,21 @@ function renderOnb(){const el=$('onb');if(!el||!ONB)return;
   onbCount();onbFit();
   const next=()=>{if(k<steps.length-1){ONB.step=k+1;renderOnb();if(steps[k+1]==='done')onbBurst()}else finishOnb()};
   if($('obBack'))$('obBack').onclick=()=>{ONB.step=k-1;renderOnb()};
-  $('obGo').onclick=()=>{if(cur==='name'){const v=$('obName').value.trim();if(!v){const i=$('obName');i.focus();i.classList.remove('shake');void i.offsetWidth;i.classList.add('shake');return}ONB.name=v;LS.set('mp-name',v)}next()};
+  $('obGo').onclick=()=>{
+    if(cur==='slots'&&!ONB.slots.length)return;
+    if(cur==='name'){const v=$('obName').value.trim();if(!v){const i=$('obName');i.focus();i.classList.remove('shake');void i.offsetWidth;i.classList.add('shake');return}ONB.name=v;LS.set('mp-name',v)}next()};
   const ni=$('obName');
   if(ni){ni.oninput=()=>{ONB.name=ni.value;const v=ni.value.trim();
       const w=el.querySelector('.o-pword');if(w)w.innerHTML=(v?`Привет,<br><span class="o-fitw">${esc(v)}</span>`:'Как тебя<br>звать?')+`<small>${v?'будем звать так':'одно слово, можно с эмодзи'}</small>`;
       const t=el.querySelector('.o-taskcard .o-tt');if(t)t.textContent=v?'Доброе утро, '+v:'Доброе утро';onbFit()};
     ni.onkeydown=e=>{if(e.key==='Enter')$('obGo').click()};setTimeout(()=>ni.focus(),250)}
   el.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{ONB.menu=b.dataset.m;renderOnb()});
+  el.querySelectorAll('[data-pp]').forEach(b=>b.onclick=()=>{ONB.people=+b.dataset.pp;renderOnb()});
+  el.querySelectorAll('[data-sl]').forEach(b=>b.onclick=()=>{const i=+b.dataset.sl;
+    ONB.slots=ONB.slots.includes(i)?ONB.slots.filter(x=>x!==i):ONB.slots.concat(i);renderOnb()});
+  el.querySelectorAll('[data-kc]').forEach(b=>b.onclick=()=>{ONB.kcal=+b.dataset.kc;renderOnb()});
+  el.querySelectorAll('[data-gr]').forEach(b=>b.onclick=()=>{const key=b.dataset.gr;
+    ONB.gear[key]=ONB.gear[key]?0:1;renderOnb()});
   el.querySelectorAll('.o-pills').forEach(r=>r.querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{const row=r.dataset.row,v=+b.dataset.d;ONB[row]=v;if(row==='c0'){ONB.shop=(v+6)%7;ONB.c1=(v+3)%7}ONB.start=onbNatural(ONB);try{navigator.vibrate&&navigator.vibrate(6)}catch(_){}renderOnb()}));
   if($('obCal'))$('obCal').onclick=async()=>{const ok=await saveIcs(ONB);const b=$('obCal');if(b&&ok)b.querySelector('span').textContent='Готово, открой файл'};
   el.querySelectorAll('[data-mode]').forEach(b=>b.onclick=()=>{if(b.dataset.mode==='r'){ONB.custom=false;ONB.start=onbNatural(ONB)}else if(!ONB.custom){const pl=onbPlan(ONB);ONB.custom=true;ONB.fshop=toISO(pl.shop);ONB.fcook=toISO(pl.cook);ONB.start=toISO(pl.eat)}renderOnb()});
@@ -3732,7 +3815,9 @@ function onbBurst(){
       s.animate([{transform:'translate(-50%,-50%) scale(.3)',opacity:1},{transform:`translate(calc(-50% + ${Math.cos(a)*r}px),calc(-50% + ${Math.sin(a)*r-80}px)) scale(${0.9+Math.random()*0.8}) rotate(${(Math.random()-.5)*540}deg)`,opacity:1,offset:.6},{transform:`translate(calc(-50% + ${Math.cos(a)*r*1.1}px),calc(-50% + ${Math.sin(a)*r+200}px)) rotate(${(Math.random()-.5)*720}deg)`,opacity:0}],{duration:1400+Math.random()*500,easing:'cubic-bezier(.2,.7,.3,1)',fill:'forwards'})}
     setTimeout(()=>box.remove(),2200)}
 }
-function finishOnb(){const o=ONB;if(o.menu!==S.menu)switchMenu(o.menu);const pl=onbPlan(o);try{localStorage.removeItem(FIRST_KEY())}catch(_){}S.start=pl.start;LS.set('mp-start',S.start);LS.set(DAYS_KEY(),{shop:o.shop,cook:[o.c0,o.c1]});if(pl.skip||pl.own)LS.set(FIRST_KEY(),{eat:o.start,cook:toISO(pl.cook),shop:toISO(pl.shop)});rebuildBuiltin.s=null;rebuildBuiltin();S.offset=0;syncWeek();
+function finishOnb(){const o=ONB;
+  LS.set('mp-profile',{people:o.people,slots:o.slots,kcal:o.kcal,gear:o.gear});
+  if(o.menu!==S.menu)switchMenu(o.menu);const pl=onbPlan(o);try{localStorage.removeItem(FIRST_KEY())}catch(_){}S.start=pl.start;LS.set('mp-start',S.start);LS.set(DAYS_KEY(),{shop:o.shop,cook:[o.c0,o.c1]});if(pl.skip||pl.own)LS.set(FIRST_KEY(),{eat:o.start,cook:toISO(pl.cook),shop:toISO(pl.shop)});rebuildBuiltin.s=null;rebuildBuiltin();S.offset=0;syncWeek();
   closeOnb();go('today')}
 
 function go(v){if(S.week>3&&v!=='week')S.week=3;if(v==='cook'){S.cover=S.week*2+S.cookSel;S.csteps=-1;AHEADALL=false}
